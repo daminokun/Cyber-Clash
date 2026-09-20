@@ -1,0 +1,19 @@
+# Godot
+.godot/
+.import/
+.export/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+
+# Node.js
+node_modules/
+
+# Environment variables
+.env
+.env.*
+!.env.example
