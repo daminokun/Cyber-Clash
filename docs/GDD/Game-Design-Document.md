@@ -133,3 +133,112 @@ The outcome depends on:
 * Unexpected events.
 
 The result is then used to calculate the players' scores and update the game state.
+
+## 4. Red Team
+
+### 4.1 Role
+
+The Red Team acts as the attacker in the game. The main objective is to gain an advantage through exploitation, manipulation or deception.
+
+The Red Team does not have to attack every scenario. The player can choose to perform an attack, create a distraction, or take no action.
+
+This allows the Red Team to use different strategies instead of relying on direct attacks.
+
+### 4.2 Red Team Information
+
+The Red Team receives additional information that is not available to the Blue Team.
+
+For example:
+
+```text
+SCENARIO
+
+Employee receives an email from IT Department.
+
+RED TEAM INFO
+
+Email Status: Legitimate
+Opportunity: Available
+
+Possible Actions:
+
+[Do Nothing]
+[Modify Email]
+[Add Malicious Link]
+[Spoof Source]
+[Create Distraction]
+```
+
+The Blue Team does not receive the Red Team information.
+
+The difference in information between the two teams creates uncertainty and allows the Red Team to use deception.
+
+### 4.3 Red Team Actions
+
+The Red Team can perform different actions depending on the scenario.
+
+| Action             | Description                                                  |
+| ------------------ | ------------------------------------------------------------ |
+| Do Nothing         | The Red Team does not interfere with the event.              |
+| Modify Event       | The Red Team changes part of the original event.             |
+| Malicious Link     | The Red Team adds a malicious link to the event.             |
+| Spoof Source       | The Red Team disguises the original source of the event.     |
+| Create Distraction | The Red Team creates a fake event to distract the Blue Team. |
+
+The available actions can change depending on the scenario.
+
+### 4.4 Deception
+
+Deception is one of the main mechanics of Cyber Clash.
+
+The Red Team can create misleading situations to influence the decisions of the Blue Team.
+
+For example, the Red Team may create a suspicious login alert as a distraction while the original email remains the actual opportunity for an attack.
+
+The Blue Team must therefore decide whether an event is actually a threat or whether it is a distraction.
+
+### 4.5 Do Nothing
+
+The Red Team can choose **Do Nothing** as a valid action.
+
+This is important because not every scenario is an attack.
+
+For example, a legitimate email may be received by the user. If the Red Team does nothing, the event remains legitimate.
+
+The Blue Team may still decide to report or block the event. This can result in a false-positive consequence.
+
+### 4.6 Red Team Limitations
+
+The Red Team may have limited resources or action points to prevent the player from performing unlimited actions.
+
+A possible system is:
+
+```text
+RED TEAM
+
+Action Points: 3
+
+Do Nothing       → 0
+Modify Event     → 1
+Malicious Link   → 1
+Spoof Source     → 1
+Create Distraction → 2
+```
+
+The exact resource system will be determined during further game design and testing.
+
+### 4.7 Red Team Objectives
+
+The objective of the Red Team can change depending on the scenario.
+
+Possible objectives include:
+
+* Gain access to a system.
+* Obtain sensitive information.
+* Avoid detection.
+* Cause the Blue Team to make an incorrect decision.
+* Create a false alarm.
+* Successfully complete an attack.
+
+The Red Team can therefore gain an advantage not only by directly attacking the system, but also by manipulating the decisions made by the Blue Team.
+
