@@ -647,3 +647,156 @@ The main principle of the Deception System is:
 
 The system is designed to encourage careful investigation, decision-making and awareness of misleading information.
 
+## 8. Unexpected Event System
+
+### 8.1 Unexpected Event Overview
+
+The **Unexpected Event System** introduces additional events that may occur while a scenario is in progress.
+
+These events are not necessarily caused by the **Red Team**. They may occur due to the game system, user actions, or specific conditions within the scenario.
+
+The purpose of this system is to make each scenario less predictable and require both teams to adapt their decisions based on changes that occur during gameplay.
+
+### 8.2 Types of Unexpected Events
+
+Several types of Unexpected Events may occur during gameplay:
+
+| Event Type      | Description                                                                                         |
+| --------------- | --------------------------------------------------------------------------------------------------- |
+| System Event    | An event caused by the game system, such as a system error or service interruption.                 |
+| User Event      | An event caused by an unexpected action from a user or NPC.                                         |
+| Security Alert  | A new security alert appears while the current scenario is in progress.                             |
+| Secondary Event | A second event occurs while the original event is still being handled.                              |
+| New Evidence    | Additional information becomes available and may change the understanding of the current situation. |
+
+The type of Unexpected Event depends on the scenario and the current game state.
+
+### 8.3 Unexpected Event Trigger
+
+Unexpected Events can be triggered by specific conditions or through predefined probabilities within a scenario.
+
+For example:
+
+```text
+Original Scenario:
+Employee receives an email.
+
+Red Team:
+Do Nothing
+
+Blue Team:
+Investigates the email.
+
+Unexpected Event:
+Suspicious login detected.
+
+Blue Team:
+Must determine whether the login is related
+to the email or is a separate event.
+```
+
+The new event can change the situation even when the Red Team has not performed an attack.
+
+### 8.4 Relationship with Red Team Actions
+
+An Unexpected Event can occur independently of the Red Team's actions.
+
+For example, the Red Team may select **Do Nothing**, but the game system can still generate a new **Security Alert**.
+
+This prevents the Blue Team from assuming that every new event is automatically caused by the Red Team.
+
+However, some Red Team actions may also produce unexpected consequences.
+
+For example, a successful attack may generate unusual network activity, which can become **additional evidence** for the Blue Team.
+
+### 8.5 Hidden Cause
+
+The actual cause of an Unexpected Event is stored and managed by the **game server**.
+
+The Blue Team does not immediately know the actual cause of the event.
+
+The event may be caused by:
+
+* The Red Team.
+* The game system.
+* Another user.
+* Legitimate activity.
+* An event related to the original scenario.
+* An unrelated event.
+
+The actual cause remains hidden from the Blue Team until the scenario is resolved.
+
+### 8.6 Effect on Gameplay
+
+Unexpected Events can affect gameplay in several ways, including:
+
+* Creating a new investigation opportunity.
+* Increasing the difficulty of a scenario.
+* Providing additional evidence.
+* Creating a false alarm.
+* Changing the priority of an event.
+* Creating a new security threat.
+* Giving an advantage to either team.
+
+The effect depends on the type of event and the current state of the scenario.
+
+### 8.7 Controlled Randomness
+
+Unexpected Events will not occur completely randomly without any restrictions.
+
+The game will use **predefined conditions** and **probabilities** to determine when an Unexpected Event can occur.
+
+For example:
+
+```text
+Scenario Condition:
+Blue Team starts an investigation.
+
+Possible Unexpected Event:
+New login alert.
+
+Probability:
+Determined by the scenario configuration.
+```
+
+This approach allows the game to create unpredictable situations while still maintaining **game balance**.
+
+### 8.8 Example Scenario
+
+An example of an Unexpected Event during gameplay is shown below:
+
+```text
+Original Scenario:
+Employee receives an email from IT Department.
+
+Red Team:
+Do Nothing
+
+Blue Team:
+Investigates the email.
+
+Unexpected Event:
+Suspicious login detected.
+
+Blue Team:
+Must determine whether the login is related
+to the email or is a separate event.
+
+Actual Cause:
+Unknown to the Blue Team.
+
+Server:
+Stores the actual cause and resolves the scenario.
+```
+
+In this situation, the Blue Team cannot immediately determine whether the suspicious login is an actual attack, legitimate activity, or an unrelated event.
+
+The Blue Team must use the available evidence before making a decision.
+
+### 8.9 Unexpected Event Principle
+
+The main principle of the Unexpected Event System is:
+
+> **Not every unexpected event is an attack, and not every attack produces an obvious event.**
+
+This system makes each scenario more unpredictable and requires players to continuously evaluate the situation based on the information available to them.
