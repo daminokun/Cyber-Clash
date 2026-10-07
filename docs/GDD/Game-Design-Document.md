@@ -533,3 +533,117 @@ Examples include:
 Unexpected events may occur independently of the Red Team.
 
 This means the Blue Team must continue evaluating the available information instead of assuming that every new event is caused by the Red Team.
+
+## 7. Deception System
+
+### 7.1 Deception Overview
+
+The Deception System is used to allow the Red Team to mislead the Blue Team during gameplay.
+
+Instead of directly attacking the system, the Red Team can manipulate information or create situations that influence the decisions made by the Blue Team.
+
+The purpose of the system is to create uncertainty and make the Blue Team decide whether an event is a genuine threat, a legitimate event, or a distraction.
+
+### 7.2 Types of Deception
+
+The Red Team can use several types of deception depending on the scenario.
+
+| Deception Type      | Description                                                                             |
+| ------------------- | --------------------------------------------------------------------------------------- |
+| Fake Event          | Creates an event that appears suspicious but may not represent the actual attack.       |
+| Event Manipulation  | Changes part of an existing event to make it more suspicious or misleading.             |
+| Source Spoofing     | Makes an event appear to originate from a different source.                             |
+| Distraction         | Creates another event to draw the Blue Team's attention away from the actual objective. |
+| Misleading Evidence | Provides information that may cause the Blue Team to make an incorrect decision.        |
+
+The available deception types depend on the scenario and the actions available to the Red Team.
+
+### 7.3 Deception Process
+
+A basic deception process can be represented as:
+
+```text
+Scenario Generated
+       ↓
+Red Team Identifies Opportunity
+       ↓
+Red Team Selects Deception
+       ↓
+Event or Information is Modified
+       ↓
+Blue Team Receives Available Information
+       ↓
+Blue Team Makes a Decision
+       ↓
+Server Determines the Actual Outcome
+```
+
+The Blue Team does not directly receive information about whether deception has been used.
+
+### 7.4 Deception and Investigation
+
+The Blue Team can use investigation to determine whether an event is suspicious.
+
+However, investigation does not guarantee that the Blue Team will immediately identify the deception.
+
+For example, a spoofed email may contain information that appears normal at first. The Blue Team may need to inspect the sender, link destination or other available evidence before making a decision.
+
+This encourages the Blue Team to analyse information instead of immediately responding to an event.
+
+### 7.5 Deception Risk
+
+Deception is not guaranteed to succeed.
+
+Some deceptive actions may leave evidence that can be discovered by the Blue Team.
+
+For example, modifying an email may create inconsistencies in the sender information or link destination.
+
+If the Blue Team discovers enough evidence, the deception may fail and the Red Team may lose an opportunity or resources.
+
+Therefore, the Red Team must consider the risk of being detected when using deception.
+
+### 7.6 Deception Objectives
+
+The Red Team can use deception to achieve different objectives, including:
+
+* Distracting the Blue Team.
+* Causing a false positive.
+* Hiding an actual attack.
+* Wasting the Blue Team's time or resources.
+* Causing the Blue Team to take an incorrect defensive action.
+* Creating an opportunity for a later attack.
+
+The objective depends on the current scenario and the Red Team's strategy.
+
+### 7.7 Example of Deception
+
+An example of deception during gameplay is:
+
+```text
+Original Scenario:
+Employee receives an email from IT Department.
+
+Red Team:
+Creates a suspicious login alert as a distraction.
+
+Blue Team:
+Investigates the suspicious login.
+
+Actual Situation:
+The email remains the main opportunity for the Red Team.
+
+Result:
+The Blue Team spends time investigating the distraction
+while the Red Team gains an advantage.
+```
+
+This example shows how the Red Team can influence the Blue Team without directly attacking the original event.
+
+### 7.8 Deception Principle
+
+The main principle of the Deception System is:
+
+> **The Blue Team should not always know whether an event is a real threat, a legitimate event, or a deception.**
+
+The system is designed to encourage careful investigation, decision-making and awareness of misleading information.
+
