@@ -31,6 +31,7 @@ The game will be developed using **Godot** and will support multiplayer gameplay
 
 ---
 
+
 ## 2. Game Concept
 
 Cyber Clash is a 1v1 cybersecurity simulation game where the Red Team and Blue Team have different information and objectives.
@@ -48,6 +49,7 @@ The main gameplay concept is:
 The game focuses on **deception, decision-making, incomplete information and unexpected events** instead of simply asking players to identify whether something is a cyberattack.
 
 ---
+
 
 ## 3. Core Gameplay
 
@@ -133,6 +135,9 @@ The outcome depends on:
 * Unexpected events.
 
 The result is then used to calculate the players' scores and update the game state.
+
+---
+
 
 ## 4. Red Team
 
@@ -241,6 +246,9 @@ Possible objectives include:
 * Successfully complete an attack.
 
 The Red Team can therefore gain an advantage not only by directly attacking the system, but also by manipulating the decisions made by the Blue Team.
+
+---
+
 
 ## 5. Blue Team
 
@@ -374,6 +382,9 @@ The Blue Team's main objectives are:
 * Identify deceptive or misleading events.
 
 The Blue Team is rewarded for making appropriate decisions rather than simply responding to every event.
+
+---
+
 
 ## 6. Scenario System
 
@@ -534,6 +545,9 @@ Unexpected events may occur independently of the Red Team.
 
 This means the Blue Team must continue evaluating the available information instead of assuming that every new event is caused by the Red Team.
 
+---
+
+
 ## 7. Deception System
 
 ### 7.1 Deception Overview
@@ -646,6 +660,9 @@ The main principle of the Deception System is:
 > **The Blue Team should not always know whether an event is a real threat, a legitimate event, or a deception.**
 
 The system is designed to encourage careful investigation, decision-making and awareness of misleading information.
+
+---
+
 
 ## 8. Unexpected Event System
 
@@ -800,3 +817,307 @@ The main principle of the Unexpected Event System is:
 > **Not every unexpected event is an attack, and not every attack produces an obvious event.**
 
 This system makes each scenario more unpredictable and requires players to continuously evaluate the situation based on the information available to them.
+
+---
+
+
+## 9. Information System
+
+### 9.1 Information System Overview
+
+The Information System controls what information is available to the Red Team, Blue Team, and the game server.
+
+Cyber Clash uses **asymmetric information** as one of its main gameplay mechanics. This means that both players do not receive exactly the same information during a scenario.
+
+The Red Team may receive additional information about the scenario and possible attack opportunities, while the Blue Team must make decisions based on limited information.
+
+The game server stores the complete scenario state and is responsible for determining the actual outcome.
+
+The main information principle is:
+
+> **Players make decisions based on the information available to them, not the complete truth of the scenario.**
+
+---
+
+### 9.2 Information Categories
+
+Information in Cyber Clash is divided into three main categories:
+
+| Information Type     | Description                                                                     | Access               |
+| -------------------- | ------------------------------------------------------------------------------- | -------------------- |
+| Public Information   | Information visible to both players.                                            | Red Team + Blue Team |
+| Red-only Information | Private information provided only to the Red Team.                              | Red Team             |
+| Hidden Information   | Internal information used by the server to determine the actual scenario state. | Server only          |
+
+This separation prevents either player from receiving complete information about the scenario.
+
+---
+
+### 9.3 Public Information
+
+Public information is information that can be observed by both players.
+
+Examples include:
+
+* A new email event.
+* A login alert.
+* A USB device connection.
+* A network activity alert.
+* Visible system notifications.
+* Results of certain player actions.
+
+Public information does not reveal whether the event has been manipulated by the Red Team.
+
+For example:
+
+```text
+PUBLIC EVENT
+
+New Email Received
+
+Sender:
+it-support@university-example.com
+
+Subject:
+Important Account Verification
+```
+
+Both players may see the event, but only the Red Team may know whether the event has been modified.
+
+---
+
+### 9.4 Red-only Information
+
+Red-only information is private information provided to the Red Team.
+
+This information can include:
+
+* Original scenario status.
+* Available attack opportunities.
+* Possible Red Team actions.
+* Hidden weaknesses.
+* Potential objectives.
+* Information about the effectiveness of certain actions.
+
+For example:
+
+```text
+RED TEAM INFORMATION
+
+Original Event:
+Legitimate Email
+
+Opportunity:
+Available
+
+Possible Actions:
+
+[Do Nothing]
+[Modify Event]
+[Add Malicious Link]
+[Spoof Source]
+[Create Distraction]
+```
+
+The Blue Team does not receive this information.
+
+This allows the Red Team to plan its actions while maintaining uncertainty for the Blue Team.
+
+---
+
+### 9.5 Hidden Server Information
+
+Hidden information is information that is stored and controlled by the game server.
+
+Examples include:
+
+* Actual scenario state.
+* Actual attack status.
+* Red Team's selected action.
+* Unexpected event cause.
+* Hidden evidence.
+* Scenario outcome.
+* Internal probability or generation values.
+
+The hidden information is not directly shown to either player.
+
+The server uses this information to determine the result of player actions.
+
+For example:
+
+```text
+SERVER STATE
+
+Scenario:
+Email
+
+Actual Status:
+Manipulated
+
+Red Action:
+Add Malicious Link
+
+Unexpected Event:
+None
+
+Blue Action:
+Ignore
+
+Outcome:
+Attack Successful
+```
+
+The players only receive the information that is appropriate for their role.
+
+---
+
+### 9.6 Information Flow
+
+The information flow during a scenario can be represented as follows:
+
+```text
+                 SCENARIO GENERATOR
+                        |
+                        v
+                 SERVER SCENARIO STATE
+                   /              \
+                  /                \
+                 v                  v
+        RED TEAM INFORMATION    PUBLIC INFORMATION
+                 |                  |
+                 v                  v
+           RED TEAM ACTION     BLUE TEAM VIEW
+                 \                  /
+                  \                /
+                   v              v
+                     SERVER
+                       |
+                       v
+                  FINAL OUTCOME
+```
+
+The server acts as the central authority that manages the information shown to each player.
+
+---
+
+### 9.7 Information Asymmetry
+
+Information asymmetry is the difference between the information available to the Red Team and the Blue Team.
+
+For example:
+
+```text
+RED TEAM KNOWS
+
+Original Event:
+Legitimate
+
+Red Action:
+Add Malicious Link
+
+Blue Team:
+Does not know the event was modified.
+```
+
+The Blue Team must determine the appropriate response using the evidence available to them.
+
+This creates uncertainty and allows different strategies to emerge during gameplay.
+
+---
+
+### 9.8 Incomplete Information
+
+The Blue Team may not always receive enough information to determine the correct answer immediately.
+
+For example, a suspicious email may contain:
+
+* An unfamiliar sender.
+* A suspicious link.
+* No known malware.
+* Incomplete sender information.
+
+The Blue Team must decide whether to investigate further, report the event, ignore it, or take another defensive action.
+
+The game therefore rewards decision-making and investigation rather than simple identification.
+
+---
+
+### 9.9 Misleading Information
+
+Some information may be misleading because of actions performed by the Red Team or because of unexpected events.
+
+For example, the Red Team may spoof the source of an email so that the visible sender appears legitimate.
+
+Alternatively, an unexpected event may create a security alert that is unrelated to the Red Team.
+
+This means that visible information should not always be treated as absolute proof of an attack.
+
+---
+
+### 9.10 Information and Deception
+
+The Information System directly supports the deception mechanics of Cyber Clash.
+
+The Red Team can use its private information to manipulate events while the Blue Team must make decisions without knowing the Red Team's actions.
+
+For example:
+
+```text
+Original Event:
+Legitimate Login
+
+Red Team:
+Create Distraction
+
+Additional Event:
+Suspicious Network Alert
+
+Blue Team:
+Investigates Network Alert
+
+Actual Situation:
+The alert was created as a distraction.
+```
+
+The Blue Team may lose time or resources by responding to the wrong event.
+
+This creates a gameplay situation where information management is as important as technical detection.
+
+---
+
+### 9.11 Information Reveal
+
+Certain Blue Team actions may reveal additional information.
+
+For example, an investigation may reveal:
+
+* Additional event details.
+* Source information.
+* Link destination.
+* Account activity.
+* Network information.
+* Previous activity related to the event.
+
+However, investigation should not always reveal the complete truth.
+
+Some information may remain hidden or misleading.
+
+This prevents investigation from becoming an automatic method of identifying every attack.
+
+---
+
+### 9.12 Information Principle
+
+The Information System follows three main principles:
+
+1. **Not all information is shared between players.**
+2. **Visible information does not always reveal the complete situation.**
+3. **Players must make decisions using incomplete information.**
+
+This system supports the main gameplay identity of Cyber Clash:
+
+> **The player who makes the better decision with limited information gains the advantage.**
+
+---
+
+
