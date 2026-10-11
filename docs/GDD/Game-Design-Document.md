@@ -53,88 +53,110 @@ The game focuses on **deception, decision-making, incomplete information and une
 
 ## 3. Core Gameplay
 
-A match consists of multiple scenarios. Each scenario represents an event that may happen within the game environment.
+Cyber Clash uses a turn-based scenario system in which the Red Team and Blue Team interact with the same scenario while receiving different information.
+
+Each scenario follows a defined sequence of actions. The Red Team attempts to achieve a scenario objective through attacks, manipulation or deception, while the Blue Team investigates available evidence and selects an appropriate defensive response.
+
+The game server manages the scenario state, validates player actions and determines the final outcome.
 
 ### 3.1 Scenario Generation
 
-At the beginning of a scenario, the game generates an event.
+At the beginning of each round, the server generates a scenario using a predefined template and controlled variations.
 
-Examples include:
+The initial prototype will support four main scenario categories:
 
-* An employee receives an email.
-* A user logs into an account.
-* An unknown USB device is connected.
-* Unusual network activity is detected.
+- Email
+- Login Activity
+- USB Device
+- Network Activity
 
-The generated event may be legitimate, manipulated by the Red Team, or affected by an unexpected event.
+Each scenario contains an initial event, a hidden state, available player actions and possible outcomes.
 
-### 3.2 Red Team
+The scenario may be legitimate, provide an opportunity for the Red Team, or contain conditions that allow a security incident to occur.
 
-The Red Team receives additional private information about the scenario.
+### 3.2 Red Team Phase
 
-The player can decide whether to:
+The Red Team receives private information about the scenario, including relevant opportunities and available actions.
 
-* Do nothing.
-* Manipulate the event.
-* Create a fake threat.
-* Exploit the situation.
-* Create a distraction.
+The player selects one valid action based on the current scenario. Possible actions include:
 
-The Red Team's objective is to achieve its goal without being successfully detected or stopped by the Blue Team.
+- Do Nothing
+- Modify Event
+- Add Malicious Link
+- Spoof Source
+- Create Distraction, where supported by the scenario
 
-### 3.3 Blue Team
+The server validates the selected action and updates the hidden scenario state.
 
-The Blue Team receives the scenario but does not know what action the Red Team has taken.
+Choosing Do Nothing is a valid strategic decision. The Red Team is not required to attack every scenario.
 
-The Blue Team can:
+### 3.3 Blue Team Phase
 
-* Ignore the event.
-* Inspect the event.
-* Report the event.
-* Block the source.
-* Investigate further.
-* Take defensive action.
+After the Red Team action has been processed, the Blue Team receives the event information permitted by the current scenario state.
 
-The Blue Team must make decisions using the information available to them.
+The Blue Team does not receive the Red Team's private information or the complete hidden scenario state.
 
-### 3.4 Deception
+The player may inspect the available information and investigate the event to obtain additional evidence. Investigation results may be incomplete and do not always reveal the actual cause of the event.
 
-Deception is an important part of Cyber Clash.
+After reviewing the available evidence, the Blue Team selects a final response, such as:
 
-The Red Team can create situations that make the Blue Team believe that an attack is happening when it may not be the case.
+- Report
+- Ignore
+- Block
+- Perform a scenario-specific defensive action
 
-For example, the Red Team may create a fake suspicious event while the actual objective occurs somewhere else.
+The available actions depend on the scenario and its current state.
 
-This prevents the Blue Team from simply treating every suspicious event as an attack.
+### 3.4 Unexpected Events
 
-### 3.5 Unexpected Events
+An unexpected event may occur when predefined scenario conditions are satisfied.
 
-The game can introduce unexpected events during a scenario.
+An unexpected event may be generated independently of the Red Team or may arise as a consequence of actions taken during gameplay.
 
-Examples include:
+For the initial prototype, a scenario may contain one main event and a maximum of one secondary event at a time.
 
-* A legitimate system event.
-* A random system error.
-* An event caused by another user.
-* A second event occurring unexpectedly.
-* An attack creating unexpected evidence.
-* A false alarm.
+The server determines the event's actual cause and updates the scenario state accordingly. The Blue Team receives only the information permitted by the game's information rules.
 
-Unexpected events are used to make each scenario less predictable and require players to adapt to changing situations.
+Unexpected events must introduce meaningful uncertainty without automatically guaranteeing success for either player.
 
-### 3.6 Scenario Outcome
+### 3.5 Scenario Resolution
 
-After both players have completed their actions, the server determines the outcome of the scenario.
+After the required player actions have been completed, the server resolves the scenario.
 
-The outcome depends on:
+The server evaluates:
 
-* The original scenario.
-* Red Team's hidden action.
-* Blue Team's response.
-* Available evidence.
-* Unexpected events.
+- The original scenario state.
+- The Red Team's selected action.
+- The Blue Team's investigation and final response.
+- Available evidence.
+- Any unexpected events.
+- The objectives and conditions of the scenario.
 
-The result is then used to calculate the players' scores and update the game state.
+The server determines the outcome using predefined resolution rules rather than relying on either player's client to decide the result.
+
+Possible outcomes include a successful attack, a prevented attack, a false positive, an unsuccessful deception attempt or a scenario with no significant security impact.
+
+### 3.6 Scoring and Game State Update
+
+After resolving the scenario, the server calculates the score changes and updates the match state.
+
+The scoring rules consider the actual outcome and the effectiveness of each player's decisions. Attempting an attack or reporting an event does not automatically award points.
+
+The server then provides each player with an appropriate scenario summary without revealing information that must remain hidden during the active match.
+
+### 3.7 Next Scenario
+
+If the match has not reached its end condition, the server generates the next scenario and repeats the gameplay sequence.
+
+For the initial prototype, the match will use a fixed number of rounds. The exact number of rounds and point values will be established during implementation and gameplay testing.
+
+### 3.8 Core Gameplay Loop
+
+The core gameplay loop is:
+
+**Generate Scenario → Red Team Action → Blue Team Investigation → Blue Team Response → Unexpected Event Processing → Server Resolution → Score Update → Next Scenario**
+
+This structure allows both players to make meaningful decisions while preserving the uncertainty, deception and incomplete information that define Cyber Clash.
 
 ---
 
