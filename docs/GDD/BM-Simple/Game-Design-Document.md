@@ -2,6 +2,10 @@
 
 ## Game Design Document (GDD) v0.1
 
+> **Nota:** Dokumen ini ialah ringkasan Bahasa Melayu yang meliputi Sections
+> 1-8. Rujuk [GDD utama](../Game-Design-Document.md) untuk keperluan
+> teknikal, multiplayer, UI, testing dan skop prototype terkini.
+
 ---
 
 ## 1. Game Overview

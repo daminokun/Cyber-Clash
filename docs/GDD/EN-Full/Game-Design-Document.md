@@ -2,6 +2,10 @@
 
 ## Game Design Document (GDD) v0.1
 
+> **Note:** This is the full-language English summary covering Sections 1-8.
+> Refer to the [main GDD](../Game-Design-Document.md) for the latest
+> technical, multiplayer, UI, testing and prototype-scope requirements.
+
 ---
 
 ## 1. Game Overview

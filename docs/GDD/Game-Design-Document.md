@@ -1396,7 +1396,9 @@ The server calculates the final result using the accumulated scores and the fina
 
 The player with the higher final score wins the match. If both players have the same score, the match ends in a draw.
 
-The exact number of scenarios and scoring values will be determined during implementation and gameplay testing.
+The current prototype uses the provisional values in Section 11.8 and
+resolves one scenario at a time. The number of scenarios in a complete match
+will be balanced after the first playable client flow is tested.
 
 The final result is presented to both players through the match result interface.
 
@@ -1583,7 +1585,18 @@ The scoring system follows these principles:
 5. Unexpected events should be evaluated according to their actual impact.
 6. The server must calculate scores consistently for both players.
 
-The exact point values and penalties will be determined during prototype development and gameplay testing.
+For the current email scenario prototype, the server uses these provisional values:
+
+| Scenario outcome | Red Team | Blue Team |
+|---|---:|---:|
+| Attack succeeds | +5 | 0 |
+| Attack is prevented | 0 | +3 |
+| False positive on a legitimate email | 0 | -2 |
+| No significant impact | 0 | 0 |
+
+These values are implementation values for the initial prototype and may be
+rebalanced after gameplay testing. Any changes must be reflected in the server
+tests and the scenario documentation.
 
 ### 11.9 Win Conditions
 
@@ -1600,7 +1613,8 @@ The final score reflects the effectiveness of each player's decisions, the achie
 
 Neither player wins simply by attempting an attack or selecting a defensive action. The server determines the result based on the scenario state and the predefined scoring rules.
 
-The exact number of scenarios and scoring values will be determined during prototype development and gameplay testing.
+The current server prototype resolves one scenario at a time. A multi-scenario
+match length remains a balancing decision for a later prototype milestone.
 
 ### 11.10 Match Result
 
@@ -1797,7 +1811,10 @@ A scenario definition may contain fields such as:
 
 The game server interprets these definitions and uses them to construct the active scenario.
 
-The final data structure will be determined during implementation.
+The current prototype stores the email scenario structure in JSON with fields
+for the scenario identifier, category, public event, original status, Red Team
+objective and investigation evidence. The structure can be extended when
+unexpected events and additional scenario categories are implemented.
 
 ### 12.12 Prototype Implementation
 
@@ -1895,7 +1912,10 @@ The server assigns one role to each player and ensures that both players cannot 
 
 The assigned role determines which interface, information and actions are available to each player.
 
-Role assignment may be random or determined by the match creation process. The final method will be selected during implementation.
+For the current prototype, the first connected player is assigned to the Red
+Team and the second connected player is assigned to the Blue Team. This
+deterministic assignment simplifies local testing. Random or lobby-controlled
+assignment may be added later.
 
 ### 13.5 Scenario Synchronisation
 
@@ -1975,7 +1995,8 @@ Information that a player is not allowed to know must not be included in that pl
 
 The clients and server exchange messages to manage the match.
 
-Possible message categories include:
+The current WebSocket prototype uses JSON messages. The supported message
+categories are:
 
 - Player connection and disconnection.
 - Match initialisation.
@@ -1989,7 +2010,28 @@ Possible message categories include:
 - Match completion.
 - Reconnection and match resumption.
 
-The communication method and message format will be selected during implementation based on Godot's networking capabilities and the chosen server architecture.
+The current message shapes are:
+
+```json
+{"type":"action","action":"add_malicious_link"}
+```
+
+```json
+{"type":"joined","role":"red"}
+```
+
+```json
+{"type":"state","state":{}}
+```
+
+```json
+{"type":"error","error":"invalid_blue_action"}
+```
+
+The `state` object is generated separately for each role. It must not contain
+private or hidden information that the receiving player is not authorised to
+see. The protocol may be extended as investigation, unexpected events,
+reconnection and match completion are implemented.
 
 All messages that affect the match must be processed according to the current match state and the relevant gameplay rules.
 
@@ -2354,9 +2396,9 @@ The specific Godot version will be selected during implementation and kept consi
 
 It will be used for interface interactions, scene management, client-side game behaviour and communication with the server.
 
-If a separate server is implemented using another programming language, the server language and communication interface will be documented separately.
-
-The final division of responsibilities between the client and server will be established during system design.
+The game server uses **Node.js** with CommonJS modules. The server-side
+implementation is kept separate from the Godot client so that authoritative
+scenario state and score calculation remain on the server.
 
 ### 15.4 Multiplayer Architecture
 
@@ -2372,7 +2414,9 @@ Both game clients will be developed using Godot. The server will remain responsi
 
 The server must ensure that both players participate in the same match while receiving only the information permitted by their respective roles.
 
-The server implementation and communication protocol will be selected during technical evaluation and implementation. The selected technologies must support the multiplayer requirements defined in Section 13.
+The current prototype uses Node.js with the `ws` WebSocket library and JSON
+messages. This choice supports the two-player communication and
+role-specific state delivery required by the initial prototype.
 
 ### 15.5 Server-Side Game Logic
 
@@ -2396,7 +2440,7 @@ This is particularly important because the gameplay relies on hidden information
 
 ### 15.6 Structured Scenario Data
 
-Cyber Clash may use JSON to store scenario definitions and their variations.
+Cyber Clash uses JSON to store scenario definitions and their variations.
 
 JSON provides a structured format for representing scenario information such as:
 
@@ -2413,7 +2457,11 @@ The server will interpret the scenario data and use it to construct active scena
 
 Separating scenario content from the main gameplay logic will make it easier to add or modify scenarios without rewriting the entire system.
 
-The final JSON structure will be defined during implementation.
+The current scenario structure includes an identifier, category, public event,
+original status, Red Team objective and investigation evidence. The server
+loads this structure as the source data for the active scenario. Schema
+validation will be added before more scenario templates are introduced. Additional fields
+for unexpected events and multi-scenario matches may be added later.
 
 ### 15.7 Networking and Communication
 
@@ -2434,7 +2482,10 @@ The server must process messages according to the current match state and gamepl
 
 Communication must also preserve role-based information separation. The server must send only the information that each player is authorised to receive and must not transmit the complete hidden scenario state to both clients.
 
-The specific networking protocol and supporting libraries will be selected during implementation based on compatibility with Godot, server requirements and the needs of the initial prototype.
+The current networking protocol is WebSocket with JSON messages, implemented
+using the Node.js `ws` library. The server listens on a configurable port
+(port 3000 by default) and sends role-specific state updates after accepted
+actions. The protocol is documented in Section 13.9.
 
 ### 15.8 Version Control
 
@@ -2507,7 +2558,7 @@ The project is an educational cybersecurity simulation. Its initial implementati
 
 The initial prototype will focus on demonstrating the essential functionality of Cyber Clash.
 
-The prototype is expected to support:
+The planned prototype scope is:
 
 - Two-player multiplayer gameplay.
 - Red Team and Blue Team role assignment.
@@ -2524,6 +2575,25 @@ The prototype is expected to support:
 Advanced matchmaking, large-scale multiplayer support, sophisticated artificial intelligence and extensive scenario libraries are outside the initial scope unless they become necessary during development.
 
 The prototype will prioritise a reliable two-player match before introducing more advanced networking features.
+
+The current implementation checkpoint supports:
+
+- One predefined email account-verification scenario.
+- One active two-player match.
+- Deterministic Red Team and Blue Team role assignment.
+- Red Team `Do Nothing` and `Add Malicious Link` actions.
+- Blue Team investigation, report, ignore and block actions.
+- Server-side phase validation, role-specific state views and scenario resolution.
+- Provisional scoring values documented in Section 11.8.
+- WebSocket communication using the JSON messages documented in Section 13.9.
+
+The following planned features are not implemented in this checkpoint:
+
+- Multiple scenarios in one match.
+- Unexpected event generation.
+- Reconnection and match recovery.
+- Godot client UI.
+- Match completion and final winner calculation.
 
 ### 15.13 Technical Requirements Principle
 
