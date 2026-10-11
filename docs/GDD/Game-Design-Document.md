@@ -681,11 +681,20 @@ The type of Unexpected Event depends on the scenario and the current game state.
 
 ### 8.3 Unexpected Event Trigger
 
-Unexpected Events can be triggered by specific conditions or through predefined probabilities within a scenario.
+Unexpected Events can be triggered when predefined scenario conditions are satisfied. A scenario may also use a configured probability to determine whether an eligible event occurs.
 
-For example:
+For the initial prototype, an Unexpected Event may be triggered by:
 
-```text
+- A predefined scenario condition.
+- A controlled random selection permitted by the scenario configuration.
+- A consequence of a validated player action.
+
+The game server determines when an event can occur and validates the trigger against the current scenario state.
+
+Unexpected Events must only occur at defined points in the gameplay flow. For the initial prototype, an event may be triggered during the Blue Team phase before the final scenario resolution, provided that the current scenario permits it.
+
+Example:
+
 Original Scenario:
 Employee receives an email.
 
@@ -699,11 +708,9 @@ Unexpected Event:
 Suspicious login detected.
 
 Blue Team:
-Must determine whether the login is related
-to the email or is a separate event.
-```
+Evaluates the new event using the available evidence.
 
-The new event can change the situation even when the Red Team has not performed an attack.
+The new event may change the Blue Team's priorities even when the Red Team has not performed an attack.
 
 ### 8.4 Relationship with Red Team Actions
 
@@ -750,24 +757,17 @@ The effect depends on the type of event and the current state of the scenario.
 
 ### 8.7 Controlled Randomness
 
-Unexpected Events will not occur completely randomly without any restrictions.
+Unexpected Events will not occur completely randomly without restrictions.
 
-The game will use **predefined conditions** and **probabilities** to determine when an Unexpected Event can occur.
+The game will use predefined conditions and configurable probabilities to determine whether an eligible Unexpected Event can occur.
 
-For example:
+For the initial prototype, each scenario may contain one main event and a maximum of one secondary event at a time. A secondary event is optional and can only occur when supported by the scenario configuration.
 
-```text
-Scenario Condition:
-Blue Team starts an investigation.
+The server must ensure that each event has a valid trigger, a defined effect and a resolvable outcome. The system must also prevent additional events from exceeding the prototype's event limit.
 
-Possible Unexpected Event:
-New login alert.
+The exact probabilities and trigger configurations will be determined during implementation and gameplay testing.
 
-Probability:
-Determined by the scenario configuration.
-```
-
-This approach allows the game to create unpredictable situations while still maintaining **game balance**.
+This approach introduces uncertainty while maintaining game balance and keeping the system manageable for the initial prototype.
 
 ### 8.8 Example Scenario
 
