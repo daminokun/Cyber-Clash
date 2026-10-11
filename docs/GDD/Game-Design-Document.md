@@ -1825,3 +1825,219 @@ The Dynamic Scenario Generation System follows these principles:
 The main objective is to create varied and replayable gameplay while preserving the core identity of Cyber Clash:
 
 > **Every match can present a different situation, but every situation must remain playable, meaningful and fair.**
+
+
+---
+
+## 13. Multiplayer System
+
+### 13.1 Multiplayer Overview
+
+Cyber Clash is designed as a two-player multiplayer game where one player controls the Red Team and the other controls the Blue Team.
+
+Both players participate in the same match but receive different information according to their assigned roles.
+
+The Multiplayer System manages player connections, role assignment, scenario synchronisation, player actions and communication between the game clients and the server.
+
+The system must ensure that both players interact with the same underlying match state while maintaining the information separation required by the gameplay mechanics.
+
+### 13.2 Client-Server Architecture
+
+Cyber Clash will use a client-server architecture.
+
+Each player runs a game client developed using Godot. The server manages the match and acts as the authoritative source for important game decisions.
+
+The architecture consists of three main components:
+
+* **Red Team Client:** Displays Red Team information and sends the attacker's selected actions.
+* **Blue Team Client:** Displays public scenario information and sends the defender's selected actions.
+* **Game Server:** Manages the match state, validates player actions, resolves scenarios and calculates scores.
+
+The server is responsible for determining the actual outcome of a scenario rather than allowing individual clients to decide their own results.
+
+### 13.3 Player Connection
+
+At the beginning of a match, two players connect to the same game session.
+
+The system must verify that both players are connected and that the match can begin.
+
+The basic connection process is:
+
+```text
+Red Team Client ─────┐
+                     ├── Game Server
+Blue Team Client ────┘
+                           |
+                           v
+                    Match Initialisation
+                           |
+                           v
+                     Role Assignment
+                           |
+                           v
+                       Match Start
+```
+
+If only one player is connected, the match waits for the second player unless another connection or matchmaking method is implemented later.
+
+The initial prototype will focus on establishing a playable match between two connected players.
+
+### 13.4 Role Assignment
+
+Each match contains two roles:
+
+* Red Team – attacker.
+* Blue Team – defender.
+
+The server assigns one role to each player and ensures that both players cannot occupy the same role within a single match.
+
+The assigned role determines which interface, information and actions are available to each player.
+
+Role assignment may be random or determined by the match creation process. The final method will be selected during implementation.
+
+### 13.5 Scenario Synchronisation
+
+Both players must receive updates related to the same active scenario.
+
+However, synchronisation does not mean that both players receive identical information.
+
+The server sends the appropriate scenario information to each client according to the player's role and the current game state.
+
+For example, the Red Team may receive information about a hidden opportunity, while the Blue Team receives only the public event details.
+
+The server must maintain a consistent scenario state even when the information displayed to each player is different.
+
+### 13.6 Player Action Handling
+
+When a player selects an action, the client sends an action request to the server.
+
+The server validates the request before applying the action to the match.
+
+Validation may include checking:
+
+* Whether the player is connected to the active match.
+* Whether the player has the correct role.
+* Whether the requested action is available.
+* Whether the scenario is accepting actions.
+* Whether the action satisfies the scenario rules.
+* Whether any required resource or condition is available.
+
+Invalid actions are rejected by the server.
+
+This prevents clients from directly applying unauthorised changes to the game state.
+
+### 13.7 Server-Authoritative Game State
+
+The game server maintains the authoritative match state.
+
+This includes:
+
+* Current scenario.
+* Player roles.
+* Red Team actions.
+* Blue Team actions.
+* Hidden scenario conditions.
+* Unexpected event states.
+* Player scores.
+* Match progress.
+* Scenario outcomes.
+
+The clients display the information provided by the server and submit player actions.
+
+They must not be trusted to determine their own scores, reveal hidden information or declare the final outcome of a scenario.
+
+This approach helps maintain consistency and reduces opportunities for cheating or unauthorised state changes.
+
+### 13.8 Information Security
+
+Information separation is essential to Cyber Clash because deception and incomplete information are core gameplay mechanics.
+
+The server must ensure that private information is only sent to the intended recipient.
+
+For example:
+
+* Red Team information is sent only to the Red Team client.
+* Public event information is sent to both players when appropriate.
+* Hidden server information remains on the server.
+* Blue Team investigation results are sent according to the investigation rules.
+
+The system must avoid sending the complete hidden scenario state to a client and merely hiding it through the user interface.
+
+Information that a player is not allowed to know should not be included in that player's client messages.
+
+### 13.9 Communication and Updates
+
+The clients and server exchange messages to manage the match.
+
+Possible message categories include:
+
+* Player connection and disconnection.
+* Match initialisation.
+* Role assignment.
+* Scenario presentation.
+* Player action requests.
+* Investigation results.
+* Unexpected event notifications.
+* Scenario outcomes.
+* Score updates.
+* Match completion.
+
+The communication method and message format will be selected during implementation based on Godot's networking capabilities and the chosen server architecture.
+
+### 13.10 Disconnection Handling
+
+A player may disconnect during a match because of network problems or because the player closes the game.
+
+The system should detect disconnections and handle them without corrupting the match state.
+
+Possible responses include:
+
+* Waiting for the player to reconnect.
+* Pausing the match temporarily.
+* Ending the match if the player cannot return.
+* Recording the match as incomplete.
+
+The initial prototype will implement a basic disconnection policy suitable for testing.
+
+More advanced reconnection and recovery features may be added in future versions.
+
+### 13.11 Match State Consistency
+
+The server must maintain a consistent sequence of events throughout the match.
+
+Player actions should be processed according to the current scenario state and the rules governing the match.
+
+The server should also prevent invalid or repeated requests from causing an action to be applied more than once.
+
+This is particularly important when both players submit actions during the same scenario or when network delays occur.
+
+### 13.12 Multiplayer Prototype Requirements
+
+The initial multiplayer prototype should demonstrate that:
+
+* Two players can connect to the same match.
+* Each player receives the correct role.
+* Both players participate in the same scenario.
+* Private information is separated according to player roles.
+* Player actions are validated by the server.
+* The server resolves scenario outcomes.
+* Scores and match progress are synchronised.
+* Basic disconnection handling is supported.
+
+The implementation will begin with a small, functional multiplayer system before more advanced networking features are introduced.
+
+### 13.13 Multiplayer Design Principle
+
+The Multiplayer System follows these principles:
+
+1. Both players participate in the same authoritative match.
+2. Each player receives information appropriate to their role.
+3. The server validates actions and determines outcomes.
+4. Hidden scenario information must not be exposed to unauthorised clients.
+5. The system should remain manageable for the initial prototype.
+
+The main objective is to provide a fair multiplayer experience while preserving the uncertainty and deception that define Cyber Clash.
+
+
+---
+
