@@ -1456,3 +1456,176 @@ This flow demonstrates the main gameplay loop of Cyber Clash:
 > **Observe → Decide → Investigate → Respond → Adapt → Resolve**
 
 The gameplay loop is designed to make players think about both the available evidence and the possibility that the visible situation may not represent the complete truth.
+
+
+---
+
+## 11. Scoring and Win Condition
+
+### 11.1 Scoring System Overview
+
+The Scoring System evaluates the performance of both players throughout a Cyber Clash match.
+
+The system rewards effective decision-making, successful objectives, appropriate defensive responses and strategic use of available information.
+
+Both the Red Team and Blue Team can earn or lose points depending on their actions and the actual outcome of each scenario.
+
+The scoring system is designed to prevent either player from relying on a single strategy throughout the match.
+
+For example, the Blue Team should not automatically report every event, while the Red Team should not be rewarded simply for attempting an attack.
+
+The server is responsible for calculating scores and determining the final match result.
+
+### 11.2 Red Team Scoring
+
+The Red Team earns points by successfully achieving its objectives through attacks, manipulation and deception.
+
+Possible scoring conditions include:
+
+* Successfully completing an attack objective.
+* Avoiding detection by the Blue Team.
+* Using deception to influence the Blue Team's decisions.
+* Creating a distraction that provides a strategic advantage.
+* Achieving a scenario objective without unnecessary actions.
+
+The Red Team may receive fewer points or no points when an attempted action fails to achieve its intended objective.
+
+For example, adding a malicious link does not automatically award points. The result depends on whether the attack achieves its objective and how effectively the Blue Team responds.
+
+Choosing **Do Nothing** is also a valid strategy. However, the Red Team should only receive points when the decision contributes to a defined objective or provides a meaningful strategic advantage.
+
+### 11.3 Blue Team Scoring
+
+The Blue Team earns points by identifying genuine threats, making appropriate decisions and reducing the impact of successful attacks.
+
+Possible scoring conditions include:
+
+* Correctly identifying a genuine threat.
+* Successfully preventing or stopping an attack.
+* Gathering useful evidence through investigation.
+* Selecting an appropriate defensive response.
+* Avoiding unnecessary defensive actions.
+* Recognising misleading events or distractions.
+
+The Blue Team should be rewarded for making decisions supported by available evidence rather than simply guessing whether an event is malicious.
+
+A successful investigation may contribute to the final score when it helps the Blue Team make a more appropriate decision.
+
+### 11.4 False Positive Penalty
+
+A false positive occurs when the Blue Team incorrectly identifies a legitimate event as a security threat.
+
+False positives are an important part of Cyber Clash because not every suspicious event represents an attack.
+
+For example:
+
+```text
+Actual Event:
+Legitimate Email
+
+Red Team Action:
+Do Nothing
+
+Blue Team Action:
+Report as a Cyberattack
+
+Outcome:
+False Positive
+```
+
+The Blue Team may lose points or incur another penalty for an incorrect report.
+
+However, the penalty should depend on the context and the information available to the player. Reporting a genuinely suspicious event for further investigation should not automatically be treated as a mistake when the evidence is inconclusive.
+
+This distinction encourages careful investigation instead of discouraging players from reporting legitimate security concerns.
+
+### 11.5 Failed Attack and Missed Detection
+
+The scoring system must distinguish between an unsuccessful attack and a successful attack that was not detected.
+
+For the Red Team, an attack that is prevented should generally provide fewer rewards than one that successfully achieves its objective.
+
+For the Blue Team, successfully stopping an attack should provide a defensive reward. If a genuine attack succeeds because the Blue Team ignores or mishandles the event, the Blue Team may lose points.
+
+The final score should reflect the actual scenario outcome rather than the action selected alone.
+
+### 11.6 Deception Scoring
+
+Deception can provide the Red Team with a strategic advantage by influencing the Blue Team's decisions.
+
+For example, the Red Team may create a fake security alert to distract the Blue Team from a separate attack opportunity.
+
+The Red Team may earn points if the distraction meaningfully contributes to its objective.
+
+However, creating a fake event should not automatically award points if the Blue Team recognises the deception or if the event has no meaningful impact.
+
+The Blue Team may earn points by identifying misleading information, avoiding unnecessary responses or correctly prioritising a more significant threat.
+
+This ensures that deception rewards strategy rather than the unlimited creation of fake events.
+
+### 11.7 Unexpected Event Scoring
+
+Unexpected events may affect the outcome of a scenario even when they are not caused by either player.
+
+The scoring system must consider the actual cause of the event when calculating the result.
+
+For example, the Blue Team should not automatically receive a penalty for failing to prevent an unrelated system error. Similarly, the Red Team should not automatically receive points for an unexpected event that does not contribute to its objective.
+
+When an unexpected event changes the scenario, the server evaluates its effect on the current game state and the actions taken by both players.
+
+This helps maintain fairness when unpredictable events occur.
+
+### 11.8 Scoring Principles
+
+The scoring system follows these principles:
+
+1. Successful objectives should be rewarded more than unsuccessful attempts.
+2. Appropriate defensive decisions should be rewarded.
+3. False positives should have consequences when a decision is unjustified by the available evidence.
+4. Deception should only provide rewards when it creates a meaningful advantage.
+5. Unexpected events should be evaluated according to their actual impact.
+6. The server must calculate scores consistently for both players.
+
+The exact point values and penalties will be determined during prototype development and gameplay testing.
+
+### 11.9 Win Conditions
+
+The winner of a match is determined by the final game state and the objectives established for that match.
+
+Possible win conditions include:
+
+* Achieving a higher final score than the opponent.
+* Completing a defined team objective.
+* Reaching a specified match end condition.
+* Successfully achieving the main objective within the available match duration.
+
+The final implementation may use a combination of score-based and objective-based conditions.
+
+The selected win condition must provide both players with a clear goal while allowing different strategies to succeed.
+
+### 11.10 Match Result
+
+At the end of a match, the server calculates the final result using the accumulated scores and the relevant match objectives.
+
+The result screen may display:
+
+* Red Team final score.
+* Blue Team final score.
+* Successful and failed objectives.
+* Attacks prevented or completed.
+* Detection and investigation results.
+* False positives.
+* Significant deception and unexpected events.
+* Final winner.
+
+The match summary is intended to help players understand the consequences of their decisions and learn from the scenario outcomes.
+
+### 11.11 Future Balancing
+
+The scoring system will initially be implemented using a simple set of rules suitable for the prototype.
+
+Point values, penalties, objective requirements and match duration will be adjusted through testing.
+
+Balancing will focus on preventing dominant strategies, ensuring meaningful choices for both teams and keeping the game understandable for beginners.
+
+The final scoring configuration will be documented after the core gameplay mechanics have been implemented and evaluated.
