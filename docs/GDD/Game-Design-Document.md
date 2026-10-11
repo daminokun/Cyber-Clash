@@ -2041,3 +2041,265 @@ The main objective is to provide a fair multiplayer experience while preserving 
 
 ---
 
+## 14. User Interface (UI)
+
+### 14.1 UI Overview
+
+The User Interface (UI) provides the visual elements through which players interact with Cyber Clash.
+
+The interface is designed to present scenario information, player actions, investigation results and match progress in a clear and understandable way.
+
+Since Cyber Clash is designed for beginners, the UI should avoid unnecessary complexity and use simple labels, clear instructions and meaningful feedback.
+
+The Red Team and Blue Team will have different interfaces based on their respective roles and information access.
+
+### 14.2 Main Menu
+
+The Main Menu is the first screen displayed when the game starts.
+
+It provides access to the main game functions.
+
+The initial prototype may include the following options:
+
+* **Play** – Enter the multiplayer game flow.
+* **How to Play** – Display basic gameplay instructions.
+* **Settings** – Configure available game settings.
+* **Quit** – Exit the game.
+
+Additional features such as player profiles, matchmaking and statistics may be considered in future versions.
+
+### 14.3 Multiplayer Lobby
+
+The Multiplayer Lobby allows two players to prepare for a match.
+
+The lobby may display:
+
+* Player connection status.
+* Player identifiers or display names.
+* Assigned or selected roles.
+* Match readiness status.
+* Start Match option.
+
+The match should begin only when the required players are connected and the start conditions have been satisfied.
+
+The server manages the lobby state and confirms when the match is ready to begin.
+
+### 14.4 Red Team Interface
+
+The Red Team Interface provides the information and controls required by the attacker.
+
+The interface may contain:
+
+* **Scenario Overview** – Displays the current scenario.
+* **Private Intelligence Panel** – Displays additional information available only to the Red Team.
+* **Action Panel** – Displays available attack, manipulation and deception actions.
+* **Objective Panel** – Displays the current Red Team objective.
+* **Match Status Panel** – Displays relevant match progress and score information.
+
+For example:
+
+```text id="r5d2p1"
+RED TEAM
+
+SCENARIO
+Employee receives an email.
+
+PRIVATE INTELLIGENCE
+Original Status: Legitimate
+Opportunity: Available
+
+AVAILABLE ACTIONS
+[Do Nothing]
+[Modify Event]
+[Add Malicious Link]
+[Spoof Source]
+[Create Distraction]
+
+OBJECTIVE
+Achieve the objective without being detected.
+```
+
+The interface must not display information that is unavailable to the Red Team or reveal hidden server information that is not intended for the player.
+
+The available actions may change according to the current scenario.
+
+### 14.5 Blue Team Interface
+
+The Blue Team Interface provides the information and controls required by the defender.
+
+The interface may contain:
+
+* **Event Panel** – Displays the current public event.
+* **Evidence Panel** – Displays available evidence.
+* **Investigation Panel** – Provides options for gathering additional information.
+* **Defensive Action Panel** – Displays available defensive responses.
+* **Match Status Panel** – Displays relevant match progress and score information.
+
+For example:
+
+```text id="cr7n2b"
+BLUE TEAM
+
+NEW EVENT
+Employee receives an email.
+
+Sender:
+it-support@university-example.com
+
+Subject:
+Important Account Verification
+
+AVAILABLE ACTIONS
+[Inspect]
+[Investigate]
+[Report]
+[Ignore]
+[Block]
+```
+
+The Blue Team Interface must not directly reveal whether the event is legitimate, manipulated or created as a distraction.
+
+The player must evaluate the available evidence before deciding how to respond.
+
+### 14.6 Scenario Panel
+
+The Scenario Panel presents the information related to the active scenario.
+
+It may display:
+
+* Scenario category.
+* Event description.
+* Relevant user or system details.
+* Current public information.
+* Available interaction options.
+* Relevant event updates.
+
+The information shown depends on the player's role and the current scenario state.
+
+The Scenario Panel should remain readable and organised so that players can understand the situation without searching through excessive information.
+
+### 14.7 Investigation and Evidence Panel
+
+The Investigation and Evidence Panel allows the Blue Team to examine additional information about an event.
+
+Depending on the scenario, the panel may display:
+
+* Sender or source details.
+* Link destination.
+* Attachment information.
+* Login history.
+* Network activity.
+* Related events.
+* Investigation findings.
+
+The information revealed depends on the investigation action and the rules of the active scenario.
+
+Investigation results may be incomplete and should not automatically reveal the complete hidden state.
+
+### 14.8 Event Log and Notifications
+
+The Event Log records important events that occur during a match.
+
+It may include:
+
+* New scenario notifications.
+* Unexpected events.
+* Investigation results.
+* Action confirmations.
+* Defensive response results.
+* Scenario resolution messages.
+
+Notifications inform players when important changes occur.
+
+For example, a new login alert may appear while the Blue Team is investigating an email.
+
+The interface should distinguish new notifications from previous events to help players understand the sequence of events.
+
+The Event Log should display only information that the player is authorised to access.
+
+### 14.9 Match Status Panel
+
+The Match Status Panel provides information about the current state of the match.
+
+It may display:
+
+* Player role.
+* Current scenario.
+* Current score.
+* Match progress.
+* Remaining time, if a timer is implemented.
+* Current objective.
+* Match connection status.
+
+The displayed information may differ between the Red Team and Blue Team.
+
+The interface should avoid revealing the opponent's private information or hidden objectives through score summaries and status messages.
+
+### 14.10 Scenario Resolution Screen
+
+After a scenario has been resolved, the game displays a summary of its outcome.
+
+The summary may include:
+
+* Scenario outcome.
+* Points gained or lost.
+* Actions taken by the player.
+* Consequences of the player's decisions.
+* Relevant evidence and explanations.
+* Updated match progress.
+
+The amount of information revealed should depend on the game's information rules.
+
+The summary should help beginners understand why an action succeeded or failed without exposing information that must remain hidden during an active scenario.
+
+### 14.11 Match Result Screen
+
+At the end of a match, the Match Result Screen displays the final result.
+
+It may include:
+
+* Red Team final score.
+* Blue Team final score.
+* Winning player or team.
+* Completed objectives.
+* Significant scenario outcomes.
+* Selected performance statistics.
+* Options to return to the Main Menu or start another match.
+
+The final result is calculated by the server and displayed by the client.
+
+### 14.12 UI Design Principles
+
+The UI follows these principles:
+
+1. **Clarity:** Information should be easy to understand.
+2. **Role Separation:** Each team should see only the information intended for its role.
+3. **Consistency:** Similar actions and notifications should use consistent visual patterns.
+4. **Feedback:** Player actions should provide clear feedback.
+5. **Beginner-Friendly Design:** Technical terms should be explained where necessary.
+6. **Readability:** Important information should be easy to identify.
+7. **Scalability:** The interface should support additional scenarios and actions in future versions.
+
+### 14.13 Prototype UI Scope
+
+The initial prototype will focus on the essential interfaces required for a playable multiplayer match.
+
+These include:
+
+* Main Menu.
+* Multiplayer Lobby.
+* Red Team Interface.
+* Blue Team Interface.
+* Scenario and Evidence Panels.
+* Event Notifications.
+* Match Status Panel.
+* Scenario Resolution Screen.
+* Match Result Screen.
+
+The layout and visual design will be refined during implementation and testing.
+
+Additional visual effects, animations and customisation options may be introduced in later versions.
+
+
+---
+
