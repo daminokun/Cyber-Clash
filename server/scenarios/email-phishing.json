@@ -1,0 +1,16 @@
+{
+  "id": "email-account-verification-001",
+  "category": "email",
+  "event": {
+    "title": "Account verification email",
+    "description": "An employee receives an email asking them to verify their university account.",
+    "sender": "it-support@university-example.com",
+    "subject": "Important Account Verification"
+  },
+  "originalStatus": "legitimate",
+  "redObjective": "Cause the employee to follow a malicious link without being detected.",
+  "investigationEvidence": {
+    "senderCheck": "The sender address matches the university support domain.",
+    "linkCheck": "The link destination does not match the university domain."
+  }
+}

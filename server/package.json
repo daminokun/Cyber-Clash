@@ -1,0 +1,10 @@
+{
+  "name": "cyber-clash-server",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Authoritative game logic for the Cyber Clash prototype.",
+  "type": "commonjs",
+  "scripts": {
+    "test": "node --test"
+  }
+}
