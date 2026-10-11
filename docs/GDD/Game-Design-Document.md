@@ -98,7 +98,9 @@ The Blue Team does not receive the Red Team's private information or the complet
 
 The player may inspect the available information and investigate the event to obtain additional evidence. Investigation results may be incomplete and do not always reveal the actual cause of the event.
 
-After reviewing the available evidence, the Blue Team selects a final response, such as:
+After the investigation phase, an unexpected event may occur if the current scenario permits it. The Blue Team receives the information about the new event that is allowed by the game's information rules.
+
+The Blue Team then evaluates the available evidence and any new event before selecting a final response, such as:
 
 - Report
 - Ignore
@@ -154,7 +156,7 @@ For the initial prototype, the match will use a fixed number of rounds. The exac
 
 The core gameplay loop is:
 
-**Generate Scenario → Red Team Action → Blue Team Investigation → Blue Team Response → Unexpected Event Processing → Server Resolution → Score Update → Next Scenario**
+**Generate Scenario → Red Team Action → Blue Team Investigation → Unexpected Event Processing (if applicable) → Blue Team Final Response → Server Resolution → Score Update → Next Scenario**
 
 This structure allows both players to make meaningful decisions while preserving the uncertainty, deception and incomplete information that define Cyber Clash.
 
