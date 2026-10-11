@@ -2401,21 +2401,19 @@ The final division of responsibilities between the client and server will be est
 
 ### 15.4 Multiplayer Architecture
 
-Cyber Clash will use a client-server architecture to manage multiplayer gameplay.
+Cyber Clash will use a client-server architecture, consistent with the Multiplayer System described in Section 13.
 
-The architecture consists of:
+The architecture consists of three main components:
 
-* Red Team Client.
-* Blue Team Client.
-* Game Server.
+- **Red Team Client:** Displays Red Team information and sends the player's action requests.
+- **Blue Team Client:** Displays permitted scenario information and sends the player's investigation and defensive action requests.
+- **Game Server:** Manages match sessions, assigns player roles, maintains the authoritative game state, validates actions, resolves scenarios and calculates scores.
 
-The clients display the game interface and send player action requests.
+Both game clients will be developed using Godot. The server will remain responsible for important gameplay decisions and will determine the official outcome of each scenario.
 
-The server manages the authoritative match state, validates actions, processes scenario logic and calculates outcomes.
+The server must ensure that both players participate in the same match while receiving only the information permitted by their respective roles.
 
-This architecture is required to maintain consistent gameplay and protect hidden information from unauthorised access.
-
-The exact networking implementation will be selected after evaluating the available options and the requirements of the prototype.
+The server implementation and communication protocol will be selected during technical evaluation and implementation. The selected technologies must support the multiplayer requirements defined in Section 13.
 
 ### 15.5 Server-Side Game Logic
 
@@ -2460,23 +2458,24 @@ The final JSON structure will be defined during implementation.
 
 ### 15.7 Networking and Communication
 
-The multiplayer system requires a communication method between the game clients and the server.
+The multiplayer system requires a communication mechanism between the Godot clients and the game server.
 
-The selected method must support the exchange of information such as:
+The selected mechanism must support:
 
-* Connection and match status.
-* Player role assignment.
-* Scenario information.
-* Player action requests.
-* Investigation results.
-* Scenario outcomes.
-* Score updates.
+- Player connection and disconnection notifications.
+- Match session creation and initialisation.
+- Player role assignment.
+- Scenario information delivery.
+- Player action requests and validation responses.
+- Investigation results and unexpected event notifications.
+- Scenario outcomes and score updates.
+- Match completion and reconnection handling.
 
-The communication method must also support role-based information delivery.
+The server must process messages according to the current match state and gameplay phase. Invalid, unauthorised or repeated action requests must not cause unintended changes to the game state.
 
-Messages sent to each client must contain only the information that the player is authorised to receive.
+Communication must also preserve role-based information separation. The server must send only the information that each player is authorised to receive and must not transmit the complete hidden scenario state to both clients.
 
-The specific protocol and networking library will be selected during the architecture and implementation stages.
+The specific networking protocol and supporting libraries will be selected during implementation based on compatibility with Godot, server requirements and the needs of the initial prototype.
 
 ### 15.8 Version Control
 
@@ -2513,19 +2512,20 @@ Additional tools will only be introduced when they serve a defined project requi
 
 ### 15.10 Testing Requirements
 
-Testing will be conducted throughout development to verify the functionality and consistency of the game.
+Testing will be conducted throughout development to verify the functionality, security and consistency of the game.
 
 The initial testing activities will include:
 
-* Testing individual gameplay functions.
-* Testing scenario generation and validation.
-* Testing Red Team and Blue Team actions.
-* Verifying information separation between players.
-* Testing server-side action validation.
-* Testing multiplayer communication.
-* Verifying score calculation and win conditions.
-* Testing unexpected events and scenario outcomes.
-* Testing basic disconnection handling.
+- Testing individual gameplay functions.
+- Testing scenario generation and validation.
+- Testing Red Team and Blue Team actions.
+- Verifying information separation between players.
+- Testing server-side action validation.
+- Testing multiplayer communication and scenario synchronisation.
+- Verifying score calculation and win conditions.
+- Testing unexpected events and scenario outcomes.
+- Testing player disconnection, reconnection and match recovery.
+- Verifying that invalid or repeated requests do not produce unintended results.
 
 The results will be used to identify defects and improve the reliability of the prototype.
 
@@ -2550,18 +2550,21 @@ The initial prototype will focus on demonstrating the essential functionality of
 
 The prototype is expected to support:
 
-* Two-player multiplayer gameplay.
-* Red Team and Blue Team roles.
-* A limited set of predefined scenario templates.
-* Controlled scenario variations.
-* Role-based information access.
-* Scenario-specific player actions.
-* Unexpected events.
-* Server-side scenario resolution.
-* Basic scoring and win conditions.
-* Essential user interfaces.
+- Two-player multiplayer gameplay.
+- Red Team and Blue Team role assignment.
+- A limited set of predefined scenario templates.
+- Controlled scenario variations.
+- Role-based information access.
+- Scenario-specific player actions.
+- Controlled unexpected events.
+- Server-side action validation and scenario resolution.
+- Basic scoring and win conditions.
+- Essential user interfaces.
+- Basic player disconnection and reconnection handling.
 
 Advanced matchmaking, large-scale multiplayer support, sophisticated artificial intelligence and extensive scenario libraries are outside the initial scope unless they become necessary during development.
+
+The prototype will prioritise a reliable two-player match before introducing more advanced networking features.
 
 ### 15.13 Technical Requirements Principle
 
