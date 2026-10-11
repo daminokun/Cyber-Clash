@@ -1629,3 +1629,199 @@ Point values, penalties, objective requirements and match duration will be adjus
 Balancing will focus on preventing dominant strategies, ensuring meaningful choices for both teams and keeping the game understandable for beginners.
 
 The final scoring configuration will be documented after the core gameplay mechanics have been implemented and evaluated.
+
+
+---
+
+## 12. Dynamic Scenario Generation
+
+### 12.1 Overview
+
+The Dynamic Scenario Generation System is responsible for creating varied gameplay scenarios during a Cyber Clash match.
+
+Instead of relying entirely on fixed scenarios, the system combines predefined scenario templates with different event details, scenario states, available actions and possible unexpected events.
+
+This approach allows the game to produce different situations while maintaining consistent gameplay rules.
+
+The system is designed to support replayability, uncertainty and strategic decision-making for both the Red Team and Blue Team.
+
+### 12.2 Scenario Templates
+
+Scenario templates define the basic structure of each scenario.
+
+Each template contains information about the event type, possible variations, available actions and conditions that determine how the scenario can develop.
+
+The initial prototype will use four main scenario categories:
+
+* Email
+* Login Activity
+* USB Device
+* Network Activity
+
+For example, an Email scenario template may represent a password reset request, a university announcement or an account verification email.
+
+The template provides a reusable structure that can be modified when a new scenario is generated.
+
+### 12.3 Scenario Variations
+
+Each scenario template may contain multiple variations.
+
+Variations can include:
+
+* Event descriptions.
+* User or system details.
+* Sender or source information.
+* Security indicators.
+* Initial event status.
+* Available Red Team actions.
+* Available Blue Team actions.
+* Possible unexpected events.
+
+For example, two Email scenarios may share the same basic structure but contain different sender details, messages and security indicators.
+
+These variations help prevent the gameplay from becoming repetitive.
+
+### 12.4 Scenario State Generation
+
+When a new scenario is generated, the game server creates its initial state.
+
+The state may include:
+
+* Scenario identifier.
+* Scenario category.
+* Original event status.
+* Available opportunities.
+* Hidden conditions.
+* Evidence available to each player.
+* Possible scenario outcomes.
+
+The server stores the complete scenario state and determines which information can be shared with each player.
+
+The Red Team may receive additional information about available opportunities, while the Blue Team receives the information required to evaluate the visible event.
+
+### 12.5 Red Team Interaction
+
+After the scenario has been generated, the Red Team may interact with it through scenario-specific actions.
+
+These actions can include modifying an event, introducing a misleading element, creating a distraction or choosing to do nothing.
+
+The available actions depend on the scenario template and its current state.
+
+The system must ensure that an action is valid before applying it to the scenario.
+
+This allows the Red Team to influence gameplay without giving the player unrestricted control over the scenario.
+
+### 12.6 Blue Team Interaction
+
+The Blue Team receives the event after the relevant scenario state and Red Team actions have been processed.
+
+The player can inspect the available information, investigate further or select a defensive response.
+
+The information presented to the Blue Team must reflect the current public state of the scenario without revealing hidden information.
+
+Different scenario variations may require different investigation options and defensive actions.
+
+### 12.7 Unexpected Event Generation
+
+The Dynamic Scenario Generation System may introduce unexpected events during a scenario.
+
+These events can include system errors, additional user activity, unrelated security alerts or changes in the surrounding situation.
+
+Unexpected events may be generated independently of the Red Team or may result from actions performed during gameplay.
+
+The server determines when an unexpected event can occur and whether it is valid for the current scenario.
+
+Unexpected events should not be generated without regard to the scenario context. Their purpose is to introduce meaningful uncertainty rather than arbitrary disruption.
+
+### 12.8 Scenario Combination
+
+The system may combine compatible scenario elements to create more complex situations.
+
+For example, an Email scenario may be followed by a Login Activity event.
+
+The login event may be related to the email, caused by an unrelated system activity or generated as a distraction.
+
+The actual relationship between the events is determined by the hidden scenario state.
+
+This allows players to investigate connections between events without assuming that every event shares the same cause.
+
+Scenario combinations will initially be limited to a small number of predefined relationships to keep the prototype manageable.
+
+### 12.9 Scenario Validation
+
+Every generated scenario must be validated before it is presented to the players.
+
+Validation checks may include:
+
+* Required scenario data is available.
+* The initial state is consistent.
+* Available actions are valid for the scenario.
+* Evidence is assigned to the correct information category.
+* Possible outcomes can be resolved by the server.
+* Unexpected events are compatible with the current scenario.
+
+If a generated scenario is invalid, the system should reject it and select or generate a valid alternative.
+
+This helps prevent incomplete scenarios and unexpected gameplay errors.
+
+### 12.10 Randomness and Fairness
+
+Randomness is used to introduce variation, but it must not determine the outcome without considering player decisions.
+
+The system should ensure that both players receive valid opportunities to make meaningful choices.
+
+Randomly generated events should follow predefined rules and constraints.
+
+For example, an unexpected event should not automatically guarantee a win for either player. Its impact should depend on the scenario state and the actions taken by both teams.
+
+This approach combines unpredictable gameplay with consistent rules.
+
+### 12.11 Data-Driven Scenario Design
+
+Scenario definitions may be stored in structured data files such as JSON.
+
+This allows scenario content to be modified or expanded without changing the main gameplay logic for every new scenario.
+
+A scenario definition may contain fields such as:
+
+* Scenario identifier.
+* Scenario category.
+* Event description.
+* Initial conditions.
+* Available actions.
+* Evidence definitions.
+* Possible unexpected events.
+* Resolution rules.
+
+The game server interprets these definitions and uses them to construct the active scenario.
+
+The final data structure will be determined during implementation.
+
+### 12.12 Prototype Implementation
+
+The initial prototype will use a limited collection of predefined scenario templates and controlled variations.
+
+The system will focus on demonstrating that:
+
+* Different scenarios can be generated from reusable templates.
+* Scenario states can contain hidden information.
+* Red Team actions can modify scenario outcomes.
+* Blue Team decisions can affect the final result.
+* Unexpected events can introduce additional uncertainty.
+* The server can resolve scenarios consistently.
+
+More advanced generation methods may be considered after the core gameplay system has been implemented and tested.
+
+### 12.13 Dynamic Generation Principle
+
+The Dynamic Scenario Generation System follows these principles:
+
+1. Scenarios are created from reusable templates and controlled variations.
+2. The server maintains the complete scenario state.
+3. Player actions can influence the development and outcome of a scenario.
+4. Unexpected events introduce uncertainty without removing meaningful player decisions.
+5. Generated scenarios must remain valid and consistent with the game rules.
+
+The main objective is to create varied and replayable gameplay while preserving the core identity of Cyber Clash:
+
+> **Every match can present a different situation, but every situation must remain playable, meaningful and fair.**
