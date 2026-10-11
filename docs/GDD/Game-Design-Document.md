@@ -2303,3 +2303,218 @@ Additional visual effects, animations and customisation options may be introduce
 
 ---
 
+## 15. Technical Requirements
+
+### 15.1 Technical Overview
+
+This section describes the proposed technical requirements for developing Cyber Clash.
+
+The project will use a game engine, networking components and structured scenario data to support the core gameplay mechanics.
+
+The technical implementation must support two-player multiplayer gameplay, role-based information access, scenario generation, player action validation and server-controlled scenario resolution.
+
+The initial development will prioritise a functional prototype before introducing more advanced features.
+
+### 15.2 Game Engine
+
+**Godot Engine** will be used to develop the game client and its user interface.
+
+Godot provides tools for creating interactive game scenes, user interfaces, game logic and networking functionality.
+
+The engine will be used to implement:
+
+* Main Menu and Multiplayer Lobby.
+* Red Team and Blue Team interfaces.
+* Scenario presentation and player interactions.
+* Investigation and defensive action controls.
+* Match status and score displays.
+* Communication between the game client and the multiplayer server.
+
+The specific Godot version will be selected during implementation and kept consistent throughout development.
+
+### 15.3 Programming Language
+
+**GDScript** will be the primary programming language for implementing the Godot game client.
+
+It will be used for interface interactions, scene management, client-side game behaviour and communication with the server.
+
+If a separate server is implemented using another programming language, the server language and communication interface will be documented separately.
+
+The final division of responsibilities between the client and server will be established during system design.
+
+### 15.4 Multiplayer Architecture
+
+Cyber Clash will use a client-server architecture to manage multiplayer gameplay.
+
+The architecture consists of:
+
+* Red Team Client.
+* Blue Team Client.
+* Game Server.
+
+The clients display the game interface and send player action requests.
+
+The server manages the authoritative match state, validates actions, processes scenario logic and calculates outcomes.
+
+This architecture is required to maintain consistent gameplay and protect hidden information from unauthorised access.
+
+The exact networking implementation will be selected after evaluating the available options and the requirements of the prototype.
+
+### 15.5 Server-Side Game Logic
+
+The server is responsible for processing the core gameplay rules.
+
+Its responsibilities include:
+
+* Creating and managing match sessions.
+* Assigning player roles.
+* Generating scenario states.
+* Processing Red Team actions.
+* Validating Blue Team actions.
+* Managing unexpected events.
+* Controlling access to private information.
+* Resolving scenario outcomes.
+* Calculating scores and checking win conditions.
+
+The server must validate incoming requests instead of trusting the values or results supplied by the clients.
+
+This is particularly important because the gameplay relies on hidden information and deception.
+
+### 15.6 Structured Scenario Data
+
+Cyber Clash may use JSON to store scenario definitions and their variations.
+
+JSON provides a structured format for representing scenario information such as:
+
+* Scenario identifiers.
+* Scenario categories.
+* Event descriptions.
+* Initial conditions.
+* Available actions.
+* Evidence definitions.
+* Unexpected event rules.
+* Possible outcomes.
+
+The server will interpret the scenario data and use it to construct active scenarios.
+
+Separating scenario content from the main gameplay logic will make it easier to add or modify scenarios without rewriting the entire system.
+
+The final JSON structure will be defined during implementation.
+
+### 15.7 Networking and Communication
+
+The multiplayer system requires a communication method between the game clients and the server.
+
+The selected method must support the exchange of information such as:
+
+* Connection and match status.
+* Player role assignment.
+* Scenario information.
+* Player action requests.
+* Investigation results.
+* Scenario outcomes.
+* Score updates.
+
+The communication method must also support role-based information delivery.
+
+Messages sent to each client must contain only the information that the player is authorised to receive.
+
+The specific protocol and networking library will be selected during the architecture and implementation stages.
+
+### 15.8 Version Control
+
+**Git and GitHub** will be used for version control and project backup.
+
+Git records changes to the project files, while GitHub provides a remote repository for storing and managing the project.
+
+Version control will support:
+
+* Tracking development progress.
+* Maintaining project history.
+* Backing up source code and documentation.
+* Managing development branches.
+* Restoring earlier versions when necessary.
+* Collaborating with other contributors if required.
+
+The project will use the `develop` branch for ongoing development and retain `main` as the stable branch.
+
+Changes will be committed regularly to maintain a clear development history.
+
+### 15.9 Development Environment
+
+The project will be developed on a compatible desktop operating system using the required development tools.
+
+The development environment will include:
+
+* Godot Engine.
+* A code editor such as Visual Studio Code.
+* Git.
+* A GitHub repository.
+* Any additional server runtime or networking tools required by the selected architecture.
+
+Additional tools will only be introduced when they serve a defined project requirement.
+
+### 15.10 Testing Requirements
+
+Testing will be conducted throughout development to verify the functionality and consistency of the game.
+
+The initial testing activities will include:
+
+* Testing individual gameplay functions.
+* Testing scenario generation and validation.
+* Testing Red Team and Blue Team actions.
+* Verifying information separation between players.
+* Testing server-side action validation.
+* Testing multiplayer communication.
+* Verifying score calculation and win conditions.
+* Testing unexpected events and scenario outcomes.
+* Testing basic disconnection handling.
+
+The results will be used to identify defects and improve the reliability of the prototype.
+
+### 15.11 Security Considerations
+
+The system must protect the integrity of the match and the confidentiality of hidden scenario information.
+
+Important considerations include:
+
+* Keeping authoritative scenario state on the server.
+* Validating player actions.
+* Preventing clients from selecting unauthorised actions.
+* Avoiding the transmission of hidden information to the wrong player.
+* Validating scenario data before use.
+* Handling invalid or repeated requests safely.
+
+The project is an educational cybersecurity simulation. Its initial implementation will focus on simulated scenarios rather than performing real attacks against external systems.
+
+### 15.12 Prototype Scope
+
+The initial prototype will focus on demonstrating the essential functionality of Cyber Clash.
+
+The prototype is expected to support:
+
+* Two-player multiplayer gameplay.
+* Red Team and Blue Team roles.
+* A limited set of predefined scenario templates.
+* Controlled scenario variations.
+* Role-based information access.
+* Scenario-specific player actions.
+* Unexpected events.
+* Server-side scenario resolution.
+* Basic scoring and win conditions.
+* Essential user interfaces.
+
+Advanced matchmaking, large-scale multiplayer support, sophisticated artificial intelligence and extensive scenario libraries are outside the initial scope unless they become necessary during development.
+
+### 15.13 Technical Requirements Principle
+
+The technical implementation follows these principles:
+
+1. Use tools that directly support the project requirements.
+2. Keep the initial architecture manageable.
+3. Maintain server authority over important game state and outcomes.
+4. Separate scenario content from core gameplay logic where practical.
+5. Protect role-specific and hidden information.
+6. Expand the system only when the core prototype is functional.
+
+The main objective is to develop a working, maintainable and testable multiplayer cybersecurity simulation game that demonstrates the core gameplay concept of Cyber Clash.
