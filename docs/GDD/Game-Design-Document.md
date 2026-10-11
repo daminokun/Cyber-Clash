@@ -1859,11 +1859,9 @@ The server is responsible for determining the actual outcome of a scenario rathe
 
 ### 13.3 Player Connection
 
-At the beginning of a match, two players connect to the same game session.
+At the beginning of a match, two players must connect to the same game session. The server verifies their connections and manages the match initialisation process.
 
-The system must verify that both players are connected and that the match can begin.
-
-The basic connection process is:
+The connection process for the initial prototype is:
 
 ```text
 Red Team Client ─────┐
@@ -1871,18 +1869,75 @@ Red Team Client ─────┐
 Blue Team Client ────┘
                            |
                            v
-                    Match Initialisation
+                    Connection Check
                            |
                            v
-                     Role Assignment
+                   Role Assignment
                            |
                            v
                        Match Start
 ```
 
-If only one player is connected, the match waits for the second player unless another connection or matchmaking method is implemented later.
+If only one player is connected, the server waits for the second player to join. The match begins only after both players have successfully connected and the server has confirmed that the session is ready.
 
-The initial prototype will focus on establishing a playable match between two connected players.
+Each player must be associated with the correct match session to prevent actions or updates from being applied to another match.
+
+The initial prototype focuses on supporting one active match involving two connected players. Advanced matchmaking and session management may be added in future versions.
+
+### 13.6 Player Action Handling
+
+When a player selects an action, the client sends an action request to the server. The server validates the request before applying any changes to the match state.
+
+Validation includes checking:
+
+- Whether the player is connected to the correct match.
+- Whether the player has the correct role.
+- Whether the requested action is permitted.
+- Whether the scenario is currently accepting that action.
+- Whether the action satisfies the scenario rules.
+- Whether any required conditions or resources are available.
+
+The server processes valid actions according to the current gameplay phase. Actions submitted outside the permitted phase or after the relevant decision has been finalised are rejected.
+
+The server must also prevent repeated requests from applying the same action multiple times. Each action request should be associated with sufficient information to identify the player, match and relevant scenario or action submission.
+
+The server returns an appropriate response to the client to indicate whether the action was accepted or rejected.
+
+Only validated actions can affect the authoritative game state. The client must not determine the scenario outcome or update the official score independently.
+
+### 13.10 Disconnection Handling
+
+A player may disconnect during a match because of network problems or because the player closes the game.
+
+The server must detect the disconnection and preserve the current match state where possible.
+
+For the initial prototype, the disconnection policy is:
+
+1. The server detects that a player has disconnected.
+2. The current match is temporarily paused to prevent further gameplay actions from being processed.
+3. The disconnected player may reconnect to the same match session within a predefined reconnection period.
+4. If the player reconnects successfully, the server restores the appropriate match information and resumes the match when both players are ready.
+5. If the player does not reconnect before the reconnection period expires, the match ends as incomplete.
+
+The server must preserve the authoritative match state during the temporary pause and prevent the disconnected player from submitting actions until reconnection is validated.
+
+The reconnection period and detailed recovery behaviour will be determined during implementation and testing.
+
+For the initial prototype, a basic disconnection policy is sufficient. More advanced recovery features may be introduced in future versions.
+
+### 13.11 Match State Consistency
+
+The server must maintain a consistent sequence of events throughout the match, even when network delays, repeated requests or player disconnections occur.
+
+Player actions must be processed according to the current match state, scenario phase and predefined gameplay rules.
+
+The server must prevent invalid or duplicate requests from applying the same action more than once. Where necessary, action requests should be associated with a scenario identifier and submission identifier to distinguish new actions from repeated submissions.
+
+When simultaneous requests or delayed messages occur, the server determines which requests are valid according to the established action-handling rules.
+
+If a player disconnects, the server preserves the current state where possible and follows the disconnection policy defined in Section 13.10.
+
+These rules help ensure that both clients receive consistent updates and that scenario outcomes and scores remain under server control.
 
 ### 13.4 Role Assignment
 
