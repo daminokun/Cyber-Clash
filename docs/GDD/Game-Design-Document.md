@@ -163,111 +163,102 @@ This structure allows both players to make meaningful decisions while preserving
 
 ## 4. Red Team
 
-### 4.1 Role
+The Red Team represents the attacker in Cyber Clash. Its primary objective is to exploit available opportunities, manipulate events or mislead the Blue Team while attempting to achieve the objectives of each scenario.
 
-The Red Team acts as the attacker in the game. The main objective is to gain an advantage through exploitation, manipulation or deception.
+The Red Team receives private information that is not available to the Blue Team. This information may include the original event status, available opportunities, possible actions and relevant scenario conditions.
 
-The Red Team does not have to attack every scenario. The player can choose to perform an attack, create a distraction, or take no action.
+The Red Team does not need to attack every scenario. Choosing not to act may be a valid strategy when an attack is unnecessary or when taking action could increase the risk of detection.
 
-This allows the Red Team to use different strategies instead of relying on direct attacks.
+### 4.1 Red Team Information
 
-### 4.2 Red Team Information
+At the beginning of the Red Team phase, the player receives information specific to the current scenario.
 
-The Red Team receives additional information that is not available to the Blue Team.
+Example:
 
-For example:
+**Scenario:** An employee receives an email claiming to be from the university IT department.
 
-```text
-SCENARIO
+**Red Team Information:**
+- Original Email Status: Legitimate
+- Available Opportunity: Email Manipulation
+- Available Actions: Do Nothing, Modify Event, Add Malicious Link, Spoof Source
 
-Employee receives an email from IT Department.
+The information displayed depends on the scenario. The Red Team does not automatically receive every possible action in every round.
 
-RED TEAM INFO
+### 4.2 Red Team Actions
 
-Email Status: Legitimate
-Opportunity: Available
+The initial prototype supports the following action types where applicable to the current scenario.
 
-Possible Actions:
+| Action | Description |
+|---|---|
+| Do Nothing | Leaves the event unchanged and takes no direct action. |
+| Modify Event | Changes selected properties of an event to influence how the Blue Team interprets it. |
+| Add Malicious Link | Adds a simulated malicious link to a suitable scenario, such as an email. |
+| Spoof Source | Changes the displayed identity or source information to make an event appear to originate elsewhere. |
+| Create Distraction | Introduces a secondary event intended to divert the Blue Team's attention from another opportunity. |
 
-[Do Nothing]
-[Modify Email]
-[Add Malicious Link]
-[Spoof Source]
-[Create Distraction]
-```
+Each action must satisfy the scenario's predefined rules. An action that is incompatible with the current scenario will not be available or will be rejected by the server.
 
-The Blue Team does not receive the Red Team information.
+These actions are simulated within the game and do not perform attacks against real systems.
 
-The difference in information between the two teams creates uncertainty and allows the Red Team to use deception.
+### 4.3 Do Nothing Strategy
 
-### 4.3 Red Team Actions
+Do Nothing is a valid Red Team decision.
 
-The Red Team can perform different actions depending on the scenario.
+The player may choose this action to preserve an existing opportunity, avoid revealing suspicious activity or allow the scenario to proceed without interference.
 
-| Action             | Description                                                  |
-| ------------------ | ------------------------------------------------------------ |
-| Do Nothing         | The Red Team does not interfere with the event.              |
-| Modify Event       | The Red Team changes part of the original event.             |
-| Malicious Link     | The Red Team adds a malicious link to the event.             |
-| Spoof Source       | The Red Team disguises the original source of the event.     |
-| Create Distraction | The Red Team creates a fake event to distract the Blue Team. |
+For example, if an email is legitimate and the Red Team chooses Do Nothing, the Blue Team may still make an incorrect decision by reporting it as malicious.
 
-The available actions can change depending on the scenario.
+However, the Red Team does not automatically receive points simply for choosing Do Nothing. Any score change depends on the scenario outcome and the defined scoring rules.
 
-### 4.4 Deception
+### 4.4 Deception and Distraction
 
-Deception is one of the main mechanics of Cyber Clash.
+The Red Team may attempt to mislead the Blue Team by manipulating an event, presenting misleading information or creating a distraction.
 
-The Red Team can create misleading situations to influence the decisions of the Blue Team.
+For example, the Red Team may introduce a suspicious login notification while preserving an opportunity involving a separate email scenario.
 
-For example, the Red Team may create a suspicious login alert as a distraction while the original email remains the actual opportunity for an attack.
+The Blue Team must decide which event to investigate based on the available information and evidence.
 
-The Blue Team must therefore decide whether an event is actually a threat or whether it is a distraction.
+For the initial prototype, Create Distraction is only available when the scenario supports a compatible secondary event. The game must not allow arbitrary events that cannot be resolved by the scenario rules.
 
-### 4.5 Do Nothing
+### 4.5 Action Validation and Hidden State
 
-The Red Team can choose **Do Nothing** as a valid action.
+When the Red Team selects an action, the server validates the request before applying its effects.
 
-This is important because not every scenario is an attack.
+The validation process checks:
 
-For example, a legitimate email may be received by the user. If the Red Team does nothing, the event remains legitimate.
+- Whether the player is assigned to the Red Team.
+- Whether the current phase allows the action.
+- Whether the action is available in the current scenario.
+- Whether the action satisfies the scenario's conditions.
+- Whether any applicable resource or usage limits are met.
 
-The Blue Team may still decide to report or block the event. This can result in a false-positive consequence.
+After validation, the server updates the hidden scenario state. The Blue Team receives only the resulting event information and evidence permitted by the information system.
 
-### 4.6 Red Team Limitations
+The Red Team's private information and selected action must not be directly exposed to the Blue Team before the scenario is resolved.
 
-The Red Team may have limited resources or action points to prevent the player from performing unlimited actions.
+### 4.6 Red Team Objectives
 
-A possible system is:
+The Red Team may be evaluated based on its ability to:
 
-```text
-RED TEAM
+- Achieve the objective defined by the scenario.
+- Successfully exploit a valid opportunity.
+- Avoid detection or effective defensive action.
+- Mislead the Blue Team when deception is supported by the scenario.
+- Use actions efficiently without creating unnecessary evidence.
 
-Action Points: 3
+Not every objective applies to every scenario. The server determines whether an objective has been achieved based on the final scenario state.
 
-Do Nothing       → 0
-Modify Event     → 1
-Malicious Link   → 1
-Spoof Source     → 1
-Create Distraction → 2
-```
+### 4.7 Red Team Design Principles
 
-The exact resource system will be determined during further game design and testing.
+The Red Team system follows these principles:
 
-### 4.7 Red Team Objectives
+- **Strategic choice:** The player may attack, deceive or do nothing.
+- **Scenario-dependent actions:** Available actions depend on the current scenario.
+- **Hidden state:** The server maintains information that must not be exposed to the Blue Team.
+- **Fair resolution:** Actions produce outcomes according to predefined rules.
+- **Controlled complexity:** The initial prototype uses a limited set of actions that can be tested and balanced.
 
-The objective of the Red Team can change depending on the scenario.
-
-Possible objectives include:
-
-* Gain access to a system.
-* Obtain sensitive information.
-* Avoid detection.
-* Cause the Blue Team to make an incorrect decision.
-* Create a false alarm.
-* Successfully complete an attack.
-
-The Red Team can therefore gain an advantage not only by directly attacking the system, but also by manipulating the decisions made by the Blue Team.
+The Red Team is designed to encourage strategic thinking rather than simply selecting an attack in every round.
 
 ---
 
