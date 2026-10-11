@@ -693,7 +693,9 @@ For the initial prototype, an Unexpected Event may be triggered by:
 
 The game server determines when an event can occur and validates the trigger against the current scenario state.
 
-Unexpected Events must only occur at defined points in the gameplay flow. For the initial prototype, an event may be triggered during the Blue Team phase before the final scenario resolution, provided that the current scenario permits it.
+Unexpected Events must only occur at defined points in the gameplay flow. For the initial prototype, an eligible event may be triggered during the Blue Team phase, after the investigation stage and before the Blue Team selects its final response. The event can only occur if the current scenario configuration permits it.
+
+When an Unexpected Event occurs, the server updates the scenario state and provides the Blue Team with the information allowed by the game's information rules.
 
 Example:
 
@@ -1723,29 +1725,29 @@ Different scenario variations may require different investigation options and de
 
 ### 12.7 Unexpected Event Generation
 
-The Dynamic Scenario Generation System may introduce unexpected events during a scenario.
+The Dynamic Scenario Generation System may introduce unexpected events during an active scenario.
 
-These events can include system errors, additional user activity, unrelated security alerts or changes in the surrounding situation.
+These events can include system errors, additional user activity, unrelated security alerts or changes in the surrounding situation. Unexpected events may occur independently of the Red Team or result from a validated player action.
 
-Unexpected events may be generated independently of the Red Team or may result from actions performed during gameplay.
+The server determines whether an unexpected event is eligible to occur, validates its trigger and updates the scenario state accordingly.
 
-The server determines when an unexpected event can occur and whether it is valid for the current scenario.
+For the initial prototype, each scenario may contain one main event and a maximum of one secondary event at a time. A secondary event is optional and must be supported by the scenario configuration.
 
-Unexpected events should not be generated without regard to the scenario context. Their purpose is to introduce meaningful uncertainty rather than arbitrary disruption.
+Unexpected events must follow the gameplay sequence defined in Section 10. When triggered during the Blue Team phase, the event must occur before the Blue Team selects its final response.
+
+Their purpose is to introduce meaningful uncertainty rather than arbitrary disruption.
 
 ### 12.8 Scenario Combination
 
-The system may combine compatible scenario elements to create more complex situations.
+The system may combine compatible event types within a single scenario to create more complex situations.
 
-For example, an Email scenario may be followed by a Login Activity event.
+For example, an Email scenario may contain a secondary Login Activity event. The login event may be related to the email, caused by unrelated system activity or introduced as a distraction.
 
-The login event may be related to the email, caused by an unrelated system activity or generated as a distraction.
+The actual relationship between the events is determined by the hidden scenario state and managed by the game server.
 
-The actual relationship between the events is determined by the hidden scenario state.
+For the initial prototype, scenario combinations will use predefined relationships and must follow the event limit defined in Section 12.7. A secondary event must not automatically create a new scenario or round.
 
-This allows players to investigate connections between events without assuming that every event shares the same cause.
-
-Scenario combinations will initially be limited to a small number of predefined relationships to keep the prototype manageable.
+This allows players to investigate possible connections between events while keeping scenario management and resolution manageable.
 
 ### 12.9 Scenario Validation
 
