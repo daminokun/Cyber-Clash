@@ -1847,9 +1847,9 @@ Each player runs a game client developed using Godot. The server manages the mat
 
 The architecture consists of three main components:
 
-* **Red Team Client:** Displays Red Team information and sends the attacker's selected actions.
-* **Blue Team Client:** Displays public scenario information and sends the defender's selected actions.
-* **Game Server:** Manages the match state, validates player actions, resolves scenarios and calculates scores.
+- **Red Team Client:** Displays Red Team information and sends the attacker's selected actions.
+- **Blue Team Client:** Displays permitted scenario information and sends the defender's investigation and defensive action requests.
+- **Game Server:** Manages the match state, validates player actions, resolves scenarios and calculates scores.
 
 The server is responsible for determining the actual outcome of a scenario rather than allowing individual clients to decide their own results.
 
@@ -1868,7 +1868,7 @@ Blue Team Client ────┘
                     Connection Check
                            |
                            v
-                   Role Assignment
+                    Role Assignment
                            |
                            v
                        Match Start
@@ -1880,6 +1880,31 @@ Each player must be associated with the correct match session to prevent actions
 
 The initial prototype focuses on supporting one active match involving two connected players. Advanced matchmaking and session management may be added in future versions.
 
+### 13.4 Role Assignment
+
+Each match contains two roles:
+
+- **Red Team:** Attacker.
+- **Blue Team:** Defender.
+
+The server assigns one role to each player and ensures that both players cannot occupy the same role within a single match.
+
+The assigned role determines which interface, information and actions are available to each player.
+
+Role assignment may be random or determined by the match creation process. The final method will be selected during implementation.
+
+### 13.5 Scenario Synchronisation
+
+Both players must receive updates related to the same active scenario.
+
+However, synchronisation does not mean that both players receive identical information.
+
+The server sends the appropriate scenario information to each client according to the player's role and the current game state.
+
+For example, the Red Team may receive information about a hidden opportunity, while the Blue Team receives only the public event details.
+
+The server must maintain a consistent scenario state even when the information displayed to each player is different.
+
 ### 13.6 Player Action Handling
 
 When a player selects an action, the client sends an action request to the server. The server validates the request before applying any changes to the match state.
@@ -1888,18 +1913,81 @@ Validation includes checking:
 
 - Whether the player is connected to the correct match.
 - Whether the player has the correct role.
-- Whether the requested action is permitted.
+- Whether the requested action is permitted for that role.
 - Whether the scenario is currently accepting that action.
 - Whether the action satisfies the scenario rules.
-- Whether any required conditions or resources are available.
+- Whether any other scenario-specific conditions are satisfied.
 
 The server processes valid actions according to the current gameplay phase. Actions submitted outside the permitted phase or after the relevant decision has been finalised are rejected.
 
-The server must also prevent repeated requests from applying the same action multiple times. Each action request should be associated with sufficient information to identify the player, match and relevant scenario or action submission.
+The server must also prevent repeated requests from applying the same action multiple times. Where necessary, action requests should include identifiers for the match, scenario and action submission.
 
-The server returns an appropriate response to the client to indicate whether the action was accepted or rejected.
+The server returns an appropriate response to indicate whether the action was accepted or rejected.
 
 Only validated actions can affect the authoritative game state. The client must not determine the scenario outcome or update the official score independently.
+
+### 13.7 Server-Authoritative Game State
+
+The game server maintains the authoritative match state.
+
+This includes:
+
+- Current scenario.
+- Player roles.
+- Red Team actions.
+- Blue Team actions.
+- Hidden scenario conditions.
+- Unexpected event states.
+- Player scores.
+- Match progress.
+- Scenario outcomes.
+
+The clients display the information provided by the server and submit player actions.
+
+They must not be trusted to determine their own scores, reveal hidden information or declare the final outcome of a scenario.
+
+The server records player actions and controls which information is disclosed to each player. A player's own action may be shown to that player, while information about the opponent's actions and hidden scenario conditions remains restricted according to the game rules.
+
+This approach helps maintain consistency and reduces opportunities for cheating or unauthorised state changes.
+
+### 13.8 Information Security
+
+Information separation is essential to Cyber Clash because deception and incomplete information are core gameplay mechanics.
+
+The server must ensure that private information is only sent to the intended recipient.
+
+For example:
+
+- Red Team private information is sent only to the Red Team client.
+- Public event information is sent to both players when appropriate.
+- Hidden server information remains on the server unless the game rules permit its disclosure.
+- Blue Team investigation results are sent according to the investigation rules.
+
+The system must not send the complete hidden scenario state to a client and merely hide it through the user interface.
+
+Information that a player is not allowed to know must not be included in that player's client messages.
+
+### 13.9 Communication and Updates
+
+The clients and server exchange messages to manage the match.
+
+Possible message categories include:
+
+- Player connection and disconnection.
+- Match initialisation.
+- Role assignment.
+- Scenario presentation.
+- Player action requests and validation responses.
+- Investigation results.
+- Unexpected event notifications.
+- Scenario outcomes.
+- Score updates.
+- Match completion.
+- Reconnection and match resumption.
+
+The communication method and message format will be selected during implementation based on Godot's networking capabilities and the chosen server architecture.
+
+All messages that affect the match must be processed according to the current match state and the relevant gameplay rules.
 
 ### 13.10 Disconnection Handling
 
@@ -1935,147 +2023,18 @@ If a player disconnects, the server preserves the current state where possible a
 
 These rules help ensure that both clients receive consistent updates and that scenario outcomes and scores remain under server control.
 
-### 13.4 Role Assignment
-
-Each match contains two roles:
-
-* Red Team – attacker.
-* Blue Team – defender.
-
-The server assigns one role to each player and ensures that both players cannot occupy the same role within a single match.
-
-The assigned role determines which interface, information and actions are available to each player.
-
-Role assignment may be random or determined by the match creation process. The final method will be selected during implementation.
-
-### 13.5 Scenario Synchronisation
-
-Both players must receive updates related to the same active scenario.
-
-However, synchronisation does not mean that both players receive identical information.
-
-The server sends the appropriate scenario information to each client according to the player's role and the current game state.
-
-For example, the Red Team may receive information about a hidden opportunity, while the Blue Team receives only the public event details.
-
-The server must maintain a consistent scenario state even when the information displayed to each player is different.
-
-### 13.6 Player Action Handling
-
-When a player selects an action, the client sends an action request to the server.
-
-The server validates the request before applying the action to the match.
-
-Validation may include checking:
-
-* Whether the player is connected to the active match.
-* Whether the player has the correct role.
-* Whether the requested action is available.
-* Whether the scenario is accepting actions.
-* Whether the action satisfies the scenario rules.
-* Whether any required resource or condition is available.
-
-Invalid actions are rejected by the server.
-
-This prevents clients from directly applying unauthorised changes to the game state.
-
-### 13.7 Server-Authoritative Game State
-
-The game server maintains the authoritative match state.
-
-This includes:
-
-* Current scenario.
-* Player roles.
-* Red Team actions.
-* Blue Team actions.
-* Hidden scenario conditions.
-* Unexpected event states.
-* Player scores.
-* Match progress.
-* Scenario outcomes.
-
-The clients display the information provided by the server and submit player actions.
-
-They must not be trusted to determine their own scores, reveal hidden information or declare the final outcome of a scenario.
-
-This approach helps maintain consistency and reduces opportunities for cheating or unauthorised state changes.
-
-### 13.8 Information Security
-
-Information separation is essential to Cyber Clash because deception and incomplete information are core gameplay mechanics.
-
-The server must ensure that private information is only sent to the intended recipient.
-
-For example:
-
-* Red Team information is sent only to the Red Team client.
-* Public event information is sent to both players when appropriate.
-* Hidden server information remains on the server.
-* Blue Team investigation results are sent according to the investigation rules.
-
-The system must avoid sending the complete hidden scenario state to a client and merely hiding it through the user interface.
-
-Information that a player is not allowed to know should not be included in that player's client messages.
-
-### 13.9 Communication and Updates
-
-The clients and server exchange messages to manage the match.
-
-Possible message categories include:
-
-* Player connection and disconnection.
-* Match initialisation.
-* Role assignment.
-* Scenario presentation.
-* Player action requests.
-* Investigation results.
-* Unexpected event notifications.
-* Scenario outcomes.
-* Score updates.
-* Match completion.
-
-The communication method and message format will be selected during implementation based on Godot's networking capabilities and the chosen server architecture.
-
-### 13.10 Disconnection Handling
-
-A player may disconnect during a match because of network problems or because the player closes the game.
-
-The system should detect disconnections and handle them without corrupting the match state.
-
-Possible responses include:
-
-* Waiting for the player to reconnect.
-* Pausing the match temporarily.
-* Ending the match if the player cannot return.
-* Recording the match as incomplete.
-
-The initial prototype will implement a basic disconnection policy suitable for testing.
-
-More advanced reconnection and recovery features may be added in future versions.
-
-### 13.11 Match State Consistency
-
-The server must maintain a consistent sequence of events throughout the match.
-
-Player actions should be processed according to the current scenario state and the rules governing the match.
-
-The server should also prevent invalid or repeated requests from causing an action to be applied more than once.
-
-This is particularly important when both players submit actions during the same scenario or when network delays occur.
-
 ### 13.12 Multiplayer Prototype Requirements
 
 The initial multiplayer prototype should demonstrate that:
 
-* Two players can connect to the same match.
-* Each player receives the correct role.
-* Both players participate in the same scenario.
-* Private information is separated according to player roles.
-* Player actions are validated by the server.
-* The server resolves scenario outcomes.
-* Scores and match progress are synchronised.
-* Basic disconnection handling is supported.
+- Two players can connect to the same match.
+- Each player receives the correct role.
+- Both players participate in the same scenario.
+- Private information is separated according to player roles.
+- Player actions are validated by the server.
+- The server resolves scenario outcomes.
+- Scores and match progress are synchronised.
+- Basic disconnection and reconnection handling is supported.
 
 The implementation will begin with a small, functional multiplayer system before more advanced networking features are introduced.
 
