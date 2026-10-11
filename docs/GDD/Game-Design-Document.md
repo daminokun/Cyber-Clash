@@ -1571,18 +1571,39 @@ The exact point values and penalties will be determined during prototype develop
 
 ### 11.9 Win Conditions
 
-The winner of a match is determined by the final game state and the objectives established for that match.
+The primary win condition for Cyber Clash is based on the final score accumulated by each player throughout a match.
 
-Possible win conditions include:
+For the initial prototype, the match follows these rules:
 
-* Achieving a higher final score than the opponent.
-* Completing a defined team objective.
-* Reaching a specified match end condition.
-* Successfully achieving the main objective within the available match duration.
+1. The match ends after a predefined number of scenarios has been completed.
+2. The server calculates and records the scores of both players after each scenario is resolved.
+3. The player with the higher final score wins the match.
+4. If both players have the same final score, the match ends in a draw.
 
-The final implementation may use a combination of score-based and objective-based conditions.
+The final score reflects the effectiveness of each player's decisions, the achievement of scenario objectives and the actual outcomes of the scenarios.
 
-The selected win condition must provide both players with a clear goal while allowing different strategies to succeed.
+Neither player wins simply by attempting an attack or selecting a defensive action. The server determines the result based on the scenario state and the predefined scoring rules.
+
+The exact number of scenarios and scoring values will be determined during prototype development and gameplay testing.
+
+### 11.10 Match Result
+
+At the end of a match, the server calculates the final scores and determines the winner or draw according to the established win conditions.
+
+The result screen may display:
+
+- Red Team final score.
+- Blue Team final score.
+- Final match result, including the winner or draw.
+- Successful and failed objectives.
+- Attacks prevented or completed.
+- Detection and investigation results.
+- False positives.
+- Significant deception and unexpected events.
+
+The match summary helps players understand the consequences of their decisions and learn from the scenario outcomes.
+
+The server is responsible for providing the final match result to both players to ensure that the displayed results are consistent.
 
 ### 11.10 Match Result
 
