@@ -1118,11 +1118,11 @@ This system supports the main gameplay identity of Cyber Clash:
 
 The game flow defines the sequence of actions that occur during a Cyber Clash match.
 
-A match consists of multiple scenarios. Each scenario gives the Red Team and Blue Team different information and objectives.
+A match consists of multiple scenarios. Each scenario provides the Red Team and Blue Team with different information and opportunities to make decisions.
 
-The server manages the overall game state and determines the result of each scenario.
+The game server manages the match state, validates player actions, processes unexpected events and determines scenario outcomes.
 
-The basic match flow is:
+The basic match flow for the initial prototype is:
 
 ```text
 Match Start
@@ -1135,20 +1135,24 @@ Red Team Receives Private Information
      ↓
 Red Team Selects an Action
      ↓
-Blue Team Receives Public Event
+Server Validates Red Team Action
      ↓
-Blue Team Investigates or Responds
+Blue Team Receives Event Information
+     ↓
+Blue Team Inspects or Investigates
      ↓
 Unexpected Event May Occur
      ↓
-Server Resolves Scenario
+Blue Team Selects a Final Response
+     ↓
+Server Resolves the Scenario
      ↓
 Score and Game State Updated
      ↓
-Next Scenario
-     ↓
-Match End
+Next Scenario or Match End
 ```
+
+The exact actions available during each scenario depend on its predefined rules. The server ensures that actions and events are processed in a valid order.
 
 ---
 
@@ -1326,28 +1330,22 @@ This prevents the scenario from becoming completely predictable.
 
 ### 10.9 Scenario Resolution
 
-After the required player actions have been completed, the server resolves the scenario.
+After the required player actions and event processing are completed, the server resolves the scenario.
 
 The server evaluates:
 
-* Original scenario state.
-* Red Team action.
-* Blue Team action.
-* Investigation results.
-* Unexpected events.
-* Current game state.
+- The original scenario state.
+- The validated Red Team action.
+- The Blue Team's investigation and final response.
+- Evidence available during the scenario.
+- Any unexpected events.
+- The scenario's objectives and resolution rules.
 
-The server then determines the result of the scenario.
+The server determines the final outcome according to predefined rules.
 
-Possible results include:
+Possible outcomes include an attack being prevented, an attack succeeding, a false positive, an ineffective defensive response, a meaningful advantage for either player or no significant impact.
 
-* Attack prevented.
-* Attack successful.
-* False positive.
-* Incorrect defensive action.
-* Red Team gains an advantage.
-* Blue Team gains an advantage.
-* No significant impact.
+The result is determined by the server's authoritative scenario state, not by either player's client.
 
 ---
 
@@ -1388,65 +1386,57 @@ This creates variation between scenarios and prevents players from relying on a 
 
 ### 10.12 Match End
 
-The match ends when the defined match end condition is reached.
+For the initial prototype, a match ends after a predefined number of scenarios has been completed.
 
-The end condition may depend on factors such as:
+The server calculates the final result using the accumulated scores and the final match state.
 
-* Completion of the required number of scenarios.
-* Achievement of a team objective.
-* Reaching a defined score condition.
-* Completion of the match timer.
+The player with the higher final score wins the match. If both players have the same score, the match ends in a draw.
 
-The final result is determined by the server.
+The exact number of scenarios and scoring values will be determined during implementation and gameplay testing.
 
-The winning player is the player or team that achieves the better overall result based on the final game state.
-
-The exact win condition will be finalized during game balancing and prototype testing.
+The final result is presented to both players through the match result interface.
 
 ---
 
 ### 10.13 Complete Match Example
 
-A simplified example of a Cyber Clash match is shown below:
+A simplified example of one scenario in a Cyber Clash match is shown below:
 
 ```text
-MATCH START
-     ↓
-Red Team = Attacker
-Blue Team = Defender
+SCENARIO START
      ↓
 Scenario: Employee receives an email
      ↓
-Red Team sees:
-"Email is legitimate"
+Red Team receives private information
      ↓
-Red Team chooses:
-"Add Malicious Link"
+Red Team selects Add Malicious Link
      ↓
-Blue Team receives:
-"Employee received an email"
+Server validates and applies the action
+     ↓
+Blue Team receives the permitted email information
      ↓
 Blue Team investigates the email
      ↓
-Unexpected Event:
-"Suspicious login detected"
+Unexpected Event Trigger Is Evaluated
      ↓
-Blue Team decides to investigate the login
+Secondary Event: Suspicious Login Detected
      ↓
-Server resolves both events
+Blue Team reviews the available information
      ↓
-Red Team's attack succeeds
+Blue Team submits a final response
      ↓
-Game state is updated
+Server resolves the scenario
      ↓
-Next Scenario
+Score and Game State Updated
+     ↓
+Next Scenario or Match End
 ```
 
-This flow demonstrates the main gameplay loop of Cyber Clash:
+This example demonstrates the main gameplay loop of Cyber Clash:
 
-> **Observe → Decide → Investigate → Respond → Adapt → Resolve**
+**Observe → Decide → Investigate → Respond → Adapt → Resolve**
 
-The gameplay loop is designed to make players think about both the available evidence and the possibility that the visible situation may not represent the complete truth.
+The loop encourages players to evaluate available evidence, respond to changing situations and consider that visible events may not reveal the complete underlying state.
 
 
 ---
