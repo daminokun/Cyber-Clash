@@ -5,6 +5,10 @@
   "description": "Authoritative game logic for the Cyber Clash prototype.",
   "type": "commonjs",
   "scripts": {
+    "start": "node src/server.js",
     "test": "node --test"
+  },
+  "dependencies": {
+    "ws": "^8.18.3"
   }
 }
