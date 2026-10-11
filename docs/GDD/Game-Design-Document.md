@@ -1459,21 +1459,25 @@ The server is responsible for calculating scores and determining the final match
 
 ### 11.2 Red Team Scoring
 
-The Red Team earns points by successfully achieving its objectives through attacks, manipulation and deception.
+The Red Team earns points by achieving its objectives through attacks, manipulation and deception.
+
+Scoring is based on the actual outcome of the scenario rather than the action selected alone.
 
 Possible scoring conditions include:
 
-* Successfully completing an attack objective.
-* Avoiding detection by the Blue Team.
-* Using deception to influence the Blue Team's decisions.
-* Creating a distraction that provides a strategic advantage.
-* Achieving a scenario objective without unnecessary actions.
+- Successfully achieving a scenario objective.
+- Completing an attack without being detected.
+- Using deception to influence the Blue Team's decisions.
+- Creating a distraction that provides a meaningful strategic advantage.
+- Achieving an objective through an effective decision to do nothing.
 
-The Red Team may receive fewer points or no points when an attempted action fails to achieve its intended objective.
+The Red Team does not automatically receive points for attempting an attack, modifying an event or creating a distraction. Points are awarded only when the action produces a result that satisfies the scenario's scoring rules.
 
-For example, adding a malicious link does not automatically award points. The result depends on whether the attack achieves its objective and how effectively the Blue Team responds.
+An unsuccessful attack may receive fewer points or no points, depending on the scenario objective.
 
-Choosing **Do Nothing** is also a valid strategy. However, the Red Team should only receive points when the decision contributes to a defined objective or provides a meaningful strategic advantage.
+Choosing **Do Nothing** is a valid action. However, it only earns points when the decision contributes to a defined objective or produces a meaningful advantage.
+
+The server evaluates the scenario outcome and calculates the Red Team's score using predefined scoring rules.
 
 ### 11.3 Blue Team Scoring
 
@@ -1481,20 +1485,22 @@ The Blue Team earns points by identifying genuine threats, making appropriate de
 
 Possible scoring conditions include:
 
-* Correctly identifying a genuine threat.
-* Successfully preventing or stopping an attack.
-* Gathering useful evidence through investigation.
-* Selecting an appropriate defensive response.
-* Avoiding unnecessary defensive actions.
-* Recognising misleading events or distractions.
+- Correctly identifying a genuine threat.
+- Successfully preventing or stopping an attack.
+- Gathering useful evidence through investigation.
+- Selecting an appropriate defensive response.
+- Avoiding unnecessary defensive actions.
+- Recognising misleading information or distractions.
 
-The Blue Team should be rewarded for making decisions supported by available evidence rather than simply guessing whether an event is malicious.
+The Blue Team is rewarded for making decisions supported by the available evidence rather than simply guessing whether an event is malicious.
 
-A successful investigation may contribute to the final score when it helps the Blue Team make a more appropriate decision.
+An investigation may contribute to the score when it provides useful evidence or helps the Blue Team make a more appropriate decision. However, performing an investigation does not automatically award points.
+
+The server evaluates the Blue Team's decisions against the actual scenario state and the predefined scoring rules.
 
 ### 11.4 False Positive Penalty
 
-A false positive occurs when the Blue Team incorrectly identifies a legitimate event as a security threat.
+A false positive occurs when the Blue Team incorrectly identifies a legitimate event as a confirmed security threat.
 
 False positives are an important part of Cyber Clash because not every suspicious event represents an attack.
 
@@ -1508,27 +1514,33 @@ Red Team Action:
 Do Nothing
 
 Blue Team Action:
-Report as a Cyberattack
+Report the Email as a Confirmed Attack
 
 Outcome:
 False Positive
 ```
 
-The Blue Team may lose points or incur another penalty for an incorrect report.
+The Blue Team may lose points when it incorrectly reports a legitimate event as a confirmed attack.
 
-However, the penalty should depend on the context and the information available to the player. Reporting a genuinely suspicious event for further investigation should not automatically be treated as a mistake when the evidence is inconclusive.
+However, reporting a suspicious event for further investigation should not automatically result in a penalty when the available evidence is inconclusive.
 
-This distinction encourages careful investigation instead of discouraging players from reporting legitimate security concerns.
+The server determines whether a false positive has occurred by evaluating the actual scenario state, the Blue Team's response and the rules associated with the scenario.
+
+This encourages careful investigation and evidence-based decisions without discouraging players from reporting genuine security concerns.
 
 ### 11.5 Failed Attack and Missed Detection
 
-The scoring system must distinguish between an unsuccessful attack and a successful attack that was not detected.
+The scoring system must distinguish between an unsuccessful attack and a successful attack that is not detected by the Blue Team.
 
-For the Red Team, an attack that is prevented should generally provide fewer rewards than one that successfully achieves its objective.
+For the Red Team, an attack that fails to achieve its objective should generally receive fewer points than an attack that successfully achieves its objective.
 
-For the Blue Team, successfully stopping an attack should provide a defensive reward. If a genuine attack succeeds because the Blue Team ignores or mishandles the event, the Blue Team may lose points.
+For the Blue Team, successfully detecting and preventing a genuine attack should provide a defensive reward.
 
-The final score should reflect the actual scenario outcome rather than the action selected alone.
+If a genuine attack succeeds because the Blue Team ignores the event or selects an ineffective response, the Red Team may receive points for achieving its objective, while the Blue Team may lose the opportunity to earn defensive points or receive a penalty according to the scenario rules.
+
+The same outcome must not be counted more than once through overlapping scoring conditions.
+
+The server determines the final scoring outcome based on the actual scenario state, the players' actions and the predefined scoring rules.
 
 ### 11.6 Deception Scoring
 
@@ -1605,22 +1617,6 @@ The match summary helps players understand the consequences of their decisions a
 
 The server is responsible for providing the final match result to both players to ensure that the displayed results are consistent.
 
-### 11.10 Match Result
-
-At the end of a match, the server calculates the final result using the accumulated scores and the relevant match objectives.
-
-The result screen may display:
-
-* Red Team final score.
-* Blue Team final score.
-* Successful and failed objectives.
-* Attacks prevented or completed.
-* Detection and investigation results.
-* False positives.
-* Significant deception and unexpected events.
-* Final winner.
-
-The match summary is intended to help players understand the consequences of their decisions and learn from the scenario outcomes.
 
 ### 11.11 Future Balancing
 
