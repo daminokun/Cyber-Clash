@@ -240,7 +240,7 @@ test("generic scenario keeps private information hidden and resolves a defended 
   assert.deepEqual(state.scores, { red: 0, blue: 3 });
 });
 
-test("generic investigation gives red a counter-turn and can bypass one defense", () => {
+test("generic investigation gives red a counter-turn that changes the attack vector", () => {
   const state = createGenericScenario("cloud-permission-abuse");
 
   applyGenericAction(state, "red", "add_external_account");
@@ -299,12 +299,11 @@ test("generic next actions reflect the previous red action", () => {
   assert.deepEqual(getGenericPlayerView(state, "blue").availableActions, [
     "investigate",
     "isolate_server",
+    "restore_backup",
     "ignore"
   ]);
-  assert.throws(
-    () => applyGenericAction(state, "blue", "restore_backup"),
-    { message: "invalid_blue_action" }
-  );
+  applyGenericAction(state, "blue", "restore_backup");
+  assert.equal(state.outcome, "attack_succeeded");
 });
 
 test("every generic attack defines a valid next-action dependency", () => {

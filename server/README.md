@@ -101,8 +101,10 @@ used. Each scenario now exposes a meaningful adaptation such as
 `create_shadow_account`, `route_transfer_through_proxy` or
 `use_encoded_payload`. The adaptation remains hidden from Blue Team, keeps all
 normal defensive choices visible, and counters only its mapped defense during
-resolution. Blue Team can therefore still make the correct response; Red Team
-is no longer forced to spend its counter-turn on an action with no effect.
+resolution. Once Red commits to a non-empty adaptation, the original attack
+vector is abandoned, so defenses tied only to that vector cannot contain the
+follow-up vector. Blue can still make a direct response without investigating,
+but investigation gives Red a meaningful opportunity to change the attack.
 
 The Godot client prototype is located at `../client`. Start the server first,
 then run the Godot project so it can connect to `ws://127.0.0.1:3000`.

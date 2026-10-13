@@ -25,22 +25,32 @@ function createScenarioModule({ definition, rules }) {
   }
 
   function effectiveDefenses(state) {
-    const countered = state.redAdaptation && state.redAdaptation !== "do_nothing"
-      ? counteredDefensesByAdaptation[state.redAdaptation] || []
-      : [];
-    return rules.defensiveActions.filter((action) => !countered.includes(action));
+    const unavailable = rules.unavailableBlueActionsByRedAction?.[state.redAction] || [];
+    const available = rules.defensiveActions.filter((action) => !unavailable.includes(action));
+    const attackIndex = rules.attackActions.indexOf(state.redAction);
+    const explicitlyBlocked = new Set(
+      Object.values(rules.unavailableBlueActionsByRedAction || {}).flat()
+    );
+    const inferred = rules.defensiveActions.filter((action) => explicitlyBlocked.has(action));
+    const required = unavailable.length > 0
+      ? available
+      : inferred.length > 0
+        ? [inferred[attackIndex % inferred.length]]
+        : attackIndex >= 0 && available.length > 0
+          ? [available[attackIndex % available.length]]
+        : available;
+    if (state.redAdaptation && state.redAdaptation !== "do_nothing") {
+      return [];
+    }
+    const countered = counteredDefensesByAdaptation[state.redAdaptation] || [];
+    return required.filter((action) => !countered.includes(action));
   }
 
   function availableBlueActions(state) {
     const actions = state.phase === "blue_action"
       ? rules.blueActions
       : state.phase === "blue_response" ? rules.blueResponses : [];
-    const unavailable = state.phase === "blue_action"
-      ? rules.unavailableBlueActionsByRedAction?.[state.redAction] || []
-      : [];
-    return actions.filter(
-      (action) => !unavailable.includes(action)
-    );
+    return actions;
   }
 
   function assertActionAllowed(state, role, action) {

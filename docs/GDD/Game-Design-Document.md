@@ -2524,6 +2524,13 @@ threat changed. Blue receives the investigation evidence available before the
 final response and must choose a defense under uncertainty. This prevents a
 counter-tactic from becoming a free warning to Blue Team.
 
+When Red commits to a non-empty adaptation, the original attack vector is
+replaced by a scenario-specific follow-up vector. A defense that would have
+contained only the original vector cannot automatically contain the follow-up.
+Blue must therefore balance immediate response against investigation: a direct
+response may stop the original attack, while investigation gives Red a valid
+counter-turn before the final response.
+
 ### 15.7 Networking and Communication
 
 The multiplayer system requires a communication mechanism between the Godot clients and the game server.
