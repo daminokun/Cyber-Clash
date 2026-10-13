@@ -41,6 +41,11 @@ Contains the Godot game project.
 
 Contains the multiplayer server and related backend files.
 
+### client
+
+Contains the Godot client prototype. Open `client/project.godot` in Godot 4
+after starting the server from the `server` directory.
+
 ### docs
 
 Contains project documentation, diagrams and other materials.

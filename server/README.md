@@ -24,6 +24,9 @@ Clients connect using WebSocket messages:
 The server assigns the first client to the Red Team and the second client to
 the Blue Team. Each client receives only its role-appropriate state view.
 
+The Godot client prototype is located at `../client`. Start the server first,
+then run the Godot project so it can connect to `ws://127.0.0.1:3000`.
+
 ## Scoring used by the prototype
 
 | Result | Red Team | Blue Team |
