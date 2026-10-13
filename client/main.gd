@@ -108,21 +108,15 @@ func _build_interface() -> void:
 func _build_menu() -> Control:
 	var root := Control.new()
 	root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	var margin := MarginContainer.new()
-	margin.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	margin.add_theme_constant_override("margin_left", 70)
-	margin.add_theme_constant_override("margin_right", 70)
-	margin.add_theme_constant_override("margin_top", 45)
-	margin.add_theme_constant_override("margin_bottom", 45)
-	root.add_child(margin)
-
-	var center := CenterContainer.new()
-	center.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	margin.add_child(center)
+	var scroll := ScrollContainer.new()
+	scroll.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	root.add_child(scroll)
 	var box := VBoxContainer.new()
-	box.custom_minimum_size = Vector2(620, 0)
+	box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	box.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	box.add_theme_constant_override("separation", 14)
-	center.add_child(box)
+	scroll.add_child(box)
 
 	box.add_child(_create_logo(220, 110))
 	var title := Label.new()
@@ -158,13 +152,13 @@ func _build_menu() -> Control:
 	ip_input = LineEdit.new()
 	ip_input.placeholder_text = "Server IP (example: 192.168.1.20)"
 	ip_input.text = DEFAULT_SERVER_HOST
-	ip_input.custom_minimum_size = Vector2(0, 46)
+	ip_input.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	box.add_child(ip_input)
 
 	match_id_input = LineEdit.new()
 	match_id_input.name = "MatchIdInput"
 	match_id_input.placeholder_text = "Match ID (example: 482019)"
-	match_id_input.custom_minimum_size = Vector2(0, 46)
+	match_id_input.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	box.add_child(match_id_input)
 
 	var join := _create_button("JOIN MATCH", 54, 20)
@@ -185,16 +179,15 @@ func _build_menu() -> Control:
 func _build_lobby() -> Control:
 	var root := Control.new()
 	root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	var margin := MarginContainer.new()
-	margin.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	margin.add_theme_constant_override("margin_left", 100)
-	margin.add_theme_constant_override("margin_right", 100)
-	margin.add_theme_constant_override("margin_top", 70)
-	margin.add_theme_constant_override("margin_bottom", 70)
-	root.add_child(margin)
+	var scroll := ScrollContainer.new()
+	scroll.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	root.add_child(scroll)
 	var box := VBoxContainer.new()
+	box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	box.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	box.add_theme_constant_override("separation", 18)
-	margin.add_child(box)
+	scroll.add_child(box)
 
 	box.add_child(_create_logo(140, 85))
 	var title := Label.new()
@@ -269,13 +262,15 @@ func _build_game() -> Control:
 	layout.add_child(match_result_logo)
 	layout.add_child(match_result_label)
 
-	var content := HBoxContainer.new()
+	var content := VBoxContainer.new()
+	content.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	content.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	content.add_theme_constant_override("separation", 16)
 	layout.add_child(content)
 
 	var briefing_panel := _create_panel()
-	briefing_panel.custom_minimum_size = Vector2(200, 0)
+	briefing_panel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	briefing_panel.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	content.add_child(briefing_panel)
 	var briefing := VBoxContainer.new()
 	briefing.add_theme_constant_override("separation", 12)
@@ -294,6 +289,7 @@ func _build_game() -> Control:
 
 	var intel_panel := _create_panel()
 	intel_panel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	intel_panel.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	content.add_child(intel_panel)
 	var intel := VBoxContainer.new()
 	intel.add_theme_constant_override("separation", 12)
@@ -313,7 +309,8 @@ func _build_game() -> Control:
 	intel.add_child(score_label)
 
 	var action_panel := _create_panel()
-	action_panel.custom_minimum_size = Vector2(180, 0)
+	action_panel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	action_panel.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	content.add_child(action_panel)
 	var action_layout := VBoxContainer.new()
 	action_layout.add_theme_constant_override("separation", 12)
@@ -370,8 +367,10 @@ func _create_text_label() -> Label:
 func _create_button(text: String, height: int, font_size: int) -> Button:
 	var button := Button.new()
 	button.text = text
-	button.custom_minimum_size = Vector2(0, height)
+	button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	button.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	button.add_theme_font_size_override("font_size", font_size)
+	button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	button.clip_text = true
 	return button
 
