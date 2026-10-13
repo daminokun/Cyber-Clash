@@ -32,6 +32,7 @@ var private_label: Label
 var evidence_label: Label
 var score_label: Label
 var actions_container: VBoxContainer
+var match_result_label: Label
 
 func _ready() -> void:
 	_build_interface()
@@ -209,14 +210,22 @@ func _build_game() -> Control:
 	role_label.add_theme_color_override("font_color", MAGENTA)
 	role_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	header.add_child(role_label)
-	status_label = Label.new()
-	status_label.add_theme_color_override("font_color", TEXT)
-	status_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-	header.add_child(status_label)
 
 	var divider := HSeparator.new()
 	divider.add_theme_color_override("separator", CYAN)
 	layout.add_child(divider)
+
+	status_label = Label.new()
+	status_label.add_theme_color_override("font_color", TEXT)
+	status_label.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+	status_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	layout.add_child(status_label)
+	match_result_label = Label.new()
+	match_result_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	match_result_label.add_theme_font_size_override("font_size", 20)
+	match_result_label.add_theme_color_override("font_color", MAGENTA)
+	match_result_label.visible = false
+	layout.add_child(match_result_label)
 
 	var content := HBoxContainer.new()
 	content.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -224,11 +233,13 @@ func _build_game() -> Control:
 	layout.add_child(content)
 
 	var briefing_panel := _create_panel()
-	briefing_panel.custom_minimum_size = Vector2(230, 0)
+	briefing_panel.custom_minimum_size = Vector2(200, 0)
 	content.add_child(briefing_panel)
 	var briefing := VBoxContainer.new()
 	briefing.add_theme_constant_override("separation", 12)
-	briefing_panel.add_child(briefing)
+	var briefing_scroll := _create_scroll_container()
+	briefing_scroll.add_child(briefing)
+	briefing_panel.add_child(briefing_scroll)
 	var briefing_title := Label.new()
 	briefing_title.text = "INCIDENT BRIEF"
 	briefing_title.add_theme_font_size_override("font_size", 18)
@@ -244,7 +255,9 @@ func _build_game() -> Control:
 	content.add_child(intel_panel)
 	var intel := VBoxContainer.new()
 	intel.add_theme_constant_override("separation", 12)
-	intel_panel.add_child(intel)
+	var intel_scroll := _create_scroll_container()
+	intel_scroll.add_child(intel)
+	intel_panel.add_child(intel_scroll)
 	var intel_title := Label.new()
 	intel_title.text = "SECURITY INTELLIGENCE"
 	intel_title.add_theme_font_size_override("font_size", 18)
@@ -258,11 +271,13 @@ func _build_game() -> Control:
 	intel.add_child(score_label)
 
 	var action_panel := _create_panel()
-	action_panel.custom_minimum_size = Vector2(220, 0)
+	action_panel.custom_minimum_size = Vector2(180, 0)
 	content.add_child(action_panel)
 	var action_layout := VBoxContainer.new()
 	action_layout.add_theme_constant_override("separation", 12)
-	action_panel.add_child(action_layout)
+	var action_scroll := _create_scroll_container()
+	action_scroll.add_child(action_layout)
+	action_panel.add_child(action_scroll)
 	var action_title := Label.new()
 	action_title.text = "SELECT ACTION"
 	action_title.add_theme_font_size_override("font_size", 18)
@@ -288,6 +303,13 @@ func _create_panel() -> PanelContainer:
 	panel.add_theme_stylebox_override("panel", style)
 	return panel
 
+func _create_scroll_container() -> ScrollContainer:
+	var scroll := ScrollContainer.new()
+	scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	return scroll
+
 func _create_text_label() -> Label:
 	var label := Label.new()
 	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -299,6 +321,7 @@ func _create_button(text: String, height: int, font_size: int) -> Button:
 	button.text = text
 	button.custom_minimum_size = Vector2(0, height)
 	button.add_theme_font_size_override("font_size", font_size)
+	button.clip_text = true
 	return button
 
 func _show_menu() -> void:
@@ -369,8 +392,12 @@ func _handle_message(raw_message: String) -> void:
 			if received_state is Dictionary:
 				_render_state(received_state)
 		"round_waiting":
-			action_pending = true
-			_clear_action_buttons()
+			var is_ready := bool(message.get("ready", false))
+			action_pending = is_ready
+			if is_ready:
+				_clear_action_buttons()
+			else:
+				_rebuild_ready_button()
 			_set_status("Waiting for opponent... (%s/%s ready)" % [
 				message.get("readyCount", 0),
 				message.get("requiredPlayers", 2)
@@ -379,6 +406,12 @@ func _handle_message(raw_message: String) -> void:
 			action_pending = true
 			_clear_action_buttons()
 			var final_scores: Dictionary = message.get("scores", {})
+			match_result_label.text = "MATCH COMPLETE\nWINNER: %s\nRED %s  |  BLUE %s" % [
+				str(message.get("winner", "draw")).to_upper(),
+				final_scores.get("red", 0),
+				final_scores.get("blue", 0)
+			]
+			match_result_label.visible = true
 			_set_status("Match complete. Winner: %s | Red: %s | Blue: %s" % [
 				str(message.get("winner", "draw")).capitalize(),
 				final_scores.get("red", 0),
@@ -418,8 +451,8 @@ func _render_state(received_state: Dictionary) -> void:
 	evidence_label.text = _format_evidence(state.get("evidence", {}))
 	var scores: Dictionary = state.get("scores", {})
 	score_label.text = "Round %s/%s | Score - Red: %s | Blue: %s | Phase: %s" % [
-		state.get("round", 1),
-		state.get("maxRounds", 3),
+		int(state.get("round", 1)),
+		int(state.get("maxRounds", 3)),
 		scores.get("red", 0),
 		scores.get("blue", 0),
 		state.get("phase", "")
@@ -469,7 +502,9 @@ func _rebuild_action_buttons(actions: Array) -> void:
 	for child in actions_container.get_children():
 		child.queue_free()
 	for action in actions:
-		var button := _create_button(str(action).replace("_", " ").capitalize(), 42, 16)
+		var button := _create_button(str(action).replace("_", " ").capitalize(), 40, 13)
+		button.clip_text = true
+		button.tooltip_text = str(action).replace("_", " ").capitalize()
 		button.pressed.connect(_send_action.bind(str(action)))
 		actions_container.add_child(button)
 
@@ -492,9 +527,14 @@ func _clear_action_buttons() -> void:
 		child.queue_free()
 
 func _add_ready_button() -> void:
-	var button := _create_button("READY FOR NEXT ROUND", 42, 16)
+	var button := _create_button("READY FOR NEXT ROUND", 40, 12)
+	button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	button.pressed.connect(_send_ready_for_next_round)
 	actions_container.add_child(button)
+
+func _rebuild_ready_button() -> void:
+	_clear_action_buttons()
+	_add_ready_button()
 
 func _send_ready_for_next_round() -> void:
 	if action_pending:

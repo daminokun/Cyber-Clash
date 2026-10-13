@@ -79,7 +79,8 @@ function broadcastRoundWaiting(match) {
       type: "round_waiting",
       round: match.round,
       readyCount: match.readyPlayers.size,
-      requiredPlayers: match.players.size
+      requiredPlayers: match.players.size,
+      ready: match.readyPlayers.has(socket)
     });
   }
 }

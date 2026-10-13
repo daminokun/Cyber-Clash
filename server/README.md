@@ -55,6 +55,12 @@ scenario is resolved, both players must send:
 before the next round begins. The server sends `match_complete` after the
 final round.
 
+The suspicious login scenario uses an additional counter-turn:
+
+```text
+Red attack -> Blue investigate -> Red adapt/evade -> Blue final response
+```
+
 The Godot client prototype is located at `../client`. Start the server first,
 then run the Godot project so it can connect to `ws://127.0.0.1:3000`.
 

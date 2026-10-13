@@ -2598,6 +2598,8 @@ The current implementation checkpoint supports:
 - Persistent match scores across rounds.
 - A ready state that requires both players before the next round.
 - Email phishing and suspicious login activity scenarios.
+- Suspicious login adaptation flow where Red Team can react after Blue Team
+  investigates and before Blue Team's final response.
 - One active two-player match.
 - Deterministic Red Team and Blue Team role assignment.
 - Red Team `Do Nothing` and `Add Malicious Link` actions.

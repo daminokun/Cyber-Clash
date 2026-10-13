@@ -4,8 +4,9 @@ const path = require("node:path");
 const scenarioPath = path.join(__dirname, "..", "scenarios", "suspicious-login.json");
 const template = JSON.parse(fs.readFileSync(scenarioPath, "utf8"));
 
-const RED_ACTIONS = ["do_nothing", "credential_stuffing", "spoof_login_location"];
+const RED_ACTIONS = ["do_nothing", "credential_stuffing"];
 const INITIAL_BLUE_ACTIONS = ["investigate_logs", "force_logout", "reset_credentials", "ignore"];
+const RED_ADAPTATION_ACTIONS = ["do_nothing", "spoof_login_location"];
 const RESPONSE_BLUE_ACTIONS = ["force_logout", "reset_credentials", "ignore"];
 
 function createLoginScenario() {
@@ -14,6 +15,7 @@ function createLoginScenario() {
     category: template.category,
     phase: "red_action",
     redAction: null,
+    redAdaptation: null,
     blueAction: null,
     investigationCompleted: false,
     resolved: false,
@@ -27,7 +29,12 @@ function assertActionAllowed(state, role, action) {
     throw new Error("scenario_already_resolved");
   }
   if (role === "red") {
-    if (state.phase !== "red_action" || !RED_ACTIONS.includes(action)) {
+    const allowedActions = state.phase === "red_action"
+      ? RED_ACTIONS
+      : state.phase === "red_adaptation"
+        ? RED_ADAPTATION_ACTIONS
+        : [];
+    if (!allowedActions.includes(action)) {
       throw new Error("invalid_red_action");
     }
     return;
@@ -43,13 +50,18 @@ function assertActionAllowed(state, role, action) {
 function applyAction(state, role, action) {
   assertActionAllowed(state, role, action);
   if (role === "red") {
-    state.redAction = action;
-    state.phase = "blue_action";
+    if (state.phase === "red_action") {
+      state.redAction = action;
+      state.phase = "blue_action";
+    } else {
+      state.redAdaptation = action;
+      state.phase = "blue_response";
+    }
     return;
   }
   if (action === "investigate_logs") {
     state.investigationCompleted = true;
-    state.phase = "blue_response";
+    state.phase = "red_adaptation";
     return;
   }
   state.blueAction = action;
@@ -92,7 +104,9 @@ function getPlayerView(state, role) {
     view.private = {
       originalStatus: template.originalStatus,
       objective: template.redObjective,
-      availableActions: state.phase === "red_action" ? RED_ACTIONS : []
+      availableActions: state.phase === "red_action"
+        ? RED_ACTIONS
+        : state.phase === "red_adaptation" ? RED_ADAPTATION_ACTIONS : []
     };
   } else if (state.phase !== "red_action") {
     view.availableActions = state.phase === "blue_response"

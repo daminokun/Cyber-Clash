@@ -97,6 +97,7 @@ test("login scenario investigation reveals restricted evidence", () => {
 
   applyLoginAction(state, "red", "credential_stuffing");
   applyLoginAction(state, "blue", "investigate_logs");
+  applyLoginAction(state, "red", "do_nothing");
 
   assert.equal(state.phase, "blue_response");
   assert.equal(getLoginPlayerView(state, "blue").evidence.logCheck.includes("unusual"), true);
@@ -111,4 +112,25 @@ test("login attack is prevented by resetting credentials", () => {
 
   assert.equal(state.outcome, "login_attack_prevented");
   assert.deepEqual(state.scores, { red: 0, blue: 3 });
+});
+
+test("login investigation gives red an adaptation turn before final response", () => {
+  const state = createLoginScenario();
+
+  applyLoginAction(state, "red", "credential_stuffing");
+  applyLoginAction(state, "blue", "investigate_logs");
+
+  assert.equal(state.phase, "red_adaptation");
+  assert.deepEqual(getLoginPlayerView(state, "red").private.availableActions, [
+    "do_nothing",
+    "spoof_login_location"
+  ]);
+
+  applyLoginAction(state, "red", "spoof_login_location");
+  assert.equal(state.phase, "blue_response");
+  assert.deepEqual(getLoginPlayerView(state, "blue").availableActions, [
+    "force_logout",
+    "reset_credentials",
+    "ignore"
+  ]);
 });
