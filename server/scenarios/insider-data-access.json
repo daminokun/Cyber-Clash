@@ -18,9 +18,9 @@
   "blueActions": ["investigate", "suspend_account", "restrict_records", "ignore"],
   "blueResponses": ["suspend_account", "restrict_records", "ignore"],
   "attackActions": ["bulk_collect_records", "blend_with_normal_access"],
-  "redAdaptationActions": ["do_nothing", "change_tactic", "switch_account"],
+  "redAdaptationActions": ["do_nothing", "switch_account", "use_service_account"],
   "counteredDefensesByAdaptation": {
-    "change_tactic": ["suspend_account"],
+    "use_service_account": ["suspend_account"],
     "switch_account": ["restrict_records"]
   },
   "unavailableBlueActionsByRedAction": {

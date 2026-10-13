@@ -36,11 +36,11 @@
                       ],
     "redAdaptationActions":  [
                                   "do_nothing",
-                                  "change_tactic",
+                                  "move_to_unbacked_share",
                                   "accelerate_encryption"
                               ],
     "counteredDefensesByAdaptation":  {
-                                          "change_tactic": [
+                                          "move_to_unbacked_share": [
                                               "isolate_server"
                                           ],
                                           "accelerate_encryption": [

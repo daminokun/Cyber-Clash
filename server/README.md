@@ -95,6 +95,15 @@ the same contract. Each module may define its own counter-turn, action
 dependencies and response filtering. To remove a scenario, remove its module
 from the registry and its content file; lobby and match logic do not change.
 
+Generic scenario counter-turns are defined in
+`server/src/adaptationRules.js`. The old generic `change_tactic` action is not
+used. Each scenario now exposes a meaningful adaptation such as
+`create_shadow_account`, `route_transfer_through_proxy` or
+`use_encoded_payload`. The adaptation remains hidden from Blue Team, keeps all
+normal defensive choices visible, and counters only its mapped defense during
+resolution. Blue Team can therefore still make the correct response; Red Team
+is no longer forced to spend its counter-turn on an action with no effect.
+
 The Godot client prototype is located at `../client`. Start the server first,
 then run the Godot project so it can connect to `ws://127.0.0.1:3000`.
 

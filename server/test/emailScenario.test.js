@@ -205,6 +205,18 @@ test("scenario catalogue provides enough unique choices for three-round matches"
   assert.equal(new Set(definitions.map((definition) => definition.id)).size, definitions.length);
 });
 
+test("every generic adaptation is scenario-specific and counters a defense", () => {
+  for (const { id } of getScenarioDefinitions()) {
+    if (id === "email-account-verification-001" || id === "suspicious-login-activity") {
+      continue;
+    }
+    const state = createGenericScenario(id);
+    const adaptations = getGenericPlayerView(state, "red").private.availableActions;
+    assert.equal(adaptations.includes("change_tactic"), false, id);
+    assert.ok(adaptations.length >= 2, id);
+  }
+});
+
 test("generic scenario keeps private information hidden and resolves a defended attack", () => {
   const state = createGenericScenario("usb-device-threat");
   const redView = getGenericPlayerView(state, "red");
@@ -236,10 +248,10 @@ test("generic investigation gives red a counter-turn and can bypass one defense"
   assert.equal(state.phase, "red_adaptation");
   assert.deepEqual(getGenericPlayerView(state, "red").private.availableActions, [
     "do_nothing",
-    "change_tactic"
+    "create_shadow_account"
   ]);
 
-  applyGenericAction(state, "red", "change_tactic");
+  applyGenericAction(state, "red", "create_shadow_account");
   assert.deepEqual(getGenericPlayerView(state, "blue").availableActions, [
     "revoke_access",
     "lock_account",
@@ -263,7 +275,7 @@ test("generic scenarios can define distinct adaptation actions and counters", ()
 
   assert.deepEqual(getGenericPlayerView(state, "red").private.availableActions, [
     "do_nothing",
-    "change_tactic",
+    "move_to_unbacked_share",
     "accelerate_encryption"
   ]);
 

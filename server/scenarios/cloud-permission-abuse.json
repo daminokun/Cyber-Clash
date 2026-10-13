@@ -50,7 +50,7 @@
 
     },
     "counteredDefensesByAdaptation": {
-      "change_tactic": [
+      "create_shadow_account": [
         "revoke_access"
       ]
     },

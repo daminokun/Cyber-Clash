@@ -26,19 +26,6 @@ const rules = {
     "suspend_account",
     "restrict_records"
   ],
-  "redAdaptationActions": [
-    "do_nothing",
-    "change_tactic",
-    "switch_account"
-  ],
-  "counteredDefensesByAdaptation": {
-    "change_tactic": [
-      "suspend_account"
-    ],
-    "switch_account": [
-      "restrict_records"
-    ]
-  },
   "unavailableBlueActionsByRedAction": {
     "bulk_collect_records": [
       "suspend_account"

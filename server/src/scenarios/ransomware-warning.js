@@ -26,19 +26,6 @@ const rules = {
     "isolate_server",
     "restore_backup"
   ],
-  "redAdaptationActions": [
-    "do_nothing",
-    "change_tactic",
-    "accelerate_encryption"
-  ],
-  "counteredDefensesByAdaptation": {
-    "change_tactic": [
-      "isolate_server"
-    ],
-    "accelerate_encryption": [
-      "restore_backup"
-    ]
-  },
   "unavailableBlueActionsByRedAction": {
     "delete_restore_points": [
       "restore_backup"

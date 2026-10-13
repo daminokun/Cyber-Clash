@@ -26,19 +26,6 @@ const rules = {
     "revoke_key",
     "remove_public_file"
   ],
-  "redAdaptationActions": [
-    "do_nothing",
-    "change_tactic",
-    "rotate_target"
-  ],
-  "counteredDefensesByAdaptation": {
-    "change_tactic": [
-      "revoke_key"
-    ],
-    "rotate_target": [
-      "remove_public_file"
-    ]
-  },
   "unavailableBlueActionsByRedAction": {
     "reuse_exposed_key": [
       "revoke_key"

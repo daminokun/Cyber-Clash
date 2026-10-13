@@ -34,11 +34,6 @@ const rules = {
       "lock_account"
     ]
   },
-  "counteredDefensesByAdaptation": {
-    "change_tactic": [
-      "revoke_access"
-    ]
-  }
 };
 
 module.exports = {

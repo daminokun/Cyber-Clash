@@ -1,8 +1,13 @@
+const { getAdaptationRules } = require("./adaptationRules");
+
 function createScenarioModule({ definition, rules }) {
-  const redAdaptationActions = rules.redAdaptationActions || [
-    "do_nothing",
-    "change_tactic"
-  ];
+  const adaptationRules = getAdaptationRules(definition.id);
+  const redAdaptationActions = rules.redAdaptationActions
+    || adaptationRules.redAdaptationActions;
+  const counteredDefensesByAdaptation = {
+    ...adaptationRules.counteredDefensesByAdaptation,
+    ...rules.counteredDefensesByAdaptation
+  };
 
   function create() {
     return {
@@ -21,7 +26,7 @@ function createScenarioModule({ definition, rules }) {
 
   function effectiveDefenses(state) {
     const countered = state.redAdaptation && state.redAdaptation !== "do_nothing"
-      ? rules.counteredDefensesByAdaptation?.[state.redAdaptation] || []
+      ? counteredDefensesByAdaptation[state.redAdaptation] || []
       : [];
     return rules.defensiveActions.filter((action) => !countered.includes(action));
   }

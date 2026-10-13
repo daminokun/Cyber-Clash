@@ -18,9 +18,9 @@
   "blueActions": ["investigate", "revoke_key", "remove_public_file", "ignore"],
   "blueResponses": ["revoke_key", "remove_public_file", "ignore"],
   "attackActions": ["reuse_exposed_key", "hide_key_usage"],
-  "redAdaptationActions": ["do_nothing", "change_tactic", "rotate_target"],
+  "redAdaptationActions": ["do_nothing", "redirect_key_use", "rotate_target"],
   "counteredDefensesByAdaptation": {
-    "change_tactic": ["revoke_key"],
+    "redirect_key_use": ["revoke_key"],
     "rotate_target": ["remove_public_file"]
   },
   "unavailableBlueActionsByRedAction": {
