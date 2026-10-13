@@ -63,12 +63,19 @@ The game server manages the scenario state, validates player actions and determi
 
 At the beginning of each round, the server generates a scenario using a predefined template and controlled variations.
 
-The initial prototype will support four main scenario categories:
+The scenario catalogue supports multiple categories, and each match randomly
+selects three different scenarios:
 
 - Email
 - Login Activity
 - USB Device
 - Network Activity
+- Malware
+- Ransomware
+- Cloud Access
+- Web Application
+- Social Engineering
+- Data Exfiltration
 
 Each scenario contains an initial event, a hidden state, available player actions and possible outcomes.
 
@@ -150,7 +157,10 @@ The server then provides each player with an appropriate scenario summary withou
 
 If the match has not reached its end condition, the server generates the next scenario and repeats the gameplay sequence.
 
-For the initial prototype, the match will use a fixed number of rounds. The exact number of rounds and point values will be established during implementation and gameplay testing.
+Each match uses three rounds. The server selects three unique scenario
+templates from the catalogue at match creation, so the scenario sequence
+changes between matches while remaining authoritative and reproducible from
+the server's state.
 
 ### 3.8 Core Gameplay Loop
 
@@ -402,7 +412,7 @@ The system uses predefined scenario templates with controlled variations. This a
 
 ### 6.1 Scenario Categories
 
-The initial prototype includes four main scenario categories:
+The scenario catalogue includes multiple categories:
 
 | Category | Description | Example |
 |---|---|---|
@@ -410,8 +420,23 @@ The initial prototype includes four main scenario categories:
 | Login Activity | Simulates account access and authentication events. | An unusual login attempt is recorded. |
 | USB Device | Simulates risks associated with removable storage devices. | An employee connects an unfamiliar USB device. |
 | Network Activity | Simulates basic network security events. | Unusual traffic is detected from a simulated device. |
+| Malware | Simulates suspicious software and payload delivery. | An unsigned installer is downloaded. |
+| Ransomware | Simulates disruptive file activity. | Many files are renamed unexpectedly. |
+| Cloud Access | Simulates unsafe account and permission changes. | An unknown account receives access to a shared folder. |
+| Web Application | Simulates suspicious input against a public application. | A form receives crafted input. |
+| Social Engineering | Simulates manipulation through human interaction. | A caller requests a recovery code. |
+| Data Exfiltration | Simulates unauthorised outbound data transfer. | A workstation sends an unusual archive. |
+| Authentication | Simulates MFA and account approval abuse. | A user receives repeated MFA prompts. |
+| QR Phishing | Simulates deceptive QR-code redirects. | A poster points to an unapproved renewal page. |
+| Endpoint | Simulates unsafe endpoint software and extensions. | A browser extension requests excessive access. |
+| Physical Security | Simulates risks involving missing devices. | A managed laptop is reported missing. |
+| Software Supply Chain | Simulates tampered software distribution. | An update has an untrusted signature. |
+| Insider Risk | Simulates unusual authorised-account access. | A staff account opens an abnormal volume of records. |
+| IoT Security | Simulates unmanaged smart-device risks. | A smart device joins a restricted network. |
 
-Each category may contain multiple templates with different event details, evidence and possible outcomes.
+Each match selects three unique categories/templates at random. Each category
+may contain multiple templates with different event details, evidence and
+possible outcomes.
 
 ### 6.2 Scenario Structure
 
@@ -1667,12 +1692,18 @@ Scenario templates define the basic structure of each scenario.
 
 Each template contains information about the event type, possible variations, available actions and conditions that determine how the scenario can develop.
 
-The initial prototype will use four main scenario categories:
+The scenario catalogue supports multiple categories:
 
 * Email
 * Login Activity
 * USB Device
 * Network Activity
+* Malware
+* Ransomware
+* Cloud Access
+* Web Application
+* Social Engineering
+* Data Exfiltration
 
 For example, an Email scenario template may represent a password reset request, a university announcement or an account verification email.
 
@@ -1794,7 +1825,8 @@ This approach combines unpredictable gameplay with consistent rules.
 
 ### 12.11 Data-Driven Scenario Design
 
-Scenario definitions may be stored in structured data files such as JSON.
+Scenario content may be stored in structured data files such as JSON, paired
+with a dedicated server logic module.
 
 This allows scenario content to be modified or expanded without changing the main gameplay logic for every new scenario.
 
@@ -2471,13 +2503,19 @@ JSON provides a structured format for representing scenario information such as:
 
 The server will interpret the scenario data and use it to construct active scenarios.
 
-Separating scenario content from the main gameplay logic will make it easier to add or modify scenarios without rewriting the entire system.
+Separating scenario content from the main gameplay loop while keeping
+scenario-specific rules in dedicated modules makes it easier to add or modify
+scenarios without rewriting lobby or match logic.
 
 The current scenario structure includes an identifier, category, public event,
 original status, Red Team objective and investigation evidence. The server
 loads this structure as the source data for the active scenario. Schema
 validation will be added before more scenario templates are introduced. Additional fields
 for unexpected events and multi-scenario matches may be added later.
+Each scenario module defines its own Red counter-actions, defensive response
+dependencies and action filtering. A previous Red or Blue action may remove
+or change the opponent's next action. The server applies the same rules when
+building the player view and validating the submitted action.
 
 ### 15.7 Networking and Communication
 

@@ -63,12 +63,26 @@ Server permainan mengurus keadaan senario, mengesahkan tindakan pemain dan menen
 
 Pada permulaan setiap pusingan, server menjana senario menggunakan templat yang telah ditetapkan serta variasi yang dikawal.
 
-Prototaip awal akan menyokong empat kategori senario utama:
+Katalog senario menyokong pelbagai kategori. Pada permulaan perlawanan,
+server memilih tiga senario yang berbeza secara rawak:
 
 - E-mel
 - Log Masuk Aktiviti
 - Peranti USB
 - Rangkaian Aktiviti
+- Malware
+- Ransomware
+- Akses Cloud
+- Aplikasi Web
+- Kejuruteraan Sosial
+- Eksfiltrasi Data
+- Pengesahan Akaun
+- Phishing QR
+- Keselamatan Endpoint
+- Keselamatan Fizikal
+- Rantaian Bekalan Perisian
+- Risiko Orang Dalam
+- Keselamatan IoT
 
 Setiap senario mengandungi peristiwa awal, keadaan tersembunyi, tindakan pemain yang tersedia dan hasil yang berkemungkinan.
 
@@ -108,6 +122,13 @@ Blue Team kemudian menilai bukti yang tersedia dan sebarang peristiwa baharu seb
 - Laksanakan tindakan pertahanan khusus senario
 
 Tindakan yang tersedia bergantung pada senario dan keadaan semasanya.
+
+Dalam senario generik, siasatan Blue Team boleh membuka satu fasa balas Red
+Team. Red Team boleh memilih Jangan Lakukan Apa-apa atau mengubah taktik.
+Perubahan taktik mungkin menyebabkan salah satu tindak balas pertahanan tidak
+lagi berkesan. Blue Team mesti menggunakan Security Intelligence yang dikemas
+ kini untuk memilih pertahanan yang sesuai; pertahanan tidak dianggap berjaya
+secara automatik.
 
 ### 3.4 Peristiwa Tidak Dijangka
 
@@ -150,7 +171,18 @@ server then menyediakan setiap pemain dengan sesuai senario summary tanpa reveal
 
 If perlawanan mempunyai tidak reached its end condition, server generates seterusnya senario dan repeats permainan iniplay urutan.
 
-untuk awal prototaip, perlawanan akan menggunakan fixed number daripada pusingan. tepat number daripada pusingan dan mata values akan menjadi established semasa implementation dan permainan pengujian.
+Setiap perlawanan menggunakan tiga pusingan. Server memilih tiga templat
+senario yang unik daripada katalog pada permulaan perlawanan. Oleh itu,
+urutan senario berubah antara perlawanan tanpa mendedahkan keadaan tersembunyi
+kepada client.
+
+Senario direka secara modular. Setiap senario mempunyai fail kandungan JSON
+dan module JavaScript khusus di `server/src/scenarios`. Module tersebut
+menentukan counter-action Red, dependency defensive response dan penapisan
+action untuk scenario itu sendiri. Tindakan sebelumnya boleh membuang atau
+mengubah action pihak lawan yang seterusnya. Scenario registry mengekalkan
+kontrak `create`, `apply` dan `view`, jadi penambahan atau pembuangan senario
+tidak memerlukan perubahan pada logik lobby, matchmaking atau perlawanan utama.
 
 ### 3.8 Permainan Teras Loop
 
@@ -328,6 +360,13 @@ Periksaion dan siasatan membolehkan Blue Team improve its understanding daripada
 siasatan hasil mungkin menjadi tidak lengkap. sesetengah bukti mungkin remain untersedia, ambiguous atau mengelirukan because daripada senario tersembunyi syarat.
 
 untuk awal prototaip, siasatan hasil ialah ditentukan oleh yang telah ditetapkan senario peraturan sebaliknya daripada unrestricted real-world keselamatan analysis.
+
+Bukti Security Intelligence boleh dikemas kini selepas tindakan susulan Red
+Team. Sebagai contoh, jika Red Team cuba memalsukan lokasi log masuk selepas
+siasatan, server boleh menunjukkan percanggahan antara lokasi yang dilaporkan
+dengan rekod penyedia pengesahan. Blue Team menerima petunjuk yang
+menyangkal manipulasi tersebut, tetapi tidak menerima nama tindakan atau
+maklumat peribadi Red Team.
 
 ### 5.4 Laporing dan Defensive tindak balas
 

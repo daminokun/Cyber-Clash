@@ -13,7 +13,7 @@ The game is designed for beginners to learn basic cybersecurity concepts through
 * Multiplayer PvP
 * Cybersecurity-based scenarios
 * Simple gameplay for beginners
-* Dynamic scenario generation
+* Dynamic scenario generation with three random scenarios per match
 * Player scoring system
 * Real-time multiplayer
 
@@ -44,7 +44,11 @@ Contains the multiplayer server and related backend files.
 ### client
 
 Contains the Godot client prototype. Open `client/project.godot` in Godot 4
-after starting the server from the `server` directory.
+after starting the server from the `server` directory. The client branding
+asset is stored at `client/assets/branding/cyber_clash_logo.png` and is used
+on the main menu, lobby, gameplay header and match result screen. The branded
+palette can be rolled back by setting `USE_BRANDED_PALETTE` to `false` in
+`client/main.gd`.
 
 ### docs
 

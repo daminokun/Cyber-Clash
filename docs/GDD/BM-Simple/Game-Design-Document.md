@@ -413,7 +413,8 @@ hasil dan skor
 
 ### 6.3 Jenis Senario
 
-awal prototaip akan contain empat utama senario jenis:
+Katalog senario mengandungi banyak jenis. Setiap perlawanan memilih tiga
+senario yang berbeza secara rawak:
 
 | Senario jenis | Contoh |
 | ------------- | ------------------------------------------------- |
@@ -421,8 +422,22 @@ awal prototaip akan contain empat utama senario jenis:
 | Log Masuk | Unusual login aktiviti ialah dikesan. |
 | USB | Satu tidak diketahui USB peranti ialah disambungkan computer. |
 | Rangkaian | mencurigakan network aktiviti ialah dikesan. |
+| Malware | Satu pemasangan perisian mencurigakan dimuat turun. |
+| Ransomware | Banyak fail ditukar nama secara luar biasa. |
+| Akses Cloud | Permission folder cloud berubah secara tidak dijangka. |
+| Phishing QR | Kod QR membawa pengguna ke laman tidak dipercayai. |
+| MFA | Pengguna menerima banyak permintaan pengesahan. |
+| Endpoint | Extension browser meminta akses berlebihan. |
+| Keselamatan Fizikal | Laptop organisasi dilaporkan hilang. |
+| Rantaian Perisian | Update perisian mempunyai sumber tidak dipercayai. |
+| Risiko Orang Dalam | Akaun staf membuka rekod dalam jumlah luar biasa. |
+| Wi-Fi dan Bluetooth | Peranti wireless tidak dikenali cuba menyambung. |
+| Log dan Backup | Rekod audit atau backup menunjukkan perubahan. |
+| Akaun Servis | Akaun sistem digunakan melalui sesi interaktif. |
+| Aplikasi Mobile | Aplikasi meminta permission yang tidak berkaitan. |
 
-Jenis senario tambahan mungkin ditambah semasa pembangunan akan datang.
+Senario tambahan mempunyai fail kandungan dan module server sendiri. Senario
+boleh ditambah tanpa mengubah logik utama perlawanan.
 
 ### 6.4 Variasi Senario
 
@@ -437,6 +452,10 @@ Sebagai contoh, E-mel senario mungkin termasuk:
 * File sharing notification.
 
 Senario yang dijana mungkin mempunyai ciri yang berbeza bergantung pada situasi.
+Setiap module senario menentukan tindakan counter Red, dependency defensive
+response dan perubahan action seterusnya. Tindakan sebelumnya boleh membuang
+atau mengubah action pihak lawan. Server menggunakan peraturan yang sama dalam
+paparan pemain dan validation action.
 
 ### 6.5 Keadaan Senario
 

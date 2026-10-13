@@ -1,7 +1,7 @@
 # Cyber Clash Server Prototype
 
-This prototype contains the first authoritative vertical slice: an email
-account-verification scenario.
+This prototype contains an authoritative Red Team versus Blue Team game with
+dynamic scenario selection.
 
 ## Run the WebSocket server
 
@@ -43,10 +43,10 @@ second client to the Blue Team. Each client receives only its role-appropriate
 state view. The lobby ID is included in the `joined` and
 `waiting_for_player` messages.
 
-Matches currently use three rounds. Round 1 and Round 3 use the email
-verification scenario, while Round 2 uses the suspicious login activity
-scenario. Scenario scores are added to the persistent match score. After a
-scenario is resolved, both players must send:
+Matches currently use three rounds. At match creation, the server randomly
+selects three different scenarios from the scenario catalogue. Scenario
+scores are added to the persistent match score. After a scenario is resolved,
+both players must send:
 
 ```json
 {"type":"ready_next_round"}
@@ -71,6 +71,29 @@ The suspicious login scenario uses an additional counter-turn:
 ```text
 Red attack -> Blue investigate -> Red adapt/evade -> Blue final response
 ```
+
+The scenario catalogue is stored as separate content files under
+`server/scenarios` and separate logic modules under `server/src/scenarios`.
+Each of the 28 catalogue scenarios has its own JavaScript module with explicit
+action dependencies, counter-actions and response rules. The JSON file holds
+scenario content, while the module owns its gameplay behavior. All are
+simulations: the server never performs real attacks or accesses external
+systems. The catalogue includes email, suspicious login, USB device, network
+activity, malware, ransomware, cloud access, web application, social
+engineering, data exfiltration, authentication, QR phishing, endpoint,
+physical security, software supply chain, insider risk, IoT, voice
+impersonation, calendar abuse, password reset abuse, API key exposure,
+container image risk, rogue Wi-Fi, Bluetooth pairing, backup integrity, log
+tampering, service account abuse, network printer risk and mobile application
+permissions.
+
+Scenario integration uses a registry contract in `server/src/scenarioRegistry.js`.
+The server calls only `create`, `apply` and `view` through that registry; it
+does not contain scenario-specific rules. Generic scenarios are data-driven
+JSON content is paired with a dedicated JavaScript module registered through
+the same contract. Each module may define its own counter-turn, action
+dependencies and response filtering. To remove a scenario, remove its module
+from the registry and its content file; lobby and match logic do not change.
 
 The Godot client prototype is located at `../client`. Start the server first,
 then run the Godot project so it can connect to `ws://127.0.0.1:3000`.

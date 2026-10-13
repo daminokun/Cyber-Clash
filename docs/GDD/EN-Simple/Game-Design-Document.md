@@ -413,7 +413,8 @@ Outcome and Score
 
 ### 6.3 Scenario Types
 
-The initial prototype will contain four main scenario types:
+The scenario catalogue contains multiple scenario types. Each match randomly
+selects three different scenarios:
 
 | Scenario Type | Example                                           |
 | ------------- | ------------------------------------------------- |
@@ -421,8 +422,15 @@ The initial prototype will contain four main scenario types:
 | Login         | Unusual login activity is detected.               |
 | USB           | An unknown USB device is connected to a computer. |
 | Network       | Suspicious network activity is detected.          |
+| Malware       | A suspicious installer is downloaded.             |
+| Ransomware    | Many files are renamed unexpectedly.              |
+| Cloud         | An unexpected cloud permission change occurs.     |
+| Web App       | A public web form receives crafted input.         |
+| Social        | An unknown caller requests sensitive information. |
+| Data Transfer | A workstation sends an unusual amount of data.    |
 
-Additional scenario types may be added during future development.
+Additional scenarios may be added during future development. Each scenario
+uses its own server logic module and its own content file.
 
 ### 6.4 Scenario Variations
 
@@ -437,6 +445,10 @@ For example, the Email scenario may include:
 * File sharing notification.
 
 The generated scenario may have different characteristics depending on the situation.
+Each scenario module defines its own Red counter-actions, response
+dependencies and action changes. A previous action may remove or change the
+next action available to the other team. The server applies these rules both
+when building the player view and when validating actions.
 
 ### 6.5 Scenario State
 
