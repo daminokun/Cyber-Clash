@@ -2586,13 +2586,13 @@ The current implementation checkpoint supports:
 - Server-side phase validation, role-specific state views and scenario resolution.
 - Provisional scoring values documented in Section 11.8.
 - WebSocket communication using the JSON messages documented in Section 13.9.
+- Basic Godot client UI for displaying events, role-specific state, actions and outcomes.
 
 The following planned features are not implemented in this checkpoint:
 
 - Multiple scenarios in one match.
 - Unexpected event generation.
 - Reconnection and match recovery.
-- Godot client UI.
 - Match completion and final winner calculation.
 
 ### 15.13 Technical Requirements Principle

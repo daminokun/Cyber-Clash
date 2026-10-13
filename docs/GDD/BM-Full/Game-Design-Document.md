@@ -2596,13 +2596,14 @@ semasa implementation checkpoint supports:
 - Server-side fasa validation, role-khusus keadaan views dan senario penyelesaian.
 - Provisional pemarkahan values documented dalam Section 11.8.
 - WebSocket komunikasi menggunakan JSON messages documented dalam Section 13.9.
+- Antara muka asas Godot untuk memaparkan peristiwa, maklumat mengikut peranan,
+  tindakan dan hasil senario.
 
 following planned features ialah tidak implemented dalam ini checkpoint:
 
 - Multiple senario-senario dalam satu perlawanan.
 - tidak dijangka peristiwa penjanaan.
 - Reconnection dan perlawanan recovery.
-- Godot client UI.
 - perlawanan completion dan akhir winner calculation.
 
 ### 15.13 Keperluan Teknikal Principle
