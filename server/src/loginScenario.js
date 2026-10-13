@@ -13,9 +13,6 @@ function getAvailableBlueActions(state) {
   const actions = state.phase === "blue_response"
     ? RESPONSE_BLUE_ACTIONS
     : state.phase === "blue_action" ? INITIAL_BLUE_ACTIONS : [];
-  if (state.redAdaptation === "spoof_login_location") {
-    return actions.filter((action) => action !== "force_logout");
-  }
   return actions;
 }
 
@@ -36,16 +33,16 @@ function createLoginScenario() {
 
 function getInvestigationEvidence(state) {
   const evidence = { ...template.investigationEvidence };
+  delete evidence.locationCheck;
   if (state.redAction === "do_nothing") {
     evidence.activityCheck = "No deliberate account manipulation was found in the available records.";
   } else {
     evidence.activityCheck = "The authentication records contain indicators consistent with deliberate account manipulation.";
   }
   if (state.redAdaptation === "spoof_login_location") {
-    evidence.locationCheck = "The reported location conflicts with the authentication provider's location record.";
-    evidence.adaptationCheck = "The login metadata changed after investigation, suggesting an attempted disguise.";
-  } else if (state.redAdaptation === "do_nothing") {
-    evidence.adaptationCheck = "The login metadata remained consistent after investigation.";
+    evidence.adaptationCheck = "The investigation cannot confirm whether the login metadata changed after the response.";
+  } else {
+    evidence.adaptationCheck = "The investigation cannot confirm whether the login metadata changed after the response.";
   }
   if (state.blueAction === "force_logout") {
     evidence.responseCheck = "The active session was terminated and requires a fresh sign-in.";

@@ -450,6 +450,11 @@ dependencies and action changes. A previous action may remove or change the
 next action available to the other team. The server applies these rules both
 when building the player view and when validating actions.
 
+Red adaptation actions are hidden server state. They can change which Blue
+defense succeeds, but the server must not remove a defense from Blue's action
+list or display a message confirming that Red changed tactics. Blue must choose
+a response while the adaptation remains uncertain.
+
 ### 6.5 Scenario State
 
 Each scenario contains a hidden state managed by the game server.

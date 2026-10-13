@@ -2517,6 +2517,13 @@ dependencies and action filtering. A previous Red or Blue action may remove
 or change the opponent's next action. The server applies the same rules when
 building the player view and validating the submitted action.
 
+Red adaptation actions are hidden server state. They may change which defensive
+response succeeds, but the server must not reveal the adaptation by removing a
+defense from Blue's action list or by displaying a message that confirms the
+threat changed. Blue receives the investigation evidence available before the
+final response and must choose a defense under uncertainty. This prevents a
+counter-tactic from becoming a free warning to Blue Team.
+
 ### 15.7 Networking and Communication
 
 The multiplayer system requires a communication mechanism between the Godot clients and the game server.

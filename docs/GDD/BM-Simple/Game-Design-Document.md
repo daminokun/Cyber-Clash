@@ -457,6 +457,11 @@ response dan perubahan action seterusnya. Tindakan sebelumnya boleh membuang
 atau mengubah action pihak lawan. Server menggunakan peraturan yang sama dalam
 paparan pemain dan validation action.
 
+Tindakan adaptasi Red Team kekal tersembunyi di server. Ia boleh mengubah
+pertahanan yang berjaya, tetapi pilihan pertahanan Blue Team tidak boleh
+dibuang dan mesej tidak boleh mengesahkan perubahan taktik. Blue Team perlu
+memilih tindak balas dalam keadaan tidak pasti.
+
 ### 6.5 Keadaan Senario
 
 setiap senario mengandungi tersembunyi keadaan diuruskan oleh permainan ini server.

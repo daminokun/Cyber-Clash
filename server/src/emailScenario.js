@@ -12,9 +12,6 @@ function getAvailableBlueActions(state) {
   const actions = state.phase === "blue_response"
     ? RESPONSE_BLUE_ACTIONS
     : state.phase === "blue_action" ? INITIAL_BLUE_ACTIONS : [];
-  if (state.redAdaptation === "change_sender") {
-    return actions.filter((action) => action !== "block");
-  }
   return actions;
 }
 const RED_ADAPTATION_ACTIONS = ["do_nothing", "change_sender"];
@@ -24,11 +21,7 @@ function getInvestigationEvidence(state) {
   evidence.messageCheck = state.redAction === "do_nothing"
     ? "No deliberate message manipulation was found."
     : "The message contains an indicator of deliberate manipulation.";
-  evidence.adaptationCheck = state.redAdaptation === "change_sender"
-    ? "The sender metadata changed after investigation; blocking the original sender may not be sufficient."
-    : state.redAdaptation === "do_nothing"
-      ? "The message metadata remained consistent after investigation."
-      : "No follow-up manipulation has been observed yet.";
+  evidence.adaptationCheck = "The investigation cannot confirm whether the message metadata changed after the response.";
   if (state.blueAction === "report") {
     evidence.responseCheck = "The message was flagged for security review.";
   } else if (state.blueAction === "block") {

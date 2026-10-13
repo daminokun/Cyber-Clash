@@ -32,12 +32,9 @@ function createScenarioModule({ definition, rules }) {
       : state.phase === "blue_response" ? rules.blueResponses : [];
     const unavailable = state.phase === "blue_action"
       ? rules.unavailableBlueActionsByRedAction?.[state.redAction] || []
-      : rules.unavailableBlueActionsByAdaptation?.[state.redAdaptation] || [];
-    const ineffective = state.phase === "blue_response"
-      ? rules.defensiveActions.filter((action) => !effectiveDefenses(state).includes(action))
       : [];
     return actions.filter(
-      (action) => !unavailable.includes(action) && !ineffective.includes(action)
+      (action) => !unavailable.includes(action)
     );
   }
 
@@ -126,9 +123,7 @@ function createScenarioModule({ definition, rules }) {
           activityCheck: rules.attackActions.includes(state.redAction)
             ? "The investigation found indicators that the event was deliberately manipulated."
             : "The investigation found no indicators of deliberate manipulation.",
-          adaptationCheck: state.redAdaptation && state.redAdaptation !== "do_nothing"
-            ? "The threat pattern changed after investigation; the previous response may no longer contain it."
-            : "The threat pattern remained consistent after investigation."
+          adaptationCheck: "The investigation cannot confirm whether the threat pattern changed after the response."
         };
       }
     }

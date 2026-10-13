@@ -102,6 +102,12 @@ Pemain memilih satu tindakan yang sah berdasarkan senario semasa. Tindakan yang 
 
 Server mengesahkan tindakan yang dipilih dan mengemas kini keadaan tersembunyi senario.
 
+Tindakan adaptasi Red Team ialah keadaan tersembunyi di server. Tindakan ini
+boleh mengubah pertahanan Blue Team yang berjaya, tetapi server tidak boleh
+membuang pilihan pertahanan daripada senarai Blue Team atau memaparkan mesej
+yang mengesahkan bahawa taktik Red Team telah berubah. Blue Team mesti memilih
+tindak balas berdasarkan ketidakpastian.
+
 Memilih Jangan Lakukan Apa-apa ialah keputusan strategik yang sah. Red Team tidak perlu menyerang setiap senario.
 
 ### 3.3 Fasa Blue Team

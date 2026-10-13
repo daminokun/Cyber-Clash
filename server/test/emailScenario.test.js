@@ -116,7 +116,7 @@ test("login scenario investigation reveals restricted evidence", () => {
   assert.equal("private" in getLoginPlayerView(state, "blue"), false);
 });
 
-test("login intelligence exposes evidence that contradicts a spoofed location", () => {
+test("login intelligence does not reveal a spoofed location adaptation", () => {
   const state = createLoginScenario();
 
   applyLoginAction(state, "red", "credential_stuffing");
@@ -124,14 +124,8 @@ test("login intelligence exposes evidence that contradicts a spoofed location", 
   applyLoginAction(state, "red", "spoof_login_location");
 
   const evidence = getLoginPlayerView(state, "blue").evidence;
-  assert.equal(
-    evidence.locationCheck.includes("conflicts with the authentication provider"),
-    true
-  );
-  assert.equal(
-    evidence.adaptationCheck.includes("attempted disguise"),
-    true
-  );
+  assert.equal("locationCheck" in evidence, false);
+  assert.equal(evidence.adaptationCheck.includes("cannot confirm"), true);
   assert.equal("redAdaptation" in evidence, false);
 });
 
@@ -155,7 +149,7 @@ test("security intelligence changes for non-attack and defensive actions", () =>
   assert.equal(loginEvidence.responseCheck.includes("terminated"), true);
 });
 
-test("email counter-turn can bypass blocking after the sender changes", () => {
+test("email counter-turn keeps the defense choice hidden after the sender changes", () => {
   const state = createEmailScenario();
 
   applyAction(state, "red", "add_malicious_link");
@@ -164,19 +158,13 @@ test("email counter-turn can bypass blocking after the sender changes", () => {
 
   assert.deepEqual(getPlayerView(state, "blue").availableActions, [
     "report",
-    "ignore"
+    "ignore",
+    "block"
   ]);
-  assert.throws(
-    () => applyAction(state, "blue", "block"),
-    { message: "invalid_blue_action" }
-  );
 
-  applyAction(state, "blue", "report");
-  assert.equal(state.outcome, "attack_prevented");
-  assert.equal(
-    getPlayerView(state, "blue").evidence.adaptationCheck.includes("blocking"),
-    true
-  );
+  applyAction(state, "blue", "block");
+  assert.equal(state.outcome, "attack_succeeded");
+  assert.equal(getPlayerView(state, "blue").evidence.adaptationCheck.includes("cannot confirm"), true);
 });
 
 test("login attack is prevented by resetting credentials", () => {
@@ -204,6 +192,7 @@ test("login investigation gives red an adaptation turn before final response", (
   applyLoginAction(state, "red", "spoof_login_location");
   assert.equal(state.phase, "blue_response");
   assert.deepEqual(getLoginPlayerView(state, "blue").availableActions, [
+    "force_logout",
     "reset_credentials",
     "ignore"
   ]);
@@ -252,19 +241,16 @@ test("generic investigation gives red a counter-turn and can bypass one defense"
 
   applyGenericAction(state, "red", "change_tactic");
   assert.deepEqual(getGenericPlayerView(state, "blue").availableActions, [
+    "revoke_access",
     "lock_account",
     "ignore"
   ]);
-  assert.throws(
-    () => applyGenericAction(state, "blue", "revoke_access"),
-    { message: "invalid_blue_action" }
-  );
-  applyGenericAction(state, "blue", "lock_account");
+  applyGenericAction(state, "blue", "revoke_access");
 
-  assert.equal(state.outcome, "attack_prevented");
-  assert.deepEqual(state.scores, { red: 0, blue: 3 });
+  assert.equal(state.outcome, "attack_succeeded");
+  assert.deepEqual(state.scores, { red: 5, blue: 0 });
   assert.equal(
-    getGenericPlayerView(state, "blue").evidence.adaptationCheck.includes("changed"),
+    getGenericPlayerView(state, "blue").evidence.adaptationCheck.includes("cannot confirm"),
     true
   );
 });
@@ -284,16 +270,13 @@ test("generic scenarios can define distinct adaptation actions and counters", ()
   applyGenericAction(state, "red", "accelerate_encryption");
   assert.deepEqual(getGenericPlayerView(state, "blue").availableActions, [
     "isolate_server",
+    "restore_backup",
     "ignore"
   ]);
-  assert.throws(
-    () => applyGenericAction(state, "blue", "restore_backup"),
-    { message: "invalid_blue_action" }
-  );
-  applyGenericAction(state, "blue", "isolate_server");
+  applyGenericAction(state, "blue", "restore_backup");
 
-  assert.equal(state.outcome, "attack_prevented");
-  assert.deepEqual(state.scores, { red: 0, blue: 3 });
+  assert.equal(state.outcome, "attack_succeeded");
+  assert.deepEqual(state.scores, { red: 5, blue: 0 });
 });
 
 test("generic next actions reflect the previous red action", () => {
