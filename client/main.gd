@@ -457,7 +457,10 @@ func _handle_message(raw_message: String) -> void:
 		"match_complete":
 			action_pending = true
 			_clear_action_buttons()
-			result_explanation_label.visible = false
+			var final_explanation := str(message.get("resultExplanation", ""))
+			if not final_explanation.is_empty():
+				result_explanation_label.text = final_explanation
+				result_explanation_label.visible = true
 			var final_scores: Dictionary = message.get("scores", {})
 			match_result_label.text = "MATCH COMPLETE\nWINNER: %s\nRED %s  |  BLUE %s" % [
 				str(message.get("winner", "draw")).to_upper(),

@@ -462,6 +462,10 @@ awarded. If no attack occurred, it explains that there was no significant
 impact. Hidden information is only revealed after resolution so the explanation
 does not provide clues while the scenario is still active.
 
+In the final round, the result explanation is displayed together with the
+match-complete screen. This ensures players can read why the final round ended
+as it did before reviewing the overall match winner.
+
 ### 6.5 Scenario State
 
 Each scenario contains a hidden state managed by the game server.

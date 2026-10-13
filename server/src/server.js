@@ -82,7 +82,8 @@ function broadcastMatchComplete(match) {
     send(socket, {
       type: "match_complete",
       scores: { ...match.scores },
-      winner
+      winner,
+      resultExplanation: match.scenario.resultExplanation
     });
   }
 }

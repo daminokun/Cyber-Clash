@@ -255,6 +255,16 @@ test("resolved scenarios provide a beginner-friendly public explanation", () => 
   }
 });
 
+test("resolved generic scenario retains its explanation for the final round", () => {
+  const state = createGenericScenario("ransomware-warning");
+  applyGenericAction(state, "red", "encrypt_files");
+  applyGenericAction(state, "blue", "ignore");
+  const view = getGenericPlayerView(state, "blue");
+  assert.equal(state.resolved, true);
+  assert.equal(view.resultExplanation, state.resultExplanation);
+  assert.ok(view.resultExplanation.includes("Red"));
+});
+
 test("generic scenario keeps private information hidden and resolves a defended attack", () => {
   const state = createGenericScenario("usb-device-threat");
   const redView = getGenericPlayerView(state, "red");
