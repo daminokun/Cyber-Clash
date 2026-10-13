@@ -49,6 +49,7 @@ var score_label: Label
 var actions_container: VBoxContainer
 var match_result_label: Label
 var match_result_logo: TextureRect
+var result_explanation_label: Label
 
 func _ready() -> void:
 	_apply_ui_palette()
@@ -257,6 +258,9 @@ func _build_game() -> Control:
 	match_result_logo.visible = false
 	layout.add_child(match_result_logo)
 	layout.add_child(match_result_label)
+	result_explanation_label = _create_text_label()
+	result_explanation_label.visible = false
+	layout.add_child(result_explanation_label)
 
 	var content := HBoxContainer.new()
 	content.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -453,6 +457,7 @@ func _handle_message(raw_message: String) -> void:
 		"match_complete":
 			action_pending = true
 			_clear_action_buttons()
+			result_explanation_label.visible = false
 			var final_scores: Dictionary = message.get("scores", {})
 			match_result_label.text = "MATCH COMPLETE\nWINNER: %s\nRED %s  |  BLUE %s" % [
 				str(message.get("winner", "draw")).to_upper(),
@@ -475,6 +480,7 @@ func _handle_message(raw_message: String) -> void:
 			action_pending = false
 			match_result_label.visible = false
 			match_result_logo.visible = false
+			result_explanation_label.visible = false
 			lobby_container.visible = true
 			game_container.visible = false
 			lobby_status_label.text = "NEW OPPONENT FOUND"
@@ -530,6 +536,8 @@ func _render_state(received_state: Dictionary) -> void:
 	_rebuild_action_buttons(available_actions)
 	if state.has("outcome"):
 		_set_status("Scenario result: %s" % state.get("outcome"))
+		result_explanation_label.text = str(state.get("resultExplanation", ""))
+		result_explanation_label.visible = not result_explanation_label.text.is_empty()
 		if int(state.get("round", 1)) < int(state.get("maxRounds", 3)):
 			_add_ready_button()
 

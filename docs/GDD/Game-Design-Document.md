@@ -2531,6 +2531,12 @@ Blue must therefore balance immediate response against investigation: a direct
 response may stop the original attack, while investigation gives Red a valid
 counter-turn before the final response.
 
+After resolution, both players receive a beginner-friendly result explanation.
+It describes the Red attack, the Blue response, why the attack succeeded or was
+prevented, and why points were awarded. If no attack occurred, it explains that
+there was no significant impact. Hidden information is revealed only after
+resolution so the explanation cannot provide clues during active play.
+
 ### 15.7 Networking and Communication
 
 The multiplayer system requires a communication mechanism between the Godot clients and the game server.

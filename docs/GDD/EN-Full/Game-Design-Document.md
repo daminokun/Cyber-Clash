@@ -2502,6 +2502,12 @@ threat changed. Blue receives the investigation evidence available before the
 final response and must choose a defense under uncertainty. This prevents a
 counter-tactic from becoming a free warning to Blue Team.
 
+After resolution, both players receive a beginner-friendly result explanation.
+It describes the Red attack, the Blue response, why the attack succeeded or was
+prevented, and why points were awarded. If no attack occurred, it explains that
+there was no significant impact. Hidden information is revealed only after
+resolution so the explanation cannot provide clues during active play.
+
 ### 15.7 Networking and Communication
 
 The multiplayer system requires a communication mechanism between the Godot clients and the game server.

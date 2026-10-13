@@ -235,6 +235,26 @@ test("removed change tactic action is rejected for every scenario", () => {
   }
 });
 
+test("resolved scenarios provide a beginner-friendly public explanation", () => {
+  const emailState = createEmailScenario();
+  applyAction(emailState, "red", "add_malicious_link");
+  applyAction(emailState, "blue", "ignore");
+  const emailView = getPlayerView(emailState, "blue");
+  const loginState = createLoginScenario();
+  applyLoginAction(loginState, "red", "credential_stuffing");
+  applyLoginAction(loginState, "blue", "ignore");
+  const loginView = getLoginPlayerView(loginState, "blue");
+  const genericState = createGenericScenario("cloud-permission-abuse");
+  applyGenericAction(genericState, "red", "add_external_account");
+  applyGenericAction(genericState, "blue", "ignore");
+  const genericView = getGenericPlayerView(genericState, "blue");
+  for (const view of [emailView, loginView, genericView]) {
+    assert.equal(typeof view.resultExplanation, "string");
+    assert.ok(view.resultExplanation.length > 40);
+    assert.ok(view.resultExplanation.includes("receives") || view.resultExplanation.includes("neither team scored"));
+  }
+});
+
 test("generic scenario keeps private information hidden and resolves a defended attack", () => {
   const state = createGenericScenario("usb-device-threat");
   const redView = getGenericPlayerView(state, "red");

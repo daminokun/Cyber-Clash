@@ -89,8 +89,29 @@ function createScenarioModule({ definition, rules }) {
     } else {
       state.outcome = "no_significant_impact";
     }
+    state.resultExplanation = buildResultExplanation(state, attackSucceeded, defenseSucceeded);
     state.phase = "resolved";
     state.resolved = true;
+  }
+
+  function actionLabel(action) {
+    return action.replaceAll("_", " ");
+  }
+
+  function buildResultExplanation(state, attackSucceeded, defenseSucceeded) {
+    if (!attackSucceeded && state.outcome === "false_positive") {
+      return `Red did not launch an attack. Blue selected "${actionLabel(state.blueAction)}" against a legitimate event, so Blue receives a -2 false-positive penalty.`;
+    }
+    if (!attackSucceeded) {
+      return `Red chose not to attack. Blue's "${actionLabel(state.blueAction)}" response did not need to contain an attack, so the round had no significant impact and neither team scored.`;
+    }
+    if (defenseSucceeded) {
+      return `Red launched an attack and Blue selected the matching "${actionLabel(state.blueAction)}" defense. The attack was contained before it achieved its objective, so Blue receives 3 points and Red receives 0.`;
+    }
+    if (state.redAdaptation && state.redAdaptation !== "do_nothing") {
+      return `Red changed the attack vector after investigation. Blue's "${actionLabel(state.blueAction)}" response addressed the original vector, not the follow-up vector, so the attack succeeded and Red receives 5 points.`;
+    }
+    return `Red launched an attack, but Blue's "${actionLabel(state.blueAction)}" response did not match the attack vector. The attack succeeded, so Red receives 5 points and Blue receives 0.`;
   }
 
   function apply(state, role, action) {
@@ -147,6 +168,7 @@ function createScenarioModule({ definition, rules }) {
     }
     if (state.resolved) {
       result.outcome = state.outcome;
+      result.resultExplanation = state.resultExplanation;
     }
     return result;
   }

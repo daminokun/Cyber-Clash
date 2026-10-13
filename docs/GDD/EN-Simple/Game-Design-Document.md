@@ -455,6 +455,13 @@ defense succeeds, but the server must not remove a defense from Blue's action
 list or display a message confirming that Red changed tactics. Blue must choose
 a response while the adaptation remains uncertain.
 
+After the scenario ends, both players receive a beginner-friendly result
+explanation. The explanation describes Red's attack action, Blue's defensive
+response, why the attack succeeded or was prevented, and why points were
+awarded. If no attack occurred, it explains that there was no significant
+impact. Hidden information is only revealed after resolution so the explanation
+does not provide clues while the scenario is still active.
+
 ### 6.5 Scenario State
 
 Each scenario contains a hidden state managed by the game server.

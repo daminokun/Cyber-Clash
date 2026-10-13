@@ -117,8 +117,26 @@ function resolveScenario(state) {
   } else {
     state.outcome = "no_significant_impact";
   }
+  state.resultExplanation = buildResultExplanation(state, attackSucceeded, defensiveResponse);
   state.phase = "resolved";
   state.resolved = true;
+}
+
+function buildResultExplanation(state, attackSucceeded, defensiveResponse) {
+  const response = state.blueAction.replaceAll("_", " ");
+  if (!attackSucceeded && state.outcome === "false_positive") {
+    return `Red did not manipulate the account. Blue selected "${response}" against a legitimate login event, so Blue receives a -2 false-positive penalty.`;
+  }
+  if (!attackSucceeded) {
+    return `Red chose not to attack. Blue's "${response}" response did not need to contain an attack, so the round had no significant impact and neither team scored.`;
+  }
+  if (defensiveResponse) {
+    return `Red attempted credential stuffing, but Blue's "${response}" response invalidated the attack. Blue receives 3 points and Red receives 0.`;
+  }
+  if (state.redAdaptation === "spoof_login_location") {
+    return `Red disguised the login location after investigation. Blue used "${response}", which did not invalidate the credentials used by the attack, so Red receives 5 points.`;
+  }
+  return `Red attempted credential stuffing and Blue's "${response}" response did not invalidate it. The login attack succeeded, so Red receives 5 points and Blue receives 0.`;
 }
 
 function getPlayerView(state, role) {
@@ -148,6 +166,7 @@ function getPlayerView(state, role) {
   }
   if (state.resolved) {
     view.outcome = state.outcome;
+    view.resultExplanation = state.resultExplanation;
   }
   return view;
 }

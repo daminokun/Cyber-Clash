@@ -113,9 +113,26 @@ function resolveScenario(state) {
   } else {
     state.outcome = "no_significant_impact";
   }
+  state.resultExplanation = buildResultExplanation(state, attackSucceeded, defensiveResponse);
 
   state.phase = "resolved";
   state.resolved = true;
+}
+
+function buildResultExplanation(state, attackSucceeded, defensiveResponse) {
+  if (!attackSucceeded && state.outcome === "false_positive") {
+    return `Red did not add a malicious link. Blue selected "${state.blueAction.replaceAll("_", " ")}" against a legitimate email, so Blue receives a -2 false-positive penalty.`;
+  }
+  if (!attackSucceeded) {
+    return `Red chose not to attack. Blue's "${state.blueAction.replaceAll("_", " ")}" response did not need to contain an attack, so the round had no significant impact and neither team scored.`;
+  }
+  if (defensiveResponse) {
+    return `Red added a malicious link, but Blue's "${state.blueAction.replaceAll("_", " ")}" response contained it before it could cause harm. Blue receives 3 points and Red receives 0.`;
+  }
+  if (state.redAdaptation === "change_sender") {
+    return `Red changed the sender after investigation. Blue's "${state.blueAction.replaceAll("_", " ")}" response targeted the original sender, so the malicious link remained effective and Red receives 5 points.`;
+  }
+  return `Red added a malicious link and Blue's "${state.blueAction.replaceAll("_", " ")}" response did not contain it. The attack succeeded, so Red receives 5 points and Blue receives 0.`;
 }
 
 function getPlayerView(state, role) {
@@ -148,6 +165,7 @@ function getPlayerView(state, role) {
 
   if (state.resolved) {
     view.outcome = state.outcome;
+    view.resultExplanation = state.resultExplanation;
   }
 
   return view;
