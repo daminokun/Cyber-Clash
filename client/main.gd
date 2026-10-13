@@ -12,6 +12,7 @@ var private_label: Label
 var evidence_label: Label
 var score_label: Label
 var actions_container: VBoxContainer
+var connection_rejected := false
 
 func _ready() -> void:
 	_build_interface()
@@ -29,7 +30,8 @@ func _process(_delta: float) -> void:
 		while socket.get_available_packet_count() > 0:
 			_handle_message(socket.get_packet().get_string_from_utf8())
 	elif connection_state == WebSocketPeer.STATE_CLOSED:
-		_set_status("Disconnected from server.")
+		if not connection_rejected:
+			_set_status("Disconnected from server.")
 
 func _build_interface() -> void:
 	var margin := MarginContainer.new()
@@ -92,7 +94,14 @@ func _handle_message(raw_message: String) -> void:
 			if received_state is Dictionary:
 				_render_state(received_state)
 		"error":
-			_set_status("Server error: %s" % message.get("error", "unknown_error"))
+			var server_error := str(message.get("error", "unknown_error"))
+			connection_rejected = server_error == "match_full"
+			if connection_rejected:
+				_set_status("Match full. Only two players are allowed.")
+			else:
+				_set_status("Server error: %s" % server_error)
+		"player_disconnected":
+			_set_status("%s player disconnected. Restart the match to continue." % str(message.get("role", "Opponent")).capitalize())
 		_:
 			_set_status("Unknown server message.")
 
@@ -113,7 +122,11 @@ func _render_state(received_state: Dictionary) -> void:
 		scores.get("blue", 0),
 		state.get("phase", "")
 	]
-	_rebuild_action_buttons(state.get("availableActions", []))
+	var available_actions: Array = state.get("availableActions", [])
+	if role == "red":
+		var private_info: Dictionary = state.get("private", {})
+		available_actions = private_info.get("availableActions", [])
+	_rebuild_action_buttons(available_actions)
 	if state.has("outcome"):
 		_set_status("Scenario result: %s" % state.get("outcome"))
 

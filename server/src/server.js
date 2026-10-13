@@ -49,8 +49,8 @@ function createGameServer({ port = 0, host = "127.0.0.1" } = {}) {
 
   server.on("connection", (socket) => {
     if (match.players.size >= 2) {
-      send(socket, { type: "error", error: "match_full" });
-      socket.close();
+      socket.send(JSON.stringify({ type: "error", error: "match_full" }));
+      setTimeout(() => socket.terminate(), 1000);
       return;
     }
 
@@ -75,6 +75,12 @@ function createGameServer({ port = 0, host = "127.0.0.1" } = {}) {
 
     socket.on("close", () => {
       match.players.delete(socket);
+      for (const [otherSocket, otherPlayer] of match.players) {
+        send(otherSocket, {
+          type: "player_disconnected",
+          role
+        });
+      }
     });
   });
 
