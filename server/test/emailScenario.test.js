@@ -6,6 +6,11 @@ const {
   createEmailScenario,
   getPlayerView
 } = require("../src/emailScenario");
+const {
+  applyAction: applyLoginAction,
+  createLoginScenario,
+  getPlayerView: getLoginPlayerView
+} = require("../src/loginScenario");
 
 test("red view contains private scenario information and blue view does not", () => {
   const state = createEmailScenario();
@@ -85,4 +90,25 @@ test("invalid actions are rejected by the server logic", () => {
     () => applyAction(state, "red", "unknown_action"),
     { message: "invalid_red_action" }
   );
+});
+
+test("login scenario investigation reveals restricted evidence", () => {
+  const state = createLoginScenario();
+
+  applyLoginAction(state, "red", "credential_stuffing");
+  applyLoginAction(state, "blue", "investigate_logs");
+
+  assert.equal(state.phase, "blue_response");
+  assert.equal(getLoginPlayerView(state, "blue").evidence.logCheck.includes("unusual"), true);
+  assert.equal("private" in getLoginPlayerView(state, "blue"), false);
+});
+
+test("login attack is prevented by resetting credentials", () => {
+  const state = createLoginScenario();
+
+  applyLoginAction(state, "red", "credential_stuffing");
+  applyLoginAction(state, "blue", "reset_credentials");
+
+  assert.equal(state.outcome, "login_attack_prevented");
+  assert.deepEqual(state.scores, { red: 0, blue: 3 });
 });

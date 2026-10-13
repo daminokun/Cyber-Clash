@@ -43,6 +43,18 @@ second client to the Blue Team. Each client receives only its role-appropriate
 state view. The lobby ID is included in the `joined` and
 `waiting_for_player` messages.
 
+Matches currently use three rounds. Round 1 and Round 3 use the email
+verification scenario, while Round 2 uses the suspicious login activity
+scenario. Scenario scores are added to the persistent match score. After a
+scenario is resolved, both players must send:
+
+```json
+{"type":"ready_next_round"}
+```
+
+before the next round begins. The server sends `match_complete` after the
+final round.
+
 The Godot client prototype is located at `../client`. Start the server first,
 then run the Godot project so it can connect to `ws://127.0.0.1:3000`.
 

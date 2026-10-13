@@ -368,6 +368,22 @@ func _handle_message(raw_message: String) -> void:
 			var received_state = message.get("state", {})
 			if received_state is Dictionary:
 				_render_state(received_state)
+		"round_waiting":
+			action_pending = true
+			_clear_action_buttons()
+			_set_status("Waiting for opponent... (%s/%s ready)" % [
+				message.get("readyCount", 0),
+				message.get("requiredPlayers", 2)
+			])
+		"match_complete":
+			action_pending = true
+			_clear_action_buttons()
+			var final_scores: Dictionary = message.get("scores", {})
+			_set_status("Match complete. Winner: %s | Red: %s | Blue: %s" % [
+				str(message.get("winner", "draw")).capitalize(),
+				final_scores.get("red", 0),
+				final_scores.get("blue", 0)
+			])
 		"error":
 			var server_error := str(message.get("error", "unknown_error"))
 			if action_pending:
@@ -397,16 +413,13 @@ func _render_state(received_state: Dictionary) -> void:
 	lobby_container.visible = false
 	game_container.visible = true
 	var event: Dictionary = state.get("event", {})
-	event_label.text = "Event: %s\n%s\nSender: %s\nSubject: %s" % [
-		event.get("title", ""),
-		event.get("description", ""),
-		event.get("sender", ""),
-		event.get("subject", "")
-	]
+	event_label.text = _format_event(event)
 	private_label.text = _format_private_info(state.get("private", {}))
 	evidence_label.text = _format_evidence(state.get("evidence", {}))
 	var scores: Dictionary = state.get("scores", {})
-	score_label.text = "Score - Red: %s | Blue: %s | Phase: %s" % [
+	score_label.text = "Round %s/%s | Score - Red: %s | Blue: %s | Phase: %s" % [
+		state.get("round", 1),
+		state.get("maxRounds", 3),
 		scores.get("red", 0),
 		scores.get("blue", 0),
 		state.get("phase", "")
@@ -419,6 +432,8 @@ func _render_state(received_state: Dictionary) -> void:
 	_rebuild_action_buttons(available_actions)
 	if state.has("outcome"):
 		_set_status("Scenario result: %s" % state.get("outcome"))
+		if int(state.get("round", 1)) < int(state.get("maxRounds", 3)):
+			_add_ready_button()
 
 func _format_private_info(private_info: Dictionary) -> String:
 	if private_info.is_empty():
@@ -427,6 +442,20 @@ func _format_private_info(private_info: Dictionary) -> String:
 		private_info.get("originalStatus", ""),
 		private_info.get("objective", "")
 	]
+
+func _format_event(event: Dictionary) -> String:
+	var lines := [
+		"Event: %s" % event.get("title", ""),
+		str(event.get("description", ""))
+	]
+	if event.has("sender") or event.has("subject"):
+		lines.append("Sender: %s" % event.get("sender", ""))
+		lines.append("Subject: %s" % event.get("subject", ""))
+	else:
+		lines.append("Account: %s" % event.get("account", ""))
+		lines.append("Location: %s" % event.get("location", ""))
+		lines.append("Time: %s" % event.get("time", ""))
+	return "\n".join(lines)
 
 func _format_evidence(evidence: Dictionary) -> String:
 	if evidence.is_empty():
@@ -461,6 +490,24 @@ func _send_action(action: String) -> void:
 func _clear_action_buttons() -> void:
 	for child in actions_container.get_children():
 		child.queue_free()
+
+func _add_ready_button() -> void:
+	var button := _create_button("READY FOR NEXT ROUND", 42, 16)
+	button.pressed.connect(_send_ready_for_next_round)
+	actions_container.add_child(button)
+
+func _send_ready_for_next_round() -> void:
+	if action_pending:
+		return
+	if socket.get_ready_state() != WebSocketPeer.STATE_OPEN:
+		_set_status("Cannot continue while disconnected.")
+		return
+	action_pending = true
+	_clear_action_buttons()
+	socket.send_text(JSON.stringify({
+		"type": "ready_next_round"
+	}))
+	_set_status("Waiting for opponent...")
 
 func _set_status(message: String) -> void:
 	if status_label:

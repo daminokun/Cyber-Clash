@@ -5,13 +5,38 @@ const {
   createEmailScenario,
   getPlayerView
 } = require("./emailScenario");
+const loginScenario = require("./loginScenario");
 
 function createMatch(id) {
   return {
     id,
-    scenario: createEmailScenario(),
+    round: 1,
+    maxRounds: 3,
+    scenario: createScenario(1),
+    scores: { red: 0, blue: 0 },
+    readyPlayers: new Set(),
     players: new Map()
   };
+}
+
+function createScenario(round) {
+  return round % 2 === 0
+    ? loginScenario.createLoginScenario()
+    : createEmailScenario();
+}
+
+function getScenarioView(scenario, role) {
+  return scenario.category === "login_activity"
+    ? loginScenario.getPlayerView(scenario, role)
+    : getPlayerView(scenario, role);
+}
+
+function applyScenarioAction(scenario, role, action) {
+  if (scenario.category === "login_activity") {
+    loginScenario.applyAction(scenario, role, action);
+    return;
+  }
+  applyAction(scenario, role, action);
 }
 
 function send(socket, message) {
@@ -22,9 +47,13 @@ function send(socket, message) {
 
 function broadcastState(match) {
   for (const [socket, player] of match.players) {
+    const state = getScenarioView(match.scenario, player.role);
+    state.scores = { ...match.scores };
+    state.round = match.round;
+    state.maxRounds = match.maxRounds;
     send(socket, {
       type: "state",
-      state: getPlayerView(match.scenario, player.role)
+      state
     });
   }
 }
@@ -35,6 +64,35 @@ function broadcastJoined(match) {
       type: "joined",
       role: player.role,
       matchId: match.id
+    });
+  }
+}
+
+function addScenarioScore(match) {
+  match.scores.red += match.scenario.scores.red;
+  match.scores.blue += match.scenario.scores.blue;
+}
+
+function broadcastRoundWaiting(match) {
+  for (const [socket] of match.players) {
+    send(socket, {
+      type: "round_waiting",
+      round: match.round,
+      readyCount: match.readyPlayers.size,
+      requiredPlayers: match.players.size
+    });
+  }
+}
+
+function broadcastMatchComplete(match) {
+  const winner = match.scores.red === match.scores.blue
+    ? "draw"
+    : match.scores.red > match.scores.blue ? "red" : "blue";
+  for (const [socket] of match.players) {
+    send(socket, {
+      type: "match_complete",
+      scores: { ...match.scores },
+      winner
     });
   }
 }
@@ -130,11 +188,34 @@ function createGameServer({ port = 0, host = "127.0.0.1" } = {}) {
         }
 
         if (message.type !== "action" || typeof message.action !== "string") {
+          if (message.type === "ready_next_round") {
+            if (!match.scenario.resolved) {
+              throw new Error("round_not_ready");
+            }
+            if (match.round >= match.maxRounds) {
+              throw new Error("match_already_complete");
+            }
+            match.readyPlayers.add(socket);
+            broadcastRoundWaiting(match);
+            if (match.readyPlayers.size === match.players.size) {
+              match.round += 1;
+              match.readyPlayers.clear();
+              match.scenario = createScenario(match.round);
+              broadcastState(match);
+            }
+            return;
+          }
           throw new Error("invalid_action_message");
         }
 
-        applyAction(match.scenario, player.role, message.action);
+        applyScenarioAction(match.scenario, player.role, message.action);
+        if (match.scenario.resolved) {
+          addScenarioScore(match);
+        }
         broadcastState(match);
+        if (match.scenario.resolved && match.round === match.maxRounds) {
+          broadcastMatchComplete(match);
+        }
       } catch (error) {
         send(socket, { type: "error", error: error.message });
         if (!match && ["match_not_found", "match_full", "invalid_join_mode"].includes(error.message)) {

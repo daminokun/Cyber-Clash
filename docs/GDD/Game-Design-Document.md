@@ -2594,7 +2594,10 @@ The prototype will prioritise a reliable two-player match before introducing mor
 
 The current implementation checkpoint supports:
 
-- One predefined email account-verification scenario.
+- Three-round matches with server-controlled round progression.
+- Persistent match scores across rounds.
+- A ready state that requires both players before the next round.
+- Email phishing and suspicious login activity scenarios.
 - One active two-player match.
 - Deterministic Red Team and Blue Team role assignment.
 - Red Team `Do Nothing` and `Add Malicious Link` actions.
@@ -2606,10 +2609,8 @@ The current implementation checkpoint supports:
 
 The following planned features are not implemented in this checkpoint:
 
-- Multiple scenarios in one match.
 - Unexpected event generation.
 - Reconnection and match recovery.
-- Match completion and final winner calculation.
 
 ### 15.13 Technical Requirements Principle
 

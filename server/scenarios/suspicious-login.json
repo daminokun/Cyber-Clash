@@ -1,0 +1,18 @@
+{
+  "id": "suspicious-login-activity",
+  "category": "login_activity",
+  "event": {
+    "title": "Unusual account login",
+    "description": "An account was accessed from an unfamiliar location outside normal hours.",
+    "account": "student@example.edu",
+    "location": "Singapore",
+    "time": "02:14 UTC"
+  },
+  "originalStatus": "legitimate",
+  "redObjective": "Create or disguise suspicious login activity.",
+  "investigationEvidence": {
+    "logCheck": "The authentication log shows an unusual access pattern.",
+    "locationCheck": "The location is not in the account's normal activity history.",
+    "credentialCheck": "No confirmed credential theft was found yet."
+  }
+}
