@@ -11,6 +11,13 @@ const {
   createLoginScenario,
   getPlayerView: getLoginPlayerView
 } = require("../src/loginScenario");
+const scenarioRegistry = require("../src/scenarioRegistry");
+const {
+  applyScenarioAction: applyGenericAction,
+  createScenario: createGenericScenario,
+  getScenarioView: getGenericPlayerView,
+  getScenarioDefinitions
+} = scenarioRegistry;
 
 test("red view contains private scenario information and blue view does not", () => {
   const state = createEmailScenario();
@@ -46,9 +53,14 @@ test("investigation reveals evidence before the final response", () => {
 
   applyAction(state, "red", "add_malicious_link");
   applyAction(state, "blue", "investigate");
+  applyAction(state, "red", "do_nothing");
 
   assert.equal(state.phase, "blue_response");
   assert.equal(getPlayerView(state, "blue").evidence.linkCheck.includes("does not"), true);
+  assert.equal(
+    getPlayerView(state, "blue").evidence.messageCheck.includes("deliberate manipulation"),
+    true
+  );
 });
 
 test("red action options are removed after the red team submits an action", () => {
@@ -104,6 +116,69 @@ test("login scenario investigation reveals restricted evidence", () => {
   assert.equal("private" in getLoginPlayerView(state, "blue"), false);
 });
 
+test("login intelligence exposes evidence that contradicts a spoofed location", () => {
+  const state = createLoginScenario();
+
+  applyLoginAction(state, "red", "credential_stuffing");
+  applyLoginAction(state, "blue", "investigate_logs");
+  applyLoginAction(state, "red", "spoof_login_location");
+
+  const evidence = getLoginPlayerView(state, "blue").evidence;
+  assert.equal(
+    evidence.locationCheck.includes("conflicts with the authentication provider"),
+    true
+  );
+  assert.equal(
+    evidence.adaptationCheck.includes("attempted disguise"),
+    true
+  );
+  assert.equal("redAdaptation" in evidence, false);
+});
+
+test("security intelligence changes for non-attack and defensive actions", () => {
+  const emailState = createEmailScenario();
+  applyAction(emailState, "red", "do_nothing");
+  applyAction(emailState, "blue", "investigate");
+  applyAction(emailState, "red", "do_nothing");
+  applyAction(emailState, "blue", "ignore");
+  const emailEvidence = getPlayerView(emailState, "blue").evidence;
+  assert.equal(emailEvidence.messageCheck.includes("No deliberate"), true);
+  assert.equal(emailEvidence.responseCheck.includes("No containment"), true);
+
+  const loginState = createLoginScenario();
+  applyLoginAction(loginState, "red", "do_nothing");
+  applyLoginAction(loginState, "blue", "investigate_logs");
+  applyLoginAction(loginState, "red", "do_nothing");
+  applyLoginAction(loginState, "blue", "force_logout");
+  const loginEvidence = getLoginPlayerView(loginState, "blue").evidence;
+  assert.equal(loginEvidence.activityCheck.includes("No deliberate"), true);
+  assert.equal(loginEvidence.responseCheck.includes("terminated"), true);
+});
+
+test("email counter-turn can bypass blocking after the sender changes", () => {
+  const state = createEmailScenario();
+
+  applyAction(state, "red", "add_malicious_link");
+  applyAction(state, "blue", "investigate");
+  applyAction(state, "red", "change_sender");
+
+  assert.deepEqual(getPlayerView(state, "blue").availableActions, [
+    "report",
+    "ignore"
+  ]);
+  assert.throws(
+    () => applyAction(state, "blue", "block"),
+    { message: "invalid_blue_action" }
+  );
+
+  applyAction(state, "blue", "report");
+  assert.equal(state.outcome, "attack_prevented");
+  assert.equal(
+    getPlayerView(state, "blue").evidence.adaptationCheck.includes("blocking"),
+    true
+  );
+});
+
 test("login attack is prevented by resetting credentials", () => {
   const state = createLoginScenario();
 
@@ -129,8 +204,137 @@ test("login investigation gives red an adaptation turn before final response", (
   applyLoginAction(state, "red", "spoof_login_location");
   assert.equal(state.phase, "blue_response");
   assert.deepEqual(getLoginPlayerView(state, "blue").availableActions, [
-    "force_logout",
     "reset_credentials",
     "ignore"
   ]);
+});
+
+test("scenario catalogue provides enough unique choices for three-round matches", () => {
+  const definitions = getScenarioDefinitions();
+
+  assert.ok(definitions.length >= 28);
+  assert.equal(new Set(definitions.map((definition) => definition.id)).size, definitions.length);
+});
+
+test("generic scenario keeps private information hidden and resolves a defended attack", () => {
+  const state = createGenericScenario("usb-device-threat");
+  const redView = getGenericPlayerView(state, "red");
+  const blueView = getGenericPlayerView(state, "blue");
+
+  assert.equal(redView.private.objective.includes("malicious USB"), true);
+  assert.equal("private" in blueView, false);
+
+  applyGenericAction(state, "red", "add_malicious_file");
+  applyGenericAction(state, "blue", "investigate");
+  applyGenericAction(state, "red", "do_nothing");
+  assert.equal(state.phase, "blue_response");
+  assert.deepEqual(getGenericPlayerView(state, "blue").availableActions, [
+    "quarantine_device",
+    "report",
+    "ignore"
+  ]);
+  applyGenericAction(state, "blue", "quarantine_device");
+
+  assert.equal(state.outcome, "attack_prevented");
+  assert.deepEqual(state.scores, { red: 0, blue: 3 });
+});
+
+test("generic investigation gives red a counter-turn and can bypass one defense", () => {
+  const state = createGenericScenario("cloud-permission-abuse");
+
+  applyGenericAction(state, "red", "add_external_account");
+  applyGenericAction(state, "blue", "investigate");
+  assert.equal(state.phase, "red_adaptation");
+  assert.deepEqual(getGenericPlayerView(state, "red").private.availableActions, [
+    "do_nothing",
+    "change_tactic"
+  ]);
+
+  applyGenericAction(state, "red", "change_tactic");
+  assert.deepEqual(getGenericPlayerView(state, "blue").availableActions, [
+    "lock_account",
+    "ignore"
+  ]);
+  assert.throws(
+    () => applyGenericAction(state, "blue", "revoke_access"),
+    { message: "invalid_blue_action" }
+  );
+  applyGenericAction(state, "blue", "lock_account");
+
+  assert.equal(state.outcome, "attack_prevented");
+  assert.deepEqual(state.scores, { red: 0, blue: 3 });
+  assert.equal(
+    getGenericPlayerView(state, "blue").evidence.adaptationCheck.includes("changed"),
+    true
+  );
+});
+
+test("generic scenarios can define distinct adaptation actions and counters", () => {
+  const state = createGenericScenario("ransomware-warning");
+
+  applyGenericAction(state, "red", "encrypt_files");
+  applyGenericAction(state, "blue", "investigate");
+
+  assert.deepEqual(getGenericPlayerView(state, "red").private.availableActions, [
+    "do_nothing",
+    "change_tactic",
+    "accelerate_encryption"
+  ]);
+
+  applyGenericAction(state, "red", "accelerate_encryption");
+  assert.deepEqual(getGenericPlayerView(state, "blue").availableActions, [
+    "isolate_server",
+    "ignore"
+  ]);
+  assert.throws(
+    () => applyGenericAction(state, "blue", "restore_backup"),
+    { message: "invalid_blue_action" }
+  );
+  applyGenericAction(state, "blue", "isolate_server");
+
+  assert.equal(state.outcome, "attack_prevented");
+  assert.deepEqual(state.scores, { red: 0, blue: 3 });
+});
+
+test("generic next actions reflect the previous red action", () => {
+  const state = createGenericScenario("ransomware-warning");
+
+  applyGenericAction(state, "red", "delete_restore_points");
+
+  assert.deepEqual(getGenericPlayerView(state, "blue").availableActions, [
+    "investigate",
+    "isolate_server",
+    "ignore"
+  ]);
+  assert.throws(
+    () => applyGenericAction(state, "blue", "restore_backup"),
+    { message: "invalid_blue_action" }
+  );
+});
+
+test("every generic attack defines a valid next-action dependency", () => {
+  for (const { id } of getScenarioDefinitions()) {
+    const state = createGenericScenario(id);
+    const redActions = getGenericPlayerView(state, "red").private.availableActions;
+    const attackActions = redActions.filter((action) => action !== "do_nothing");
+    for (const attack of attackActions) {
+      const nextState = createGenericScenario(id);
+      applyGenericAction(nextState, "red", attack);
+      const blueActions = getGenericPlayerView(nextState, "blue").availableActions;
+      assert.ok(blueActions.length > 0, `${id}:${attack} removed every Blue action`);
+    }
+  }
+});
+
+test("scenario registry exposes a common contract for every scenario", () => {
+  const definitions = scenarioRegistry.getScenarioDefinitions();
+
+  for (const definition of definitions) {
+    const state = scenarioRegistry.createScenario(definition.id);
+    const redView = scenarioRegistry.getScenarioView(state, "red");
+
+    assert.equal(state.scenarioId, definition.id);
+    assert.equal(redView.category, definition.category);
+    assert.equal(typeof scenarioRegistry.applyScenarioAction, "function");
+  }
 });

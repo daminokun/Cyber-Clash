@@ -9,6 +9,16 @@ const INITIAL_BLUE_ACTIONS = ["investigate_logs", "force_logout", "reset_credent
 const RED_ADAPTATION_ACTIONS = ["do_nothing", "spoof_login_location"];
 const RESPONSE_BLUE_ACTIONS = ["force_logout", "reset_credentials", "ignore"];
 
+function getAvailableBlueActions(state) {
+  const actions = state.phase === "blue_response"
+    ? RESPONSE_BLUE_ACTIONS
+    : state.phase === "blue_action" ? INITIAL_BLUE_ACTIONS : [];
+  if (state.redAdaptation === "spoof_login_location") {
+    return actions.filter((action) => action !== "force_logout");
+  }
+  return actions;
+}
+
 function createLoginScenario() {
   return {
     scenarioId: template.id,
@@ -22,6 +32,29 @@ function createLoginScenario() {
     outcome: null,
     scores: { red: 0, blue: 0 }
   };
+}
+
+function getInvestigationEvidence(state) {
+  const evidence = { ...template.investigationEvidence };
+  if (state.redAction === "do_nothing") {
+    evidence.activityCheck = "No deliberate account manipulation was found in the available records.";
+  } else {
+    evidence.activityCheck = "The authentication records contain indicators consistent with deliberate account manipulation.";
+  }
+  if (state.redAdaptation === "spoof_login_location") {
+    evidence.locationCheck = "The reported location conflicts with the authentication provider's location record.";
+    evidence.adaptationCheck = "The login metadata changed after investigation, suggesting an attempted disguise.";
+  } else if (state.redAdaptation === "do_nothing") {
+    evidence.adaptationCheck = "The login metadata remained consistent after investigation.";
+  }
+  if (state.blueAction === "force_logout") {
+    evidence.responseCheck = "The active session was terminated and requires a fresh sign-in.";
+  } else if (state.blueAction === "reset_credentials") {
+    evidence.responseCheck = "The account credentials were reset and existing sessions were invalidated.";
+  } else if (state.blueAction === "ignore") {
+    evidence.responseCheck = "No containment action was applied to the account.";
+  }
+  return evidence;
 }
 
 function assertActionAllowed(state, role, action) {
@@ -39,9 +72,7 @@ function assertActionAllowed(state, role, action) {
     }
     return;
   }
-  const allowedActions = state.phase === "blue_action"
-    ? INITIAL_BLUE_ACTIONS
-    : state.phase === "blue_response" ? RESPONSE_BLUE_ACTIONS : [];
+  const allowedActions = getAvailableBlueActions(state);
   if (!allowedActions.includes(action)) {
     throw new Error("invalid_blue_action");
   }
@@ -70,8 +101,9 @@ function applyAction(state, role, action) {
 
 function resolveScenario(state) {
   const attackSucceeded = state.redAction !== "do_nothing";
-  const defensiveResponse = state.blueAction === "force_logout"
-    || state.blueAction === "reset_credentials";
+  const defensiveResponse = state.blueAction === "reset_credentials"
+    || (state.blueAction === "force_logout"
+      && state.redAdaptation !== "spoof_login_location");
 
   if (!attackSucceeded && state.blueAction !== "ignore") {
     state.outcome = "false_positive";
@@ -109,11 +141,9 @@ function getPlayerView(state, role) {
         : state.phase === "red_adaptation" ? RED_ADAPTATION_ACTIONS : []
     };
   } else if (state.phase !== "red_action") {
-    view.availableActions = state.phase === "blue_response"
-      ? RESPONSE_BLUE_ACTIONS
-      : state.phase === "blue_action" ? INITIAL_BLUE_ACTIONS : [];
+    view.availableActions = getAvailableBlueActions(state);
     if (state.investigationCompleted) {
-      view.evidence = template.investigationEvidence;
+      view.evidence = getInvestigationEvidence(state);
     }
   }
   if (state.resolved) {
