@@ -1907,7 +1907,7 @@ If hanya satu pemain ialah disambungkan, server waits untuk second pemain join. 
 
 setiap pemain mesti menjadi associated dengan correct perlawanan session menghalang tindakan atau kemas kini daripada menjadi applied another perlawanan.
 
-awal prototaip memberi tumpuan supporting satu active perlawanan involving dua disambungkan pemain. Advanced matchmaking dan session management mungkin menjadi added dalam akan datang versions.
+awal prototaip menyokong multiple active lobby, dengan setiap lobby melibatkan sehingga dua pemain disambungkan. Pemain boleh host lobby baharu, join menggunakan match ID, atau menggunakan automatic matchmaking untuk mencari lobby yang mempunyai slot.
 
 ### 13.4 Penetapan Peranan
 
@@ -2021,11 +2021,27 @@ kategori ialah:
 semasa message shapes ialah:
 
 ```json
+{"type":"join","mode":"host"}
+```
+
+```json
+{"type":"join","mode":"match","matchId":"482019"}
+```
+
+```json
+{"type":"join","mode":"auto"}
+```
+
+```json
 {"jenis":"tindakan","tindakan":"add_malicious_pautan"}
 ```
 
 ```json
-{"jenis":"joined","role":"red"}
+{"type":"joined","role":"red","matchId":"482019"}
+```
+
+```json
+{"type":"waiting_for_player","matchId":"482019"}
 ```
 
 ```json

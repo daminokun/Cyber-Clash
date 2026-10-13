@@ -15,10 +15,13 @@ var state: Dictionary = {}
 var connection_rejected := false
 var connection_attempted := false
 var action_pending := false
+var join_mode := ""
+var join_request_sent := false
 var menu_container: Control
 var lobby_container: Control
 var game_container: Control
 var ip_input: LineEdit
+var match_id_input: LineEdit
 var menu_status_label: Label
 var lobby_status_label: Label
 var lobby_detail_label: Label
@@ -38,6 +41,10 @@ func _process(_delta: float) -> void:
 	socket.poll()
 	var connection_state := socket.get_ready_state()
 	if connection_state == WebSocketPeer.STATE_OPEN:
+		if not join_request_sent:
+			socket.send_text(JSON.stringify(_build_join_request()))
+			join_request_sent = true
+			lobby_status_label.text = "CONTACTING MATCHMAKER..."
 		if lobby_status_label and lobby_status_label.text.begins_with("Connecting"):
 			lobby_status_label.text = "CONNECTED // WAITING FOR MATCH"
 		while socket.get_available_packet_count() > 0:
@@ -101,11 +108,11 @@ func _build_menu() -> Control:
 	box.add_child(info)
 
 	var host := _create_button("HOST MATCH", 54, 20)
-	host.pressed.connect(_connect_to_match)
+	host.pressed.connect(_connect_to_match.bind("host"))
 	box.add_child(host)
 
 	var join_title := Label.new()
-	join_title.text = "DIRECT MATCH"
+	join_title.text = "JOIN BY SERVER IP + MATCH ID"
 	join_title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	join_title.add_theme_color_override("font_color", CYAN)
 	box.add_child(join_title)
@@ -116,9 +123,19 @@ func _build_menu() -> Control:
 	ip_input.custom_minimum_size = Vector2(0, 46)
 	box.add_child(ip_input)
 
+	match_id_input = LineEdit.new()
+	match_id_input.name = "MatchIdInput"
+	match_id_input.placeholder_text = "Match ID (example: 482019)"
+	match_id_input.custom_minimum_size = Vector2(0, 46)
+	box.add_child(match_id_input)
+
 	var join := _create_button("JOIN MATCH", 54, 20)
-	join.pressed.connect(_connect_to_match)
+	join.pressed.connect(_connect_to_match.bind("match"))
 	box.add_child(join)
+
+	var auto_match := _create_button("AUTO MATCH", 48, 18)
+	auto_match.pressed.connect(_connect_to_match.bind("auto"))
+	box.add_child(auto_match)
 
 	menu_status_label = Label.new()
 	menu_status_label.text = "LOCAL TEST: run the server, then connect two clients."
@@ -289,7 +306,7 @@ func _show_menu() -> void:
 	lobby_container.visible = false
 	game_container.visible = false
 
-func _connect_to_match() -> void:
+func _connect_to_match(mode: String) -> void:
 	var address := ip_input.text.strip_edges()
 	if address.is_empty():
 		address = DEFAULT_SERVER_HOST
@@ -299,6 +316,8 @@ func _connect_to_match() -> void:
 	socket = WebSocketPeer.new()
 	connection_rejected = false
 	connection_attempted = true
+	join_mode = mode
+	join_request_sent = false
 	var error := socket.connect_to_url(url)
 	if error != OK:
 		connection_attempted = false
@@ -307,11 +326,21 @@ func _connect_to_match() -> void:
 	menu_container.visible = false
 	lobby_container.visible = true
 	lobby_status_label.text = "Connecting to %s..." % url
-	lobby_detail_label.text = "Waiting for the server to assign your role."
+	lobby_detail_label.text = "Waiting for the matchmaker."
+
+func _build_join_request() -> Dictionary:
+	var request := {
+		"type": "join",
+		"mode": join_mode
+	}
+	if join_mode == "match":
+		request.matchId = match_id_input.text.strip_edges()
+	return request
 
 func _abort_connection() -> void:
 	socket.close()
 	connection_attempted = false
+	join_request_sent = false
 	role = ""
 	state = {}
 	_show_menu()
@@ -327,8 +356,14 @@ func _handle_message(raw_message: String) -> void:
 		"joined":
 			role = message.get("role", "")
 			role_label.text = "ROLE ASSIGNED: %s" % role.to_upper()
-			lobby_status_label.text = "MATCH FOUND // INITIALIZING"
-			lobby_detail_label.text = "You are %s. Waiting for the scenario state..." % role.capitalize()
+			lobby_status_label.text = "MATCH %s // %s" % [
+				str(message.get("matchId", "------")),
+				role.to_upper()
+			]
+			lobby_detail_label.text = "You are %s. Waiting for the second player..." % role.capitalize()
+		"waiting_for_player":
+			lobby_status_label.text = "WAITING FOR PLAYER 2"
+			lobby_detail_label.text = "Match ID: %s\nShare this ID with the second player." % message.get("matchId", "------")
 		"state":
 			var received_state = message.get("state", {})
 			if received_state is Dictionary:
@@ -339,10 +374,15 @@ func _handle_message(raw_message: String) -> void:
 				action_pending = false
 				if not state.is_empty():
 					_render_state(state)
-			connection_rejected = server_error == "match_full"
+			connection_rejected = [
+				"match_full",
+				"match_not_found",
+				"invalid_join_mode",
+				"join_required"
+			].has(server_error)
 			if connection_rejected:
-				lobby_status_label.text = "MATCH FULL"
-				lobby_detail_label.text = "Only two players are allowed. Close this client and try again later."
+				lobby_status_label.text = "MATCH UNAVAILABLE"
+				lobby_detail_label.text = "The selected match is full or does not exist. Try Auto Match or create a new match."
 				_set_status("Match full. Only two players are allowed.")
 			else:
 				_set_status("Server error: %s" % server_error)

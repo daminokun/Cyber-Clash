@@ -15,14 +15,33 @@ npm start
 The server listens on port `3000` by default. Set the `PORT` environment
 variable to use another port.
 
-Clients connect using WebSocket messages:
+Clients first select a lobby using a WebSocket join message:
+
+```json
+{"type":"join","mode":"host"}
+```
+
+```json
+{"type":"join","mode":"match","matchId":"482019"}
+```
+
+```json
+{"type":"join","mode":"auto"}
+```
+
+`host` creates a new lobby, `match` joins a specific lobby ID, and `auto`
+joins the first lobby with one available slot or creates a new lobby when
+none is available. The server supports multiple simultaneous two-player
+lobbies. After joining, clients send gameplay actions:
 
 ```json
 {"type":"action","action":"add_malicious_link"}
 ```
 
-The server assigns the first client to the Red Team and the second client to
-the Blue Team. Each client receives only its role-appropriate state view.
+The server assigns the first client in each lobby to the Red Team and the
+second client to the Blue Team. Each client receives only its role-appropriate
+state view. The lobby ID is included in the `joined` and
+`waiting_for_player` messages.
 
 The Godot client prototype is located at `../client`. Start the server first,
 then run the Godot project so it can connect to `ws://127.0.0.1:3000`.

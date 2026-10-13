@@ -1899,7 +1899,7 @@ If only one player is connected, the server waits for the second player to join.
 
 Each player must be associated with the correct match session to prevent actions or updates from being applied to another match.
 
-The initial prototype focuses on supporting one active match involving two connected players. Advanced matchmaking and session management may be added in future versions.
+The initial prototype supports multiple active lobbies, with each lobby involving up to two connected players. Players may host a new lobby, join by match ID, or use automatic matchmaking to find an available lobby.
 
 ### 13.4 Role Assignment
 
@@ -2013,11 +2013,27 @@ categories are:
 The current message shapes are:
 
 ```json
+{"type":"join","mode":"host"}
+```
+
+```json
+{"type":"join","mode":"match","matchId":"482019"}
+```
+
+```json
+{"type":"join","mode":"auto"}
+```
+
+```json
 {"type":"action","action":"add_malicious_link"}
 ```
 
 ```json
-{"type":"joined","role":"red"}
+{"type":"joined","role":"red","matchId":"482019"}
+```
+
+```json
+{"type":"waiting_for_player","matchId":"482019"}
 ```
 
 ```json

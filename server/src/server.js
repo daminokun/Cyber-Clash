@@ -1,3 +1,4 @@
+const { randomInt } = require("node:crypto");
 const { WebSocketServer } = require("ws");
 const {
   applyAction,
@@ -5,8 +6,9 @@ const {
   getPlayerView
 } = require("./emailScenario");
 
-function createMatch() {
+function createMatch(id) {
   return {
+    id,
     scenario: createEmailScenario(),
     players: new Map()
   };
@@ -27,6 +29,16 @@ function broadcastState(match) {
   }
 }
 
+function broadcastJoined(match) {
+  for (const [socket, player] of match.players) {
+    send(socket, {
+      type: "joined",
+      role: player.role,
+      matchId: match.id
+    });
+  }
+}
+
 function parseMessage(rawMessage) {
   let message;
   try {
@@ -42,55 +54,119 @@ function parseMessage(rawMessage) {
   return message;
 }
 
+function createMatchId(matches) {
+  let id;
+  do {
+    id = randomInt(0, 1000000).toString().padStart(6, "0");
+  } while (matches.has(id));
+  return id;
+}
+
 function createGameServer({ port = 0, host = "127.0.0.1" } = {}) {
-  const match = createMatch();
+  const matches = new Map();
   const server = new WebSocketServer({ port, host });
   const ready = new Promise((resolve) => server.once("listening", resolve));
 
-  server.on("connection", (socket) => {
-    if (match.players.size >= 2) {
-      socket.send(JSON.stringify({ type: "error", error: "match_full" }));
-      setTimeout(() => socket.terminate(), 1000);
-      return;
-    }
+  function createAndStoreMatch() {
+    const match = createMatch(createMatchId(matches));
+    matches.set(match.id, match);
+    return match;
+  }
 
-    const role = match.players.size === 0 ? "red" : "blue";
-    match.players.set(socket, { role });
-    send(socket, { type: "joined", role });
-    broadcastState(match);
+  function findAvailableMatch() {
+    for (const match of matches.values()) {
+      if (match.players.size === 1) {
+        return match;
+      }
+    }
+    return null;
+  }
+
+  function removeEmptyMatch(match) {
+    if (match.players.size === 0) {
+      matches.delete(match.id);
+    }
+  }
+
+  server.on("connection", (socket) => {
+    let match = null;
+    let player = null;
 
     socket.on("message", (rawMessage) => {
       try {
         const message = parseMessage(rawMessage);
+
+        if (!match) {
+          if (message.type !== "join" || typeof message.mode !== "string") {
+            throw new Error("join_required");
+          }
+
+          if (message.mode === "host") {
+            match = createAndStoreMatch();
+          } else if (message.mode === "match") {
+            if (typeof message.matchId !== "string" || !matches.has(message.matchId)) {
+              throw new Error("match_not_found");
+            }
+            match = matches.get(message.matchId);
+            if (match.players.size >= 2) {
+              throw new Error("match_full");
+            }
+          } else if (message.mode === "auto") {
+            match = findAvailableMatch() || createAndStoreMatch();
+          } else {
+            throw new Error("invalid_join_mode");
+          }
+
+          const role = match.players.size === 0 ? "red" : "blue";
+          player = { role };
+          match.players.set(socket, player);
+          broadcastJoined(match);
+          if (match.players.size === 2) {
+            broadcastState(match);
+          } else {
+            send(socket, { type: "waiting_for_player", matchId: match.id });
+          }
+          return;
+        }
+
         if (message.type !== "action" || typeof message.action !== "string") {
           throw new Error("invalid_action_message");
         }
 
-        applyAction(match.scenario, role, message.action);
+        applyAction(match.scenario, player.role, message.action);
         broadcastState(match);
       } catch (error) {
         send(socket, { type: "error", error: error.message });
+        if (!match && ["match_not_found", "match_full", "invalid_join_mode"].includes(error.message)) {
+          setTimeout(() => socket.terminate(), 1000);
+        }
       }
     });
 
     socket.on("close", () => {
+      if (!match || !player) {
+        return;
+      }
       match.players.delete(socket);
-      for (const [otherSocket, otherPlayer] of match.players) {
+      for (const [otherSocket] of match.players) {
         send(otherSocket, {
           type: "player_disconnected",
-          role
+          role: player.role
         });
       }
+      removeEmptyMatch(match);
     });
   });
 
   return {
-    match,
+    matches,
     server,
     ready,
     close: () => new Promise((resolve, reject) => {
-      for (const socket of match.players.keys()) {
-        socket.terminate();
+      for (const match of matches.values()) {
+        for (const socket of match.players.keys()) {
+          socket.terminate();
+        }
       }
       server.close((error) => error ? reject(error) : resolve());
     })
