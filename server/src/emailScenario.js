@@ -51,6 +51,9 @@ function assertActionAllowed(state, role, action) {
   if (state.resolved) {
     throw new Error("scenario_already_resolved");
   }
+  if (action === "change_tactic") {
+    throw new Error("invalid_action_removed");
+  }
 
   if (role === "red") {
     const allowedActions = state.phase === "red_action"

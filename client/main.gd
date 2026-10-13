@@ -565,10 +565,13 @@ func _rebuild_action_buttons(actions: Array) -> void:
 	for child in actions_container.get_children():
 		child.queue_free()
 	for action in actions:
-		var button := _create_button(str(action).replace("_", " ").capitalize(), 40, 13)
+		var action_id := str(action)
+		if action_id == "change_tactic":
+			continue
+		var button := _create_button(action_id.replace("_", " ").capitalize(), 40, 13)
 		button.clip_text = true
-		button.tooltip_text = str(action).replace("_", " ").capitalize()
-		button.pressed.connect(_send_action.bind(str(action)))
+		button.tooltip_text = action_id.replace("_", " ").capitalize()
+		button.pressed.connect(_send_action.bind(action_id))
 		actions_container.add_child(button)
 
 func _send_action(action: String) -> void:

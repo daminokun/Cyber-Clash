@@ -57,6 +57,9 @@ function createScenarioModule({ definition, rules }) {
     if (state.resolved) {
       throw new Error("scenario_already_resolved");
     }
+    if (action === "change_tactic") {
+      throw new Error("invalid_action_removed");
+    }
     if (role === "red") {
       const actions = state.phase === "red_action"
         ? rules.redActions

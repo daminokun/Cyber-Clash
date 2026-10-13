@@ -217,6 +217,24 @@ test("every generic adaptation is scenario-specific and counters a defense", () 
   }
 });
 
+test("removed change tactic action is rejected for every scenario", () => {
+  for (const { id } of getScenarioDefinitions()) {
+    const state = id === "email-account-verification-001"
+      ? createEmailScenario()
+      : id === "suspicious-login-activity"
+        ? createLoginScenario()
+        : createGenericScenario(id);
+    assert.throws(
+      () => id === "email-account-verification-001"
+        ? applyAction(state, "red", "change_tactic")
+        : id === "suspicious-login-activity"
+          ? applyLoginAction(state, "red", "change_tactic")
+          : applyGenericAction(state, "red", "change_tactic"),
+      { message: "invalid_action_removed" }
+    );
+  }
+});
+
 test("generic scenario keeps private information hidden and resolves a defended attack", () => {
   const state = createGenericScenario("usb-device-threat");
   const redView = getGenericPlayerView(state, "red");
