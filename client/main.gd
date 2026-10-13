@@ -108,15 +108,14 @@ func _build_interface() -> void:
 func _build_menu() -> Control:
 	var root := Control.new()
 	root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	var scroll := ScrollContainer.new()
-	scroll.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
-	root.add_child(scroll)
+	var center := CenterContainer.new()
+	center.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	root.add_child(center)
 	var box := VBoxContainer.new()
-	box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	box.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 	box.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	box.add_theme_constant_override("separation", 14)
-	scroll.add_child(box)
+	center.add_child(box)
 
 	box.add_child(_create_logo(220, 110))
 	var title := Label.new()
@@ -152,13 +151,11 @@ func _build_menu() -> Control:
 	ip_input = LineEdit.new()
 	ip_input.placeholder_text = "Server IP (example: 192.168.1.20)"
 	ip_input.text = DEFAULT_SERVER_HOST
-	ip_input.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	box.add_child(ip_input)
 
 	match_id_input = LineEdit.new()
 	match_id_input.name = "MatchIdInput"
 	match_id_input.placeholder_text = "Match ID (example: 482019)"
-	match_id_input.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	box.add_child(match_id_input)
 
 	var join := _create_button("JOIN MATCH", 54, 20)
@@ -179,15 +176,14 @@ func _build_menu() -> Control:
 func _build_lobby() -> Control:
 	var root := Control.new()
 	root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	var scroll := ScrollContainer.new()
-	scroll.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
-	root.add_child(scroll)
+	var center := CenterContainer.new()
+	center.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	root.add_child(center)
 	var box := VBoxContainer.new()
-	box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	box.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 	box.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	box.add_theme_constant_override("separation", 18)
-	scroll.add_child(box)
+	center.add_child(box)
 
 	box.add_child(_create_logo(140, 85))
 	var title := Label.new()
@@ -231,7 +227,7 @@ func _build_game() -> Control:
 	var header := HBoxContainer.new()
 	header.add_theme_constant_override("separation", 18)
 	layout.add_child(header)
-	header.add_child(_create_logo(86, 58))
+	header.add_child(_create_logo(150, 75))
 	var title := Label.new()
 	title.text = "CYBER//CLASH"
 	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -262,8 +258,7 @@ func _build_game() -> Control:
 	layout.add_child(match_result_logo)
 	layout.add_child(match_result_label)
 
-	var content := VBoxContainer.new()
-	content.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	var content := HBoxContainer.new()
 	content.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	content.add_theme_constant_override("separation", 16)
 	layout.add_child(content)
@@ -271,6 +266,7 @@ func _build_game() -> Control:
 	var briefing_panel := _create_panel()
 	briefing_panel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	briefing_panel.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	briefing_panel.size_flags_stretch_ratio = 1.0
 	content.add_child(briefing_panel)
 	var briefing := VBoxContainer.new()
 	briefing.add_theme_constant_override("separation", 12)
@@ -290,6 +286,7 @@ func _build_game() -> Control:
 	var intel_panel := _create_panel()
 	intel_panel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	intel_panel.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	intel_panel.size_flags_stretch_ratio = 2.2
 	content.add_child(intel_panel)
 	var intel := VBoxContainer.new()
 	intel.add_theme_constant_override("separation", 12)
@@ -311,6 +308,7 @@ func _build_game() -> Control:
 	var action_panel := _create_panel()
 	action_panel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	action_panel.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	action_panel.size_flags_stretch_ratio = 1.0
 	content.add_child(action_panel)
 	var action_layout := VBoxContainer.new()
 	action_layout.add_theme_constant_override("separation", 12)
