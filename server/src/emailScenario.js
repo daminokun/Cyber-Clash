@@ -102,7 +102,7 @@ function getPlayerView(state, role) {
     view.private = {
       originalStatus: template.originalStatus,
       objective: template.redObjective,
-      availableActions: RED_ACTIONS
+      availableActions: state.phase === "red_action" ? RED_ACTIONS : []
     };
   } else if (state.phase !== "red_action") {
     view.availableActions = state.phase === "blue_response"

@@ -1,10 +1,27 @@
 extends Control
 
-const SERVER_URL := "ws://127.0.0.1:3000"
+const DEFAULT_SERVER_HOST := "127.0.0.1"
+const SERVER_PORT := 3000
+const CYAN := Color("#00f5ff")
+const MAGENTA := Color("#ff2bd6")
+const BACKGROUND := Color("#050713")
+const PANEL := Color("#0b1020")
+const TEXT := Color("#d9f7ff")
+const MUTED := Color("#8aa8b8")
 
 var socket := WebSocketPeer.new()
 var role := ""
 var state: Dictionary = {}
+var connection_rejected := false
+var connection_attempted := false
+var action_pending := false
+var menu_container: Control
+var lobby_container: Control
+var game_container: Control
+var ip_input: LineEdit
+var menu_status_label: Label
+var lobby_status_label: Label
+var lobby_detail_label: Label
 var status_label: Label
 var role_label: Label
 var event_label: Label
@@ -12,71 +29,293 @@ var private_label: Label
 var evidence_label: Label
 var score_label: Label
 var actions_container: VBoxContainer
-var connection_rejected := false
 
 func _ready() -> void:
 	_build_interface()
-	_set_status("Connecting to server...")
-	var error := socket.connect_to_url(SERVER_URL)
-	if error != OK:
-		_set_status("Connection failed: %s" % error_string(error))
+	_show_menu()
 
 func _process(_delta: float) -> void:
 	socket.poll()
 	var connection_state := socket.get_ready_state()
 	if connection_state == WebSocketPeer.STATE_OPEN:
-		if status_label.text.begins_with("Connecting"):
-			_set_status("Connected. Waiting for role...")
+		if lobby_status_label and lobby_status_label.text.begins_with("Connecting"):
+			lobby_status_label.text = "CONNECTED // WAITING FOR MATCH"
 		while socket.get_available_packet_count() > 0:
 			_handle_message(socket.get_packet().get_string_from_utf8())
 	elif connection_state == WebSocketPeer.STATE_CLOSED:
-		if not connection_rejected:
+		if connection_attempted and not connection_rejected and status_label and not status_label.text.contains("disconnected"):
 			_set_status("Disconnected from server.")
+			if game_container and game_container.visible:
+				lobby_status_label.text = "CONNECTION LOST"
 
 func _build_interface() -> void:
+	var background := ColorRect.new()
+	background.color = BACKGROUND
+	background.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	add_child(background)
+
+	menu_container = _build_menu()
+	add_child(menu_container)
+	lobby_container = _build_lobby()
+	add_child(lobby_container)
+	game_container = _build_game()
+	add_child(game_container)
+
+func _build_menu() -> Control:
+	var root := Control.new()
+	root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	var margin := MarginContainer.new()
+	margin.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	margin.add_theme_constant_override("margin_left", 70)
+	margin.add_theme_constant_override("margin_right", 70)
+	margin.add_theme_constant_override("margin_top", 45)
+	margin.add_theme_constant_override("margin_bottom", 45)
+	root.add_child(margin)
+
+	var center := CenterContainer.new()
+	center.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	margin.add_child(center)
+	var box := VBoxContainer.new()
+	box.custom_minimum_size = Vector2(620, 0)
+	box.add_theme_constant_override("separation", 14)
+	center.add_child(box)
+
+	var title := Label.new()
+	title.text = "CYBER//CLASH"
+	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	title.add_theme_font_size_override("font_size", 58)
+	title.add_theme_color_override("font_color", CYAN)
+	box.add_child(title)
+
+	var subtitle := Label.new()
+	subtitle.text = "1V1 DIGITAL DEFENCE SIMULATION"
+	subtitle.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	subtitle.add_theme_font_size_override("font_size", 18)
+	subtitle.add_theme_color_override("font_color", MAGENTA)
+	box.add_child(subtitle)
+
+	var info := Label.new()
+	info.text = "Red Team attacks. Blue Team investigates. The server decides."
+	info.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	info.add_theme_color_override("font_color", TEXT)
+	box.add_child(info)
+
+	var host := _create_button("HOST MATCH", 54, 20)
+	host.pressed.connect(_connect_to_match)
+	box.add_child(host)
+
+	var join_title := Label.new()
+	join_title.text = "DIRECT MATCH"
+	join_title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	join_title.add_theme_color_override("font_color", CYAN)
+	box.add_child(join_title)
+
+	ip_input = LineEdit.new()
+	ip_input.placeholder_text = "Server IP (example: 192.168.1.20)"
+	ip_input.text = DEFAULT_SERVER_HOST
+	ip_input.custom_minimum_size = Vector2(0, 46)
+	box.add_child(ip_input)
+
+	var join := _create_button("JOIN MATCH", 54, 20)
+	join.pressed.connect(_connect_to_match)
+	box.add_child(join)
+
+	menu_status_label = Label.new()
+	menu_status_label.text = "LOCAL TEST: run the server, then connect two clients."
+	menu_status_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	menu_status_label.add_theme_color_override("font_color", MUTED)
+	box.add_child(menu_status_label)
+	return root
+
+func _build_lobby() -> Control:
+	var root := Control.new()
+	root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	var margin := MarginContainer.new()
+	margin.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	margin.add_theme_constant_override("margin_left", 100)
+	margin.add_theme_constant_override("margin_right", 100)
+	margin.add_theme_constant_override("margin_top", 70)
+	margin.add_theme_constant_override("margin_bottom", 70)
+	root.add_child(margin)
+	var box := VBoxContainer.new()
+	box.add_theme_constant_override("separation", 18)
+	margin.add_child(box)
+
+	var title := Label.new()
+	title.text = "MATCHMAKING // QUEUE"
+	title.add_theme_font_size_override("font_size", 38)
+	title.add_theme_color_override("font_color", CYAN)
+	box.add_child(title)
+	lobby_status_label = Label.new()
+	lobby_status_label.add_theme_font_size_override("font_size", 20)
+	lobby_status_label.add_theme_color_override("font_color", MAGENTA)
+	box.add_child(lobby_status_label)
+	lobby_detail_label = Label.new()
+	lobby_detail_label.text = "The server is assigning Red Team and Blue Team."
+	lobby_detail_label.add_theme_font_size_override("font_size", 22)
+	lobby_detail_label.add_theme_color_override("font_color", TEXT)
+	lobby_detail_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	box.add_child(lobby_detail_label)
+	var hint := Label.new()
+	hint.text = "Once two players are connected, the scenario starts automatically."
+	hint.add_theme_color_override("font_color", MUTED)
+	box.add_child(hint)
+	var back := _create_button("ABORT", 44, 16)
+	back.pressed.connect(_abort_connection)
+	box.add_child(back)
+	return root
+
+func _build_game() -> Control:
+	var root := Control.new()
+	root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	var margin := MarginContainer.new()
 	margin.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	margin.add_theme_constant_override("margin_left", 32)
 	margin.add_theme_constant_override("margin_top", 24)
 	margin.add_theme_constant_override("margin_right", 32)
 	margin.add_theme_constant_override("margin_bottom", 24)
-	add_child(margin)
-
+	root.add_child(margin)
 	var layout := VBoxContainer.new()
-	layout.add_theme_constant_override("separation", 12)
+	layout.add_theme_constant_override("separation", 16)
 	margin.add_child(layout)
 
+	var header := HBoxContainer.new()
+	header.add_theme_constant_override("separation", 18)
+	layout.add_child(header)
 	var title := Label.new()
-	title.text = "Cyber Clash"
-	title.add_theme_font_size_override("font_size", 28)
-	layout.add_child(title)
-
+	title.text = "CYBER//CLASH"
+	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	title.add_theme_font_size_override("font_size", 30)
+	title.add_theme_color_override("font_color", CYAN)
+	header.add_child(title)
 	role_label = Label.new()
-	layout.add_child(role_label)
+	role_label.add_theme_color_override("font_color", MAGENTA)
+	role_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	header.add_child(role_label)
 	status_label = Label.new()
-	layout.add_child(status_label)
+	status_label.add_theme_color_override("font_color", TEXT)
+	status_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	header.add_child(status_label)
 
-	var separator := HSeparator.new()
-	layout.add_child(separator)
+	var divider := HSeparator.new()
+	divider.add_theme_color_override("separator", CYAN)
+	layout.add_child(divider)
 
-	event_label = Label.new()
-	event_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	layout.add_child(event_label)
+	var content := HBoxContainer.new()
+	content.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	content.add_theme_constant_override("separation", 16)
+	layout.add_child(content)
 
-	private_label = Label.new()
-	private_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	layout.add_child(private_label)
+	var briefing_panel := _create_panel()
+	briefing_panel.custom_minimum_size = Vector2(230, 0)
+	content.add_child(briefing_panel)
+	var briefing := VBoxContainer.new()
+	briefing.add_theme_constant_override("separation", 12)
+	briefing_panel.add_child(briefing)
+	var briefing_title := Label.new()
+	briefing_title.text = "INCIDENT BRIEF"
+	briefing_title.add_theme_font_size_override("font_size", 18)
+	briefing_title.add_theme_color_override("font_color", MAGENTA)
+	briefing.add_child(briefing_title)
+	event_label = _create_text_label()
+	briefing.add_child(event_label)
+	private_label = _create_text_label()
+	briefing.add_child(private_label)
 
-	evidence_label = Label.new()
-	evidence_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	layout.add_child(evidence_label)
-
+	var intel_panel := _create_panel()
+	intel_panel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	content.add_child(intel_panel)
+	var intel := VBoxContainer.new()
+	intel.add_theme_constant_override("separation", 12)
+	intel_panel.add_child(intel)
+	var intel_title := Label.new()
+	intel_title.text = "SECURITY INTELLIGENCE"
+	intel_title.add_theme_font_size_override("font_size", 18)
+	intel_title.add_theme_color_override("font_color", CYAN)
+	intel.add_child(intel_title)
+	evidence_label = _create_text_label()
+	evidence_label.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	intel.add_child(evidence_label)
 	score_label = Label.new()
-	layout.add_child(score_label)
+	score_label.add_theme_color_override("font_color", CYAN)
+	intel.add_child(score_label)
 
+	var action_panel := _create_panel()
+	action_panel.custom_minimum_size = Vector2(220, 0)
+	content.add_child(action_panel)
+	var action_layout := VBoxContainer.new()
+	action_layout.add_theme_constant_override("separation", 12)
+	action_panel.add_child(action_layout)
+	var action_title := Label.new()
+	action_title.text = "SELECT ACTION"
+	action_title.add_theme_font_size_override("font_size", 18)
+	action_title.add_theme_color_override("font_color", MAGENTA)
+	action_layout.add_child(action_title)
 	actions_container = VBoxContainer.new()
 	actions_container.add_theme_constant_override("separation", 8)
-	layout.add_child(actions_container)
+	actions_container.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	action_layout.add_child(actions_container)
+	return root
+
+func _create_panel() -> PanelContainer:
+	var panel := PanelContainer.new()
+	var style := StyleBoxFlat.new()
+	style.bg_color = PANEL
+	style.border_color = Color("#16404a")
+	style.set_border_width_all(1)
+	style.set_corner_radius_all(4)
+	style.content_margin_left = 16
+	style.content_margin_top = 16
+	style.content_margin_right = 16
+	style.content_margin_bottom = 16
+	panel.add_theme_stylebox_override("panel", style)
+	return panel
+
+func _create_text_label() -> Label:
+	var label := Label.new()
+	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	label.add_theme_color_override("font_color", TEXT)
+	return label
+
+func _create_button(text: String, height: int, font_size: int) -> Button:
+	var button := Button.new()
+	button.text = text
+	button.custom_minimum_size = Vector2(0, height)
+	button.add_theme_font_size_override("font_size", font_size)
+	return button
+
+func _show_menu() -> void:
+	menu_container.visible = true
+	lobby_container.visible = false
+	game_container.visible = false
+
+func _connect_to_match() -> void:
+	var address := ip_input.text.strip_edges()
+	if address.is_empty():
+		address = DEFAULT_SERVER_HOST
+	var url := address
+	if not address.begins_with("ws://") and not address.begins_with("wss://"):
+		url = "ws://%s:%d" % [address, SERVER_PORT]
+	socket = WebSocketPeer.new()
+	connection_rejected = false
+	connection_attempted = true
+	var error := socket.connect_to_url(url)
+	if error != OK:
+		connection_attempted = false
+		menu_status_label.text = "CONNECTION ERROR: %s" % error_string(error)
+		return
+	menu_container.visible = false
+	lobby_container.visible = true
+	lobby_status_label.text = "Connecting to %s..." % url
+	lobby_detail_label.text = "Waiting for the server to assign your role."
+
+func _abort_connection() -> void:
+	socket.close()
+	connection_attempted = false
+	role = ""
+	state = {}
+	_show_menu()
+	menu_status_label.text = "Connection cancelled."
 
 func _handle_message(raw_message: String) -> void:
 	var message = JSON.parse_string(raw_message)
@@ -87,16 +326,23 @@ func _handle_message(raw_message: String) -> void:
 	match message.get("type", ""):
 		"joined":
 			role = message.get("role", "")
-			role_label.text = "Role: %s" % role.capitalize()
-			_set_status("Role assigned.")
+			role_label.text = "ROLE ASSIGNED: %s" % role.to_upper()
+			lobby_status_label.text = "MATCH FOUND // INITIALIZING"
+			lobby_detail_label.text = "You are %s. Waiting for the scenario state..." % role.capitalize()
 		"state":
 			var received_state = message.get("state", {})
 			if received_state is Dictionary:
 				_render_state(received_state)
 		"error":
 			var server_error := str(message.get("error", "unknown_error"))
+			if action_pending:
+				action_pending = false
+				if not state.is_empty():
+					_render_state(state)
 			connection_rejected = server_error == "match_full"
 			if connection_rejected:
+				lobby_status_label.text = "MATCH FULL"
+				lobby_detail_label.text = "Only two players are allowed. Close this client and try again later."
 				_set_status("Match full. Only two players are allowed.")
 			else:
 				_set_status("Server error: %s" % server_error)
@@ -107,6 +353,9 @@ func _handle_message(raw_message: String) -> void:
 
 func _render_state(received_state: Dictionary) -> void:
 	state = received_state
+	action_pending = false
+	lobby_container.visible = false
+	game_container.visible = true
 	var event: Dictionary = state.get("event", {})
 	event_label.text = "Event: %s\n%s\nSender: %s\nSubject: %s" % [
 		event.get("title", ""),
@@ -122,6 +371,7 @@ func _render_state(received_state: Dictionary) -> void:
 		scores.get("blue", 0),
 		state.get("phase", "")
 	]
+	_set_status("Scenario updated. Choose an available action.")
 	var available_actions: Array = state.get("availableActions", [])
 	if role == "red":
 		var private_info: Dictionary = state.get("private", {})
@@ -150,20 +400,27 @@ func _rebuild_action_buttons(actions: Array) -> void:
 	for child in actions_container.get_children():
 		child.queue_free()
 	for action in actions:
-		var button := Button.new()
-		button.text = str(action).replace("_", " ").capitalize()
+		var button := _create_button(str(action).replace("_", " ").capitalize(), 42, 16)
 		button.pressed.connect(_send_action.bind(str(action)))
 		actions_container.add_child(button)
 
 func _send_action(action: String) -> void:
+	if action_pending:
+		return
 	if socket.get_ready_state() != WebSocketPeer.STATE_OPEN:
 		_set_status("Cannot send action while disconnected.")
 		return
+	action_pending = true
+	_clear_action_buttons()
 	socket.send_text(JSON.stringify({
 		"type": "action",
 		"action": action
 	}))
-	_set_status("Action submitted: %s" % action.replace("_", " "))
+	_set_status("Waiting for response...")
+
+func _clear_action_buttons() -> void:
+	for child in actions_container.get_children():
+		child.queue_free()
 
 func _set_status(message: String) -> void:
 	if status_label:

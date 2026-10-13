@@ -46,6 +46,14 @@ test("investigation reveals evidence before the final response", () => {
   assert.equal(getPlayerView(state, "blue").evidence.linkCheck.includes("does not"), true);
 });
 
+test("red action options are removed after the red team submits an action", () => {
+  const state = createEmailScenario();
+
+  applyAction(state, "red", "add_malicious_link");
+
+  assert.deepEqual(getPlayerView(state, "red").private.availableActions, []);
+});
+
 test("blocking a malicious link prevents the attack", () => {
   const state = createEmailScenario();
 
