@@ -2,14 +2,29 @@ extends Control
 
 const DEFAULT_SERVER_HOST := "127.0.0.1"
 const SERVER_PORT := 3000
-const CYAN := Color("#00f5ff")
-const MAGENTA := Color("#ff2bd6")
-const BACKGROUND := Color("#050713")
-const PANEL := Color("#0b1020")
-const TEXT := Color("#d9f7ff")
-const MUTED := Color("#8aa8b8")
+const LOGO_PATH := "res://assets/branding/cyber_clash_logo.png"
+const USE_BRANDED_PALETTE := true
+const LEGACY_CYAN := Color("#00f5ff")
+const LEGACY_MAGENTA := Color("#ff2bd6")
+const LEGACY_BACKGROUND := Color("#050713")
+const LEGACY_PANEL := Color("#0b1020")
+const LEGACY_TEXT := Color("#d9f7ff")
+const LEGACY_MUTED := Color("#8aa8b8")
+const BRANDED_CYAN := Color("#00cfff")
+const BRANDED_MAGENTA := Color("#ff2b3d")
+const BRANDED_BACKGROUND := Color("#050713")
+const BRANDED_PANEL := Color("#0b1020")
+const BRANDED_TEXT := Color("#eefaff")
+const BRANDED_MUTED := Color("#8aa8b8")
 
 var socket := WebSocketPeer.new()
+var cyan: Color
+var magenta: Color
+var background_color: Color
+var panel_color: Color
+var text_color: Color
+var muted_color: Color
+var logo_texture: Texture2D
 var role := ""
 var state: Dictionary = {}
 var connection_rejected := false
@@ -33,10 +48,31 @@ var evidence_label: Label
 var score_label: Label
 var actions_container: VBoxContainer
 var match_result_label: Label
+var match_result_logo: TextureRect
 
 func _ready() -> void:
+	_apply_ui_palette()
+	logo_texture = load(LOGO_PATH) as Texture2D
+	if logo_texture == null:
+		push_error("Unable to load Cyber Clash logo: %s" % LOGO_PATH)
 	_build_interface()
 	_show_menu()
+
+func _apply_ui_palette() -> void:
+	if USE_BRANDED_PALETTE:
+		cyan = BRANDED_CYAN
+		magenta = BRANDED_MAGENTA
+		background_color = BRANDED_BACKGROUND
+		panel_color = BRANDED_PANEL
+		text_color = BRANDED_TEXT
+		muted_color = BRANDED_MUTED
+	else:
+		cyan = LEGACY_CYAN
+		magenta = LEGACY_MAGENTA
+		background_color = LEGACY_BACKGROUND
+		panel_color = LEGACY_PANEL
+		text_color = LEGACY_TEXT
+		muted_color = LEGACY_MUTED
 
 func _process(_delta: float) -> void:
 	socket.poll()
@@ -58,7 +94,7 @@ func _process(_delta: float) -> void:
 
 func _build_interface() -> void:
 	var background := ColorRect.new()
-	background.color = BACKGROUND
+	background.color = background_color
 	background.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(background)
 
@@ -88,24 +124,25 @@ func _build_menu() -> Control:
 	box.add_theme_constant_override("separation", 14)
 	center.add_child(box)
 
+	box.add_child(_create_logo(220, 110))
 	var title := Label.new()
 	title.text = "CYBER//CLASH"
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	title.add_theme_font_size_override("font_size", 58)
-	title.add_theme_color_override("font_color", CYAN)
+	title.add_theme_color_override("font_color", cyan)
 	box.add_child(title)
 
 	var subtitle := Label.new()
 	subtitle.text = "1V1 DIGITAL DEFENCE SIMULATION"
 	subtitle.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	subtitle.add_theme_font_size_override("font_size", 18)
-	subtitle.add_theme_color_override("font_color", MAGENTA)
+	subtitle.add_theme_color_override("font_color", magenta)
 	box.add_child(subtitle)
 
 	var info := Label.new()
 	info.text = "Red Team attacks. Blue Team investigates. The server decides."
 	info.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	info.add_theme_color_override("font_color", TEXT)
+	info.add_theme_color_override("font_color", text_color)
 	box.add_child(info)
 
 	var host := _create_button("HOST MATCH", 54, 20)
@@ -115,7 +152,7 @@ func _build_menu() -> Control:
 	var join_title := Label.new()
 	join_title.text = "JOIN BY SERVER IP + MATCH ID"
 	join_title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	join_title.add_theme_color_override("font_color", CYAN)
+	join_title.add_theme_color_override("font_color", cyan)
 	box.add_child(join_title)
 
 	ip_input = LineEdit.new()
@@ -141,7 +178,7 @@ func _build_menu() -> Control:
 	menu_status_label = Label.new()
 	menu_status_label.text = "LOCAL TEST: run the server, then connect two clients."
 	menu_status_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	menu_status_label.add_theme_color_override("font_color", MUTED)
+	menu_status_label.add_theme_color_override("font_color", muted_color)
 	box.add_child(menu_status_label)
 	return root
 
@@ -159,24 +196,25 @@ func _build_lobby() -> Control:
 	box.add_theme_constant_override("separation", 18)
 	margin.add_child(box)
 
+	box.add_child(_create_logo(140, 85))
 	var title := Label.new()
 	title.text = "MATCHMAKING // QUEUE"
 	title.add_theme_font_size_override("font_size", 38)
-	title.add_theme_color_override("font_color", CYAN)
+	title.add_theme_color_override("font_color", cyan)
 	box.add_child(title)
 	lobby_status_label = Label.new()
 	lobby_status_label.add_theme_font_size_override("font_size", 20)
-	lobby_status_label.add_theme_color_override("font_color", MAGENTA)
+	lobby_status_label.add_theme_color_override("font_color", magenta)
 	box.add_child(lobby_status_label)
 	lobby_detail_label = Label.new()
 	lobby_detail_label.text = "The server is assigning Red Team and Blue Team."
 	lobby_detail_label.add_theme_font_size_override("font_size", 22)
-	lobby_detail_label.add_theme_color_override("font_color", TEXT)
+	lobby_detail_label.add_theme_color_override("font_color", text_color)
 	lobby_detail_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	box.add_child(lobby_detail_label)
 	var hint := Label.new()
 	hint.text = "Once two players are connected, the scenario starts automatically."
-	hint.add_theme_color_override("font_color", MUTED)
+	hint.add_theme_color_override("font_color", muted_color)
 	box.add_child(hint)
 	var back := _create_button("ABORT", 44, 16)
 	back.pressed.connect(_abort_connection)
@@ -200,31 +238,35 @@ func _build_game() -> Control:
 	var header := HBoxContainer.new()
 	header.add_theme_constant_override("separation", 18)
 	layout.add_child(header)
+	header.add_child(_create_logo(86, 58))
 	var title := Label.new()
 	title.text = "CYBER//CLASH"
 	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	title.add_theme_font_size_override("font_size", 30)
-	title.add_theme_color_override("font_color", CYAN)
+	title.add_theme_color_override("font_color", cyan)
 	header.add_child(title)
 	role_label = Label.new()
-	role_label.add_theme_color_override("font_color", MAGENTA)
+	role_label.add_theme_color_override("font_color", magenta)
 	role_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	header.add_child(role_label)
 
 	var divider := HSeparator.new()
-	divider.add_theme_color_override("separator", CYAN)
+	divider.add_theme_color_override("separator", cyan)
 	layout.add_child(divider)
 
 	status_label = Label.new()
-	status_label.add_theme_color_override("font_color", TEXT)
+	status_label.add_theme_color_override("font_color", text_color)
 	status_label.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 	status_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	layout.add_child(status_label)
 	match_result_label = Label.new()
 	match_result_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	match_result_label.add_theme_font_size_override("font_size", 20)
-	match_result_label.add_theme_color_override("font_color", MAGENTA)
+	match_result_label.add_theme_color_override("font_color", magenta)
 	match_result_label.visible = false
+	match_result_logo = _create_logo(140, 85)
+	match_result_logo.visible = false
+	layout.add_child(match_result_logo)
 	layout.add_child(match_result_label)
 
 	var content := HBoxContainer.new()
@@ -243,7 +285,7 @@ func _build_game() -> Control:
 	var briefing_title := Label.new()
 	briefing_title.text = "INCIDENT BRIEF"
 	briefing_title.add_theme_font_size_override("font_size", 18)
-	briefing_title.add_theme_color_override("font_color", MAGENTA)
+	briefing_title.add_theme_color_override("font_color", magenta)
 	briefing.add_child(briefing_title)
 	event_label = _create_text_label()
 	briefing.add_child(event_label)
@@ -261,13 +303,13 @@ func _build_game() -> Control:
 	var intel_title := Label.new()
 	intel_title.text = "SECURITY INTELLIGENCE"
 	intel_title.add_theme_font_size_override("font_size", 18)
-	intel_title.add_theme_color_override("font_color", CYAN)
+	intel_title.add_theme_color_override("font_color", cyan)
 	intel.add_child(intel_title)
 	evidence_label = _create_text_label()
 	evidence_label.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	intel.add_child(evidence_label)
 	score_label = Label.new()
-	score_label.add_theme_color_override("font_color", CYAN)
+	score_label.add_theme_color_override("font_color", cyan)
 	intel.add_child(score_label)
 
 	var action_panel := _create_panel()
@@ -281,7 +323,7 @@ func _build_game() -> Control:
 	var action_title := Label.new()
 	action_title.text = "SELECT ACTION"
 	action_title.add_theme_font_size_override("font_size", 18)
-	action_title.add_theme_color_override("font_color", MAGENTA)
+	action_title.add_theme_color_override("font_color", magenta)
 	action_layout.add_child(action_title)
 	actions_container = VBoxContainer.new()
 	actions_container.add_theme_constant_override("separation", 8)
@@ -292,7 +334,7 @@ func _build_game() -> Control:
 func _create_panel() -> PanelContainer:
 	var panel := PanelContainer.new()
 	var style := StyleBoxFlat.new()
-	style.bg_color = PANEL
+	style.bg_color = panel_color
 	style.border_color = Color("#16404a")
 	style.set_border_width_all(1)
 	style.set_corner_radius_all(4)
@@ -302,6 +344,15 @@ func _create_panel() -> PanelContainer:
 	style.content_margin_bottom = 16
 	panel.add_theme_stylebox_override("panel", style)
 	return panel
+
+func _create_logo(width: float, height: float) -> TextureRect:
+	var logo := TextureRect.new()
+	logo.custom_minimum_size = Vector2(width, height)
+	logo.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	logo.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	logo.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	logo.texture = logo_texture
+	return logo
 
 func _create_scroll_container() -> ScrollContainer:
 	var scroll := ScrollContainer.new()
@@ -313,7 +364,7 @@ func _create_scroll_container() -> ScrollContainer:
 func _create_text_label() -> Label:
 	var label := Label.new()
 	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	label.add_theme_color_override("font_color", TEXT)
+	label.add_theme_color_override("font_color", text_color)
 	return label
 
 func _create_button(text: String, height: int, font_size: int) -> Button:
@@ -412,6 +463,7 @@ func _handle_message(raw_message: String) -> void:
 				final_scores.get("blue", 0)
 			]
 			match_result_label.visible = true
+			match_result_logo.visible = true
 			_set_status("Match complete. Winner: %s | Red: %s | Blue: %s" % [
 				str(message.get("winner", "draw")).capitalize(),
 				final_scores.get("red", 0),
@@ -425,6 +477,7 @@ func _handle_message(raw_message: String) -> void:
 		"new_opponent":
 			action_pending = false
 			match_result_label.visible = false
+			match_result_logo.visible = false
 			lobby_container.visible = true
 			game_container.visible = false
 			lobby_status_label.text = "NEW OPPONENT FOUND"
@@ -456,6 +509,8 @@ func _handle_message(raw_message: String) -> void:
 func _render_state(received_state: Dictionary) -> void:
 	state = received_state
 	action_pending = false
+	match_result_label.visible = false
+	match_result_logo.visible = false
 	lobby_container.visible = false
 	game_container.visible = true
 	var event: Dictionary = state.get("event", {})
@@ -494,13 +549,11 @@ func _format_event(event: Dictionary) -> String:
 		"Event: %s" % event.get("title", ""),
 		str(event.get("description", ""))
 	]
-	if event.has("sender") or event.has("subject"):
-		lines.append("Sender: %s" % event.get("sender", ""))
-		lines.append("Subject: %s" % event.get("subject", ""))
-	else:
-		lines.append("Account: %s" % event.get("account", ""))
-		lines.append("Location: %s" % event.get("location", ""))
-		lines.append("Time: %s" % event.get("time", ""))
+	for key in event:
+		if key in ["title", "description"]:
+			continue
+		var label := str(key).replace("_", " ").capitalize()
+		lines.append("%s: %s" % [label, event[key]])
 	return "\n".join(lines)
 
 func _format_evidence(evidence: Dictionary) -> String:
