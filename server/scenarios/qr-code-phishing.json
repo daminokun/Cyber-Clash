@@ -1,0 +1,38 @@
+{
+  "id": "qr-code-phishing",
+  "category": "phishing",
+  "event": {
+    "title": "Suspicious QR code poster",
+    "description": "A poster in a shared area asks users to scan a QR code to renew an account.",
+    "location": "Student services building",
+    "destination": "Account renewal page",
+    "time": "12:10 UTC"
+  },
+  "originalStatus": "legitimate",
+  "redObjective": "Redirect users to a fake account renewal page.",
+  "investigationEvidence": {
+    "destinationCheck": "The QR code redirects to a domain unrelated to the university.",
+    "posterCheck": "The poster was not published through the normal communications channel."
+  },
+  "redActions": ["do_nothing", "replace_qr_code", "add_urgent_message"],
+  "blueActions": ["investigate", "remove_poster", "block_destination", "ignore"],
+  "blueResponses": ["remove_poster", "block_destination", "ignore"],
+  "attackActions": ["replace_qr_code", "add_urgent_message"],
+  "unavailableBlueActionsByRedAction": {
+
+    "replace_qr_code": [
+
+      "remove_poster"
+
+    ],
+
+    "add_urgent_message": [
+
+      "block_destination"
+
+    ]
+
+  },
+
+  "defensiveActions": ["remove_poster", "block_destination"]
+}

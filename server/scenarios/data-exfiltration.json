@@ -1,0 +1,57 @@
+﻿{
+    "id":  "data-exfiltration",
+    "category":  "data_exfiltration",
+    "event":  {
+                  "title":  "Large outbound data transfer",
+                  "description":  "A workstation begins transferring an unusual volume of archive files.",
+                  "host":  "DESIGN-PC-03",
+                  "destination":  "Unapproved external storage",
+                  "time":  "22:16 UTC"
+              },
+    "originalStatus":  "legitimate",
+    "redObjective":  "Move sensitive project data to an unapproved destination.",
+    "investigationEvidence":  {
+                                  "volumeCheck":  "The transfer is much larger than the host\u0027s normal daily activity.",
+                                  "destinationCheck":  "The destination is not on the approved storage list."
+                              },
+    "redActions":  [
+                       "do_nothing",
+                       "archive_sensitive_data",
+                       "split_transfer"
+                   ],
+    "blueActions":  [
+                        "investigate",
+                        "block_transfer",
+                        "isolate_host",
+                        "ignore"
+                    ],
+    "blueResponses":  [
+                          "block_transfer",
+                          "isolate_host",
+                          "ignore"
+                      ],
+    "attackActions":  [
+                          "archive_sensitive_data",
+                          "split_transfer"
+                      ],
+    "unavailableBlueActionsByRedAction": {
+
+      "archive_sensitive_data": [
+
+        "block_transfer"
+
+      ],
+
+      "split_transfer": [
+
+        "isolate_host"
+
+      ]
+
+    },
+
+    "defensiveActions":  [
+                             "block_transfer",
+                             "isolate_host"
+                         ]
+}

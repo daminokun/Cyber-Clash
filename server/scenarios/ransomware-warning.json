@@ -1,0 +1,59 @@
+﻿{
+    "id":  "ransomware-warning",
+    "category":  "ransomware",
+    "event":  {
+                  "title":  "Mass file rename alert",
+                  "description":  "A file server reports an unusual burst of file rename operations.",
+                  "server":  "FILESERV-01",
+                  "share":  "Student Projects",
+                  "time":  "16:30 UTC"
+              },
+    "originalStatus":  "legitimate",
+    "redObjective":  "Start disruptive file activity before the defender can contain it.",
+    "investigationEvidence":  {
+                                  "fileCheck":  "Many files changed extension within a short period.",
+                                  "backupCheck":  "The latest backup is available but has not been verified."
+                              },
+    "redActions":  [
+                       "do_nothing",
+                       "encrypt_files",
+                       "delete_restore_points"
+                   ],
+    "blueActions":  [
+                        "investigate",
+                        "isolate_server",
+                        "restore_backup",
+                        "ignore"
+                    ],
+    "blueResponses":  [
+                          "isolate_server",
+                          "restore_backup",
+                          "ignore"
+                      ],
+    "attackActions":  [
+                          "encrypt_files",
+                          "delete_restore_points"
+                      ],
+    "redAdaptationActions":  [
+                                  "do_nothing",
+                                  "change_tactic",
+                                  "accelerate_encryption"
+                              ],
+    "counteredDefensesByAdaptation":  {
+                                          "change_tactic": [
+                                              "isolate_server"
+                                          ],
+                                          "accelerate_encryption": [
+                                              "restore_backup"
+                                          ]
+                                      },
+    "unavailableBlueActionsByRedAction":  {
+                                               "delete_restore_points": [
+                                                   "restore_backup"
+                                               ]
+                                           },
+    "defensiveActions":  [
+                             "isolate_server",
+                             "restore_backup"
+                         ]
+}

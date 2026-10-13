@@ -1,0 +1,38 @@
+{
+  "id": "printer-network-risk",
+  "category": "network_device",
+  "event": {
+    "title": "Network printer configuration change",
+    "description": "A shared printer reports a configuration change outside its maintenance window.",
+    "device": "LIBRARY-PRINTER-02",
+    "setting": "Remote administration",
+    "time": "16:48 UTC"
+  },
+  "originalStatus": "legitimate",
+  "redObjective": "Use an overlooked network device as a foothold.",
+  "investigationEvidence": {
+    "changeCheck": "The change was made from an unapproved administration source.",
+    "firmwareCheck": "The device firmware is behind the approved maintenance version."
+  },
+  "redActions": ["do_nothing", "enable_remote_access", "change_admin_route"],
+  "blueActions": ["investigate", "isolate_printer", "restore_configuration", "ignore"],
+  "blueResponses": ["isolate_printer", "restore_configuration", "ignore"],
+  "attackActions": ["enable_remote_access", "change_admin_route"],
+  "unavailableBlueActionsByRedAction": {
+
+    "enable_remote_access": [
+
+      "isolate_printer"
+
+    ],
+
+    "change_admin_route": [
+
+      "restore_configuration"
+
+    ]
+
+  },
+
+  "defensiveActions": ["isolate_printer", "restore_configuration"]
+}

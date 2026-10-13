@@ -1,0 +1,38 @@
+{
+  "id": "bluetooth-device-pairing",
+  "category": "wireless_security",
+  "event": {
+    "title": "Unknown Bluetooth pairing request",
+    "description": "A nearby device requests pairing with a managed workstation.",
+    "device": "Wireless Keyboard",
+    "host": "LAB-PC-12",
+    "time": "15:24 UTC"
+  },
+  "originalStatus": "legitimate",
+  "redObjective": "Pair an untrusted device with a managed workstation.",
+  "investigationEvidence": {
+    "identityCheck": "The device identifier is not in the approved peripheral list.",
+    "proximityCheck": "The pairing request appeared while no authorised peripheral was nearby."
+  },
+  "redActions": ["do_nothing", "masquerade_peripheral", "request_pairing"],
+  "blueActions": ["investigate", "deny_pairing", "disable_bluetooth", "ignore"],
+  "blueResponses": ["deny_pairing", "disable_bluetooth", "ignore"],
+  "attackActions": ["masquerade_peripheral", "request_pairing"],
+  "unavailableBlueActionsByRedAction": {
+
+    "masquerade_peripheral": [
+
+      "deny_pairing"
+
+    ],
+
+    "request_pairing": [
+
+      "disable_bluetooth"
+
+    ]
+
+  },
+
+  "defensiveActions": ["deny_pairing", "disable_bluetooth"]
+}

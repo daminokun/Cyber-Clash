@@ -1,0 +1,57 @@
+﻿{
+    "id":  "network-port-scan",
+    "category":  "network_activity",
+    "event":  {
+                  "title":  "Unusual network activity",
+                  "description":  "A workstation is making repeated connection attempts to internal services.",
+                  "host":  "LAB-PC-04",
+                  "source":  "Internal network",
+                  "time":  "11:42 UTC"
+              },
+    "originalStatus":  "legitimate",
+    "redObjective":  "Hide a reconnaissance scan among normal network traffic.",
+    "investigationEvidence":  {
+                                  "trafficCheck":  "The connection attempts target several unused service ports.",
+                                  "patternCheck":  "The timing is consistent with automated scanning."
+                              },
+    "redActions":  [
+                       "do_nothing",
+                       "port_scan",
+                       "hide_in_normal_traffic"
+                   ],
+    "blueActions":  [
+                        "investigate",
+                        "isolate_host",
+                        "block_traffic",
+                        "ignore"
+                    ],
+    "blueResponses":  [
+                          "isolate_host",
+                          "block_traffic",
+                          "ignore"
+                      ],
+    "attackActions":  [
+                          "port_scan",
+                          "hide_in_normal_traffic"
+                      ],
+    "unavailableBlueActionsByRedAction": {
+
+      "port_scan": [
+
+        "isolate_host"
+
+      ],
+
+      "hide_in_normal_traffic": [
+
+        "block_traffic"
+
+      ]
+
+    },
+
+    "defensiveActions":  [
+                             "isolate_host",
+                             "block_traffic"
+                         ]
+}

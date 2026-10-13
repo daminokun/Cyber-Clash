@@ -1,0 +1,38 @@
+{
+  "id": "mfa-fatigue",
+  "category": "authentication",
+  "event": {
+    "title": "Repeated MFA prompts",
+    "description": "A user receives several unexpected sign-in approval prompts during a short period.",
+    "account": "researcher@example.edu",
+    "device": "Mobile authenticator",
+    "time": "08:36 UTC"
+  },
+  "originalStatus": "legitimate",
+  "redObjective": "Pressure the user into approving an unauthorised sign-in.",
+  "investigationEvidence": {
+    "promptCheck": "The prompts were generated without a matching sign-in attempt from the user.",
+    "deviceCheck": "The requesting device is not in the account's recent device history."
+  },
+  "redActions": ["do_nothing", "send_repeated_prompts", "imitate_support_message"],
+  "blueActions": ["investigate", "deny_prompts", "lock_account", "ignore"],
+  "blueResponses": ["deny_prompts", "lock_account", "ignore"],
+  "attackActions": ["send_repeated_prompts", "imitate_support_message"],
+  "unavailableBlueActionsByRedAction": {
+
+    "send_repeated_prompts": [
+
+      "deny_prompts"
+
+    ],
+
+    "imitate_support_message": [
+
+      "lock_account"
+
+    ]
+
+  },
+
+  "defensiveActions": ["deny_prompts", "lock_account"]
+}

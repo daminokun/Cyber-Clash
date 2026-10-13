@@ -1,0 +1,38 @@
+{
+  "id": "iot-device-compromise",
+  "category": "iot_security",
+  "event": {
+    "title": "Smart device joins restricted network",
+    "description": "A smart display connects to a network segment intended for managed workstations.",
+    "device": "SMART-DISPLAY-03",
+    "network": "Admin VLAN",
+    "time": "07:55 UTC"
+  },
+  "originalStatus": "legitimate",
+  "redObjective": "Use an unmanaged device as a bridge into a restricted network.",
+  "investigationEvidence": {
+    "inventoryCheck": "The device is not registered in the managed hardware inventory.",
+    "networkCheck": "The device requested access to services unnecessary for a smart display."
+  },
+  "redActions": ["do_nothing", "probe_internal_services", "hide_device_identity"],
+  "blueActions": ["investigate", "quarantine_device", "move_to_guest_network", "ignore"],
+  "blueResponses": ["quarantine_device", "move_to_guest_network", "ignore"],
+  "attackActions": ["probe_internal_services", "hide_device_identity"],
+  "unavailableBlueActionsByRedAction": {
+
+    "probe_internal_services": [
+
+      "quarantine_device"
+
+    ],
+
+    "hide_device_identity": [
+
+      "move_to_guest_network"
+
+    ]
+
+  },
+
+  "defensiveActions": ["quarantine_device", "move_to_guest_network"]
+}

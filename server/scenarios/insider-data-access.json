@@ -1,0 +1,43 @@
+{
+  "id": "insider-data-access",
+  "category": "insider_risk",
+  "event": {
+    "title": "Unusual bulk file access",
+    "description": "A staff account opens a large number of records outside its normal work pattern.",
+    "account": "staff-042",
+    "resource": "Student records archive",
+    "time": "21:33 UTC"
+  },
+  "originalStatus": "legitimate",
+  "redObjective": "Use an authorised account to collect data without immediate detection.",
+  "investigationEvidence": {
+    "accessCheck": "The account accessed records outside its assigned department.",
+    "volumeCheck": "The number of opened records is far above the account's normal activity."
+  },
+  "redActions": ["do_nothing", "bulk_collect_records", "blend_with_normal_access"],
+  "blueActions": ["investigate", "suspend_account", "restrict_records", "ignore"],
+  "blueResponses": ["suspend_account", "restrict_records", "ignore"],
+  "attackActions": ["bulk_collect_records", "blend_with_normal_access"],
+  "redAdaptationActions": ["do_nothing", "change_tactic", "switch_account"],
+  "counteredDefensesByAdaptation": {
+    "change_tactic": ["suspend_account"],
+    "switch_account": ["restrict_records"]
+  },
+  "unavailableBlueActionsByRedAction": {
+
+    "bulk_collect_records": [
+
+      "suspend_account"
+
+    ],
+
+    "blend_with_normal_access": [
+
+      "restrict_records"
+
+    ]
+
+  },
+
+  "defensiveActions": ["suspend_account", "restrict_records"]
+}

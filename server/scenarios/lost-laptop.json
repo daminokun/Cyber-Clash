@@ -1,0 +1,38 @@
+{
+  "id": "lost-laptop",
+  "category": "physical_security",
+  "event": {
+    "title": "Unreported laptop missing",
+    "description": "An organisation laptop is missing from a shared workspace and was last seen earlier in the day.",
+    "asset": "CAMPUS-LAP-22",
+    "location": "Innovation room",
+    "time": "17:45 UTC"
+  },
+  "originalStatus": "legitimate",
+  "redObjective": "Use an unattended device before it is remotely protected.",
+  "investigationEvidence": {
+    "assetCheck": "The device has not checked in since leaving the approved network.",
+    "accountCheck": "The last active account has access to several shared resources."
+  },
+  "redActions": ["do_nothing", "access_unlocked_device", "remove_security_tag"],
+  "blueActions": ["investigate", "lock_device", "revoke_sessions", "ignore"],
+  "blueResponses": ["lock_device", "revoke_sessions", "ignore"],
+  "attackActions": ["access_unlocked_device", "remove_security_tag"],
+  "unavailableBlueActionsByRedAction": {
+
+    "access_unlocked_device": [
+
+      "lock_device"
+
+    ],
+
+    "remove_security_tag": [
+
+      "revoke_sessions"
+
+    ]
+
+  },
+
+  "defensiveActions": ["lock_device", "revoke_sessions"]
+}

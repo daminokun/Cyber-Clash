@@ -1,0 +1,57 @@
+﻿{
+    "id":  "web-form-injection",
+    "category":  "web_application",
+    "event":  {
+                  "title":  "Unexpected web form input",
+                  "description":  "A public feedback form received an unusually long and encoded submission.",
+                  "application":  "Campus Feedback Portal",
+                  "endpoint":  "/feedback",
+                  "time":  "20:01 UTC"
+              },
+    "originalStatus":  "legitimate",
+    "redObjective":  "Use crafted input to probe an application weakness.",
+    "investigationEvidence":  {
+                                  "inputCheck":  "The submission contains encoded control characters.",
+                                  "logCheck":  "The same source repeated requests against validation errors."
+                              },
+    "redActions":  [
+                       "do_nothing",
+                       "send_crafted_input",
+                       "bypass_validation"
+                   ],
+    "blueActions":  [
+                        "investigate",
+                        "block_source",
+                        "enable_validation",
+                        "ignore"
+                    ],
+    "blueResponses":  [
+                          "block_source",
+                          "enable_validation",
+                          "ignore"
+                      ],
+    "attackActions":  [
+                          "send_crafted_input",
+                          "bypass_validation"
+                      ],
+    "unavailableBlueActionsByRedAction": {
+
+      "send_crafted_input": [
+
+        "block_source"
+
+      ],
+
+      "bypass_validation": [
+
+        "enable_validation"
+
+      ]
+
+    },
+
+    "defensiveActions":  [
+                             "block_source",
+                             "enable_validation"
+                         ]
+}

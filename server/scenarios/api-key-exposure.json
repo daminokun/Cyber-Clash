@@ -1,0 +1,43 @@
+{
+  "id": "api-key-exposure",
+  "category": "secrets_management",
+  "event": {
+    "title": "Possible API key exposure",
+    "description": "A public code repository contains a configuration file with a token-like value.",
+    "repository": "Campus Projects",
+    "file": "config.example",
+    "time": "12:42 UTC"
+  },
+  "originalStatus": "legitimate",
+  "redObjective": "Reuse an exposed application secret before it is revoked.",
+  "investigationEvidence": {
+    "secretCheck": "The value matches the format of an active service token.",
+    "historyCheck": "The file was published in a recent commit visible to external users."
+  },
+  "redActions": ["do_nothing", "reuse_exposed_key", "hide_key_usage"],
+  "blueActions": ["investigate", "revoke_key", "remove_public_file", "ignore"],
+  "blueResponses": ["revoke_key", "remove_public_file", "ignore"],
+  "attackActions": ["reuse_exposed_key", "hide_key_usage"],
+  "redAdaptationActions": ["do_nothing", "change_tactic", "rotate_target"],
+  "counteredDefensesByAdaptation": {
+    "change_tactic": ["revoke_key"],
+    "rotate_target": ["remove_public_file"]
+  },
+  "unavailableBlueActionsByRedAction": {
+
+    "reuse_exposed_key": [
+
+      "revoke_key"
+
+    ],
+
+    "hide_key_usage": [
+
+      "remove_public_file"
+
+    ]
+
+  },
+
+  "defensiveActions": ["revoke_key", "remove_public_file"]
+}

@@ -1,0 +1,38 @@
+{
+  "id": "dns-redirection",
+  "category": "network_activity",
+  "event": {
+    "title": "Unexpected DNS response",
+    "description": "Several workstations resolve a familiar service name to an unfamiliar address.",
+    "service": "Campus Portal",
+    "resolver": "LAB-DNS-01",
+    "time": "15:02 UTC"
+  },
+  "originalStatus": "legitimate",
+  "redObjective": "Redirect users from a trusted service to an imitation page.",
+  "investigationEvidence": {
+    "resolverCheck": "The response differs from the approved resolver record.",
+    "certificateCheck": "The destination certificate does not match the expected service identity."
+  },
+  "redActions": ["do_nothing", "alter_dns_response", "redirect_subset"],
+  "blueActions": ["investigate", "flush_dns_cache", "block_destination", "ignore"],
+  "blueResponses": ["flush_dns_cache", "block_destination", "ignore"],
+  "attackActions": ["alter_dns_response", "redirect_subset"],
+  "unavailableBlueActionsByRedAction": {
+
+    "alter_dns_response": [
+
+      "flush_dns_cache"
+
+    ],
+
+    "redirect_subset": [
+
+      "block_destination"
+
+    ]
+
+  },
+
+  "defensiveActions": ["flush_dns_cache", "block_destination"]
+}

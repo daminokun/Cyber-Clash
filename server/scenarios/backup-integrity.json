@@ -1,0 +1,38 @@
+{
+  "id": "backup-integrity",
+  "category": "resilience",
+  "event": {
+    "title": "Backup verification warning",
+    "description": "The latest backup job completed but reports an unexpected verification mismatch.",
+    "system": "Student Records Backup",
+    "job": "Nightly snapshot",
+    "time": "03:40 UTC"
+  },
+  "originalStatus": "legitimate",
+  "redObjective": "Reduce recovery options before a disruptive incident.",
+  "investigationEvidence": {
+    "integrityCheck": "Several backup blocks do not match their recorded checksums.",
+    "historyCheck": "The mismatch began after an unusual service account activity."
+  },
+  "redActions": ["do_nothing", "alter_backup_index", "delete_recovery_copy"],
+  "blueActions": ["investigate", "protect_backup", "start_recovery_check", "ignore"],
+  "blueResponses": ["protect_backup", "start_recovery_check", "ignore"],
+  "attackActions": ["alter_backup_index", "delete_recovery_copy"],
+  "unavailableBlueActionsByRedAction": {
+
+    "alter_backup_index": [
+
+      "protect_backup"
+
+    ],
+
+    "delete_recovery_copy": [
+
+      "start_recovery_check"
+
+    ]
+
+  },
+
+  "defensiveActions": ["protect_backup", "start_recovery_check"]
+}

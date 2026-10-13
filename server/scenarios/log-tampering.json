@@ -1,0 +1,38 @@
+{
+  "id": "log-tampering",
+  "category": "monitoring",
+  "event": {
+    "title": "Missing audit records",
+    "description": "A monitoring dashboard shows a gap in records from a normally active service.",
+    "service": "Library Authentication",
+    "period": "22:00-22:18 UTC",
+    "time": "22:22 UTC"
+  },
+  "originalStatus": "legitimate",
+  "redObjective": "Hide suspicious activity by weakening audit visibility.",
+  "investigationEvidence": {
+    "logCheck": "The gap affects only events from one service account.",
+    "systemCheck": "The log collector remained online during the missing period."
+  },
+  "redActions": ["do_nothing", "erase_audit_events", "delay_log_delivery"],
+  "blueActions": ["investigate", "protect_logs", "review_account", "ignore"],
+  "blueResponses": ["protect_logs", "review_account", "ignore"],
+  "attackActions": ["erase_audit_events", "delay_log_delivery"],
+  "unavailableBlueActionsByRedAction": {
+
+    "erase_audit_events": [
+
+      "protect_logs"
+
+    ],
+
+    "delay_log_delivery": [
+
+      "review_account"
+
+    ]
+
+  },
+
+  "defensiveActions": ["protect_logs", "review_account"]
+}

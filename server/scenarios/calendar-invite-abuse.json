@@ -1,0 +1,38 @@
+{
+  "id": "calendar-invite-abuse",
+  "category": "phishing",
+  "event": {
+    "title": "Unexpected calendar invitation",
+    "description": "A calendar invitation contains a link asking attendees to confirm their account.",
+    "organiser": "External organiser",
+    "meeting": "Mandatory security briefing",
+    "time": "10:00 UTC"
+  },
+  "originalStatus": "legitimate",
+  "redObjective": "Use a fake meeting invitation to collect account details.",
+  "investigationEvidence": {
+    "organiserCheck": "The organiser is not associated with the university directory.",
+    "linkCheck": "The confirmation link redirects outside approved services."
+  },
+  "redActions": ["do_nothing", "insert_fake_link", "create_urgency"],
+  "blueActions": ["investigate", "delete_invite", "block_sender", "ignore"],
+  "blueResponses": ["delete_invite", "block_sender", "ignore"],
+  "attackActions": ["insert_fake_link", "create_urgency"],
+  "unavailableBlueActionsByRedAction": {
+
+    "insert_fake_link": [
+
+      "delete_invite"
+
+    ],
+
+    "create_urgency": [
+
+      "block_sender"
+
+    ]
+
+  },
+
+  "defensiveActions": ["delete_invite", "block_sender"]
+}

@@ -1,0 +1,38 @@
+{
+  "id": "rogue-browser-extension",
+  "category": "endpoint",
+  "event": {
+    "title": "New browser extension installed",
+    "description": "A browser extension requests broad access to pages visited by a student worker.",
+    "host": "LIBRARY-PC-07",
+    "extension": "Study Helper Plus",
+    "time": "13:25 UTC"
+  },
+  "originalStatus": "legitimate",
+  "redObjective": "Hide data collection behind a useful browser extension.",
+  "investigationEvidence": {
+    "permissionCheck": "The extension requests access unrelated to its advertised study features.",
+    "publisherCheck": "The publisher account was created recently and has no verified history."
+  },
+  "redActions": ["do_nothing", "bundle_data_collector", "hide_permissions"],
+  "blueActions": ["investigate", "disable_extension", "remove_extension", "ignore"],
+  "blueResponses": ["disable_extension", "remove_extension", "ignore"],
+  "attackActions": ["bundle_data_collector", "hide_permissions"],
+  "unavailableBlueActionsByRedAction": {
+
+    "bundle_data_collector": [
+
+      "disable_extension"
+
+    ],
+
+    "hide_permissions": [
+
+      "remove_extension"
+
+    ]
+
+  },
+
+  "defensiveActions": ["disable_extension", "remove_extension"]
+}

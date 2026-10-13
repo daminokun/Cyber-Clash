@@ -1,0 +1,62 @@
+﻿{
+    "id":  "cloud-permission-abuse",
+    "category":  "cloud_access",
+    "event":  {
+                  "title":  "Unexpected cloud permission change",
+                  "description":  "A shared cloud folder has been granted access to an unfamiliar account.",
+                  "account":  "external-user-19",
+                  "resource":  "Research Documents",
+                  "time":  "18:12 UTC"
+              },
+    "originalStatus":  "legitimate",
+    "redObjective":  "Obtain access to shared data without attracting immediate attention.",
+    "investigationEvidence":  {
+                                  "auditCheck":  "The permission change was made outside the normal admin schedule.",
+                                  "accountCheck":  "The account is not in the project collaborator list."
+                              },
+    "redActions":  [
+                       "do_nothing",
+                       "add_external_account",
+                       "escalate_permissions"
+                   ],
+    "blueActions":  [
+                        "investigate",
+                        "revoke_access",
+                        "lock_account",
+                        "ignore"
+                    ],
+    "blueResponses":  [
+                          "revoke_access",
+                          "lock_account",
+                          "ignore"
+                      ],
+    "attackActions":  [
+                          "add_external_account",
+                          "escalate_permissions"
+                      ],
+    "unavailableBlueActionsByRedAction": {
+
+      "add_external_account": [
+
+        "revoke_access"
+
+      ],
+
+      "escalate_permissions": [
+
+        "lock_account"
+
+      ]
+
+    },
+    "counteredDefensesByAdaptation": {
+      "change_tactic": [
+        "revoke_access"
+      ]
+    },
+
+    "defensiveActions":  [
+                             "revoke_access",
+                             "lock_account"
+                         ]
+}

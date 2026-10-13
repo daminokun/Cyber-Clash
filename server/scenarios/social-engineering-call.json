@@ -1,0 +1,57 @@
+﻿{
+    "id":  "social-engineering-call",
+    "category":  "social_engineering",
+    "event":  {
+                  "title":  "Urgent support call",
+                  "description":  "A caller asks a student worker to disclose an account recovery code.",
+                  "caller":  "Unknown caller",
+                  "request":  "Account recovery code",
+                  "time":  "10:47 UTC"
+              },
+    "originalStatus":  "legitimate",
+    "redObjective":  "Pressure a user into sharing a sensitive recovery code.",
+    "investigationEvidence":  {
+                                  "identityCheck":  "The caller cannot provide a verifiable support ticket.",
+                                  "requestCheck":  "Support policy never asks users to disclose recovery codes."
+                              },
+    "redActions":  [
+                       "do_nothing",
+                       "impersonate_support",
+                       "create_urgency"
+                   ],
+    "blueActions":  [
+                        "investigate",
+                        "end_call",
+                        "report",
+                        "ignore"
+                    ],
+    "blueResponses":  [
+                          "end_call",
+                          "report",
+                          "ignore"
+                      ],
+    "attackActions":  [
+                          "impersonate_support",
+                          "create_urgency"
+                      ],
+    "unavailableBlueActionsByRedAction": {
+
+      "impersonate_support": [
+
+        "end_call"
+
+      ],
+
+      "create_urgency": [
+
+        "report"
+
+      ]
+
+    },
+
+    "defensiveActions":  [
+                             "end_call",
+                             "report"
+                         ]
+}

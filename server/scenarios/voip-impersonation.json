@@ -1,0 +1,38 @@
+{
+  "id": "voip-impersonation",
+  "category": "social_engineering",
+  "event": {
+    "title": "Unexpected voice call",
+    "description": "A caller using an internal-looking number asks for an urgent password reset.",
+    "caller": "Internal Help Desk",
+    "request": "Temporary password",
+    "time": "09:14 UTC"
+  },
+  "originalStatus": "legitimate",
+  "redObjective": "Impersonate support staff and obtain a temporary password.",
+  "investigationEvidence": {
+    "identityCheck": "The caller cannot confirm the support ticket number.",
+    "numberCheck": "The displayed number does not match the approved help desk directory."
+  },
+  "redActions": ["do_nothing", "impersonate_helpdesk", "request_secret"],
+  "blueActions": ["investigate", "end_call", "report", "ignore"],
+  "blueResponses": ["end_call", "report", "ignore"],
+  "attackActions": ["impersonate_helpdesk", "request_secret"],
+  "unavailableBlueActionsByRedAction": {
+
+    "impersonate_helpdesk": [
+
+      "end_call"
+
+    ],
+
+    "request_secret": [
+
+      "report"
+
+    ]
+
+  },
+
+  "defensiveActions": ["end_call", "report"]
+}

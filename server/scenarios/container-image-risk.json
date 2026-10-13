@@ -1,0 +1,38 @@
+{
+  "id": "container-image-risk",
+  "category": "cloud_access",
+  "event": {
+    "title": "Unverified container image",
+    "description": "A development service requests deployment of an image from an unfamiliar registry.",
+    "service": "Course Dashboard",
+    "image": "dashboard-helper:latest",
+    "time": "13:16 UTC"
+  },
+  "originalStatus": "legitimate",
+  "redObjective": "Introduce unwanted behaviour through a trusted development deployment.",
+  "investigationEvidence": {
+    "registryCheck": "The registry is not included in the approved deployment sources.",
+    "digestCheck": "The image tag changed without a matching approved digest."
+  },
+  "redActions": ["do_nothing", "publish_tampered_image", "change_image_tag"],
+  "blueActions": ["investigate", "reject_deployment", "pin_approved_image", "ignore"],
+  "blueResponses": ["reject_deployment", "pin_approved_image", "ignore"],
+  "attackActions": ["publish_tampered_image", "change_image_tag"],
+  "unavailableBlueActionsByRedAction": {
+
+    "publish_tampered_image": [
+
+      "reject_deployment"
+
+    ],
+
+    "change_image_tag": [
+
+      "pin_approved_image"
+
+    ]
+
+  },
+
+  "defensiveActions": ["reject_deployment", "pin_approved_image"]
+}

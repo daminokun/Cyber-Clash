@@ -1,0 +1,38 @@
+{
+  "id": "public-wifi-evil-twin",
+  "category": "wireless_security",
+  "event": {
+    "title": "Duplicate public Wi-Fi network",
+    "description": "A second wireless network appears to use a name similar to the approved campus network.",
+    "network": "Campus-WiFi-Guest",
+    "signal": "Strong",
+    "time": "14:03 UTC"
+  },
+  "originalStatus": "legitimate",
+  "redObjective": "Attract users to an imitation wireless network.",
+  "investigationEvidence": {
+    "identityCheck": "The access point is not registered in the campus network inventory.",
+    "securityCheck": "The duplicate network does not advertise the approved security settings."
+  },
+  "redActions": ["do_nothing", "clone_network_name", "redirect_clients"],
+  "blueActions": ["investigate", "remove_access_point", "warn_users", "ignore"],
+  "blueResponses": ["remove_access_point", "warn_users", "ignore"],
+  "attackActions": ["clone_network_name", "redirect_clients"],
+  "unavailableBlueActionsByRedAction": {
+
+    "clone_network_name": [
+
+      "remove_access_point"
+
+    ],
+
+    "redirect_clients": [
+
+      "warn_users"
+
+    ]
+
+  },
+
+  "defensiveActions": ["remove_access_point", "warn_users"]
+}

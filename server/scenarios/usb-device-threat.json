@@ -1,0 +1,47 @@
+﻿{
+    "id":  "usb-device-threat",
+    "category":  "usb_device",
+    "event":  {
+                  "title":  "Unknown USB device detected",
+                  "description":  "A USB drive was found near a shared computer in the security lab.",
+                  "device":  "USB-UNKNOWN-17",
+                  "location":  "Security lab",
+                  "time":  "09:20 UTC"
+              },
+    "originalStatus":  "unknown",
+    "redObjective":  "Make the user connect a malicious USB device.",
+    "investigationEvidence":  {
+                                  "deviceCheck":  "The device has no approved inventory record.",
+                                  "scanCheck":  "The file list contains an executable with an unexpected name."
+                              },
+    "redActions":  [
+                       "do_nothing",
+                       "disguise_usb_label",
+                       "add_malicious_file"
+                   ],
+    "blueActions":  [
+                        "investigate",
+                        "quarantine_device",
+                        "report",
+                        "ignore"
+                    ],
+    "blueResponses":  [
+                          "quarantine_device",
+                          "report",
+                          "ignore"
+                      ],
+    "attackActions":  [
+                          "disguise_usb_label",
+                          "add_malicious_file"
+                      ],
+    "unavailableBlueActionsByRedAction": {
+      "disguise_usb_label": [
+        "quarantine_device"
+      ]
+    },
+
+    "defensiveActions":  [
+                             "quarantine_device",
+                             "report"
+                         ]
+}

@@ -1,0 +1,38 @@
+{
+  "id": "mobile-app-permission",
+  "category": "mobile_security",
+  "event": {
+    "title": "Mobile app requests unusual permission",
+    "description": "A campus utility app requests access to contacts and messages after an update.",
+    "application": "Campus Shuttle",
+    "permissions": "Contacts and messages",
+    "time": "18:26 UTC"
+  },
+  "originalStatus": "legitimate",
+  "redObjective": "Use an unnecessary mobile permission to collect private data.",
+  "investigationEvidence": {
+    "permissionCheck": "The requested permissions are unrelated to shuttle tracking.",
+    "updateCheck": "The permission request appeared only after the latest update."
+  },
+  "redActions": ["do_nothing", "add_data_collection", "hide_permission_reason"],
+  "blueActions": ["investigate", "deny_permission", "remove_application", "ignore"],
+  "blueResponses": ["deny_permission", "remove_application", "ignore"],
+  "attackActions": ["add_data_collection", "hide_permission_reason"],
+  "unavailableBlueActionsByRedAction": {
+
+    "add_data_collection": [
+
+      "deny_permission"
+
+    ],
+
+    "hide_permission_reason": [
+
+      "remove_application"
+
+    ]
+
+  },
+
+  "defensiveActions": ["deny_permission", "remove_application"]
+}

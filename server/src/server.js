@@ -1,18 +1,15 @@
 const { randomInt } = require("node:crypto");
 const { WebSocketServer } = require("ws");
-const {
-  applyAction,
-  createEmailScenario,
-  getPlayerView
-} = require("./emailScenario");
-const loginScenario = require("./loginScenario");
+const scenarioRegistry = require("./scenarioRegistry");
 
 function createMatch(id) {
+  const scenarioIds = selectScenarioIds();
   return {
     id,
     round: 1,
     maxRounds: 3,
-    scenario: createScenario(1),
+    scenarioIds,
+    scenario: scenarioRegistry.createScenario(scenarioIds[0]),
     scores: { red: 0, blue: 0 },
     readyPlayers: new Set(),
     rematchPlayers: new Set(),
@@ -21,24 +18,14 @@ function createMatch(id) {
   };
 }
 
-function createScenario(round) {
-  return round % 2 === 0
-    ? loginScenario.createLoginScenario()
-    : createEmailScenario();
-}
-
-function getScenarioView(scenario, role) {
-  return scenario.category === "login_activity"
-    ? loginScenario.getPlayerView(scenario, role)
-    : getPlayerView(scenario, role);
-}
-
-function applyScenarioAction(scenario, role, action) {
-  if (scenario.category === "login_activity") {
-    loginScenario.applyAction(scenario, role, action);
-    return;
+function selectScenarioIds() {
+  const available = scenarioRegistry.getScenarioDefinitions();
+  const selected = [];
+  while (selected.length < 3) {
+    const index = randomInt(available.length);
+    selected.push(available.splice(index, 1)[0].id);
   }
-  applyAction(scenario, role, action);
+  return selected;
 }
 
 function send(socket, message) {
@@ -49,7 +36,7 @@ function send(socket, message) {
 
 function broadcastState(match) {
   for (const [socket, player] of match.players) {
-    const state = getScenarioView(match.scenario, player.role);
+    const state = scenarioRegistry.getScenarioView(match.scenario, player.role);
     state.scores = { ...match.scores };
     state.round = match.round;
     state.maxRounds = match.maxRounds;
@@ -101,8 +88,9 @@ function broadcastMatchComplete(match) {
 }
 
 function resetMatch(match) {
+  match.scenarioIds = selectScenarioIds();
   match.round = 1;
-  match.scenario = createScenario(1);
+  match.scenario = scenarioRegistry.createScenario(match.scenarioIds[0]);
   match.scores = { red: 0, blue: 0 };
   match.readyPlayers.clear();
   match.rematchPlayers.clear();
@@ -250,7 +238,9 @@ function createGameServer({ port = 0, host = "127.0.0.1" } = {}) {
             if (match.readyPlayers.size === match.players.size) {
               match.round += 1;
               match.readyPlayers.clear();
-              match.scenario = createScenario(match.round);
+              match.scenario = scenarioRegistry.createScenario(
+                match.scenarioIds[match.round - 1]
+              );
               broadcastState(match);
             }
             return;
@@ -258,7 +248,7 @@ function createGameServer({ port = 0, host = "127.0.0.1" } = {}) {
           throw new Error("invalid_action_message");
         }
 
-        applyScenarioAction(match.scenario, player.role, message.action);
+        scenarioRegistry.applyScenarioAction(match.scenario, player.role, message.action);
         if (match.scenario.resolved) {
           addScenarioScore(match);
         }
