@@ -15,6 +15,8 @@ function createMatch(id) {
     scenario: createScenario(1),
     scores: { red: 0, blue: 0 },
     readyPlayers: new Set(),
+    rematchPlayers: new Set(),
+    complete: false,
     players: new Map()
   };
 }
@@ -98,6 +100,15 @@ function broadcastMatchComplete(match) {
   }
 }
 
+function resetMatch(match) {
+  match.round = 1;
+  match.scenario = createScenario(1);
+  match.scores = { red: 0, blue: 0 };
+  match.readyPlayers.clear();
+  match.rematchPlayers.clear();
+  match.complete = false;
+}
+
 function parseMessage(rawMessage) {
   let message;
   try {
@@ -134,7 +145,7 @@ function createGameServer({ port = 0, host = "127.0.0.1" } = {}) {
 
   function findAvailableMatch() {
     for (const match of matches.values()) {
-      if (match.players.size === 1) {
+      if (match.players.size === 1 && !match.complete) {
         return match;
       }
     }
@@ -188,6 +199,44 @@ function createGameServer({ port = 0, host = "127.0.0.1" } = {}) {
           return;
         }
 
+        if (message.type === "rematch") {
+          if (!match.complete) {
+            throw new Error("match_not_complete");
+          }
+          match.rematchPlayers.add(socket);
+          if (match.players.size === 2) {
+            if (match.rematchPlayers.size === 2) {
+              resetMatch(match);
+              broadcastState(match);
+            } else {
+              send(socket, { type: "rematch_waiting" });
+            }
+            return;
+          }
+
+          const oldMatch = match;
+          oldMatch.players.delete(socket);
+          oldMatch.rematchPlayers.delete(socket);
+          removeEmptyMatch(oldMatch);
+          const newMatch = findAvailableMatch() || createAndStoreMatch();
+          const newRole = newMatch.players.size === 0 ? "red" : "blue";
+          match = newMatch;
+          player = { role: newRole };
+          match.players.set(socket, player);
+          send(socket, {
+            type: "new_opponent",
+            matchId: match.id,
+            role: newRole
+          });
+          broadcastJoined(match);
+          if (match.players.size === 2) {
+            broadcastState(match);
+          } else {
+            send(socket, { type: "waiting_for_player", matchId: match.id });
+          }
+          return;
+        }
+
         if (message.type !== "action" || typeof message.action !== "string") {
           if (message.type === "ready_next_round") {
             if (!match.scenario.resolved) {
@@ -215,6 +264,7 @@ function createGameServer({ port = 0, host = "127.0.0.1" } = {}) {
         }
         broadcastState(match);
         if (match.scenario.resolved && match.round === match.maxRounds) {
+          match.complete = true;
           broadcastMatchComplete(match);
         }
       } catch (error) {

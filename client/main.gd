@@ -417,6 +417,19 @@ func _handle_message(raw_message: String) -> void:
 				final_scores.get("red", 0),
 				final_scores.get("blue", 0)
 			])
+			_add_rematch_button()
+		"rematch_waiting":
+			action_pending = true
+			_clear_action_buttons()
+			_set_status("Waiting for opponent to confirm rematch...")
+		"new_opponent":
+			action_pending = false
+			match_result_label.visible = false
+			lobby_container.visible = true
+			game_container.visible = false
+			lobby_status_label.text = "NEW OPPONENT FOUND"
+			lobby_detail_label.text = "You are playing against a new opponent in Match %s." % message.get("matchId", "------")
+			_set_status("New opponent found.")
 		"error":
 			var server_error := str(message.get("error", "unknown_error"))
 			if action_pending:
@@ -548,6 +561,22 @@ func _send_ready_for_next_round() -> void:
 		"type": "ready_next_round"
 	}))
 	_set_status("Waiting for opponent...")
+
+func _add_rematch_button() -> void:
+	var button := _create_button("REMATCH", 40, 13)
+	button.pressed.connect(_send_rematch)
+	actions_container.add_child(button)
+
+func _send_rematch() -> void:
+	if socket.get_ready_state() != WebSocketPeer.STATE_OPEN:
+		_set_status("Cannot rematch while disconnected.")
+		return
+	action_pending = true
+	_clear_action_buttons()
+	socket.send_text(JSON.stringify({
+		"type": "rematch"
+	}))
+	_set_status("Looking for rematch...")
 
 func _set_status(message: String) -> void:
 	if status_label:

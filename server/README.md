@@ -55,6 +55,17 @@ scenario is resolved, both players must send:
 before the next round begins. The server sends `match_complete` after the
 final round.
 
+After a completed match, both players can send:
+
+```json
+{"type":"rematch"}
+```
+
+If both original players request a rematch, the same lobby resets to Round 1.
+If only one original player remains connected, that player is moved to an
+available lobby automatically. The client receives `new_opponent` when this
+creates a match against a different player.
+
 The suspicious login scenario uses an additional counter-turn:
 
 ```text
