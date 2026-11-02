@@ -6,7 +6,7 @@ The game is designed for beginners to learn basic cybersecurity concepts through
 
 ## Project Title
 
-**Beginner-Friendly Multiplayer Cybersecurity Simulation Game Using Dynamic Scenario Generation**
+**Development of a Web-Based PvP Cybersecurity Simulation Game for IT Students Using Godot Engine and Node.js**
 
 ## Features
 
