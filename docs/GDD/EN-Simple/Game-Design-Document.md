@@ -27,7 +27,8 @@ The game is designed for **two players**:
 
 ### 1.4 Target Player
 
-The game is designed for beginners who want to learn basic cybersecurity concepts through an interactive game.
+The game is designed for IT students who want to learn basic cybersecurity
+concepts through an interactive game.
 
 ### 1.5 Platform
 
@@ -455,7 +456,7 @@ defense succeeds, but the server must not remove a defense from Blue's action
 list or display a message confirming that Red changed tactics. Blue must choose
 a response while the adaptation remains uncertain.
 
-After the scenario ends, both players receive a beginner-friendly result
+After the scenario ends, both players receive a clear result
 explanation. The explanation describes Red's attack action, Blue's defensive
 response, why the attack succeeded or was prevented, and why points were
 awarded. If no attack occurred, it explains that there was no significant

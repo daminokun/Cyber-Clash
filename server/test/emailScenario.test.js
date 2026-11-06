@@ -235,7 +235,7 @@ test("removed change tactic action is rejected for every scenario", () => {
   }
 });
 
-test("resolved scenarios provide a beginner-friendly public explanation", () => {
+test("resolved scenarios provide a clear public explanation", () => {
   const emailState = createEmailScenario();
   applyAction(emailState, "red", "add_malicious_link");
   applyAction(emailState, "blue", "ignore");

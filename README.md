@@ -1,8 +1,10 @@
 # Cyber Clash
 
-Cyber Clash is a multiplayer cybersecurity simulation game developed as a Final Year Project (FYP).
+Cyber Clash is a multiplayer cybersecurity simulation game for IT students,
+developed as a Final Year Project (FYP).
 
-The game is designed for beginners to learn basic cybersecurity concepts through simple scenarios and player-versus-player gameplay.
+The game is designed for IT students to learn basic cybersecurity concepts
+through simple scenarios and player-versus-player gameplay.
 
 ## Project Title
 
@@ -12,7 +14,7 @@ The game is designed for beginners to learn basic cybersecurity concepts through
 
 * Multiplayer PvP
 * Cybersecurity-based scenarios
-* Simple gameplay for beginners
+* Clear gameplay for IT students
 * Dynamic scenario generation with three random scenarios per match
 * Player scoring system
 * Real-time multiplayer

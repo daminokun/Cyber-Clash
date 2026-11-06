@@ -27,7 +27,8 @@ Permainan ini direka untuk **dua pemain**:
 
 ### 1.4 Pemain Sasaran
 
-Permainan ini direka untuk pemula yang ingin mempelajari konsep asas keselamatan siber melalui permainan interaktif.
+Permainan ini direka untuk pelajar IT yang ingin mempelajari konsep asas
+keselamatan siber melalui permainan interaktif.
 
 ### 1.5 Platform
 

@@ -23,7 +23,8 @@ The game is designed for **two players**:
 
 ### 1.4 Target Player
 
-The game is designed for beginners who want to learn basic cybersecurity concepts through an interactive game.
+The game is designed for IT students who want to learn basic cybersecurity
+concepts through an interactive game.
 
 ### 1.5 Platform
 
@@ -408,7 +409,10 @@ The Scenario System is responsible for creating and managing the cybersecurity s
 
 Each scenario defines an initial event, its underlying state, the actions available to both players, possible unexpected events and the rules used to determine the outcome.
 
-The system uses predefined scenario templates with controlled variations. This approach allows scenarios to feel different while keeping their behaviour consistent, testable and suitable for beginner-level cybersecurity education.
+The system uses predefined scenario templates with controlled variations. This
+approach allows scenarios to feel different while keeping their behaviour
+consistent, testable and suitable for foundational cybersecurity education for
+IT students.
 
 ### 6.1 Scenario Categories
 
@@ -1669,7 +1673,8 @@ The scoring system will initially be implemented using a simple set of rules sui
 
 Point values, penalties, objective requirements and match duration will be adjusted through testing.
 
-Balancing will focus on preventing dominant strategies, ensuring meaningful choices for both teams and keeping the game understandable for beginners.
+Balancing will focus on preventing dominant strategies, ensuring meaningful
+choices for both teams and keeping the game understandable for IT students.
 
 The final scoring configuration will be documented after the core gameplay mechanics have been implemented and evaluated.
 
@@ -2157,7 +2162,9 @@ The User Interface (UI) provides the visual elements through which players inter
 
 The interface is designed to present scenario information, player actions, investigation results and match progress in a clear and understandable way.
 
-Since Cyber Clash is designed for beginners, the UI should avoid unnecessary complexity and use simple labels, clear instructions and meaningful feedback.
+Since Cyber Clash is designed for IT students, the UI should
+avoid unnecessary complexity and use simple labels, clear instructions and
+meaningful feedback.
 
 The Red Team and Blue Team will have different interfaces based on their respective roles and information access.
 
@@ -2358,7 +2365,9 @@ The summary may include:
 
 The amount of information revealed should depend on the game's information rules.
 
-The summary should help beginners understand why an action succeeded or failed without exposing information that must remain hidden during an active scenario.
+The summary should help IT students understand why an action
+succeeded or failed without exposing information that must remain hidden during
+an active scenario.
 
 ### 14.11 Match Result Screen
 
@@ -2533,7 +2542,7 @@ Blue must therefore balance immediate response against investigation: a direct
 response may stop the original attack, while investigation gives Red a valid
 counter-turn before the final response.
 
-After resolution, both players receive a beginner-friendly result explanation.
+After resolution, both players receive a clear result explanation.
 It describes the Red attack, the Blue response, why the attack succeeded or was
 prevented, and why points were awarded. If no attack occurred, it explains that
 there was no significant impact. Hidden information is revealed only after

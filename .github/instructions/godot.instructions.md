@@ -10,4 +10,4 @@ applyTo: "client/**/*.gd,client/**/*.tscn,client/**/*.tres"
 - Match client actions and displayed states to the server contract and the GDD.
 - Never display server-only hidden state or the other player's private information.
 - Handle rejected or invalid server actions explicitly and provide a clear player-facing result.
-- Keep beginner-facing labels and flows consistent with the terminology in the GDD.
+- Keep player-facing labels and flows consistent with the terminology in the GDD.

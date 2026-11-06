@@ -23,7 +23,8 @@ Permainan ini direka untuk **dua pemain**:
 
 ### 1.4 Pemain Sasaran
 
-Permainan ini direka untuk pemula yang ingin mempelajari konsep asas keselamatan siber melalui permainan interaktif.
+Permainan ini direka untuk pelajar IT yang ingin mempelajari konsep asas
+keselamatan siber melalui permainan interaktif.
 
 ### 1.5 Platform
 
@@ -448,7 +449,10 @@ Sistem Senario ialah bertanggungjawab untuk creating dan managing keselamatan si
 
 setiap senario defines awal peristiwa, its underlying keadaan, tindakan tersedia kedua-dua pemain, mungkin tidak dijangka peristiwa-peristiwa dan peraturan digunakan menentukan hasil.
 
-sistem menggunakan yang telah ditetapkan senario templates dengan controlled variasi. Ini approach membolehkan senario-senario feel berbeza manakala keeping their behaviour consistent, testable dan suitable untuk beginner-level keselamatan siber education.
+sistem menggunakan yang telah ditetapkan senario templates dengan controlled
+variasi. Ini approach membolehkan senario-senario feel berbeza manakala keeping
+their behaviour consistent, testable dan suitable untuk foundational
+cybersecurity education untuk pelajar IT.
 
 ### 6.1 Senario kategori
 
@@ -1697,7 +1701,9 @@ pemarkahan sistem akan initially menjadi implemented menggunakan simple set dari
 
 mata values, penalties, objektif keperluan dan perlawanan duration akan menjadi adjusted melalui pengujian.
 
-Balancing akan focus pada preventing dominant strategi, ensuring bermakna choices untuk kedua-dua pasukan dan keeping permainan ini understandable untuk pemula.
+Balancing akan focus pada preventing dominant strategi, ensuring bermakna
+choices untuk kedua-dua pasukan dan keeping permainan ini understandable untuk
+pelajar IT.
 
 akhir pemarkahan configuration akan menjadi documented selepas core permainan mekanik mempunyai telah implemented dan evaluated.
 
@@ -2178,7 +2184,9 @@ Antara Muka Pengguna (UI) menyediakan visual elements melalui yang pemain intera
 
 interface ialah direka present senario maklumat, pemain tindakan, siasatan hasil dan perlawanan kemajuan dalam jelas dan understandable way.
 
-Since Cyber Clash ialah direka untuk pemula, UI hendaklah mengelakkan unnecessary complexity dan menggunakan simple labels, jelas instructions dan bermakna feedback.
+Since Cyber Clash ialah direka untuk pelajar IT, UI
+hendaklah mengelakkan unnecessary complexity dan menggunakan simple labels,
+jelas instructions dan bermakna feedback.
 
 Red Team dan Blue Team akan mempunyai berbeza interfaces berdasarkan their respective roles dan maklumat akses.
 
@@ -2379,7 +2387,9 @@ summary mungkin termasuk:
 
 amount daripada maklumat revealed hendaklah depend pada permainan ini maklumat peraturan.
 
-summary hendaklah help pemula understand why tindakan succeeded atau gagal tanpa exposing maklumat itu mesti remain tersembunyi semasa active senario.
+summary hendaklah help pelajar IT understand why tindakan
+succeeded atau gagal tanpa exposing maklumat itu mesti remain tersembunyi semasa
+active senario.
 
 ### 14.11 perlawanan Hasil Skrin
 
