@@ -1399,15 +1399,17 @@ This creates variation between scenarios and prevents players from relying on a 
 
 ### 10.12 Match End
 
-For the initial prototype, a match ends after a predefined number of scenarios has been completed.
+For the initial prototype, a match consists of three unique scenarios selected
+by the server at match creation. The match ends after all three scenarios have
+been completed.
 
 The server calculates the final result using the accumulated scores and the final match state.
 
 The player with the higher final score wins the match. If both players have the same score, the match ends in a draw.
 
-The current prototype uses the provisional values in Section 11.8 and
-resolves one scenario at a time. The number of scenarios in a complete match
-will be balanced after the first playable client flow is tested.
+The current prototype uses the provisional values in Section 11.8 and resolves
+one scenario at a time. The server preserves the selected scenario sequence
+throughout the match.
 
 The final result is presented to both players through the match result interface.
 
@@ -1613,7 +1615,7 @@ The primary win condition for Cyber Clash is based on the final score accumulate
 
 For the initial prototype, the match follows these rules:
 
-1. The match ends after a predefined number of scenarios has been completed.
+1. The match ends after the three selected scenarios have been completed.
 2. The server calculates and records the scores of both players after each scenario is resolved.
 3. The player with the higher final score wins the match.
 4. If both players have the same final score, the match ends in a draw.
@@ -1622,8 +1624,8 @@ The final score reflects the effectiveness of each player's decisions, the achie
 
 Neither player wins simply by attempting an attack or selecting a defensive action. The server determines the result based on the scenario state and the predefined scoring rules.
 
-The current server prototype resolves one scenario at a time. A multi-scenario
-match length remains a balancing decision for a later prototype milestone.
+The current server prototype resolves one scenario at a time and preserves the
+server-selected sequence of three unique scenarios.
 
 ### 11.10 Match Result
 

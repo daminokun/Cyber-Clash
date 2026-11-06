@@ -1440,15 +1440,17 @@ Ini mewujudkan variasi antara senario-senario dan prevents pemain daripada berga
 
 ### 10.12 Tamat Perlawanan
 
-untuk awal prototaip, perlawanan ends selepas yang telah ditetapkan number daripada senario-senario mempunyai telah completed.
+untuk awal prototaip, perlawanan consists daripada tiga senario unik yang
+dipilih oleh server at match creation. perlawanan ends selepas all three
+senario-senario mempunyai telah completed.
 
 server mengira akhir hasil menggunakan accumulated skor dan akhir perlawanan keadaan.
 
 pemain dengan higher akhir skor wins perlawanan. If kedua-dua pemain mempunyai sama skor, perlawanan ends dalam draw.
 
 semasa prototaip menggunakan provisional values dalam Section 11.8 dan
-resolves satu senario at masa. number daripada senario-senario dalam lengkap perlawanan
-will menjadi balanced selepas pertama playable client aliran ialah tested.
+resolves satu senario at masa. server preserves selected senario sequence
+throughout perlawanan.
 
 akhir hasil ialah presented kedua-dua pemain melalui perlawanan hasil interface.
 
@@ -1657,7 +1659,7 @@ primary win condition untuk Cyber Clash ialah berdasarkan akhir skor accumulated
 
 untuk awal prototaip, perlawanan follows these peraturan:
 
-1. perlawanan ends selepas yang telah ditetapkan number daripada senario-senario mempunyai telah completed.
+1. perlawanan ends selepas tiga selected senario-senario mempunyai telah completed.
 2. server mengira dan records skor daripada kedua-dua pemain selepas setiap senario ialah resolved.
 3. pemain dengan higher akhir skor wins perlawanan.
 4. If kedua-dua pemain mempunyai sama akhir skor, perlawanan ends dalam draw.
@@ -1666,8 +1668,8 @@ akhir skor reflects keberkesanan daripada setiap pemain's keputusan, achievement
 
 Neither pemain wins semata-mata oleh mencuba serangan atau selecting defensive tindakan. server menentukan hasil berdasarkan senario keadaan dan yang telah ditetapkan pemarkahan peraturan.
 
-semasa server prototaip resolves satu senario at masa. Satu multi-senario
-perlawanan length remains balancing keputusan untuk later prototaip milestone.
+semasa server prototaip resolves satu senario at masa dan preserves server-selected
+sequence daripada tiga senario unik.
 
 ### 11.10 perlawanan Hasil
 
