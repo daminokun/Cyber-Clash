@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="1600"
+   height="900"
+   viewBox="0 0 1600 900"
+   version="1.1"
+   id="svg32"
+   sodipodi:docname="objective-achievement-flow-horizontal.svg"
+   inkscape:version="1.4.4 (dcaf3e7, 2026-05-05)"
+   inkscape:export-filename="objective-achievement-flow-horizontal.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview32"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="2.4293046"
+     inkscape:cx="1354.297"
+     inkscape:cy="167.33183"
+     inkscape:window-width="1920"
+     inkscape:window-height="991"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg32"
+     inkscape:export-bgcolor="#ffffff00" />
+  <title
+     id="title1">Carta Alir Prosedur Mencapai Objektif</title>
+  <defs
+     id="defs1">
+    <marker
+       id="arrow"
+       markerWidth="12"
+       markerHeight="12"
+       refX="10"
+       refY="6"
+       orient="auto">
+      <path
+         d="M0 0L12 6L0 12Z"
+         fill="#334155"
+         id="path1" />
+    </marker>
+    <style
+       id="style1">
+      .title{font:700 32px Arial;fill:#172554}
+      .head{font:700 20px Arial;fill:#172554;text-anchor:middle}
+      .body{font:400 16px Arial;fill:#334155;text-anchor:middle}
+      .start{fill:#e0e7ff;stroke:#4f46e5;stroke-width:3}
+      .process{fill:#dbeafe;stroke:#2563eb;stroke-width:3}
+      .objective{fill:#dcfce7;stroke:#16a34a;stroke-width:3}
+      .decision{fill:#fef3c7;stroke:#d97706;stroke-width:3}
+      .end{fill:#e0e7ff;stroke:#4f46e5;stroke-width:3}
+      .line{fill:none;stroke:#334155;stroke-width:4;marker-end:url(#arrow)}
+      .label{font:600 16px Arial;fill:#92400e}
+    </style>
+  </defs>
+  <rect
+     width="1600"
+     height="560.02588"
+     fill="#ffffff"
+     id="rect1"
+     x="-2.0000019"
+     y="4.6571794"
+     ry="0"
+     style="stroke-width:0.788829" />
+  <text
+     x="800"
+     y="52"
+     class="title"
+     text-anchor="middle"
+     id="text1">CARTA ALIR PROSEDUR MENCAPAI OBJEKTIF</text>
+  <rect
+     x="43.835705"
+     y="131.79819"
+     width="135"
+     height="70"
+     rx="35"
+     class="start"
+     id="rect2" />
+  <text
+     x="110.8357"
+     y="174.79819"
+     class="head"
+     id="text2"
+     style="font-style:normal;font-variant:normal;font-weight:700;font-stretch:normal;font-size:20px;line-height:normal;font-family:Arial">MULA</text>
+  <rect
+     x="211.16429"
+     y="117.41268"
+     width="190"
+     height="110"
+     rx="15"
+     class="process"
+     id="rect3" />
+  <text
+     x="306.16431"
+     y="159.41267"
+     class="head"
+     id="text3"
+     style="font-style:normal;font-variant:normal;font-weight:700;font-stretch:normal;font-size:20px;line-height:normal;font-family:Arial">Kenal pasti masalah</text>
+  <text
+     x="306.16431"
+     y="191.41267"
+     class="body"
+     id="text4"
+     style="font-style:normal;font-variant:normal;font-weight:400;font-stretch:normal;font-size:16px;line-height:normal;font-family:Arial">Pembelajaran</text>
+  <text
+     x="306.16431"
+     y="213.41267"
+     class="body"
+     id="text5"
+     style="font-style:normal;font-variant:normal;font-weight:400;font-stretch:normal;font-size:16px;line-height:normal;font-family:Arial">keselamatan siber</text>
+  <rect
+     x="431.16431"
+     y="117.41268"
+     width="190"
+     height="110"
+     rx="15"
+     class="process"
+     id="rect5" />
+  <text
+     x="526.16431"
+     y="159.41267"
+     class="head"
+     id="text6"
+     style="font-style:normal;font-variant:normal;font-weight:700;font-stretch:normal;font-size:20px;line-height:normal;font-family:Arial">Kaji keperluan</text>
+  <text
+     x="526.16431"
+     y="191.41267"
+     class="body"
+     id="text7"
+     style="font-style:normal;font-variant:normal;font-weight:400;font-stretch:normal;font-size:16px;line-height:normal;font-family:Arial">Pengguna dan</text>
+  <text
+     x="526.16431"
+     y="213.41267"
+     class="body"
+     id="text8"
+     style="font-style:normal;font-variant:normal;font-weight:400;font-stretch:normal;font-size:16px;line-height:normal;font-family:Arial">sistem</text>
+  <rect
+     x="651.16431"
+     y="117.41268"
+     width="190"
+     height="110"
+     rx="15"
+     class="process"
+     id="rect8" />
+  <text
+     x="746.16431"
+     y="159.41267"
+     class="head"
+     id="text9"
+     style="font-style:normal;font-variant:normal;font-weight:700;font-stretch:normal;font-size:20px;line-height:normal;font-family:Arial">Reka bentuk</text>
+  <text
+     x="746.16431"
+     y="191.41267"
+     class="body"
+     id="text10"
+     style="font-style:normal;font-variant:normal;font-weight:400;font-stretch:normal;font-size:16px;line-height:normal;font-family:Arial">Permainan dan</text>
+  <text
+     x="746.16431"
+     y="213.41267"
+     class="body"
+     id="text11"
+     style="font-style:normal;font-variant:normal;font-weight:400;font-stretch:normal;font-size:16px;line-height:normal;font-family:Arial">senario siber</text>
+  <rect
+     x="900"
+     y="121.02846"
+     width="300"
+     height="105"
+     rx="15"
+     class="objective"
+     id="rect11" />
+  <text
+     x="1050"
+     y="163.02846"
+     class="head"
+     id="text12"
+     style="font-style:normal;font-variant:normal;font-weight:700;font-stretch:normal;font-size:20px;line-height:normal;font-family:Arial">Objektif 1</text>
+  <text
+     x="1050"
+     y="194.02846"
+     class="body"
+     id="text13"
+     style="font-style:normal;font-variant:normal;font-weight:400;font-stretch:normal;font-size:16px;line-height:normal;font-family:Arial;white-space:pre;inline-size:221.43;display:inline"
+     xml:space="preserve"><tspan
+       x="1050"
+       y="194.02846"
+       id="tspan1">Bangunkan permainan<tspan
+   y="194.02846"
+   id="tspan2"> </tspan></tspan><tspan
+       x="1050"
+       y="214.02846"
+       id="tspan3">simulasi PvP berasaskan web</tspan></text>
+  <text
+     x="1050"
+     y="216.02846"
+     class="body"
+     id="text14"
+     style="font-style:normal;font-variant:normal;font-weight:400;font-stretch:normal;font-size:16px;line-height:normal;font-family:Arial" />
+  <rect
+     x="1256.2743"
+     y="121.86287"
+     width="300"
+     height="105"
+     rx="15"
+     class="objective"
+     id="rect14" />
+  <text
+     x="1406.2743"
+     y="163.86287"
+     class="head"
+     id="text15"
+     style="font-style:normal;font-variant:normal;font-weight:700;font-stretch:normal;font-size:20px;line-height:normal;font-family:Arial">Objektif 2</text>
+  <text
+     x="1406.2743"
+     y="194.86287"
+     class="body"
+     id="text16"
+     style="font-style:normal;font-variant:normal;font-weight:400;font-stretch:normal;font-size:16px;line-height:normal;font-family:Arial">Bangunkan fungsi PvP</text>
+  <text
+     x="1406.2743"
+     y="216.86287"
+     class="body"
+     id="text17"
+     style="font-style:normal;font-variant:normal;font-weight:400;font-stretch:normal;font-size:16px;line-height:normal;font-family:Arial">menggunakan client-server</text>
+  <rect
+     x="1260.9314"
+     y="296.17725"
+     width="300"
+     height="105"
+     rx="15"
+     class="objective"
+     id="rect17" />
+  <text
+     x="1410.9314"
+     y="338.17725"
+     class="head"
+     id="text18"
+     style="font-style:normal;font-variant:normal;font-weight:700;font-stretch:normal;font-size:20px;line-height:normal;font-family:Arial">Objektif 3</text>
+  <text
+     x="1410.9314"
+     y="369.17725"
+     class="body"
+     id="text19"
+     style="font-style:normal;font-variant:normal;font-weight:400;font-stretch:normal;font-size:16px;line-height:normal;font-family:Arial">Bangunkan rekod tindakan, objektif,</text>
+  <text
+     x="1410.9314"
+     y="391.17725"
+     class="body"
+     id="text20"
+     style="font-style:normal;font-variant:normal;font-weight:400;font-stretch:normal;font-size:16px;line-height:normal;font-family:Arial">skor dan keputusan</text>
+  <rect
+     x="973.1048"
+     y="296.50714"
+     width="220"
+     height="105"
+     rx="15"
+     class="process"
+     id="rect20" />
+  <text
+     x="1083.1047"
+     y="338.50714"
+     class="head"
+     id="text21"
+     style="font-style:normal;font-variant:normal;font-weight:700;font-stretch:normal;font-size:20px;line-height:normal;font-family:Arial">Integrasikan</text>
+  <text
+     x="1083.1047"
+     y="369.50714"
+     class="body"
+     id="text22"
+     style="font-style:normal;font-variant:normal;font-weight:400;font-stretch:normal;font-size:16px;line-height:normal;font-family:Arial">Semua fungsi</text>
+  <text
+     x="1083.1047"
+     y="391.50714"
+     class="body"
+     id="text23"
+     style="font-style:normal;font-variant:normal;font-weight:400;font-stretch:normal;font-size:16px;line-height:normal;font-family:Arial">sistem</text>
+  <rect
+     x="693.67401"
+     y="298.50583"
+     width="220"
+     height="105"
+     rx="15"
+     class="process"
+     id="rect23" />
+  <text
+     x="803.67401"
+     y="340.5058"
+     class="head"
+     id="text24"
+     style="font-style:normal;font-variant:normal;font-weight:700;font-stretch:normal;font-size:20px;line-height:normal;font-family:Arial">Jalankan pengujian</text>
+  <text
+     x="803.67401"
+     y="371.5058"
+     class="body"
+     id="text25"
+     style="font-style:normal;font-variant:normal;font-weight:400;font-stretch:normal;font-size:16px;line-height:normal;font-family:Arial">Sistem</text>
+  <polygon
+     points="1380,765 1245,695 1380,625 1515,695 "
+     class="decision"
+     id="polygon25"
+     transform="translate(-926.77878,-350.45278)" />
+  <text
+     x="453.22122"
+     y="337.54724"
+     class="head"
+     id="text26"
+     style="font-style:normal;font-variant:normal;font-weight:700;font-stretch:normal;font-size:20px;line-height:normal;font-family:Arial">Adakah semua</text>
+  <text
+     x="453.22122"
+     y="364.54724"
+     class="head"
+     id="text27"
+     style="font-style:normal;font-variant:normal;font-weight:700;font-stretch:normal;font-size:20px;line-height:normal;font-family:Arial">objektif tercapai?</text>
+  <rect
+     x="10.232859"
+     y="314.83182"
+     width="220"
+     height="70"
+     rx="15"
+     class="end"
+     id="rect27" />
+  <text
+     x="120.23286"
+     y="344.83182"
+     class="head"
+     id="text28"
+     style="font-style:normal;font-variant:normal;font-weight:700;font-stretch:normal;font-size:20px;line-height:normal;font-family:Arial">Dokumentasi dan</text>
+  <text
+     x="120.23286"
+     y="367.83182"
+     class="head"
+     id="text29"
+     style="font-style:normal;font-variant:normal;font-weight:700;font-stretch:normal;font-size:20px;line-height:normal;font-family:Arial">pembentangan</text>
+  <path
+     d="m 176.50712,167.96248 h 34.65718 m 191.16429,2.1216 27.67141,1e-5 m 192.32859,-1e-5 h 28.83571 m 192.53557,1.61579 h 57.46443 m 299.0298,-1.55757 58.2147,0.62096 m 144.3726,56.09961 v 65.82147 m -485.70506,57.65718 56.02846,-0.67012 m 288.1371,-5.21474 -65.2005,-0.54334 m -606.59766,-0.95084 104.78654,2.60673 m -374.90297,-4.37258 -80.33636,-0.75032"
+     class="line"
+     id="path29"
+     sodipodi:nodetypes="cccccccccccccccccccc" />
+  <path
+     d="m 454.16559,415.56921 0,78.00129 644.07501,-1.16429 -1.1643,-86.5718"
+     class="line"
+     id="path30"
+     sodipodi:nodetypes="cccc" />
+  <text
+     x="517.51617"
+     y="453.78397"
+     class="label"
+     text-anchor="end"
+     id="text30"
+     style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:16px;line-height:normal;font-family:Arial">Tidak</text>
+  <text
+     x="750.37518"
+     y="477.61966"
+     class="label"
+     text-anchor="end"
+     id="text31"
+     style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:16px;line-height:normal;font-family:Arial">Baiki dan bangunkan semula fungsi</text>
+  <text
+     x="281.45535"
+     y="304.83182"
+     class="label"
+     id="text32"
+     style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:16px;line-height:normal;font-family:Arial">Ya</text>
+</svg>

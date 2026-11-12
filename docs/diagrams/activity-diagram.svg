@@ -1,22 +1,220 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="1200" viewBox="0 0 1300 1200">
-  <title>Activity Diagram Cyber Clash</title>
-  <defs>
-    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#334155"/></marker>
-    <style>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="1300"
+   height="1200"
+   viewBox="0 0 1300 1200"
+   version="1.1"
+   id="svg13"
+   sodipodi:docname="activity-diagram.svg"
+   inkscape:export-filename="activity-diagram.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="1.4.4 (dcaf3e7, 2026-05-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview13"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.64416667"
+     inkscape:cx="649.67658"
+     inkscape:cy="600"
+     inkscape:window-width="1920"
+     inkscape:window-height="991"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg13" />
+  <title
+     id="title1">Activity Diagram Cyber Clash</title>
+  <defs
+     id="defs1">
+    <marker
+       id="arrow"
+       markerWidth="10"
+       markerHeight="10"
+       refX="8"
+       refY="5"
+       orient="auto">
+      <path
+         d="M0 0L10 5L0 10Z"
+         fill="#334155"
+         id="path1" />
+    </marker>
+    <style
+       id="style1">
       .title{font:700 32px Arial;fill:#0f172a}.head{font:700 22px Arial;fill:#0f172a;text-anchor:middle}.text{font:500 18px Arial;fill:#0f172a;text-anchor:middle}.box{fill:#dbeafe;stroke:#2563eb;stroke-width:3}.red{fill:#fee2e2;stroke:#dc2626;stroke-width:3}.blue{fill:#dbeafe;stroke:#2563eb;stroke-width:3}.server{fill:#dcfce7;stroke:#16a34a;stroke-width:3}.line{stroke:#334155;stroke-width:3;fill:none;marker-end:url(#arrow)}.lane{stroke:#94a3b8;stroke-width:2}
     </style>
   </defs>
-  <rect width="1300" height="1200" fill="#fff"/><text x="650" y="48" class="title" text-anchor="middle">ACTIVITY DIAGRAM PERMAINAN</text>
-  <line x1="430" y1="90" x2="430" y2="1130" class="lane"/><line x1="870" y1="90" x2="870" y2="1130" class="lane"/>
-  <text x="215" y="85" class="head">Red Team</text><text x="650" y="85" class="head">Server</text><text x="1085" y="85" class="head">Blue Team</text>
-  <rect x="70" y="125" width="290" height="75" rx="16" class="red"/><text x="215" y="170" class="text">Pilih tindakan serangan</text>
-  <rect x="505" y="235" width="290" height="75" rx="16" class="server"/><text x="650" y="280" class="text">Sahkan tindakan</text>
-  <rect x="945" y="345" width="290" height="75" rx="16" class="blue"/><text x="1090" y="390" class="text">Terima paparan dibenarkan</text>
-  <rect x="945" y="455" width="290" height="75" rx="16" class="blue"/><text x="1090" y="500" class="text">Siasat event</text>
-  <rect x="505" y="565" width="290" height="75" rx="16" class="server"/><text x="650" y="610" class="text">Proses hidden state</text>
-  <rect x="70" y="675" width="290" height="75" rx="16" class="red"/><text x="215" y="720" class="text">Adaptasi jika diperlukan</text>
-  <rect x="945" y="785" width="290" height="75" rx="16" class="blue"/><text x="1090" y="830" class="text">Pilih pertahanan</text>
-  <rect x="505" y="895" width="290" height="75" rx="16" class="server"/><text x="650" y="940" class="text">Selesaikan senario</text>
-  <rect x="505" y="1005" width="290" height="75" rx="16" class="server"/><text x="650" y="1050" class="text">Kemas kini skor</text>
-  <path d="M360 162H505V272M795 272H900V382H945M1090 420V455M945 492H795V602M505 602H360V712M360 712H900V822H945M945 822H795V932M650 970V1005" class="line"/>
+  <rect
+     width="1300"
+     height="1200"
+     fill="#fff"
+     id="rect1" />
+  <text
+     x="650"
+     y="48"
+     class="title"
+     text-anchor="middle"
+     id="text1">ACTIVITY DIAGRAM PERMAINAN</text>
+  <line
+     x1="430"
+     y1="90"
+     x2="430"
+     y2="1130"
+     class="lane"
+     id="line1" />
+  <line
+     x1="870"
+     y1="90"
+     x2="870"
+     y2="1130"
+     class="lane"
+     id="line2" />
+  <text
+     x="215"
+     y="85"
+     class="head"
+     id="text2">Red Team</text>
+  <text
+     x="650"
+     y="85"
+     class="head"
+     id="text3">Server</text>
+  <text
+     x="1085"
+     y="85"
+     class="head"
+     id="text4">Blue Team</text>
+  <rect
+     x="70"
+     y="125"
+     width="290"
+     height="75"
+     rx="16"
+     class="red"
+     id="rect4" />
+  <text
+     x="215"
+     y="170"
+     class="text"
+     id="text5">Pilih tindakan serangan</text>
+  <rect
+     x="505"
+     y="235"
+     width="290"
+     height="75"
+     rx="16"
+     class="server"
+     id="rect5" />
+  <text
+     x="650"
+     y="280"
+     class="text"
+     id="text6">Sahkan tindakan</text>
+  <rect
+     x="945"
+     y="345"
+     width="290"
+     height="75"
+     rx="16"
+     class="blue"
+     id="rect6" />
+  <text
+     x="1090"
+     y="390"
+     class="text"
+     id="text7">Terima paparan dibenarkan</text>
+  <rect
+     x="945"
+     y="455"
+     width="290"
+     height="75"
+     rx="16"
+     class="blue"
+     id="rect7" />
+  <text
+     x="1090"
+     y="500"
+     class="text"
+     id="text8">Siasat event</text>
+  <rect
+     x="505"
+     y="565"
+     width="290"
+     height="75"
+     rx="16"
+     class="server"
+     id="rect8" />
+  <text
+     x="650"
+     y="610"
+     class="text"
+     id="text9">Proses hidden state</text>
+  <rect
+     x="70"
+     y="675"
+     width="290"
+     height="75"
+     rx="16"
+     class="red"
+     id="rect9" />
+  <text
+     x="215"
+     y="720"
+     class="text"
+     id="text10">Adaptasi jika diperlukan</text>
+  <rect
+     x="945"
+     y="785"
+     width="290"
+     height="75"
+     rx="16"
+     class="blue"
+     id="rect10" />
+  <text
+     x="1090"
+     y="830"
+     class="text"
+     id="text11">Pilih pertahanan</text>
+  <rect
+     x="501.8952"
+     y="790.98969"
+     width="290"
+     height="75"
+     rx="16"
+     class="server"
+     id="rect11" />
+  <text
+     x="646.8952"
+     y="835.98969"
+     class="text"
+     id="text12"
+     style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:18px;line-height:normal;font-family:Arial">Selesaikan senario</text>
+  <rect
+     x="505"
+     y="935.14227"
+     width="290"
+     height="75"
+     rx="16"
+     class="server"
+     id="rect12" />
+  <text
+     x="650"
+     y="980.14227"
+     class="text"
+     id="text13"
+     style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:18px;line-height:normal;font-family:Arial">Kemas kini skor</text>
+  <path
+     d="m 360,162 h 145 v 110 m 290,0 h 105 v 110 h 45 m 145,38 v 35 M 945,492 H 795 v 110 m -290,0 H 360 v 110 m 0,0 707.6585,-1.55239 -1.5524,72.74256 M 945,822 H 795 m -140.34282,43.98965 1.55239,59.83829"
+     class="line"
+     id="path13"
+     sodipodi:nodetypes="cccccccccccccccccccccc" />
 </svg>
