@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="1200" viewBox="0 0 1300 1200">
+  <title>Activity Diagram Cyber Clash</title>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#334155"/></marker>
+    <style>
+      .title{font:700 32px Arial;fill:#0f172a}.head{font:700 22px Arial;fill:#0f172a;text-anchor:middle}.text{font:500 18px Arial;fill:#0f172a;text-anchor:middle}.box{fill:#dbeafe;stroke:#2563eb;stroke-width:3}.red{fill:#fee2e2;stroke:#dc2626;stroke-width:3}.blue{fill:#dbeafe;stroke:#2563eb;stroke-width:3}.server{fill:#dcfce7;stroke:#16a34a;stroke-width:3}.line{stroke:#334155;stroke-width:3;fill:none;marker-end:url(#arrow)}.lane{stroke:#94a3b8;stroke-width:2}
+    </style>
+  </defs>
+  <rect width="1300" height="1200" fill="#fff"/><text x="650" y="48" class="title" text-anchor="middle">ACTIVITY DIAGRAM PERMAINAN</text>
+  <line x1="430" y1="90" x2="430" y2="1130" class="lane"/><line x1="870" y1="90" x2="870" y2="1130" class="lane"/>
+  <text x="215" y="85" class="head">Red Team</text><text x="650" y="85" class="head">Server</text><text x="1085" y="85" class="head">Blue Team</text>
+  <rect x="70" y="125" width="290" height="75" rx="16" class="red"/><text x="215" y="170" class="text">Pilih tindakan serangan</text>
+  <rect x="505" y="235" width="290" height="75" rx="16" class="server"/><text x="650" y="280" class="text">Sahkan tindakan</text>
+  <rect x="945" y="345" width="290" height="75" rx="16" class="blue"/><text x="1090" y="390" class="text">Terima paparan dibenarkan</text>
+  <rect x="945" y="455" width="290" height="75" rx="16" class="blue"/><text x="1090" y="500" class="text">Siasat event</text>
+  <rect x="505" y="565" width="290" height="75" rx="16" class="server"/><text x="650" y="610" class="text">Proses hidden state</text>
+  <rect x="70" y="675" width="290" height="75" rx="16" class="red"/><text x="215" y="720" class="text">Adaptasi jika diperlukan</text>
+  <rect x="945" y="785" width="290" height="75" rx="16" class="blue"/><text x="1090" y="830" class="text">Pilih pertahanan</text>
+  <rect x="505" y="895" width="290" height="75" rx="16" class="server"/><text x="650" y="940" class="text">Selesaikan senario</text>
+  <rect x="505" y="1005" width="290" height="75" rx="16" class="server"/><text x="650" y="1050" class="text">Kemas kini skor</text>
+  <path d="M360 162H505V272M795 272H900V382H945M1090 420V455M945 492H795V602M505 602H360V712M360 712H900V822H945M945 822H795V932M650 970V1005" class="line"/>
+</svg>

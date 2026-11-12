@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="1350" viewBox="0 0 1100 1350">
+  <title>Carta Alir Metodologi Waterfall Cyber Clash</title>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#334155"/></marker>
+    <style>
+      .title{font:700 30px Arial;fill:#0f172a}.text{font:600 20px Arial;fill:#0f172a;text-anchor:middle}.sub{font:400 17px Arial;fill:#334155;text-anchor:middle}.box{fill:#dbeafe;stroke:#2563eb;stroke-width:3}.end{fill:#e0e7ff;stroke:#4f46e5;stroke-width:3}.line{stroke:#334155;stroke-width:4;fill:none;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="1100" height="1350" fill="#fff"/>
+  <text x="550" y="52" class="title" text-anchor="middle">CARTA ALIR METODOLOGI WATERFALL</text>
+  <rect x="375" y="85" width="350" height="65" rx="32" class="end"/><text x="550" y="126" class="text">Mula</text>
+  <rect x="275" y="190" width="550" height="85" rx="16" class="box"/><text x="550" y="227" class="text">1. Analisis keperluan</text><text x="550" y="254" class="sub">masalah, pengguna dan fungsi sistem</text>
+  <rect x="275" y="315" width="550" height="85" rx="16" class="box"/><text x="550" y="352" class="text">2. Reka bentuk sistem</text><text x="550" y="379" class="sub">UML, flowchart dan antaramuka</text>
+  <rect x="275" y="440" width="550" height="85" rx="16" class="box"/><text x="550" y="477" class="text">3. Pembangunan sistem</text><text x="550" y="504" class="sub">Godot, Node.js, WebSocket dan JSON</text>
+  <rect x="275" y="565" width="550" height="85" rx="16" class="box"/><text x="550" y="602" class="text">4. Integrasi sistem</text><text x="550" y="629" class="sub">client, server dan modul senario</text>
+  <rect x="275" y="690" width="550" height="85" rx="16" class="box"/><text x="550" y="727" class="text">5. Pengujian sistem</text><text x="550" y="754" class="sub">fungsi, tindakan, skor dan privasi</text>
+  <rect x="275" y="815" width="550" height="85" rx="16" class="box"/><text x="550" y="852" class="text">6. Analisis keputusan</text><text x="550" y="879" class="sub">bandingkan keputusan dengan objektif</text>
+  <rect x="275" y="940" width="550" height="85" rx="16" class="box"/><text x="550" y="977" class="text">7. Dokumentasi</text><text x="550" y="1004" class="sub">laporan dan pembentangan</text>
+  <rect x="375" y="1065" width="350" height="65" rx="32" class="end"/><text x="550" y="1106" class="text">Tamat</text>
+  <path d="M550 150V190M550 275V315M550 400V440M550 525V565M550 650V690M550 775V815M550 900V940M550 1025V1065" class="line"/>
+</svg>
