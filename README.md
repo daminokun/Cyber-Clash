@@ -8,7 +8,7 @@ through simple scenarios and player-versus-player gameplay.
 
 ## Project Title
 
-**Development of a Web-Based PvP Cybersecurity Simulation Game for IT Students Using Godot Engine and Node.js**
+**PEMBANGUNAN PERMAINAN SIMULASI KESELAMATAN SIBER PvP BERASASKAN WEB UNTUK PELAJAR IT MENGGUNAKAN GODOT DAN NODE.JS**
 
 ## Features
 
