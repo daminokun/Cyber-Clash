@@ -1,6 +1,6 @@
 # Cyber Clash
 
-## Dokumen Reka Bentuk Permainan (GDD) v0.1
+## Dokumen Reka Bentuk Permainan (GDD) v0.2
 
 ---
 
