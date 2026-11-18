@@ -8,7 +8,12 @@ Cyber Clash follows semantic versioning:
 Versions are assigned chronologically to the product changes in Git history.
 Agent checkpoint commits are not assigned project versions.
 
-The project version is currently `0.2.4`.
+The project version is currently `0.2.5`.
+
+## 0.2.5 - 2026-11-18
+
+- Added the semantic-version changelog entry for the package and GDD version
+  update commit (`5296c40`).
 
 ## 0.2.4 - 2026-11-18
 

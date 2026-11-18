@@ -1,6 +1,6 @@
 # Cyber Clash
 
-## Game Design Document (GDD) v0.2.4
+## Game Design Document (GDD) v0.2.5
 
 ---
 
