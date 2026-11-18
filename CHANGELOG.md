@@ -8,7 +8,35 @@ Cyber Clash follows semantic versioning:
 Versions are assigned chronologically to the product changes in Git history.
 Agent checkpoint commits are not assigned project versions.
 
-The project version is currently `0.3.0`.
+The project version is currently `0.3.1`.
+
+## 0.3.1 - 2026-11-19
+
+### Thesis Diagrams: Semua Ahli Kumpulan
+
+Added 13 comprehensive SVG diagrams under `docs/diagrams/v2/` to support thesis
+documentation for all three group members.
+
+**Ahmad Irfan Bin Hedher (Red Team / Hacker Module):**
+- `system-architecture-2.0.svg` — Senibina sistem penuh: Godot client ↔ Node.js server ↔ WebSocket.
+- `red-team-5-phases.svg` — 5-fasa serangan berturutan (Recon → Scanning → Gaining Access → Maintaining Access → Covering Tracks).
+- `gameplay-interaction-loop.svg` — Gelung interaksi masa nyata antara Hacker dan Target.
+- `ui-wireframe-hacker.svg` — Wireframe konsol Kali Linux gelap untuk modul Hacker.
+
+**Muhammad Azrul Aiman (Blue Team / Target Module):**
+- `ui-wireframe-target.svg` — Wireframe desktop Windows 11 statik untuk modul Target.
+
+**Tarrsiny Vidyasshri a/p Shingara Vadivel (Scenario, Events & Scoring):**
+- `scenario-generation-archetypes.svg` — 4 arkitaip sasaran rawak (Millionaire, Orang Biasa, Office Worker, Researcher).
+- `scoring-and-postmortem-engine.svg` — Enjin pemarkahan 0–1,000 mata dengan gred S/A/B/C/F dan laporan post-mortem.
+- `unexpected-events-system.svg` — Sistem peristiwa rawak (polis datang, power outage, IT audit) dan kesannya.
+
+**Dikongsi bersama (Shared):**
+- `waterfall-methodology-2.0.svg` — Fasa pembangunan Waterfall (Requirements → Design → Implement → Test → Deploy).
+- `objective-flowchart-2.0.svg` — Carta alir objektif perlawanan dan syarat menang.
+- `use-case-diagram-2.0.svg` — Use case diagram: Hacker, Target, dan pelayan.
+- `class-diagram-2.0.svg` — Class diagram: `GameSession`, `Player`, `PhaseManager`, `ScenarioEngine`.
+- `gantt-chart-2.0.svg` — Carta Gantt keseluruhan projek mengikut jadual FYP.
 
 ## 0.3.0 - 2026-11-19
 
