@@ -1,0 +1,17 @@
+{
+  "id": "dns-tunneling",
+  "category": "network_activity",
+  "event": {
+    "title": "Unusually large DNS queries",
+    "description": "The internal resolver logs long TXT queries to a rarely used domain.",
+    "server": "DNS-01",
+    "service": "Internal resolver",
+    "time": "22:14 UTC"
+  },
+  "originalStatus": "legitimate",
+  "redObjective": "Exfiltrate data inside DNS queries.",
+  "investigationEvidence": {
+    "queryCheck": "TXT queries to one domain are much larger than normal.",
+    "domainCheck": "The domain was registered recently and is not used by the organisation."
+  }
+}

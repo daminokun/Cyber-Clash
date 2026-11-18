@@ -1,6 +1,7 @@
 const { createScenarioModule } = require("../scenarioModule");
 const definition = require("../../scenarios/backup-integrity.json");
 
+// Verifying the recovery check catches index tampering; protecting the backup copies contains the follow-up vector.
 const rules = {
   "redActions": [
     "do_nothing",
@@ -26,7 +27,19 @@ const rules = {
     "protect_backup",
     "start_recovery_check"
   ],
-  "unavailableBlueActionsByRedAction": {
+  "redAdaptationActions": [
+    "do_nothing",
+    "corrupt_recovery_metadata"
+  ],
+  "stoppingDefensesByRedAction": {
+    "alter_backup_index": [
+      "start_recovery_check"
+    ],
+    "delete_recovery_copy": [
+      "protect_backup"
+    ]
+  },
+  "adaptedDefensesByRedAction": {
     "alter_backup_index": [
       "protect_backup"
     ],

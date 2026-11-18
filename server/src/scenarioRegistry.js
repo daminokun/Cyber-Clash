@@ -30,16 +30,24 @@ const scenarioModules = new Map(
 );
 
 const genericScenarios = [
+  "api-bola",
   "api-key-exposure",
   "backup-integrity",
+  "badge-cloning",
+  "bec-invoice-fraud",
   "bluetooth-device-pairing",
   "calendar-invite-abuse",
   "cloud-permission-abuse",
   "container-image-risk",
+  "credential-dumping",
+  "cross-site-scripting",
   "data-exfiltration",
+  "ddos-extortion",
   "dns-redirection",
+  "dns-tunneling",
   "insider-data-access",
   "iot-device-compromise",
+  "lateral-movement",
   "log-tampering",
   "lost-laptop",
   "malware-download",
@@ -48,16 +56,20 @@ const genericScenarios = [
   "network-port-scan",
   "password-reset-abuse",
   "printer-network-risk",
+  "public-bucket",
   "public-wifi-evil-twin",
   "qr-code-phishing",
   "ransomware-warning",
   "rogue-browser-extension",
   "service-account-abuse",
+  "sim-swap",
   "social-engineering-call",
+  "sql-injection",
   "supply-chain-update",
   "usb-device-threat",
   "voip-impersonation",
-  "web-form-injection"
+  "web-form-injection",
+  "zero-day-exploit"
 ].map((id) => {
   const module = require(`./scenarios/${id}`);
   return { id, ...module };

@@ -1,6 +1,7 @@
 const { createScenarioModule } = require("../scenarioModule");
 const definition = require("../../scenarios/insider-data-access.json");
 
+// Restricting records stops bulk collection; suspending the account contains the blended-access follow-up.
 const rules = {
   "redActions": [
     "do_nothing",
@@ -26,7 +27,20 @@ const rules = {
     "suspend_account",
     "restrict_records"
   ],
-  "unavailableBlueActionsByRedAction": {
+  "redAdaptationActions": [
+    "do_nothing",
+    "switch_account",
+    "use_service_account"
+  ],
+  "stoppingDefensesByRedAction": {
+    "bulk_collect_records": [
+      "restrict_records"
+    ],
+    "blend_with_normal_access": [
+      "suspend_account"
+    ]
+  },
+  "adaptedDefensesByRedAction": {
     "bulk_collect_records": [
       "suspend_account"
     ],

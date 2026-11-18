@@ -1,0 +1,17 @@
+{
+  "id": "badge-cloning",
+  "category": "physical_security",
+  "event": {
+    "title": "Badge used at two sites at once",
+    "description": "Physical access logs show the same badge entering two buildings minutes apart.",
+    "server": "ACCESS-01",
+    "site": "Main campus",
+    "time": "07:58 UTC"
+  },
+  "originalStatus": "legitimate",
+  "redObjective": "Enter a restricted server room with a copied badge.",
+  "investigationEvidence": {
+    "badgeCheck": "The badge was used at two readers at the same time.",
+    "cameraCheck": "A second person entered behind a staff member."
+  }
+}

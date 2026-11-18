@@ -1,6 +1,7 @@
 const { createScenarioModule } = require("../scenarioModule");
 const definition = require("../../scenarios/data-exfiltration.json");
 
+// Isolating the host stops bulk collection; blocking the transfer contains the split-transfer follow-up.
 const rules = {
   "redActions": [
     "do_nothing",
@@ -26,7 +27,19 @@ const rules = {
     "block_transfer",
     "isolate_host"
   ],
-  "unavailableBlueActionsByRedAction": {
+  "redAdaptationActions": [
+    "do_nothing",
+    "route_transfer_through_proxy"
+  ],
+  "stoppingDefensesByRedAction": {
+    "archive_sensitive_data": [
+      "isolate_host"
+    ],
+    "split_transfer": [
+      "block_transfer"
+    ]
+  },
+  "adaptedDefensesByRedAction": {
     "archive_sensitive_data": [
       "block_transfer"
     ],

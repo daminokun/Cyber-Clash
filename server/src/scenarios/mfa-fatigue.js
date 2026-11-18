@@ -1,6 +1,7 @@
 const { createScenarioModule } = require("../scenarioModule");
 const definition = require("../../scenarios/mfa-fatigue.json");
 
+// Denying prompts stops prompt fatigue; locking the account contains the support-impersonation follow-up.
 const rules = {
   "redActions": [
     "do_nothing",
@@ -26,12 +27,24 @@ const rules = {
     "deny_prompts",
     "lock_account"
   ],
-  "unavailableBlueActionsByRedAction": {
+  "redAdaptationActions": [
+    "do_nothing",
+    "delay_prompt_attack"
+  ],
+  "stoppingDefensesByRedAction": {
     "send_repeated_prompts": [
       "deny_prompts"
     ],
     "imitate_support_message": [
       "lock_account"
+    ]
+  },
+  "adaptedDefensesByRedAction": {
+    "send_repeated_prompts": [
+      "lock_account"
+    ],
+    "imitate_support_message": [
+      "deny_prompts"
     ]
   }
 };

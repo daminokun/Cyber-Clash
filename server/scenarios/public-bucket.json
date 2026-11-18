@@ -1,0 +1,17 @@
+{
+  "id": "public-bucket",
+  "category": "cloud_access",
+  "event": {
+    "title": "Storage bucket ACL changed to public",
+    "description": "A cloud audit log shows a bucket policy change that allows anonymous reads.",
+    "server": "CLOUD-01",
+    "bucket": "student-records",
+    "time": "12:11 UTC"
+  },
+  "originalStatus": "legitimate",
+  "redObjective": "Expose or copy stored student records.",
+  "investigationEvidence": {
+    "policyCheck": "The bucket policy now allows all users to read objects.",
+    "accessCheck": "Objects were read from an address outside the organisation."
+  }
+}

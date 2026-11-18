@@ -1,6 +1,7 @@
 const { createScenarioModule } = require("../scenarioModule");
 const definition = require("../../scenarios/lost-laptop.json");
 
+// Revoking sessions stops use of the unlocked device; locking the device contains the follow-up.
 const rules = {
   "redActions": [
     "do_nothing",
@@ -26,7 +27,19 @@ const rules = {
     "lock_device",
     "revoke_sessions"
   ],
-  "unavailableBlueActionsByRedAction": {
+  "redAdaptationActions": [
+    "do_nothing",
+    "use_cloud_session"
+  ],
+  "stoppingDefensesByRedAction": {
+    "access_unlocked_device": [
+      "revoke_sessions"
+    ],
+    "remove_security_tag": [
+      "lock_device"
+    ]
+  },
+  "adaptedDefensesByRedAction": {
     "access_unlocked_device": [
       "lock_device"
     ],

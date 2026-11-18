@@ -1,6 +1,7 @@
 const { createScenarioModule } = require("../scenarioModule");
 const definition = require("../../scenarios/bluetooth-device-pairing.json");
 
+// Disabling Bluetooth contains impersonated peripherals; denying pairing contains the follow-up vector.
 const rules = {
   "redActions": [
     "do_nothing",
@@ -26,7 +27,19 @@ const rules = {
     "deny_pairing",
     "disable_bluetooth"
   ],
-  "unavailableBlueActionsByRedAction": {
+  "redAdaptationActions": [
+    "do_nothing",
+    "switch_device_identity"
+  ],
+  "stoppingDefensesByRedAction": {
+    "masquerade_peripheral": [
+      "disable_bluetooth"
+    ],
+    "request_pairing": [
+      "deny_pairing"
+    ]
+  },
+  "adaptedDefensesByRedAction": {
     "masquerade_peripheral": [
       "deny_pairing"
     ],

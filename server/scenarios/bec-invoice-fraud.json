@@ -1,0 +1,17 @@
+{
+  "id": "bec-invoice-fraud",
+  "category": "social_engineering",
+  "event": {
+    "title": "Supplier requests new bank details",
+    "description": "Finance receives an email claiming to be a known supplier asking to change payment details.",
+    "server": "MAIL-01",
+    "mailbox": "Finance",
+    "time": "15:02 UTC"
+  },
+  "originalStatus": "legitimate",
+  "redObjective": "Divert a supplier payment to a controlled account.",
+  "investigationEvidence": {
+    "senderCheck": "The sender domain differs from the supplier's registered domain by one character.",
+    "wordingCheck": "The message creates urgency and asks to bypass the normal call-back check."
+  }
+}

@@ -1,6 +1,7 @@
 const { createScenarioModule } = require("../scenarioModule");
 const definition = require("../../scenarios/supply-chain-update.json");
 
+// Rejecting the update stops tampering and publisher imitation; isolating the host contains the follow-up vector.
 const rules = {
   "redActions": [
     "do_nothing",
@@ -26,9 +27,21 @@ const rules = {
     "reject_update",
     "isolate_host"
   ],
-  "unavailableBlueActionsByRedAction": {
+  "redAdaptationActions": [
+    "do_nothing",
+    "publish_hotfix"
+  ],
+  "stoppingDefensesByRedAction": {
     "tamper_update": [
       "reject_update"
+    ],
+    "imitate_publisher": [
+      "reject_update"
+    ]
+  },
+  "adaptedDefensesByRedAction": {
+    "tamper_update": [
+      "isolate_host"
     ],
     "imitate_publisher": [
       "isolate_host"

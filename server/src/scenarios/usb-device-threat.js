@@ -1,6 +1,7 @@
 const { createScenarioModule } = require("../scenarioModule");
 const definition = require("../../scenarios/usb-device-threat.json");
 
+// Quarantining the device stops the disguised label and the malicious file; reporting contains the follow-up vector.
 const rules = {
   "redActions": [
     "do_nothing",
@@ -26,9 +27,24 @@ const rules = {
     "quarantine_device",
     "report"
   ],
-  "unavailableBlueActionsByRedAction": {
+  "redAdaptationActions": [
+    "do_nothing",
+    "swap_device"
+  ],
+  "stoppingDefensesByRedAction": {
     "disguise_usb_label": [
       "quarantine_device"
+    ],
+    "add_malicious_file": [
+      "quarantine_device"
+    ]
+  },
+  "adaptedDefensesByRedAction": {
+    "disguise_usb_label": [
+      "report"
+    ],
+    "add_malicious_file": [
+      "report"
     ]
   }
 };

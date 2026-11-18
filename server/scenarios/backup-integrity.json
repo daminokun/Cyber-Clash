@@ -13,26 +13,5 @@
   "investigationEvidence": {
     "integrityCheck": "Several backup blocks do not match their recorded checksums.",
     "historyCheck": "The mismatch began after an unusual service account activity."
-  },
-  "redActions": ["do_nothing", "alter_backup_index", "delete_recovery_copy"],
-  "blueActions": ["investigate", "protect_backup", "start_recovery_check", "ignore"],
-  "blueResponses": ["protect_backup", "start_recovery_check", "ignore"],
-  "attackActions": ["alter_backup_index", "delete_recovery_copy"],
-  "unavailableBlueActionsByRedAction": {
-
-    "alter_backup_index": [
-
-      "protect_backup"
-
-    ],
-
-    "delete_recovery_copy": [
-
-      "start_recovery_check"
-
-    ]
-
-  },
-
-  "defensiveActions": ["protect_backup", "start_recovery_check"]
+  }
 }

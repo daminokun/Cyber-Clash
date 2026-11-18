@@ -1,0 +1,17 @@
+{
+  "id": "cross-site-scripting",
+  "category": "web_application",
+  "event": {
+    "title": "Unexpected script in a course comment",
+    "description": "A course discussion page runs a script that was not written by the site developer.",
+    "server": "WEB-02",
+    "service": "Course discussion",
+    "time": "13:48 UTC"
+  },
+  "originalStatus": "legitimate",
+  "redObjective": "Steal session cookies from students viewing the comment.",
+  "investigationEvidence": {
+    "contentCheck": "The comment contains a script tag.",
+    "headerCheck": "The response does not set a content security policy."
+  }
+}

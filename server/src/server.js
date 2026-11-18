@@ -14,6 +14,8 @@ function createMatch(id) {
     readyPlayers: new Set(),
     rematchPlayers: new Set(),
     complete: false,
+    started: false,
+    abandoned: false,
     players: new Map()
   };
 }
@@ -96,6 +98,18 @@ function resetMatch(match) {
   match.readyPlayers.clear();
   match.rematchPlayers.clear();
   match.complete = false;
+  match.started = true;
+  match.abandoned = false;
+}
+
+// The role that is still missing from a lobby. Never assign by player count:
+// a lobby may hold only the Blue player after a mid-match disconnect.
+function assignRole(match) {
+  if (match.players.size === 0) {
+    return "red";
+  }
+  const taken = new Set([...match.players.values()].map((player) => player.role));
+  return taken.has("red") ? "blue" : "red";
 }
 
 function parseMessage(rawMessage) {
@@ -134,7 +148,10 @@ function createGameServer({ port = 0, host = "127.0.0.1" } = {}) {
 
   function findAvailableMatch() {
     for (const match of matches.values()) {
-      if (match.players.size === 1 && !match.complete) {
+      if (match.players.size === 1
+        && !match.started
+        && !match.complete
+        && !match.abandoned) {
         return match;
       }
     }
@@ -170,22 +187,30 @@ function createGameServer({ port = 0, host = "127.0.0.1" } = {}) {
             if (match.players.size >= 2) {
               throw new Error("match_full");
             }
+            if (match.started || match.complete || match.abandoned) {
+              throw new Error("match_unavailable");
+            }
           } else if (message.mode === "auto") {
             match = findAvailableMatch() || createAndStoreMatch();
           } else {
             throw new Error("invalid_join_mode");
           }
 
-          const role = match.players.size === 0 ? "red" : "blue";
+          const role = assignRole(match);
           player = { role };
           match.players.set(socket, player);
           broadcastJoined(match);
           if (match.players.size === 2) {
+            match.started = true;
             broadcastState(match);
           } else {
             send(socket, { type: "waiting_for_player", matchId: match.id });
           }
           return;
+        }
+
+        if (match.abandoned) {
+          throw new Error("match_abandoned");
         }
 
         if (message.type === "rematch") {
@@ -208,7 +233,7 @@ function createGameServer({ port = 0, host = "127.0.0.1" } = {}) {
           oldMatch.rematchPlayers.delete(socket);
           removeEmptyMatch(oldMatch);
           const newMatch = findAvailableMatch() || createAndStoreMatch();
-          const newRole = newMatch.players.size === 0 ? "red" : "blue";
+          const newRole = assignRole(newMatch);
           match = newMatch;
           player = { role: newRole };
           match.players.set(socket, player);
@@ -219,6 +244,7 @@ function createGameServer({ port = 0, host = "127.0.0.1" } = {}) {
           });
           broadcastJoined(match);
           if (match.players.size === 2) {
+            match.started = true;
             broadcastState(match);
           } else {
             send(socket, { type: "waiting_for_player", matchId: match.id });
@@ -260,7 +286,8 @@ function createGameServer({ port = 0, host = "127.0.0.1" } = {}) {
         }
       } catch (error) {
         send(socket, { type: "error", error: error.message });
-        if (!match && ["match_not_found", "match_full", "invalid_join_mode"].includes(error.message)) {
+        if (!match && ["match_not_found", "match_full", "match_unavailable",
+          "invalid_join_mode", "join_required"].includes(error.message)) {
           setTimeout(() => socket.terminate(), 1000);
         }
       }
@@ -270,7 +297,12 @@ function createGameServer({ port = 0, host = "127.0.0.1" } = {}) {
       if (!match || !player) {
         return;
       }
+      const wasStarted = match.started;
       match.players.delete(socket);
+      match.rematchPlayers.delete(socket);
+      if (wasStarted && !match.complete && match.players.size > 0) {
+        match.abandoned = true;
+      }
       for (const [otherSocket] of match.players) {
         send(otherSocket, {
           type: "player_disconnected",

@@ -1,0 +1,17 @@
+{
+  "id": "sim-swap",
+  "category": "authentication",
+  "event": {
+    "title": "Mobile number transferred without request",
+    "description": "A staff member loses mobile service and receives a password reset notification.",
+    "server": "IDP-01",
+    "service": "Identity provider",
+    "time": "17:26 UTC"
+  },
+  "originalStatus": "legitimate",
+  "redObjective": "Receive the staff member's SMS one-time codes.",
+  "investigationEvidence": {
+    "carrierCheck": "The number was ported to a new SIM earlier today.",
+    "loginCheck": "A password reset was requested from a new location."
+  }
+}

@@ -1,6 +1,7 @@
 const { createScenarioModule } = require("../scenarioModule");
 const definition = require("../../scenarios/service-account-abuse.json");
 
+// Restricting permissions stops identity reuse; disabling the service account contains the expanded-access follow-up.
 const rules = {
   "redActions": [
     "do_nothing",
@@ -26,7 +27,19 @@ const rules = {
     "disable_service_account",
     "restrict_permissions"
   ],
-  "unavailableBlueActionsByRedAction": {
+  "redAdaptationActions": [
+    "do_nothing",
+    "create_second_identity"
+  ],
+  "stoppingDefensesByRedAction": {
+    "reuse_service_identity": [
+      "restrict_permissions"
+    ],
+    "expand_service_access": [
+      "disable_service_account"
+    ]
+  },
+  "adaptedDefensesByRedAction": {
     "reuse_service_identity": [
       "disable_service_account"
     ],

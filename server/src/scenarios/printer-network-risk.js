@@ -1,6 +1,7 @@
 const { createScenarioModule } = require("../scenarioModule");
 const definition = require("../../scenarios/printer-network-risk.json");
 
+// Restoring configuration stops remote access; isolating the printer contains the admin-route follow-up.
 const rules = {
   "redActions": [
     "do_nothing",
@@ -26,7 +27,19 @@ const rules = {
     "isolate_printer",
     "restore_configuration"
   ],
-  "unavailableBlueActionsByRedAction": {
+  "redAdaptationActions": [
+    "do_nothing",
+    "pivot_to_admin_panel"
+  ],
+  "stoppingDefensesByRedAction": {
+    "enable_remote_access": [
+      "restore_configuration"
+    ],
+    "change_admin_route": [
+      "isolate_printer"
+    ]
+  },
+  "adaptedDefensesByRedAction": {
     "enable_remote_access": [
       "isolate_printer"
     ],

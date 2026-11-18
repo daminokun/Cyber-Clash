@@ -18,3 +18,6 @@ node_modules/
 .env
 .env.*
 !.env.example
+
+# Local backups (full project snapshots before refactors)
+backups/

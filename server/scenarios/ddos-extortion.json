@@ -1,0 +1,17 @@
+{
+  "id": "ddos-extortion",
+  "category": "availability",
+  "event": {
+    "title": "Login service under heavy load",
+    "description": "The student portal login service receives a flood of requests and an extortion message.",
+    "server": "PORTAL-01",
+    "service": "Login API",
+    "time": "08:20 UTC"
+  },
+  "originalStatus": "legitimate",
+  "redObjective": "Overwhelm the login service until the organisation pays.",
+  "investigationEvidence": {
+    "trafficCheck": "Request volume is many times the normal baseline.",
+    "sourceCheck": "Traffic comes from a changing pool of source addresses."
+  }
+}

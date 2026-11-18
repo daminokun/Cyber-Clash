@@ -101,7 +101,7 @@ function resolveScenario(state) {
   const defensiveResponse = state.blueAction === "report"
     || (state.blueAction === "block" && state.redAdaptation !== "change_sender");
 
-  if (!attackSucceeded && state.blueAction === "report") {
+  if (!attackSucceeded && state.blueAction !== "ignore") {
     state.outcome = "false_positive";
     state.scores.blue = -2;
   } else if (attackSucceeded && defensiveResponse) {

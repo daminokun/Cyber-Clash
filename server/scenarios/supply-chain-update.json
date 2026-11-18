@@ -13,26 +13,5 @@
   "investigationEvidence": {
     "signatureCheck": "The update signature does not match the previously trusted publisher key.",
     "sourceCheck": "The download source is not in the approved software repository list."
-  },
-  "redActions": ["do_nothing", "tamper_update", "imitate_publisher"],
-  "blueActions": ["investigate", "reject_update", "isolate_host", "ignore"],
-  "blueResponses": ["reject_update", "isolate_host", "ignore"],
-  "attackActions": ["tamper_update", "imitate_publisher"],
-  "unavailableBlueActionsByRedAction": {
-
-    "tamper_update": [
-
-      "reject_update"
-
-    ],
-
-    "imitate_publisher": [
-
-      "isolate_host"
-
-    ]
-
-  },
-
-  "defensiveActions": ["reject_update", "isolate_host"]
+  }
 }

@@ -1,6 +1,7 @@
 const { createScenarioModule } = require("../scenarioModule");
 const definition = require("../../scenarios/container-image-risk.json");
 
+// Pinning the approved image blocks a tampered image; rejecting deployment contains the follow-up vector.
 const rules = {
   "redActions": [
     "do_nothing",
@@ -26,7 +27,19 @@ const rules = {
     "reject_deployment",
     "pin_approved_image"
   ],
-  "unavailableBlueActionsByRedAction": {
+  "redAdaptationActions": [
+    "do_nothing",
+    "publish_second_image"
+  ],
+  "stoppingDefensesByRedAction": {
+    "publish_tampered_image": [
+      "pin_approved_image"
+    ],
+    "change_image_tag": [
+      "reject_deployment"
+    ]
+  },
+  "adaptedDefensesByRedAction": {
     "publish_tampered_image": [
       "reject_deployment"
     ],

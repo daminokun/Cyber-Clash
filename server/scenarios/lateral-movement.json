@@ -1,0 +1,17 @@
+{
+  "id": "lateral-movement",
+  "category": "network_activity",
+  "event": {
+    "title": "Unusual SMB traffic between workstations",
+    "description": "A file server sees authentication attempts from a workstation to multiple internal hosts.",
+    "server": "FILESERV-02",
+    "segment": "Staff VLAN",
+    "time": "14:05 UTC"
+  },
+  "originalStatus": "legitimate",
+  "redObjective": "Move from the workstation to the file server with stolen credentials.",
+  "investigationEvidence": {
+    "authCheck": "NTLM authentication attempts were made to several hosts.",
+    "trafficCheck": "SMB sessions were opened to hosts outside the normal pattern."
+  }
+}

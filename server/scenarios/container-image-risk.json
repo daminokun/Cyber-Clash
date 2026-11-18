@@ -13,26 +13,5 @@
   "investigationEvidence": {
     "registryCheck": "The registry is not included in the approved deployment sources.",
     "digestCheck": "The image tag changed without a matching approved digest."
-  },
-  "redActions": ["do_nothing", "publish_tampered_image", "change_image_tag"],
-  "blueActions": ["investigate", "reject_deployment", "pin_approved_image", "ignore"],
-  "blueResponses": ["reject_deployment", "pin_approved_image", "ignore"],
-  "attackActions": ["publish_tampered_image", "change_image_tag"],
-  "unavailableBlueActionsByRedAction": {
-
-    "publish_tampered_image": [
-
-      "reject_deployment"
-
-    ],
-
-    "change_image_tag": [
-
-      "pin_approved_image"
-
-    ]
-
-  },
-
-  "defensiveActions": ["reject_deployment", "pin_approved_image"]
+  }
 }

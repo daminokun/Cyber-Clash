@@ -1,0 +1,17 @@
+{
+  "id": "sql-injection",
+  "category": "web_application",
+  "event": {
+    "title": "Malformed input in the login form",
+    "description": "The web application returns database errors after a login attempt with unusual input.",
+    "server": "WEB-01",
+    "service": "Student portal",
+    "time": "11:15 UTC"
+  },
+  "originalStatus": "legitimate",
+  "redObjective": "Extract account records from the application database.",
+  "investigationEvidence": {
+    "inputCheck": "The submitted username contains SQL keywords.",
+    "errorCheck": "The application returned a database error page."
+  }
+}

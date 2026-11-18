@@ -1,0 +1,17 @@
+{
+  "id": "api-bola",
+  "category": "api_security",
+  "event": {
+    "title": "API returns another student's record",
+    "description": "A monitoring rule reports sequential record requests made with one API token.",
+    "server": "API-01",
+    "service": "Records API",
+    "time": "09:37 UTC"
+  },
+  "originalStatus": "legitimate",
+  "redObjective": "Read other students' records through the API.",
+  "investigationEvidence": {
+    "requestCheck": "The client iterated record identifiers in order.",
+    "tokenCheck": "The token belongs to a different account than the requested records."
+  }
+}

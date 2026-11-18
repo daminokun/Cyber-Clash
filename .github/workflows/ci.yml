@@ -1,0 +1,82 @@
+name: CI
+
+on:
+  push:
+    branches: ["main", "develop"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  server:
+    name: Server tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: server
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: server/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test
+
+  client:
+    name: Godot script checks
+    runs-on: ubuntu-latest
+    env:
+      GODOT_VERSION: "4.7.2"
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Download Godot
+        run: |
+          curl -sSL -o godot.zip \
+            "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_linux.x86_64.zip"
+          unzip -q godot.zip
+          mv "Godot_v${GODOT_VERSION}-stable_linux.x86_64" godot
+          chmod +x godot
+          ./godot --headless --version
+
+      - name: Import project assets
+        run: ./godot --headless --path client --editor --quit
+
+      - name: Parse-check scripts
+        run: |
+          status=0
+          for script in \
+            main.gd \
+            scripts/ui_factory.gd \
+            scripts/net_client.gd \
+            scripts/menu_screen.gd \
+            scripts/lobby_screen.gd \
+            scripts/game_screen.gd; do
+            echo "Checking ${script}"
+            ./godot --headless --path client --check-only --script "${script}" || status=1
+          done
+          exit "${status}"
+
+      - name: Smoke run main scene
+        run: |
+          ./godot --headless --path client --quit-after 60 2>&1 | tee godot.log
+          if grep -E "SCRIPT ERROR|Parse Error|Invalid call" godot.log; then
+            echo "Godot reported script errors."
+            exit 1
+          fi

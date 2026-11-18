@@ -1,5 +1,7 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
+const fs = require("node:fs");
+const path = require("node:path");
 
 const {
   applyAction,
@@ -305,12 +307,20 @@ test("generic investigation gives red a counter-turn that changes the attack vec
     "lock_account",
     "ignore"
   ]);
-  applyGenericAction(state, "blue", "revoke_access");
 
-  assert.equal(state.outcome, "attack_succeeded");
-  assert.deepEqual(state.scores, { red: 5, blue: 0 });
+  // The follow-up vector is contained by the other response, not the original
+  // one, so investigating never removes every possible defense.
+  const prevented = JSON.parse(JSON.stringify(state));
+  applyGenericAction(prevented, "blue", "revoke_access");
+  assert.equal(prevented.outcome, "attack_prevented");
+  assert.deepEqual(prevented.scores, { red: 0, blue: 3 });
+
+  const missed = JSON.parse(JSON.stringify(state));
+  applyGenericAction(missed, "blue", "lock_account");
+  assert.equal(missed.outcome, "attack_succeeded");
+  assert.deepEqual(missed.scores, { red: 5, blue: 0 });
   assert.equal(
-    getGenericPlayerView(state, "blue").evidence.adaptationCheck.includes("cannot confirm"),
+    getGenericPlayerView(missed, "blue").evidence.adaptationCheck.includes("cannot confirm"),
     true
   );
 });
@@ -333,10 +343,16 @@ test("generic scenarios can define distinct adaptation actions and counters", ()
     "restore_backup",
     "ignore"
   ]);
-  applyGenericAction(state, "blue", "restore_backup");
 
-  assert.equal(state.outcome, "attack_succeeded");
-  assert.deepEqual(state.scores, { red: 5, blue: 0 });
+  const prevented = JSON.parse(JSON.stringify(state));
+  applyGenericAction(prevented, "blue", "restore_backup");
+  assert.equal(prevented.outcome, "attack_prevented");
+  assert.deepEqual(prevented.scores, { red: 0, blue: 3 });
+
+  const missed = JSON.parse(JSON.stringify(state));
+  applyGenericAction(missed, "blue", "isolate_server");
+  assert.equal(missed.outcome, "attack_succeeded");
+  assert.deepEqual(missed.scores, { red: 5, blue: 0 });
 });
 
 test("generic next actions reflect the previous red action", () => {
@@ -380,3 +396,147 @@ test("scenario registry exposes a common contract for every scenario", () => {
     assert.equal(typeof scenarioRegistry.applyScenarioAction, "function");
   }
 });
+
+const EMAIL_ID = "email-account-verification-001";
+const LOGIN_ID = "suspicious-login-activity";
+
+function createScenarioState(id) {
+  if (id === EMAIL_ID) {
+    return createEmailScenario();
+  }
+  if (id === LOGIN_ID) {
+    return createLoginScenario();
+  }
+  return createGenericScenario(id);
+}
+
+function applyScenarioFor(id, state, role, action) {
+  if (id === EMAIL_ID) {
+    return applyAction(state, role, action);
+  }
+  if (id === LOGIN_ID) {
+    return applyLoginAction(state, role, action);
+  }
+  return applyGenericAction(state, role, action);
+}
+
+function blueActionsFor(id, state) {
+  if (id === EMAIL_ID) {
+    return getPlayerView(state, "blue").availableActions || [];
+  }
+  if (id === LOGIN_ID) {
+    return getLoginPlayerView(state, "blue").availableActions || [];
+  }
+  return getGenericPlayerView(state, "blue").availableActions || [];
+}
+
+function preventedBy(state, id, action) {
+  const next = JSON.parse(JSON.stringify(state));
+  applyScenarioFor(id, next, "blue", action);
+  return next.scores.blue > 0 && next.scores.red === 0;
+}
+
+test("every generic attack has one containment response before and after adaptation", () => {
+  for (const { id } of getScenarioDefinitions()) {
+    if (id === EMAIL_ID || id === LOGIN_ID) {
+      continue;
+    }
+    const probe = createGenericScenario(id);
+    const attacks = getGenericPlayerView(probe, "red").private.availableActions
+      .filter((action) => action !== "do_nothing");
+    assert.ok(attacks.length > 0, id);
+
+    for (const attack of attacks) {
+      const direct = createGenericScenario(id);
+      applyGenericAction(direct, "red", attack);
+      const directResponses = getGenericPlayerView(direct, "blue").availableActions;
+      const directStoppers = directResponses.filter((response) => preventedBy(direct, id, response));
+      assert.equal(directStoppers.length, 1, `${id}:${attack} direct containment`);
+
+      const investigating = JSON.parse(JSON.stringify(direct));
+      applyGenericAction(investigating, "blue", "investigate");
+      const adaptations = getGenericPlayerView(investigating, "red").private.availableActions
+        .filter((action) => action !== "do_nothing");
+      assert.ok(adaptations.length > 0, `${id}:${attack} adaptations`);
+
+      for (const adaptation of adaptations) {
+        const adapted = JSON.parse(JSON.stringify(investigating));
+        applyGenericAction(adapted, "red", adaptation);
+        const responses = getGenericPlayerView(adapted, "blue").availableActions;
+        const stoppers = responses.filter((response) => preventedBy(adapted, id, response));
+        assert.equal(stoppers.length, 1, `${id}:${attack}:${adaptation} adapted containment`);
+        assert.notDeepEqual(
+          stoppers,
+          directStoppers,
+          `${id}:${attack}:${adaptation} kept the original defense`
+        );
+      }
+    }
+  }
+});
+
+test("countering a legitimate event creates a false positive in every scenario", () => {
+  for (const { id } of getScenarioDefinitions()) {
+    const state = createScenarioState(id);
+    applyScenarioFor(id, state, "red", "do_nothing");
+    const containment = blueActionsFor(id, state).filter(
+      (action) => action !== "investigate" && action !== "investigate_logs" && action !== "ignore"
+    );
+    assert.ok(containment.length > 0, id);
+
+    const action = containment[0];
+    applyScenarioFor(id, state, "blue", action);
+    assert.equal(state.outcome, "false_positive", `${id}:${action}`);
+    assert.deepEqual(state.scores, { red: 0, blue: -2 }, `${id}:${action}`);
+    assert.ok(state.resultExplanation.includes("false-positive"), `${id}:${action}`);
+  }
+});
+
+test("ignoring a legitimate event has no penalty in every scenario", () => {
+  for (const { id } of getScenarioDefinitions()) {
+    const state = createScenarioState(id);
+    applyScenarioFor(id, state, "red", "do_nothing");
+    applyScenarioFor(id, state, "blue", "ignore");
+    assert.equal(state.outcome, "no_significant_impact", id);
+    assert.deepEqual(state.scores, { red: 0, blue: 0 }, id);
+  }
+});
+
+test("blocking a legitimate email is also a false positive", () => {
+  const state = createEmailScenario();
+  applyAction(state, "red", "do_nothing");
+  applyAction(state, "blue", "block");
+
+  assert.equal(state.outcome, "false_positive");
+  assert.deepEqual(state.scores, { red: 0, blue: -2 });
+});
+
+test("scenario content files contain only content fields and no BOM", () => {
+  const contentKeys = [
+    "id",
+    "category",
+    "event",
+    "originalStatus",
+    "redObjective",
+    "investigationEvidence"
+  ];
+  const scenarioDir = path.join(__dirname, "..", "scenarios");
+  const files = fs.readdirSync(scenarioDir).filter((file) => file.endsWith(".json"));
+  const contentIds = new Set();
+
+  assert.ok(files.length >= 28);
+  for (const file of files) {
+    const raw = fs.readFileSync(path.join(scenarioDir, file), "utf8");
+    assert.equal(raw.charCodeAt(0), "{".charCodeAt(0), `${file} must start with { (no BOM)`);
+    const content = JSON.parse(raw);
+    assert.deepEqual(Object.keys(content).sort(), [...contentKeys].sort(), file);
+    assert.equal(typeof content.event.title, "string", `${file}: event title`);
+    assert.ok(Object.keys(content.investigationEvidence).length > 0, `${file}: evidence`);
+    contentIds.add(content.id);
+  }
+
+  const registeredIds = getScenarioDefinitions().map((definition) => definition.id);
+  assert.deepEqual([...contentIds].sort(), [...registeredIds].sort());
+});
+
+

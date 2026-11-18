@@ -13,26 +13,5 @@
   "investigationEvidence": {
     "identityCheck": "The device identifier is not in the approved peripheral list.",
     "proximityCheck": "The pairing request appeared while no authorised peripheral was nearby."
-  },
-  "redActions": ["do_nothing", "masquerade_peripheral", "request_pairing"],
-  "blueActions": ["investigate", "deny_pairing", "disable_bluetooth", "ignore"],
-  "blueResponses": ["deny_pairing", "disable_bluetooth", "ignore"],
-  "attackActions": ["masquerade_peripheral", "request_pairing"],
-  "unavailableBlueActionsByRedAction": {
-
-    "masquerade_peripheral": [
-
-      "deny_pairing"
-
-    ],
-
-    "request_pairing": [
-
-      "disable_bluetooth"
-
-    ]
-
-  },
-
-  "defensiveActions": ["deny_pairing", "disable_bluetooth"]
+  }
 }

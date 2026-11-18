@@ -7,7 +7,7 @@ applyTo: "docs/**/*.md"
 # GDD Guidelines
 
 - Use [docs/GDD/Game-Design-Document.md](../../docs/GDD/Game-Design-Document.md) as the canonical English reference unless the task explicitly targets another variant.
-- Keep the four GDD variants aligned: `GDD`, `EN-Simple`, `EN-Full`, `BM-Simple`, and `BM-Full`.
+- Keep the canonical document authoritative and the derived documents (`BM-Full`, `EN-Simple`, `BM-Simple`) in sync with it. Update the canonical document first, then the translation and summaries.
 - Preserve the distinction between Red Team private information, Blue Team permitted information, and server-only hidden state.
 - State gameplay rules precisely: valid actions, phase order, conditions, limits, scoring, and possible outcomes.
 - Do not silently resolve gameplay ambiguities. Mark them for clarification or state the assumption explicitly.

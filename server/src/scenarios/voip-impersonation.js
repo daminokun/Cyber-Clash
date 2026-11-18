@@ -1,6 +1,7 @@
 const { createScenarioModule } = require("../scenarioModule");
 const definition = require("../../scenarios/voip-impersonation.json");
 
+// Ending the call stops the helpdesk impersonation and the secret request; reporting contains the follow-up vector.
 const rules = {
   "redActions": [
     "do_nothing",
@@ -26,9 +27,21 @@ const rules = {
     "end_call",
     "report"
   ],
-  "unavailableBlueActionsByRedAction": {
+  "redAdaptationActions": [
+    "do_nothing",
+    "route_to_second_operator"
+  ],
+  "stoppingDefensesByRedAction": {
     "impersonate_helpdesk": [
       "end_call"
+    ],
+    "request_secret": [
+      "end_call"
+    ]
+  },
+  "adaptedDefensesByRedAction": {
+    "impersonate_helpdesk": [
+      "report"
     ],
     "request_secret": [
       "report"

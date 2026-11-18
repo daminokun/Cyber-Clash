@@ -1,6 +1,7 @@
 const { createScenarioModule } = require("../scenarioModule");
 const definition = require("../../scenarios/password-reset-abuse.json");
 
+// Locking recovery stops reset loops; resetting credentials contains the recovery-target follow-up.
 const rules = {
   "redActions": [
     "do_nothing",
@@ -26,12 +27,24 @@ const rules = {
     "lock_recovery",
     "reset_credentials"
   ],
-  "unavailableBlueActionsByRedAction": {
+  "redAdaptationActions": [
+    "do_nothing",
+    "switch_recovery_channel"
+  ],
+  "stoppingDefensesByRedAction": {
     "trigger_reset_loop": [
       "lock_recovery"
     ],
     "change_recovery_target": [
       "reset_credentials"
+    ]
+  },
+  "adaptedDefensesByRedAction": {
+    "trigger_reset_loop": [
+      "reset_credentials"
+    ],
+    "change_recovery_target": [
+      "lock_recovery"
     ]
   }
 };

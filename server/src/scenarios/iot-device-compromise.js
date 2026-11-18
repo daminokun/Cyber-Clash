@@ -1,6 +1,7 @@
 const { createScenarioModule } = require("../scenarioModule");
 const definition = require("../../scenarios/iot-device-compromise.json");
 
+// Moving the device to the guest network stops internal probing; quarantining it contains the follow-up.
 const rules = {
   "redActions": [
     "do_nothing",
@@ -26,7 +27,19 @@ const rules = {
     "quarantine_device",
     "move_to_guest_network"
   ],
-  "unavailableBlueActionsByRedAction": {
+  "redAdaptationActions": [
+    "do_nothing",
+    "pivot_to_second_device"
+  ],
+  "stoppingDefensesByRedAction": {
+    "probe_internal_services": [
+      "move_to_guest_network"
+    ],
+    "hide_device_identity": [
+      "quarantine_device"
+    ]
+  },
+  "adaptedDefensesByRedAction": {
     "probe_internal_services": [
       "quarantine_device"
     ],

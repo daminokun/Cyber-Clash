@@ -13,26 +13,5 @@
   "investigationEvidence": {
     "destinationCheck": "The QR code redirects to a domain unrelated to the university.",
     "posterCheck": "The poster was not published through the normal communications channel."
-  },
-  "redActions": ["do_nothing", "replace_qr_code", "add_urgent_message"],
-  "blueActions": ["investigate", "remove_poster", "block_destination", "ignore"],
-  "blueResponses": ["remove_poster", "block_destination", "ignore"],
-  "attackActions": ["replace_qr_code", "add_urgent_message"],
-  "unavailableBlueActionsByRedAction": {
-
-    "replace_qr_code": [
-
-      "remove_poster"
-
-    ],
-
-    "add_urgent_message": [
-
-      "block_destination"
-
-    ]
-
-  },
-
-  "defensiveActions": ["remove_poster", "block_destination"]
+  }
 }

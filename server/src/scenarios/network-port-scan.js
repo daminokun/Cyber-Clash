@@ -1,6 +1,7 @@
 const { createScenarioModule } = require("../scenarioModule");
 const definition = require("../../scenarios/network-port-scan.json");
 
+// Blocking traffic stops the scan; isolating the host contains the hidden-traffic follow-up.
 const rules = {
   "redActions": [
     "do_nothing",
@@ -26,7 +27,19 @@ const rules = {
     "isolate_host",
     "block_traffic"
   ],
-  "unavailableBlueActionsByRedAction": {
+  "redAdaptationActions": [
+    "do_nothing",
+    "scan_from_proxy"
+  ],
+  "stoppingDefensesByRedAction": {
+    "port_scan": [
+      "block_traffic"
+    ],
+    "hide_in_normal_traffic": [
+      "isolate_host"
+    ]
+  },
+  "adaptedDefensesByRedAction": {
     "port_scan": [
       "isolate_host"
     ],
