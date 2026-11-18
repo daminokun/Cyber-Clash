@@ -9,16 +9,6 @@ This changelog covers meaningful commits from project creation on 2026-09-20
 through 2026-11-18. Automated agent-session checkpoint commits are not recorded
 as separate product changes.
 
-## 2026-11-18
-
-- Added the project changelog and links from the README and documentation index
-  (`e4123a3`, committed on `develop`).
-
-## 2026-11-17
-
-- Local automated agent-session activity produced implementation and checkpoint
-  records, but no additional GitHub release commit was identified.
-
 ## 0.2.0 - 2026-11-12
 
 - Bumped the server package and lockfile to `0.2.0` and updated GDD versions
@@ -31,6 +21,18 @@ as separate product changes.
 - Completed report references and cost sections (`0df989d`).
 - Aligned the project audience with IT students (`3ebf033`).
 - Aligned match length across GDD variants (`65c5548`).
+- Added the project changelog and linked it from the README and documentation
+  index (`e4123a3`, committed on `develop`).
+- Expanded the changelog to cover meaningful history from project creation,
+  with commit IDs and grouped feature milestones (`f0f9cf4`, committed on
+  `develop`).
+- Recorded subsequent local automated agent-session activity separately from
+  GitHub product releases.
+
+## 0.1.0 - 2026-09-20 to 2026-11-07
+
+This is the initial implementation and documentation milestone. The server
+package was explicitly versioned `0.1.0` before it was bumped to `0.2.0`.
 
 ## 2026-11-07
 
@@ -140,3 +142,5 @@ as separate product changes.
    when they contain useful project changes.
 3. Add the commit short hash and commit date to every grouped release entry.
 4. Update the server/package version and GDD version for versioned releases.
+5. Retain `0.1.0` as the initial implementation milestone and `0.2.0` as the
+   first documented GDD and server-package bump.
