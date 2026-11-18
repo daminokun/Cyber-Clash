@@ -1,6 +1,6 @@
 # Cyber Clash
 
-## Game Design Document (GDD) v0.2
+## Game Design Document (GDD) v0.2.4
 
 ---
 
@@ -1557,13 +1557,15 @@ Outcome:
 False Positive
 ```
 
-The Blue Team may lose points when it incorrectly reports a legitimate event as a confirmed attack.
+The Blue Team may lose points when it takes a containment action against a legitimate event, including reporting the event as a confirmed attack.
 
-However, reporting a suspicious event for further investigation should not automatically result in a penalty when the available evidence is inconclusive.
+The same rule applies to every scenario, not only the email scenario. For example, isolating a server, blocking a transfer or resetting credentials for an event that the Red Team did not manipulate is also treated as a false positive.
+
+Gathering evidence is never penalised. If the available evidence is inconclusive, the Blue Team may investigate or ignore the event without an automatic penalty.
 
 The server determines whether a false positive has occurred by evaluating the actual scenario state, the Blue Team's response and the rules associated with the scenario.
 
-This encourages careful investigation and evidence-based decisions without discouraging players from reporting genuine security concerns.
+This encourages careful investigation and evidence-based decisions without discouraging players from investigating genuine security concerns.
 
 ### 11.5 Failed Attack and Missed Detection
 
@@ -1616,13 +1618,13 @@ The scoring system follows these principles:
 5. Unexpected events should be evaluated according to their actual impact.
 6. The server must calculate scores consistently for both players.
 
-For the current email scenario prototype, the server uses these provisional values:
+For every scenario in the current prototype, the server uses these provisional values:
 
 | Scenario outcome | Red Team | Blue Team |
 |---|---:|---:|
 | Attack succeeds | +5 | 0 |
 | Attack is prevented | 0 | +3 |
-| False positive on a legitimate email | 0 | -2 |
+| False positive (containment action against a legitimate event) | 0 | -2 |
 | No significant impact | 0 | 0 |
 
 These values are implementation values for the initial prototype and may be
@@ -2538,15 +2540,17 @@ counter-tactic from becoming a free warning to Blue Team.
 When Red commits to a non-empty adaptation, the original attack vector is
 replaced by a scenario-specific follow-up vector. A defense that would have
 contained only the original vector cannot automatically contain the follow-up.
-Blue must therefore balance immediate response against investigation: a direct
-response may stop the original attack, while investigation gives Red a valid
-counter-turn before the final response.
+The follow-up vector always has its own containment response, so investigating
+never removes every possible defense. Blue must therefore balance immediate
+response against investigation: a direct response may stop the original attack,
+while investigation gives Red a valid counter-turn before the final response.
 
 After resolution, both players receive a clear result explanation.
 It describes the Red attack, the Blue response, why the attack succeeded or was
-prevented, and why points were awarded. If no attack occurred, it explains that
-there was no significant impact. Hidden information is revealed only after
-resolution so the explanation cannot provide clues during active play.
+prevented, and why points were awarded. If no attack occurred, it explains
+whether the response was appropriate or triggered a false positive. Hidden
+information is revealed only after resolution so the explanation cannot provide
+clues during active play.
 
 ### 15.7 Networking and Communication
 

@@ -1,6 +1,6 @@
 # Cyber Clash
 
-## Game Design Document (GDD) v0.2
+## Game Design Document (GDD) v0.2.4
 
 > **Note:** This is the simplified English summary covering Sections 1-8.
 > Refer to the [main GDD](../Game-Design-Document.md) for the latest

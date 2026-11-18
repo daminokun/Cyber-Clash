@@ -1,6 +1,11 @@
 # Cyber Clash
 
-## Dokumen Reka Bentuk Permainan (GDD) v0.2
+## Dokumen Reka Bentuk Permainan (GDD) v0.2.4
+
+> **Nota sumber:** Dokumen ini ialah terjemahan Bahasa Melayu bagi
+> [GDD kanonikal](../Game-Design-Document.md). Dokumen kanonikal ialah rujukan
+> utama; sebarang perubahan tingkah laku permainan, pemarkahan atau protokol
+> mesti dikemas kini di sana terlebih dahulu, kemudian disegerakkan ke sini.
 
 ---
 
