@@ -8,7 +8,22 @@ Cyber Clash follows semantic versioning:
 Versions are assigned chronologically to the product changes in Git history.
 Agent checkpoint commits are not assigned project versions.
 
-The project version is currently `0.2.5`.
+The project version is currently `0.3.0`.
+
+## 0.3.0 - 2026-11-19
+
+### Major Milestone: Cyber Clash 2.0 Overhaul & Logbook Documentation
+
+- Added comprehensive Game Design Document for Cyber Clash 2.0 (`docs/GDD/Cyber-Clash-Overhaul-GDD.md`):
+  - Defined 1v1 real-time Objective Race between Hacker (Red Team) and Target (Blue Team).
+  - Designed 5-phase sequential attack loop (Reconnaissance, Scanning, Gaining Access, Maintaining Access, Covering Tracks).
+  - Added modular bait builder with typo-squatting and silent drop feedback.
+  - Added tactical exfiltration speeds (Fast 5s vs Slow 15s) and 10-20s lockdown race.
+  - Designed Target Windows 11 desktop with 3 daily tasks, 3 chances/strikes rule, 2x quota security tools, and Network Isolation button.
+  - Specified balanced scoring model (0-1,000 points, S/A/B/C/F) with JMTi CU 03 Post-Mortem Report.
+  - Added laboratory demo features (editable Server IP input) and non-pausing ESC menu.
+- Added official student Logbook for Ahmad Irfan Bin Hedher (`docs/Logbook-Ahmad-Irfan.md`) detailing all 7 discussion sessions with the project supervisor.
+- Bumped project version to `0.3.0`.
 
 ## 0.2.5 - 2026-11-18
 
