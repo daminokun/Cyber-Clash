@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 460" width="1020" height="460" style="background:#090d16; font-family:'Segoe UI', Arial, sans-serif;">
+  <text x="510" y="38" text-anchor="middle" fill="#ef4444" font-size="20" font-weight="bold" letter-spacing="1">MODUL RED TEAM (AHMAD IRFAN) — ALIRAN 5 FASA SERANGAN SIBER</text>
+  <text x="510" y="62" text-anchor="middle" fill="#94a3b8" font-size="12">Simulasi Real-Time Berasaskan Piawaian Standard Ethical Hacking &amp; Penetration Testing</text>
+
+  <!-- ================= Phase 1 ================= -->
+  <rect x="20" y="90" width="180" height="300" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+  <rect x="20" y="90" width="180" height="36" rx="8" fill="#0284c7"/>
+  <text x="110" y="113" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">FASA 1: RECONNAISSANCE</text>
+  <text x="32" y="145" fill="#38bdf8" font-size="11" font-weight="bold">• 100% Senyap</text>
+  <text x="32" y="165" fill="#e2e8f0" font-size="10" font-weight="bold">Dossier Profil OSINT:</text>
+  <text x="32" y="185" fill="#cbd5e1" font-size="10">- Nama &amp; Jawatan Mangsa</text>
+  <text x="32" y="202" fill="#cbd5e1" font-size="10">- Minat &amp; Hobi Peribadi</text>
+  <text x="32" y="219" fill="#cbd5e1" font-size="10">- Akaun Bank &amp; Kewangan</text>
+  <text x="32" y="236" fill="#cbd5e1" font-size="10">- Emel Syarikat Bocor</text>
+  <text x="32" y="253" fill="#cbd5e1" font-size="10">- Peranti &amp; OS Digunakan</text>
+  <text x="32" y="290" fill="#94a3b8" font-size="9" font-style="italic">Sasaran: Kenal pasti vektor</text>
+  <text x="32" y="303" fill="#94a3b8" font-size="9" font-style="italic">kelemahan psikologi mangsa.</text>
+  <rect x="28" y="340" width="164" height="35" rx="5" fill="#0f172a"/>
+  <text x="110" y="362" text-anchor="middle" fill="#38bdf8" font-size="10" font-weight="bold">Zero Heat / Tiada Amaran</text>
+
+  <!-- Arrow 1-2 -->
+  <line x1="200" y1="240" x2="225" y2="240" stroke="#ef4444" stroke-width="3"/>
+  <polygon points="225,240 217,235 217,245" fill="#ef4444"/>
+
+  <!-- ================= Phase 2 ================= -->
+  <rect x="225" y="90" width="180" height="300" rx="8" fill="#1e293b" stroke="#eab308" stroke-width="2"/>
+  <rect x="225" y="90" width="180" height="36" rx="8" fill="#ca8a04"/>
+  <text x="315" y="113" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">FASA 2: SCANNING</text>
+  <text x="237" y="145" fill="#fde047" font-size="11" font-weight="bold">• Imbasan Titik Lemah</text>
+  <text x="237" y="165" fill="#e2e8f0" font-size="10" font-weight="bold">3 Pilihan Teknik:</text>
+  <text x="237" y="185" fill="#cbd5e1" font-size="10">1. Passive Social Scan</text>
+  <text x="247" y="200" fill="#94a3b8" font-size="9">(Senyap, tiada amaran)</text>
+  <text x="237" y="217" fill="#cbd5e1" font-size="10">2. Active Network Scan</text>
+  <text x="247" y="232" fill="#94a3b8" font-size="9">(Port terbuka, berisiko)</text>
+  <text x="237" y="249" fill="#cbd5e1" font-size="10">3. Software Vuln Scan</text>
+  <text x="247" y="264" fill="#94a3b8" font-size="9">(Kesan patch perisian lama)</text>
+  <text x="237" y="295" fill="#94a3b8" font-size="9" font-style="italic">Buka kunci pilihan vektor</text>
+  <text x="237" y="308" fill="#94a3b8" font-size="9" font-style="italic">eksploitasi untuk Fasa 3.</text>
+  <rect x="233" y="340" width="164" height="35" rx="5" fill="#0f172a"/>
+  <text x="315" y="362" text-anchor="middle" fill="#fde047" font-size="10" font-weight="bold">Imbasan Agresif Beri Amaran</text>
+
+  <!-- Arrow 2-3 -->
+  <line x1="405" y1="240" x2="430" y2="240" stroke="#ef4444" stroke-width="3"/>
+  <polygon points="430,240 422,235 422,245" fill="#ef4444"/>
+
+  <!-- ================= Phase 3 ================= -->
+  <rect x="430" y="90" width="180" height="300" rx="8" fill="#1e293b" stroke="#ef4444" stroke-width="2"/>
+  <rect x="430" y="90" width="180" height="36" rx="8" fill="#dc2626"/>
+  <text x="520" y="113" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">FASA 3: GAINING ACCESS</text>
+  <text x="442" y="145" fill="#f87171" font-size="11" font-weight="bold">• Modular Bait Builder</text>
+  <text x="442" y="165" fill="#e2e8f0" font-size="10" font-weight="bold">Parameter Umpan:</text>
+  <text x="442" y="185" fill="#cbd5e1" font-size="10">• Topik: Pelaburan/Invois</text>
+  <text x="442" y="202" fill="#cbd5e1" font-size="10">• Typo: admin@paypa1.com</text>
+  <text x="442" y="219" fill="#cbd5e1" font-size="10">• Perangkap: Link / File.exe</text>
+  <text x="442" y="245" fill="#f87171" font-size="10" font-weight="bold">Kesan Tindakan Target:</text>
+  <text x="442" y="262" fill="#4ade80" font-size="9">✔ Klik ➔ Reverse Shell (+) </text>
+  <text x="442" y="277" fill="#fca5a5" font-size="9">✖ Block ➔ Silent Drop (No beacon)</text>
+  <text x="442" y="300" fill="#94a3b8" font-size="9" font-style="italic">1 Umpan pada 1 masa.</text>
+  <rect x="438" y="340" width="164" height="35" rx="5" fill="#0f172a"/>
+  <text x="520" y="362" text-anchor="middle" fill="#f87171" font-size="10" font-weight="bold">Retry Loop Naikkan Risiko</text>
+
+  <!-- Arrow 3-4 -->
+  <line x1="610" y1="240" x2="635" y2="240" stroke="#ef4444" stroke-width="3"/>
+  <polygon points="635,240 627,235 627,245" fill="#ef4444"/>
+
+  <!-- ================= Phase 4 ================= -->
+  <rect x="635" y="90" width="180" height="300" rx="8" fill="#1e293b" stroke="#a855f7" stroke-width="2"/>
+  <rect x="635" y="90" width="180" height="36" rx="8" fill="#9333ea"/>
+  <text x="725" y="113" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">FASA 4: MAINTAIN &amp; EXFIL</text>
+  <text x="647" y="145" fill="#d8b4fe" font-size="11" font-weight="bold">• Kawalan &amp; Penyedutan</text>
+  <text x="647" y="165" fill="#e2e8f0" font-size="10" font-weight="bold">Pilihan Kelajuan:</text>
+  <text x="647" y="185" fill="#fca5a5" font-size="10">1. Fast Mode (~5 saat):</text>
+  <text x="657" y="200" fill="#94a3b8" font-size="9">Sangat laju, ikon tray kelip,</text>
+  <text x="657" y="212" fill="#94a3b8" font-size="9">baki duit susut depan mata.</text>
+  <text x="647" y="232" fill="#86efac" font-size="10">2. Slow Mode (~15 saat):</text>
+  <text x="657" y="247" fill="#94a3b8" font-size="9">Senyap, sifar petunjuk skrin.</text>
+  <text x="647" y="275" fill="#e2e8f0" font-size="10" font-weight="bold">Aset Dicuri:</text>
+  <text x="647" y="292" fill="#cbd5e1" font-size="9">Duit Millionaire / Paten Kajian</text>
+  <rect x="643" y="340" width="164" height="35" rx="5" fill="#0f172a"/>
+  <text x="725" y="362" text-anchor="middle" fill="#d8b4fe" font-size="10" font-weight="bold">Tamat 100% ➔ Cetus Siren</text>
+
+  <!-- Arrow 4-5 -->
+  <line x1="815" y1="240" x2="840" y2="240" stroke="#ef4444" stroke-width="3"/>
+  <polygon points="840,240 832,235 832,245" fill="#ef4444"/>
+
+  <!-- ================= Phase 5 ================= -->
+  <rect x="840" y="90" width="160" height="300" rx="8" fill="#1e293b" stroke="#22c55e" stroke-width="2"/>
+  <rect x="840" y="90" width="160" height="36" rx="8" fill="#16a34a"/>
+  <text x="920" y="113" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">FASA 5: COVERING TRACKS</text>
+  <text x="850" y="145" fill="#86efac" font-size="11" font-weight="bold">• 10–20s Countdown</text>
+  <text x="850" y="165" fill="#e2e8f0" font-size="10" font-weight="bold">Siren Penggera Aktif!</text>
+  <text x="850" y="185" fill="#cbd5e1" font-size="10">Hacker berlumba:</text>
+  <text x="850" y="205" fill="#cbd5e1" font-size="10">1. [Clear Logs]</text>
+  <text x="850" y="222" fill="#cbd5e1" font-size="10">2. [Delete Payload]</text>
+  <text x="850" y="239" fill="#cbd5e1" font-size="10">3. [Disconnect]</text>
+  <text x="850" y="270" fill="#fca5a5" font-size="9" font-weight="bold">Lawan butang Target:</text>
+  <text x="850" y="285" fill="#ef4444" font-size="9">[Isolate &amp; Report Police]</text>
+  <rect x="846" y="340" width="148" height="35" rx="5" fill="#0f172a"/>
+  <text x="920" y="362" text-anchor="middle" fill="#86efac" font-size="10" font-weight="bold">Cabut Bersih = Gred S/A</text>
+
+  <!-- BOTTOM SUMMARY -->
+  <rect x="20" y="405" width="980" height="36" rx="6" fill="#111827" stroke="#334155"/>
+  <text x="510" y="428" text-anchor="middle" fill="#94a3b8" font-size="11">Peraturan: Aliran serangan adalah berurutan (Sequential). Jika mangsa selesai 3 tugasan harian sebelum diceroboh, Target menang (Shift Ended Victory).</text>
+</svg>

@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" style="background:#090d16; font-family:'Segoe UI', Consolas, sans-serif;">
+  <text x="480" y="35" text-anchor="middle" fill="#ef4444" font-size="18" font-weight="bold">WIREFRAME ANTARAMUKA KONSOL HACKER (GODOT CLIENT — AHMAD IRFAN)</text>
+  <text x="480" y="55" text-anchor="middle" fill="#94a3b8" font-size="11">Reka Bentuk Gelap Bertema Terminal Kali Linux / Burp Suite</text>
+
+  <!-- KALI CONSOLE WINDOW -->
+  <rect x="40" y="75" width="880" height="415" rx="8" fill="#111827" stroke="#334155" stroke-width="2"/>
+  
+  <!-- Window Header -->
+  <rect x="40" y="75" width="880" height="32" rx="8" fill="#1e293b"/>
+  <circle cx="58" cy="91" r="5" fill="#ef4444"/>
+  <circle cx="73" cy="91" r="5" fill="#eab308"/>
+  <circle cx="88" cy="91" r="5" fill="#22c55e"/>
+  <text x="480" y="96" text-anchor="middle" fill="#e2e8f0" font-size="11" font-weight="bold">root@cyberclash-kali: ~/red-team/exploit-suite</text>
+
+  <!-- LEFT PANEL: OSINT DOSSIER (Fasa 1 & 2) -->
+  <rect x="55" y="120" width="260" height="350" rx="6" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="70" y="145" fill="#38bdf8" font-size="12" font-weight="bold">[FASA 1: OSINT DOSSIER]</text>
+  <text x="70" y="170" fill="#cbd5e1" font-size="10">SASARAN: Millionaire Target</text>
+  <text x="70" y="188" fill="#cbd5e1" font-size="10">Nama: Dato' Seri Zulkifli</text>
+  <text x="70" y="206" fill="#cbd5e1" font-size="10">Bank: Apex Islamic Bank</text>
+  <text x="70" y="224" fill="#cbd5e1" font-size="10">Emel: ceo@apex-holding.com</text>
+  <text x="70" y="242" fill="#cbd5e1" font-size="10">OS: Windows 11 Enterprise</text>
+  <text x="70" y="260" fill="#fde047" font-size="10">Minat: Pelaburan Saham VIP</text>
+
+  <line x1="65" y1="275" x2="305" y2="275" stroke="#334155"/>
+  <text x="70" y="295" fill="#eab308" font-size="11" font-weight="bold">[FASA 2: SCANNER]</text>
+  <rect x="70" y="305" width="230" height="24" rx="4" fill="#1e293b"/>
+  <text x="80" y="321" fill="#cbd5e1" font-size="9">&gt; Port Scan: Port 445 Open (SMB)</text>
+  <rect x="70" y="335" width="230" height="24" rx="4" fill="#1e293b"/>
+  <text x="80" y="351" fill="#cbd5e1" font-size="9">&gt; Social Scan: High click rate</text>
+  <rect x="70" y="365" width="230" height="24" rx="4" fill="#1e293b"/>
+  <text x="80" y="381" fill="#cbd5e1" font-size="9">&gt; Vuln: Outdated PDF Reader</text>
+
+  <!-- MIDDLE PANEL: MODULAR BAIT BUILDER (Fasa 3) -->
+  <rect x="330" y="120" width="310" height="350" rx="6" fill="#0f172a" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="345" y="145" fill="#ef4444" font-size="12" font-weight="bold">[FASA 3: MODULAR BAIT BUILDER]</text>
+
+  <text x="345" y="172" fill="#e2e8f0" font-size="10">1. Topik Pancingan:</text>
+  <rect x="345" y="180" width="280" height="26" rx="4" fill="#1e293b" stroke="#475569"/>
+  <text x="355" y="197" fill="#cbd5e1" font-size="10">Tawaran Pelaburan Dividen VIP (15%)</text>
+
+  <text x="345" y="222" fill="#e2e8f0" font-size="10">2. Alamat Penghantar (Typo-Squatting):</text>
+  <rect x="345" y="230" width="280" height="26" rx="4" fill="#1e293b" stroke="#475569"/>
+  <text x="355" y="247" fill="#fca5a5" font-size="10">invest@apex-ho1ding.com (Huruf 'l' ➔ '1')</text>
+
+  <text x="345" y="272" fill="#e2e8f0" font-size="10">3. Jenis Perangkap:</text>
+  <rect x="345" y="280" width="135" height="26" rx="4" fill="#3b82f6"/>
+  <text x="412" y="297" text-anchor="middle" fill="#ffffff" font-size="9" font-weight="bold">• Pautan URL Palsu</text>
+  <rect x="490" y="280" width="135" height="26" rx="4" fill="#1e293b" stroke="#475569"/>
+  <text x="557" y="297" text-anchor="middle" fill="#94a3b8" font-size="9">• Fail Lampiran .exe</text>
+
+  <rect x="345" y="320" width="280" height="32" rx="4" fill="#dc2626"/>
+  <text x="485" y="341" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">&gt;&gt; LANCARKAN UMPAN (1 AT A TIME) &lt;&lt;</text>
+
+  <!-- Live Terminal Log -->
+  <rect x="345" y="365" width="280" height="90" rx="4" fill="#000000" stroke="#334155"/>
+  <text x="355" y="382" fill="#94a3b8" font-size="9">[*] Umpan dihantar ke sasaran...</text>
+  <text x="355" y="398" fill="#94a3b8" font-size="9">[*] Menunggu tindak balas mangsa...</text>
+  <text x="355" y="415" fill="#4ade80" font-size="9">[+] Mangsa klik pautan! Reverse shell up.</text>
+  <text x="355" y="432" fill="#38bdf8" font-size="9">[!] Akses pentadbir berjaya diperoleh.</text>
+
+  <!-- RIGHT PANEL: EXFILTRATION & CLEANUP (Fasa 4 & 5) -->
+  <rect x="655" y="120" width="250" height="350" rx="6" fill="#0f172a" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="670" y="145" fill="#a855f7" font-size="12" font-weight="bold">[FASA 4: EXFILTRATION]</text>
+  
+  <text x="670" y="170" fill="#cbd5e1" font-size="10">Pilihan Kelajuan Muat Turun:</text>
+  <rect x="670" y="180" width="105" height="24" rx="4" fill="#dc2626"/>
+  <text x="722" y="196" text-anchor="middle" fill="#ffffff" font-size="9" font-weight="bold">Fast (5s - Bising)</text>
+  <rect x="785" y="180" width="105" height="24" rx="4" fill="#1e293b" stroke="#475569"/>
+  <text x="837" y="196" text-anchor="middle" fill="#94a3b8" font-size="9">Slow (15s - Senyap)</text>
+
+  <!-- Progress Bar -->
+  <text x="670" y="222" fill="#cbd5e1" font-size="10">Kemajuan Muat Turun Data:</text>
+  <rect x="670" y="230" width="220" height="18" rx="4" fill="#1e293b"/>
+  <rect x="670" y="230" width="165" height="18" rx="4" fill="#22c55e"/>
+  <text x="780" y="243" text-anchor="middle" fill="#000000" font-size="9" font-weight="bold">75% ($750,000)</text>
+
+  <line x1="665" y1="265" x2="895" y2="265" stroke="#334155"/>
+  <text x="670" y="285" fill="#22c55e" font-size="12" font-weight="bold">[FASA 5: COVERING TRACKS]</text>
+  <rect x="670" y="295" width="220" height="26" rx="4" fill="#7f1d1d" stroke="#ef4444"/>
+  <text x="780" y="312" text-anchor="middle" fill="#fca5a5" font-size="10" font-weight="bold">SIREN AKTIF: 14s TINGGAL</text>
+
+  <rect x="670" y="330" width="220" height="26" rx="4" fill="#1e293b" stroke="#22c55e"/>
+  <text x="780" y="347" text-anchor="middle" fill="#86efac" font-size="9">[ 1. Padam Windows Event Logs ]</text>
+
+  <rect x="670" y="365" width="220" height="26" rx="4" fill="#1e293b" stroke="#22c55e"/>
+  <text x="780" y="382" text-anchor="middle" fill="#86efac" font-size="9">[ 2. Hapus Fail Payload / RAT ]</text>
+
+  <rect x="670" y="400" width="220" height="32" rx="4" fill="#16a34a"/>
+  <text x="780" y="421" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">[ 3. DISCONNECT SESSION ]</text>
+
+  <text x="780" y="452" text-anchor="middle" fill="#94a3b8" font-size="8">Lari bersih sebelum polis siber tiba!</text>
+</svg>

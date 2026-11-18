@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 500" width="1020" height="500" style="background:#090d16; font-family:'Segoe UI', Arial, sans-serif;">
+  <text x="510" y="35" text-anchor="middle" fill="#38bdf8" font-size="20" font-weight="bold" letter-spacing="1">CARTA GANTT PROJEK TAHUN AKHIR (CYBER CLASH 2.0)</text>
+  <text x="510" y="58" text-anchor="middle" fill="#94a3b8" font-size="12">Jadual Pelaksanaan Sepanjang 16 Minggu Semester 4 JMTi (Ogos – November 2026)</text>
+
+  <!-- TABLE HEADER -->
+  <rect x="30" y="80" width="960" height="35" rx="5" fill="#1e293b" stroke="#334155"/>
+  <text x="180" y="102" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">Aktiviti Projek / Fasa Waterfall</text>
+  
+  <!-- Weeks 1 to 16 -->
+  <!-- W1..W4 Ogos, W5..W8 Sept, W9..W12 Okt, W13..W16 Nov -->
+  <text x="360" y="102" fill="#38bdf8" font-size="10" font-weight="bold">M1-M3 (Ogos)</text>
+  <text x="510" y="102" fill="#eab308" font-size="10" font-weight="bold">M4-M7 (Sept)</text>
+  <text x="670" y="102" fill="#ef4444" font-size="10" font-weight="bold">M8-M11 (Okt)</text>
+  <text x="830" y="102" fill="#22c55e" font-size="10" font-weight="bold">M12-M16 (Nov)</text>
+
+  <!-- ROW 1 -->
+  <rect x="30" y="125" width="310" height="35" fill="#0f172a" stroke="#334155"/>
+  <text x="45" y="147" fill="#e2e8f0" font-size="11">1. Taklimat Tajuk &amp; Analisa Silibus CU 03</text>
+  <rect x="350" y="132" width="120" height="20" rx="4" fill="#38bdf8"/>
+
+  <!-- ROW 2 -->
+  <rect x="30" y="165" width="310" height="35" fill="#0f172a" stroke="#334155"/>
+  <text x="45" y="187" fill="#e2e8f0" font-size="11">2. Penyediaan Bab 1 &amp; Reka Bentuk GDD</text>
+  <rect x="420" y="172" width="130" height="20" rx="4" fill="#38bdf8"/>
+
+  <!-- ROW 3 -->
+  <rect x="30" y="205" width="310" height="35" fill="#0f172a" stroke="#334155"/>
+  <text x="45" y="227" fill="#e2e8f0" font-size="11">3. Pemilihan Platform (Godot &amp; Node.js)</text>
+  <rect x="490" y="212" width="100" height="20" rx="4" fill="#eab308"/>
+
+  <!-- ROW 4 -->
+  <rect x="30" y="245" width="310" height="35" fill="#0f172a" stroke="#334155"/>
+  <text x="45" y="267" fill="#e2e8f0" font-size="11">4. Pembangunan Modul Red Team Godot</text>
+  <rect x="560" y="252" width="180" height="20" rx="4" fill="#ef4444"/>
+
+  <!-- ROW 5 -->
+  <rect x="30" y="285" width="310" height="35" fill="#0f172a" stroke="#334155"/>
+  <text x="45" y="307" fill="#e2e8f0" font-size="11">5. Pembangunan Pelayan WebSocket Node.js</text>
+  <rect x="610" y="292" width="160" height="20" rx="4" fill="#ef4444"/>
+
+  <!-- ROW 6 -->
+  <rect x="30" y="325" width="310" height="35" fill="#0f172a" stroke="#334155"/>
+  <text x="45" y="347" fill="#e2e8f0" font-size="11">6. Overhaul GDD 2.0 (Heist &amp; Defense)</text>
+  <rect x="740" y="332" width="110" height="20" rx="4" fill="#a855f7"/>
+
+  <!-- ROW 7 -->
+  <rect x="30" y="365" width="310" height="35" fill="#0f172a" stroke="#334155"/>
+  <text x="45" y="387" fill="#e2e8f0" font-size="11">7. Ujian Unit Pelayan (30 Pass) &amp; LAN</text>
+  <rect x="780" y="372" width="110" height="20" rx="4" fill="#a855f7"/>
+
+  <!-- ROW 8 -->
+  <rect x="30" y="405" width="310" height="35" fill="#0f172a" stroke="#334155"/>
+  <text x="45" y="427" fill="#e2e8f0" font-size="11">8. Penulisan Laporan Akhir &amp; Slaid FYP</text>
+  <rect x="830" y="412" width="140" height="20" rx="4" fill="#22c55e"/>
+
+  <!-- MILESTONES -->
+  <circle cx="470" cy="142" r="5" fill="#ffffff" stroke="#000"/>
+  <text x="470" y="160" text-anchor="middle" fill="#ffffff" font-size="8">Sesi 1 (18/8)</text>
+
+  <circle cx="550" cy="182" r="5" fill="#ffffff" stroke="#000"/>
+  <text x="550" y="200" text-anchor="middle" fill="#ffffff" font-size="8">Sesi 2 (1/9)</text>
+
+  <circle cx="610" cy="222" r="5" fill="#ffffff" stroke="#000"/>
+  <text x="610" y="240" text-anchor="middle" fill="#ffffff" font-size="8">Sesi 3 (29/9)</text>
+
+  <circle cx="690" cy="262" r="5" fill="#ffffff" stroke="#000"/>
+  <text x="690" y="280" text-anchor="middle" fill="#ffffff" font-size="8">Sesi 4 (6/10)</text>
+
+  <circle cx="760" cy="302" r="5" fill="#ffffff" stroke="#000"/>
+  <text x="760" y="320" text-anchor="middle" fill="#ffffff" font-size="8">Sesi 5 (20/10)</text>
+
+  <circle cx="830" cy="342" r="5" fill="#ffffff" stroke="#000"/>
+  <text x="830" y="360" text-anchor="middle" fill="#ffffff" font-size="8">Sesi 6 (3/11)</text>
+
+  <circle cx="910" cy="382" r="5" fill="#ffffff" stroke="#000"/>
+  <text x="910" y="400" text-anchor="middle" fill="#ffffff" font-size="8">Sesi 7 (17/11)</text>
+</svg>

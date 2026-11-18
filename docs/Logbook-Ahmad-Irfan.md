@@ -1,222 +1,192 @@
-# Logbook Projek Cyber Clash — Ahmad Irfan Bin Hedher
-
+# Logbook Projek Tahun Akhir (FYP) — Cyber Clash 2.0
 **Nama Pelajar:** Ahmad Irfan Bin Hedher  
 **Institusi:** Institut Teknikal Jepun-Malaysia (JMTi) — Sem 4  
-**Tajuk Projek:** Cyber Clash — Web-Based 1v1 PvP Cybersecurity Simulation Game  
-**Peranan:** Pembangunan Modul Red Team (Godot Engine & Node.js Server Integration)  
+**Tajuk Projek:** Cyber Clash 2.0 — Real-Time Heist & Defense Cybersecurity Simulation  
+**Peranan & Tanggungjawab (Red Team):**  
+1. Membangunkan modul Red Team (Konsol Hacker) menggunakan Godot Engine.
+2. Mengatur cara fungsi serangan mengikut 5 Fasa Ethical Hacking (Recon, Scanning, Exploitation, Maintaining Access, Covering Tracks).
+3. Membangunkan sistem tindakan serangan dan perlumbaan objektif masa nyata.
+4. Membangunkan fungsi komunikasi multiplayer dua hala menggunakan Node.js WebSocket.
+5. Menyediakan lakaran carta alir 5 fasa serangan modul Red Team.
+6. Menyediakan penulisan laporan berkaitan pembangunan modul Red Team.
+7. Melaksanakan pengujian fungsi serangan dan penyelesaian ralat sistem.
+8. Membaiki ralat dan mengintegrasikan modul Red Team dengan pelayan autoritatif.
 
 ---
 
-### 19/8
+### Sesi 1: 18/8
 
 **Item for Discussion**
-* Pembentangan idea awal projek Cyber Clash dan rasional pemilihannya berdasarkan silibus modul CU 03 Computer System Security Control di JMTi.
-* Mengenal pasti jurang pembelajaran sedia ada, khususnya kekurangan platform latihan amali interaktif yang membolehkan pelajar merasai dinamik serangan siber sebenar dalam persekitaran terkawal.
-* Perbincangan terperinci mengenai konsep simulasi 1v1 PvP (Player vs Player) berbanding model PvE (Player vs AI), dari segi impak pembelajaran dan penglibatan pelajar.
-* Penetapan skop peranan Red Team (pihak penyerang), merangkumi taktik serangan asas seperti *Reconnaissance*, *Gaining Access*, dan *Maintaining Access*.
-* Penentuan metodologi kerja kumpulan, pembahagian peranan utama antara tiga orang ahli kumpulan, dan penyelarasan garis masa kasar projek.
-* Format penulisan logbook, laporan kemajuan projek, serta jangkaan penyelia terhadap pematuhan piawaian akademik JMTi.
+* Perbincangan idea projek Cyber Clash dan rasional pemilihannya berdasarkan modul CU 03 Computer System Security Control di JMTi.
+* Mengenal pasti isu jurang pembelajaran praktikal keselamatan siber bagi pelajar IT.
+* Penetapan skop peranan Red Team (pihak penyerang) yang dipertanggungjawabkan kepada Ahmad Irfan.
+* Cadangan mekanik serangan awal (*Reconnaissance, Gaining Access, Maintaining Access*).
+* Penetapan garis panduan penulisan akademik dan pembahagian tugas kumpulan.
 
 **Record of Discussion**
-* Penyelia memberi pandangan tentang kesesuaian tajuk projek dan mengesahkan bahawa topik simulasi keselamatan siber sangat relevan dengan keperluan industri IT.
-* Penyelia mencadangkan agar permainan memberi nilai pembelajaran (*educational value*) yang jelas kepada pelajar IT, bukan sekadar hiburan kosong.
-* Ahli kumpulan bersetuju membangunkan konsep PvP dengan pembahagian peranan: Ahmad Irfan (Red Team), Muhammad Azrul Aiman (Blue Team), dan Tarrsiny Vidyasshri (Scenario Generation & Scoring).
-* Ahmad Irfan diberi tanggungjawab penuh bagi mereka bentuk, memprogram, menguji, dan mendokumentasikan keseluruhan modul Red Team.
+* Penyelia memberi maklum balas bahawa tajuk simulasi keselamatan siber sangat relevan dengan industri.
+* Penyelia menegaskan permainan perlu memberi nilai pendidikan (*educational value*) yang jelas kepada pelajar IT.
+* Pembahagian tugas dimuktamadkan: Ahmad Irfan bertanggungjawab membangunkan keseluruhan modul Red Team.
+* Ahmad Irfan perlu menyediakan lakaran carta alir awal dan skop tindakan serangan.
 
 **Troubleshooting**
-* Mengatasi kekeliruan skop antara simulasi serangan peringkat lanjutan (advance penetration testing) dengan tahap kefahaman pelajar diploma asas IT.
-* Memilih senarai serangan yang seimbang agar tidak terlalu rumit untuk diprogramkan dalam fasa prototaip namun tetap mewakili senario ancaman dunia sebenar.
+* Mengimbangi tahap kerumitan simulasi penyerang agar sesuai dengan pelajar diploma IT asas tanpa terlalu rumit.
 
 **Action List**
-* Memuktamadkan tajuk dan objektif projek bersama ahli kumpulan.
-* Menyenaraikan skop pembangunan sistem dan had keupayaan prototaip.
-* Membuat kajian awal terhadap fungsi serangan Red Team berasaskan rangka kerja keselamatan siber standard.
-* Menyediakan lakaran konsep awal permainan dan aliran interaksi antara penyerang dan pertahanan.
+* Memuktamadkan objektif dan skop modul Red Team.
+* Menyenaraikan fungsi serangan awal (Modify Event, Add Malicious Link, Spoof Source).
+* Menyediakan lakaran konsep awal interaksi Red Team.
 
 ---
 
-### 2/9
+### Sesi 2: 1/9
 
 **Item for Discussion**
-* Penyelarasan objektif terperinci dan skop teknikal projek bagi mengelakkan pertindihan fungsi antara modul ahli kumpulan.
-* Pemilihan platform dan perisian pembangunan (*tech stack*): perbandingan antara Godot Engine, Unity, dan pembangunan web tulen (HTML5/Canvas).
-* Rasional penggunaan Node.js dan WebSocket sebagai pelayan autoritatif berpusat untuk mengendalikan komunikasi masa nyata perlawanan.
-* Perancangan seni bina asas modul Red Team, merangkumi komponen antaramuka pemain (UI), pemprosesan tindakan giliran (*turn processing*), dan pemformatan payload data JSON.
-* Penentuan senarai fungsi serangan awal yang praktikal untuk dilaksanakan pada fasa awal (seperti *Modify Event*, *Add Malicious Link*, dan *Spoof Source*).
-* Struktur penulisan Bab 1 Laporan Projek: Latar Belakang, Pernyataan Masalah, Persoalan Kajian, Objektif Projek, dan Skop Projek.
+* Pemilihan platform pembangunan (*tech stack*): Godot Engine (Klien) dan Node.js (Pelayan).
+* Penentuan seni bina komunikasi masa nyata menggunakan WebSocket dan format data JSON.
+* Perancangan pembangunan sistem tindakan dan giliran Red Team di Godot Engine.
+* Struktur penulisan Bab 1 Laporan Projek berkaitan modul Red Team.
 
 **Record of Discussion**
-* Projek diputuskan menggunakan Godot Engine sebagai platform pembangunan utama kerana cirinya yang ringan, sokongan eksport web/desktop yang baik, dan kemudahan bahasa GDScript.
-* Pelayan Node.js disahkan sebagai arkitektur pelayan autoritatif bagi memastikan semua pengiraan markah, pengesahan giliran, dan rahsia perlawanan diurus secara berpusat.
-* Ahmad Irfan bertanggungjawab membangunkan tindakan serangan dan sistem giliran Red Team dalam Godot serta menyambungkannya dengan pelayan.
-* Fungsi serangan awal dipertimbangkan termasuk *Modify Event*, *Add Malicious Link* dan *Spoof Source*.
+* Projek menggunakan Godot Engine sebagai platform utama pembangunan klien kerana ringan dan menyokong GDScript.
+* Pelayan Node.js dipilih sebagai pelayan autoritatif bagi memastikan rahsia dan giliran penyerang diurus secara berpusat.
+* Ahmad Irfan memulakan reka bentuk aliran giliran tindakan penyerang.
 
 **Troubleshooting**
-* Menentukan struktur komunikasi antara klien Godot dengan pelayan Node.js agar mesej tindakan Red Team dihantar dalam bentuk payload JSON yang standard dan selamat.
-* Memastikan logik permainan tidak diletakkan sepenuhnya pada klien bagi mengelakkan isu manipulasi data atau percanggahan state perlawanan.
+* Menentukan struktur mesej payload JSON supaya tindakan penyerang dihantar secara selamat tanpa manipulasi klien.
 
 **Action List**
-* Menyediakan kandungan awal Bab 1 mengikut format piawai.
-* Membuat kajian literatur berkaitan simulasi keselamatan siber dan corak permainan *turn-based*.
-* Membina lakaran aliran tindakan Red Team dari fasa persediaan hingga penghantaran serangan.
-* Merancang hubungan sistem giliran Red Team dengan giliran penyiasatan Blue Team.
+* Menyediakan draf Bab 1 Laporan Projek (Objektif & Skop Red Team).
+* Membina lakaran aliran tindakan dan kitaran giliran Red Team.
+* Mereka bentuk format data JSON awal untuk tindakan serangan.
 
 ---
 
-### 30/9
+### Sesi 3: 29/9
 
 **Item for Discussion**
-* Reka bentuk terperinci mekanik permainan dalam Game Design Document (GDD), memfokuskan kepada peraturan giliran perlawanan (*turn rules*), fasa tindakan, dan pengiraan kemenangan.
-* Pembahagian sempadan maklumat antara Red Team dan Blue Team berasaskan prinsip *Information Asymmetry* (penyerang mengetahui senario sebenar, manakala pertahanan hanya melihat bukti/petunjuk).
-* Perincian parameter setiap tindakan serangan Red Team: kos giliran (*action point/turn limit*), jenis manipulasi bukti, dan kesan langsung terhadap petunjuk senario.
-* Reka bentuk susun atur antaramuka pengguna (UI) Red Team dalam Godot: panel pilihan serangan, paparan butiran senario tersembunyi, log tindakan, dan status masa nyata.
-* Struktur payload mesej JSON antara klien Red Team dan pelayan Node.js semasa fasa serangan dihantar.
+* Reka bentuk mekanik perlawanan dalam Game Design Document (GDD) bagi seksyen Red Team.
+* Penerapan prinsip *Information Asymmetry* (maklumat sulit penyerang tidak didedahkan kepada pihak pertahanan).
+* Penyediaan lakaran carta alir modul Red Team.
+* Susun atur antaramuka asas modul Red Team di Godot.
 
 **Record of Discussion**
-* Permainan menggunakan konsep PvP untuk dua pemain, di mana Red Team memulakan tindakan serangan dan Blue Team bertindak balas sebagai pihak pertahanan.
-* Setiap tindakan Red Team perlu mempunyai kesan yang jelas terhadap keputusan dan aliran permainan.
-* Maklumat private Red Team (seperti motif sebenar, pautan berniat jahat yang disuntik, atau pengubahsuaian sumber log) ditegaskan oleh penyelia agar tidak sekali-kali terdedah pada klien Blue Team sebelum perlawanan tamat.
+* Permainan menggunakan konsep 1v1 PvP di mana tindakan Red Team memberi impak langsung kepada Blue Team.
+* Penyelia menegaskan bahawa maklumat rahsia Red Team (niat serangan sebenar) tidak boleh dibocorkan kepada klien lawan.
+* Ahmad Irfan ditugaskan melukis carta alir rasmi modul Red Team.
 
 **Troubleshooting**
-* Mengesan potensi maklumat Red Team bocor melalui pemaparan state permainan apabila pelayan menyiarkan data tanpa penapisan.
-* Melaksanakan pemisahan maklumat private menggunakan paparan berasingan untuk Red Team dan Blue Team pada peringkat pelayan.
-* Menguji supaya Red Team mendapat maklumat private scenario, manakala Blue Team tidak mendapatnya.
-* Menambah pemeriksaan untuk menolak tindakan Red Team yang tidak sah atau di luar senarai dibenarkan.
+* **Isu:** Risiko kebocoran data sulit Red Team melalui penyiaran state pelayan yang tidak ditapis.
+* **Penyelesaian:** Melaksanakan pemisahan state pelayan (*server-side filtering*) supaya data rahsia Red Team diasingkan daripada klien Blue Team.
 
 **Action List**
 * Menyediakan seksyen spesifikasi Red Team dalam dokumen GDD.
-* Membuat lakaran carta alir modul Red Team yang terperinci.
-* Melaksanakan pemisahan paparan maklumat Red Team dan Blue Team pada skrip pelayan.
-* Menyediakan lakaran antaramuka (*UI mockups*) untuk modul Red Team di Godot.
+* Menyediakan lakaran carta alir modul Red Team yang lengkap.
+* Membangunkan antaramuka asas (*wireframe/mockup*) panel tindakan penyerang di Godot.
 
 ---
 
-### 7/10
+### Sesi 4: 6/10
 
 **Item for Discussion**
-* Pemilihan dan justifikasi metodologi pembangunan sistem: penilaian model Waterfall berbanding Agile bagi projek tahun akhir dengan tempoh masa terhad.
-* Pembahagian fasa pembangunan berasaskan Waterfall: Fasa Analisis Keperluan, Reka Bentuk Sistem, Pelaksanaan/Pengkodan Modul, Pengujian, dan Integrasi.
-* Penyediaan Carta Gantt terperinci: pembahagian tarikh sasaran untuk pembangunan skrip klien Godot, pengaturcaraan pelayan WebSocket, pengujian unit, dan penulisan laporan.
-* Perancangan logik giliran perlawanan (*turn management*): penetapan fasa peralihan antara tindakan Red Team dan tindakan tindak balas Blue Team.
-* Analisis risiko teknikal semasa fasa pembangunan: kemungkinan berlakunya konflik keadaan perlawanan (*state race conditions*), kegagalan sambungan rangkaian, atau penghantaran aksi berulang kali.
+* Pemilihan metodologi pembangunan sistem (Model Waterfall) dan penjadualan Carta Gantt.
+* Perancangan urutan fasa pembinaan modul Red Team.
+* Kawalan integriti giliran penyerang bagi mengelakkan penghantaran aksi bertindih (*spamming*).
 
 **Record of Discussion**
-* Kaedah pembangunan Waterfall dipilih kerana susunan fasa yang sistematik memudahkan pemantauan kemajuan mingguan oleh penyelia.
-* Pembangunan dibahagikan kepada beberapa fasa mengikut keperluan dan integrasi sistem.
-* Fungsi serangan perlu diselaraskan dengan GDD dan giliran permainan bagi mengelakkan ralat logik.
-* Ahmad Irfan memulakan perancangan carta alir pembangunan modul Red Team dan penjadualan tugas teknikal.
+* Kaedah Waterfall dipilih secara rasmi mengikut fasa analisis, reka bentuk, pengkodan, dan pengujian.
+* Ahmad Irfan memulakan pengaturcaraan fungsi penguncian tindakan (*action locking*) pada butang klien Godot.
 
 **Troubleshooting**
-* Mengawal urutan giliran supaya Red Team hanya boleh bertindak pada fasa yang dibenarkan oleh pelayan.
-* Menentukan pilihan tindakan Red Team selepas giliran Red Team tamat agar pemain tidak tergantung tanpa maklum balas.
-* Menolak tindakan lama atau tidak sah supaya tidak mengganggu keadaan perlawanan sekiranya berlaku kelewatan rangkaian (*latency*).
+* **Isu:** Pemain Red Team berpotensi menekan butang tindakan berulang kali sebelum pelayan memproses giliran.
+* **Penyelesaian:** Memasang mekanisme *action locking* pada butang UI Godot dan validasi giliran pada pelayan.
 
 **Action List**
-* Menyediakan carta alir metodologi pembangunan Waterfall.
-* Menyediakan carta Gantt projek yang lengkap dengan fasa pembangunan Red Team.
-* Mengatur urutan pembangunan modul Red Team daripada pengaturcaraan antaramuka hingga sambungan pelayan.
-* Membina logik urutan tindakan dan giliran Red Team pada pelayan Node.js.
+* Menyediakan carta alir metodologi Waterfall dan Carta Gantt pembangunan modul Red Team.
+* Mengatur cara fungsi penguncian butang tindakan penyerang di Godot.
+* Menguji penolakan tindakan tidak sah pada pelayan Node.js.
 
 ---
 
-### 21/10
+### Sesi 5: 20/10
 
 **Item for Discussion**
-* Semakan draf laporan kemajuan Bab 1 (Pengenalan) dan Bab 2 (Kajian Literatur) bersama penyelia dari segi format penulisan, gaya bahasa, dan rujukan ilmiah.
-* Penyelarasan format tajuk, subtajuk, dan nombor seksyen laporan mengikut format buku panduan Projek Tahun Akhir JMTi.
-* Semakan pemodelan sistem Red Team: lakaran Carta Alir (*Flowchart*), Rajah Blok (*Block Diagram*), dan Carta Alir Interaksi (*Activity Diagram*).
-* Perbincangan mengenai penyeragaman nama dan istilah teknikal fungsi serangan di antara dokumen GDD, kod sumber GDScript, dan fail pelayan JavaScript.
-* Keperluan dokumentasi penyelesaian ralat (*troubleshooting documentation*) sebagai bukti autentik proses pembangunan teknikal.
+* Semakan draf laporan Bab 1 dan Bab 2 bersama penyelia mengikut format templat rasmi JMTi.
+* Semakan rajah carta alir, rajah aktiviti, dan rajah blok modul Red Team.
+* Penyeragaman istilah teknikal fungsi serangan merentasi kod GDScript dan dokumen laporan.
 
 **Record of Discussion**
-* Penyelia meminta format tajuk dan kandungan laporan diselaraskan mengikut templat rasmi JMTi.
-* Lakaran carta alir perlu menjelaskan aliran serangan dan giliran Red Team dengan langkah input, proses pengesahan, dan output yang jelas.
-* Penulisan laporan perlu merangkumi pembangunan modul, cabaran teknikal yang dihadapi, pengujian fungsi, dan cara penyelesaian masalah.
+* Penyelia meminta format tajuk, nombor bab, dan penulisan diselaraskan mengikut garis panduan JMTi.
+* Ahmad Irfan perlu memperincikan penulisan laporan Bab 3 berkaitan logik pengaturcaraan fungsi Modify Event, Add Malicious Link dan Spoof Source.
 
 **Troubleshooting**
-* Membetulkan struktur laporan supaya teratur mengikut format yang ditetapkan dan membuang format lapuk.
-* Mengemas kini nama dan istilah fungsi serangan supaya konsisten (contoh: menggugurkan fungsi `change_tactic` lama dan menggantikannya dengan konsep adaptasi serangan).
-* Menambah dokumentasi berdasarkan proses pembinaan dan ralat sebenar yang ditemui semasa sesi pengaturcaraan.
-* Mengintegrasikan lakaran carta alir Red Team ke dalam fail laporan utama.
+* **Isu:** Ketidakkonsistenan nama fungsi antara kod sumber dan dokumen GDD (istilah lama `change_tactic`).
+* **Penyelesaian:** Menyeragamkan istilah fungsi serangan kepada sistem adaptasi senario baharu.
 
 **Action List**
-* Membetulkan format tajuk, jidar, dan penomboran laporan Bab 1 dan Bab 2.
-* Mengemas kini kandungan laporan dengan memasukkan penerangan terperinci modul Red Team.
-* Menulis dokumentasi logik dan melukis carta alir Red Team yang bersih dan kemas.
-* Menambah bukti lakaran atau tangkap layar fasa awal pembangunan ke dalam fail dokumentasi.
+* Membetulkan format laporan Bab 1 dan Bab 2 mengikut komen penyelia.
+* Menulis penerangan terperinci logik serangan Red Team dalam Bab 3.
+* Melengkapkan rajah carta alir aktiviti (*Activity Diagram*) Red Team.
 
 ---
 
-### 4/11
+### Sesi 6: 3/11
 
 **Item for Discussion**
-* Pembentangan kemajuan prototaip sistem: demonstrasi sambungan soket secara langsung antara klien Godot Red Team dan pelayan tempatan Node.js.
-* Semakan pelaksanaan tindakan serangan utama (*Modify Event*, *Add Malicious Link*, *Spoof Source*) dan pengesahan impaknya terhadap parameter bukti permainan.
-* Pengujian sistem giliran multiplayer: memastikan tindakan Red Team berjaya diterima oleh pelayan, dikunci, dan mencetuskan fasa giliran untuk Blue Team secara konsisten.
-* Semakan keselarasan dokumen GDD dengan perubahan kod terkini, khususnya penstrukturan semula fail senario JSON (`server/scenarios/`).
-* Perbincangan mengenai kaedah merekod ralat, log konsol, dan bukti pengujian bagi tujuan pembentangan dan semakan penyelia.
+* Pembentangan kemajuan prototaip: demonstrasi sambungan soket langsung klien Godot Red Team ke pelayan tempatan.
+* Pengujian fungsi serangan Red Team (Modify Event, Add Malicious Link, Spoof Source).
+* Pengujian sistem giliran multiplayer dan pengesahan penerimaan tindakan oleh pelayan.
 
 **Record of Discussion**
-* Ahmad Irfan telah merancang dan memprogram tindakan serta giliran Red Team menggunakan Godot Engine dan berjaya berhubung dengan pelayan.
-* Sistem multiplayer perlu menerima tindakan Red Team dan memaparkan keputusan serta status giliran secara konsisten tanpa ada kelewatan yang menyebabkan ralat paparan.
-* Dokumentasi GDD dan fail arahan modul Red Team perlu dikemas kini selaras dengan senario baharu yang ditambah.
+* Klien Godot berjaya berhubung dengan pelayan Node.js secara dua hala melalui WebSocket.
+* Penyelia meminta hasil pengujian disokong oleh tangkap layar antaramuka dan log semakan ralat.
 
 **Troubleshooting**
-* Mengatasi masalah paparan tindakan yang masih aktif selepas Red Team menghantar tindakan (butang masih boleh ditekan semula).
-* Menambah penguncian tindakan (*action locking*) pada butang UI Godot supaya Red Team tidak boleh bertindak berkali-kali dalam giliran yang sama.
-* Menukar strategi serangan generik kepada tindakan adaptasi yang spesifik untuk setiap senario siber.
-* Mengeluarkan tindakan `change_tactic` lama dan memastikan sebarang cubaan menghantar payload tersebut ditolak dengan mesej ralat yang sesuai.
-* Menghalang maklumat adaptasi serangan Red Team daripada didedahkan kepada antaramuka Blue Team.
-* Memastikan Blue Team hanya menerima maklumat bukti yang dibenarkan mengikut kebenaran senario.
+* **Isu:** Ralat penyegerakan state perlawanan (*state synchronization*) apabila senario bertukar.
+* **Penyelesaian:** Menulis semula modulariti senario pelayan (`scenarioModule.js`) agar setiap tindakan serangan boleh diuji secara automatik (*unit testable*).
 
 **Action List**
-* Mengemas kini dokumen GDD dengan senarai tindakan adaptasi senario terkini.
-* Mengembangkan sistem giliran dan memantapkan interaksi UI Red Team dalam Godot.
-* Melaksanakan pengujian fungsi tindakan serangan bagi setiap senario yang disediakan.
-* Merekod ralat dan penyelesaian semasa proses integrasi ke dalam fail catatan pembangunan.
-* Mengintegrasikan logik Red Team dengan modul pelayan Node.js secara menyeluruh.
+* Mengatur cara skrip klien Godot untuk sambungan WebSocket dua hala.
+* Melaksanakan pengujian fungsi serangan Red Team dalam pelbagai senario.
+* Mengambil tangkap layar antaramuka skrin permainan sebagai bukti fasa prototaip.
 
 ---
 
-### 18/11
+### Sesi 7: 17/11
 
 **Item for Discussion**
-* Penilaian status kesiapsiagaan menyeluruh projek Cyber Clash menjelang fasa penilaian akhir FYP Semester 4.
-* Semakan mendalam terhadap nilai pembelajaran (*educational value*) bagi setiap tindakan serangan Red Team: adakah ia mencerminkan konsep ancaman siber sebenar yang dipelajari dalam silibus IT.
-* Pengujian ketahanan dan integriti sistem multiplayer: simulasi situasi luar jangka seperti pemain terputus sambungan secara tiba-tiba (*network disconnection* / *browser close*).
-* Semakan pelaksanaan ujian automatik (*automated testing*) menggunakan suite ujian Node.js (`node --test`) untuk mengesahkan kestabilan logik perlawanan.
-* Pembahagian tugas persediaan pembentangan akhir, penyediaan bahan slaid pembentangan, video demonstrasi prototaip, dan kelengkapan lampiran laporan.
-* Piawaian pengurusan kawalan versi (*Version Control*): penyelarasan fail CHANGELOG.md mengikut spesifikasi *Semantic Versioning* (SemVer) dari versi awal hingga versi semasa `0.2.5`.
+* Semakan status keseluruhan projek Cyber Clash dan penilaian kematangan sistem menjelang fasa penilaian akhir.
+* Pembentangan penambahbaikan konsep **Cyber Clash 2.0**: peralihan daripada permainan kad statik kepada simulasi 5 Fasa Ethical Hacking (*Reconnaissance, Scanning, Gaining Access, Maintaining Access, Covering Tracks*).
+* Pengujian ketahanan multiplayer terhadap situasi luar jangka (pemain terputus sambungan secara tiba-tiba).
+* Pengurusan rekod semakan versi (*Semantic Versioning*) dan penyediaan CHANGELOG.md (versi 0.3.0).
 
 **Record of Discussion**
-* Penyelia menegaskan bahawa permainan perlu memberi manfaat pembelajaran yang nyata kepada pelajar IT dalam memahami taktik penyerang dan pertahanan.
-* Red Team perlu mempunyai pilihan serangan yang relevan dengan konsep keselamatan siber semasa (contoh: *phishing*, *malware download*, *credential manipulation*, dan *spoofing*).
-* Tindakan Red Team perlu disambungkan dengan respons Blue Team secara logik dan adil dari segi pengiraan markah.
-* Sistem multiplayer perlu membolehkan pemain menghantar tindakan dan menerima keputusan dalam giliran mereka tanpa berlaku situasi permainan tergantung (*hung state*).
-* Setiap tindakan Red Team perlu direkodkan untuk pengiraan skor perlawanan, log audit pengujian, dan lampiran dokumentasi.
+* Penyelia menyambut baik evolusi konsep 2.0 kerana mencerminkan fasa serangan siber sebenar dan memberi impak pembelajaran tinggi.
+* Ahmad Irfan bertanggungjawab melengkapkan kod Red Team, suite ujian automatik, dan mendokumentasikan penyelesaian ralat.
 
 **Troubleshooting**
-* Membetulkan ralat putus sambungan ketika perlawanan sedang berjalan (*mid-match disconnect*) supaya lobi ditamatkan secara automatik dan slot pemadanan (*matchmaking*) dibebaskan serta-merta.
-* Menguji dan memastikan pemain baharu tidak dapat menyertai perlawanan yang sudah ditinggalkan atau tidak sah.
-* Memastikan perlawanan yang sedang berjalan lancar masih boleh menyelesaikan pusingan (*round resolution*) dan meneruskan pusingan seterusnya tanpa gangguan.
-* Memastikan tindak balas pelayan menolak secara automatik sekiranya tindakan Red Team tidak sah atau dihantar pada fasa yang salah.
-* Memastikan data rahsia (*private scenario state*) Red Team tidak sesekali disertakan dalam paparan atau payload Blue Team.
-* Menjalankan ujian menyeluruh terhadap tindakan Red Team, adaptasi senario, giliran Blue Team, dan penentuan keputusan akhir melalui Node.js test suite.
+* **Isu:** Pemain terputus sambungan di pertengahan perlawanan (*mid-match disconnect*) menyebabkan lobi tergantung.
+* **Penyelesaian:** Membina logik penamatan lobi secara automatik dan melepaskan slot pemadanan pemain (*matchmaking*).
+* **Pengujian:** Menjalankan 30 ujian unit automatik Node.js (`npm test`) bagi mengesahkan logik pelayan stabil sepenuhnya.
 
 **Action List**
-* Melengkapkan fungsi dan melukis carta alir akhir bagi modul Red Team.
-* Menguji tindakan serangan *Modify Event*, *Add Malicious Link* dan *Spoof Source* merentasi pelbagai senario permainan.
-* Melaksanakan pengujian menyeluruh terhadap sistem giliran Red Team dalam mod multiplayer.
-* Membaiki ralat putus sambungan dan memastikan penyelarasan lobi multiplayer berjalan lancar.
-* Mengintegrasikan modul Red Team dengan modul Blue Team dan komponen senario pelayan.
+* Melengkapkan dokumen spesifikasi penuh Cyber Clash 2.0 dalam GDD.
+* Mengemas kini fail CHANGELOG.md ke versi 0.3.0 dengan rekod troubleshooting lengkap.
 * Menulis bahagian laporan Bab 4 berkaitan pembangunan dan pengujian modul Red Team.
-* Menyediakan tangkap layar antara muka permainan, rajah sistem, dan log bukti pengujian untuk slaid pembentangan.
-* Meneruskan pemurnian prototaip Cyber Clash menggunakan Godot Engine dan pelayan Node.js.
+* Menyediakan lampiran bukti pengujian, tangkap layar, dan slaid pembentangan akhir.
 
 ---
 
-### Lampiran Rujukan Fail Projek:
-* Tangkap layar UI Klien Godot: [ui-game-screen.png](file:///d:/JMTi/Sem%204/FYP/Cyber-Clash/docs/diagrams/ui-game-screen.png)
-* Dokumen Reka Bentuk Permainan (GDD): [Game-Design-Document.md](file:///d:/JMTi/Sem%204/FYP/Cyber-Clash/docs/GDD/Game-Design-Document.md)
-* Rekod Sejarah Versi & Troubleshooting: [CHANGELOG.md](file:///d:/JMTi/Sem%204/FYP/Cyber-Clash/CHANGELOG.md)
-* Jadual Pembahagian Tugasan Kumpulan: [pembahagian tugasan.docx](file:///d:/JMTi/Sem%204/FYP/Cyber-Clash/pembahagian%20tugasan.docx)
+# 📸 Panduan Bahan Bukti BAHARU (Cyber Clash 2.0) untuk Dilampirkan bagi Setiap Sesi
+
+Semua fail rajah lama Cyber Clash yang lapuk telah digugurkan. Gantikan lampiran anda dengan bahan **Cyber Clash 2.0** yang sah ini:
+
+| Sesi & Tarikh | Tanggungjawab Rasmi (docx) | Bahan Bukti BAHARU 2.0 yang Perlu Anda Tampal / Lampirkan | Lokasi Fail / Tindakan |
+|---|---|---|---|
+| **Sesi 1 (18/8)** | Tanggungjawab 1 & 2 (Skop Red Team & Fungsi Serangan) | **Lakaran Kertas Idea Asas:** Lakaran kotak mudah di atas kertas menunjukkan idea asal penyerang (Red Team) vs pertahanan (Blue Team). | Lukis tangan ringkas di buku log. |
+| **Sesi 2 (1/9)** | Tanggungjawab 4 (Komunikasi Multiplayer) | **Rajah Senibina Sistem 2.0:** Rajah terkini menunjukkan Klien Godot (Konsol Kali Linux & Desktop Windows 11) berhubung dengan Pelayan Node.js WebSocket. | [docs/diagrams/v2/system-architecture-2.0.svg](file:///d:/JMTi/Sem%204/FYP/Cyber-Clash/docs/diagrams/v2/system-architecture-2.0.svg) |
+| **Sesi 3 (29/9)** | Tanggungjawab 5 (Lakaran Carta Alir Red Team) | **Carta Alir 5 Fasa Serangan Siber Red Team 2.0:** Rajah alir standard menunjukkan Fasa 1 (Recon) ➔ Fasa 2 (Scan) ➔ Fasa 3 (Exploit) ➔ Fasa 4 (Exfiltrate) ➔ Fasa 5 (Cover Tracks). | [docs/diagrams/v2/red-team-5-phases.svg](file:///d:/JMTi/Sem%204/FYP/Cyber-Clash/docs/diagrams/v2/red-team-5-phases.svg) |
+| **Sesi 4 (6/10)** | Tanggungjawab 3 (Sistem Tindakan & Giliran) | **Carta Alir Interaksi Masa Nyata 2.0:** Carta jujukan pertukaran mesej WebSocket, cawangan keputusan mangsa (Silent Drop vs Reverse Shell), dan perlumbaan siren 10-20s. | [docs/diagrams/v2/gameplay-interaction-loop.svg](file:///d:/JMTi/Sem%204/FYP/Cyber-Clash/docs/diagrams/v2/gameplay-interaction-loop.svg) |
+| **Sesi 5 (20/10)** | Tanggungjawab 6 (Penulisan Laporan Red Team) | **Keratan Dokumen GDD 2.0 Bahagian Red Team:** Cetak bahagian Bab 2 & Bab 3 GDD yang memperincikan logik serangan siber modular. | Rujuk [Cyber-Clash-Overhaul-GDD.md](file:///d:/JMTi/Sem%204/FYP/Cyber-Clash/docs/GDD/Cyber-Clash-Overhaul-GDD.md). |
+| **Sesi 6 (3/11)** | Tanggungjawab 7 (Pengujian Fungsi Serangan) | **Format Data Payload WebSocket 2.0:** Cetak keratan format data JSON bagi tindakan serangan (topik umpan, spoofed sender, pilihan kelajuan muat turun aset). | Keratan kod mesej WebSocket JSON. |
+| **Sesi 7 (17/11)** | Tanggungjawab 8 (Membaiki Ralat & Integrasi) | **Lakaran Tangan Konsep 2.0 & Bukti Commit:** <br>1. **Foto lakaran tangan asal** yang anda lukis di atas kertas (*Billionaire vs Hackers*, *Objective*, *Ranks C/B/A/S*).<br>2. Keratan commit Git `2a28dfb` (Versi 0.3.0). | Foto kertas anda & [CHANGELOG.md](file:///d:/JMTi/Sem%204/FYP/Cyber-Clash/CHANGELOG.md). |

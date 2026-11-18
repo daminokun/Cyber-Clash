@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 520" width="1020" height="520" style="background:#090d16; font-family:'Segoe UI', Arial, sans-serif;">
+  <text x="510" y="38" text-anchor="middle" fill="#22c55e" font-size="20" font-weight="bold" letter-spacing="1">MODUL PENGURUSAN SKOR &amp; LAPORAN PASCA-INSIDEN (CU 03)</text>
+  <text x="510" y="60" text-anchor="middle" fill="#94a3b8" font-size="12">Penyelaras: TARRSINY VIDYASSHRI A/P SHINGARA VADIVEL (Scoring Engine &amp; Post-Mortem Generator)</text>
+
+  <!-- FORMULA EVALUATION BOX -->
+  <rect x="40" y="85" width="450" height="200" rx="10" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+  <rect x="40" y="85" width="450" height="32" rx="10" fill="#0284c7"/>
+  <text x="265" y="106" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="bold">FORMULA PENGIRAAN SKOR HACKER (RED TEAM)</text>
+
+  <text x="60" y="140" fill="#fde047" font-size="12" font-weight="bold">Skor Hacker = (Aset Dicuri) + (Objektif) - (Penalti Jejak)</text>
+  <text x="60" y="165" fill="#cbd5e1" font-size="10">• Nilai Aset Dicuri (0 hingga 500 Mata): Bergantung kepada peratusan muat turun.</text>
+  <text x="60" y="185" fill="#cbd5e1" font-size="10">• Bonus Objektif Sampingan (0 hingga 300 Mata): Eksfiltrasi tanpa amaran.</text>
+  <text x="60" y="205" fill="#fca5a5" font-size="10">• Penalti Jejak / Tertangkap (0 hingga 400 Mata): Log tidak dipadam / ditangkap polis.</text>
+  
+  <rect x="55" y="225" width="420" height="42" rx="6" fill="#0f172a" stroke="#334155"/>
+  <text x="265" y="243" text-anchor="middle" fill="#4ade80" font-size="11" font-weight="bold">Skala Gred: S (900-1000) | A (750-899) | B (600-749)</text>
+  <text x="265" y="258" text-anchor="middle" fill="#f87171" font-size="10">C (400-599) | F (&lt;400 Mata / Tertangkap Polis)</text>
+
+  <!-- TARGET FORMULA BOX -->
+  <rect x="530" y="85" width="450" height="200" rx="10" fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
+  <rect x="530" y="85" width="450" height="32" rx="10" fill="#2563eb"/>
+  <text x="755" y="106" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="bold">FORMULA PENGIRAAN SKOR TARGET (BLUE TEAM)</text>
+
+  <text x="550" y="140" fill="#fde047" font-size="12" font-weight="bold">Skor Target = (Tugasan) + (Ancaman Disekat) + (Tangkap) - (Salah Lapor)</text>
+  <text x="550" y="165" fill="#cbd5e1" font-size="10">• Tugasan Selesai (3x x 200 Mata = 600 Mata Maksima): Siap kerja tanpa leka.</text>
+  <text x="550" y="185" fill="#cbd5e1" font-size="10">• Ancaman Disekat (1x x 200 Mata = 200 Mata): Menggunakan alat / mata kasar.</text>
+  <text x="550" y="205" fill="#4ade80" font-size="10">• Bonus Tangkap Hacker (+400 Mata): Tekan [Isolate Network] tepat pada masanya.</text>
+  
+  <rect x="545" y="225" width="420" height="42" rx="6" fill="#0f172a" stroke="#334155"/>
+  <text x="755" y="243" text-anchor="middle" fill="#f87171" font-size="11" font-weight="bold">Penalti Salah Lapor (False Alarm): -500 Mata</text>
+  <text x="755" y="258" text-anchor="middle" fill="#94a3b8" font-size="10">Kategori Gred Sasaran Sama Mengikut Skala 1,000 Mata</text>
+
+  <!-- POST-MORTEM REPORT GENERATOR -->
+  <rect x="40" y="305" width="940" height="195" rx="10" fill="#0b1329" stroke="#22c55e" stroke-width="2"/>
+  <rect x="40" y="305" width="940" height="32" rx="10" fill="#16a34a"/>
+  <text x="510" y="326" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="bold">PENJANA LAPORAN PASCA-INSIDEN PENDIDIKAN (SECURITY POST-MORTEM ENGINE)</text>
+
+  <text x="60" y="358" fill="#4ade80" font-size="11" font-weight="bold">Format Laporan Penilaian Modul JMTi CU 03 Computer System Security Control:</text>
+
+  <!-- Box Section 1 -->
+  <rect x="60" y="370" width="280" height="110" rx="6" fill="#1e293b" stroke="#334155"/>
+  <text x="70" y="390" fill="#38bdf8" font-size="10" font-weight="bold">1. Analisa Vektor Serangan (TTP):</text>
+  <text x="70" y="408" fill="#cbd5e1" font-size="9">• Teknik MITRE ATT&amp;CK T1566: Phishing</text>
+  <text x="70" y="423" fill="#cbd5e1" font-size="9">• Alamat Spoofing: admin@paypa1.com</text>
+  <text x="70" y="438" fill="#cbd5e1" font-size="9">• Eksfiltrasi: Fast Mode (Kadar Bising Tinggi)</text>
+  <text x="70" y="460" fill="#94a3b8" font-size="8">Mengenal pasti kaedah penembusan sistem.</text>
+
+  <!-- Box Section 2 -->
+  <rect x="370" y="370" width="280" height="110" rx="6" fill="#1e293b" stroke="#334155"/>
+  <text x="380" y="390" fill="#fde047" font-size="10" font-weight="bold">2. Analisa Tingkah Laku Mangsa:</text>
+  <text x="380" y="408" fill="#cbd5e1" font-size="9">• Status Kerja: 2 daripada 3 Tugasan Siap</text>
+  <text x="380" y="423" fill="#cbd5e1" font-size="9">• Penggunaan Alatan: 1/2 Kuota Link Checker</text>
+  <text x="380" y="438" fill="#cbd5e1" font-size="9">• Punca Kecuaian: Tergesa-gesa buka emel</text>
+  <text x="380" y="460" fill="#94a3b8" font-size="8">Mengesan faktor kesilapan manusia (human error).</text>
+
+  <!-- Box Section 3 -->
+  <rect x="680" y="370" width="280" height="110" rx="6" fill="#1e293b" stroke="#334155"/>
+  <text x="690" y="390" fill="#22c55e" font-size="10" font-weight="bold">3. Nilai Pembelajaran &amp; Mitigasi:</text>
+  <text x="690" y="408" fill="#cbd5e1" font-size="9">• Sentiasa semak ejaan domain emel pautan</text>
+  <text x="690" y="423" fill="#cbd5e1" font-size="9">• Jangan abaikan tugasan syarikat untuk elak auto-approval</text>
+  <text x="690" y="438" fill="#cbd5e1" font-size="9">• Laksanakan isolasi rangkaian serta-merta</text>
+  <text x="690" y="460" fill="#94a3b8" font-size="8">Objektif: Melatih pelajar JMTi mendiagnosis insiden sebenar.</text>
+</svg>

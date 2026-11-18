@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 540" width="1020" height="540" style="background:#090d16; font-family:'Segoe UI', Arial, sans-serif;">
+  <text x="510" y="38" text-anchor="middle" fill="#eab308" font-size="20" font-weight="bold" letter-spacing="1">MODUL PENJANAAN SENARIO &amp; 4 ARKETIP SASARAN</text>
+  <text x="510" y="60" text-anchor="middle" fill="#94a3b8" font-size="12">Penyelaras: TARRSINY VIDYASSHRI A/P SHINGARA VADIVEL (Scenario Generation &amp; Objective System)</text>
+
+  <!-- CENTRAL GENERATOR ENGINE -->
+  <rect x="360" y="90" width="300" height="90" rx="10" fill="#1e293b" stroke="#eab308" stroke-width="2.5"/>
+  <rect x="360" y="90" width="300" height="28" rx="10" fill="#ca8a04"/>
+  <text x="510" y="110" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="bold">DYNAMIC SCENARIO GENERATOR ENGINE</text>
+  <text x="510" y="135" text-anchor="middle" fill="#fef08a" font-size="11">Penjanaan Rawak Profil, Aset &amp; Kelemahan Sistem</text>
+  <text x="510" y="153" text-anchor="middle" fill="#cbd5e1" font-size="10">• Algoritma Pemilihan Arketip Berdasarkan Nilai Peringkat</text>
+  <text x="510" y="168" text-anchor="middle" fill="#94a3b8" font-size="9">Input: Rawak Lobi ➔ Output: Dossier OSINT &amp; Beban Kerja</text>
+
+  <!-- CONNECTING ARROWS FROM ENGINE TO 4 ARCHETYPES -->
+  <!-- Line to Archetype 1 -->
+  <path d="M 410 180 L 410 215 L 140 215 L 140 240" fill="none" stroke="#eab308" stroke-width="2"/>
+  <polygon points="140,240 135,232 145,232" fill="#eab308"/>
+
+  <!-- Line to Archetype 2 -->
+  <path d="M 470 180 L 470 215 L 390 215 L 390 240" fill="none" stroke="#eab308" stroke-width="2"/>
+  <polygon points="390,240 385,232 395,232" fill="#eab308"/>
+
+  <!-- Line to Archetype 3 -->
+  <path d="M 550 180 L 550 215 L 630 215 L 630 240" fill="none" stroke="#eab308" stroke-width="2"/>
+  <polygon points="630,240 625,232 635,232" fill="#eab308"/>
+
+  <!-- Line to Archetype 4 -->
+  <path d="M 610 180 L 610 215 L 880 215 L 880 240" fill="none" stroke="#eab308" stroke-width="2"/>
+  <polygon points="880,240 875,232 885,232" fill="#eab308"/>
+
+  <!-- ================= ARCHETYPE 1: MILLIONAIRE ================= -->
+  <rect x="25" y="240" width="230" height="270" rx="8" fill="#111827" stroke="#38bdf8" stroke-width="2"/>
+  <rect x="25" y="240" width="230" height="32" rx="8" fill="#0284c7"/>
+  <text x="140" y="262" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="bold">1. MILLIONAIRE (VIP)</text>
+  <text x="35" y="292" fill="#38bdf8" font-size="10" font-weight="bold">Nilai Aset: $1,000,000+ &amp; Vault Code</text>
+  <text x="35" y="310" fill="#cbd5e1" font-size="10">• Profil: Eksekutif Pelaburan VIP</text>
+  <text x="35" y="327" fill="#cbd5e1" font-size="10">• Kelemahan: Emel Dividen Saham</text>
+  <text x="35" y="344" fill="#fde047" font-size="10">• Tugasan: Lulus Transaksi Dana</text>
+  <text x="35" y="361" fill="#cbd5e1" font-size="10">• Objektif Hacker: Curi Dana Tunai</text>
+  <rect x="35" y="380" width="210" height="40" rx="4" fill="#0f172a" stroke="#334155"/>
+  <text x="42" y="396" fill="#f87171" font-size="9" font-weight="bold">Syarat Khas Misi:</text>
+  <text x="42" y="410" fill="#94a3b8" font-size="8">• Sifar Jejak (Stealth Wajib)</text>
+  <text x="140" y="445" text-anchor="middle" fill="#ef4444" font-size="11" font-weight="bold">Tahap Kesukaran: TINGGI</text>
+  <text x="140" y="462" text-anchor="middle" fill="#94a3b8" font-size="9">Sasaran Berprofil Tinggi / Sensitif</text>
+
+  <!-- ================= ARCHETYPE 2: ORANG BIASA ================= -->
+  <rect x="275" y="240" width="230" height="270" rx="8" fill="#111827" stroke="#22c55e" stroke-width="2"/>
+  <rect x="275" y="240" width="230" height="32" rx="8" fill="#16a34a"/>
+  <text x="390" y="262" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="bold">2. ORANG BIASA (AWAM)</text>
+  <text x="285" y="292" fill="#86efac" font-size="10" font-weight="bold">Nilai Aset: $10,000 – $50,000</text>
+  <text x="285" y="310" fill="#cbd5e1" font-size="10">• Profil: Pengguna Media Sosial</text>
+  <text x="285" y="327" fill="#cbd5e1" font-size="10">• Kelemahan: Hadiah / Baucer Percuma</text>
+  <text x="285" y="344" fill="#fde047" font-size="10">• Tugasan: Semak E-Dagang/Resit</text>
+  <text x="285" y="361" fill="#cbd5e1" font-size="10">• Objektif Hacker: Curi Wang Simpanan</text>
+  <rect x="285" y="380" width="210" height="40" rx="4" fill="#0f172a" stroke="#334155"/>
+  <text x="292" y="396" fill="#86efac" font-size="9" font-weight="bold">Ciri Unik Keselamatan:</text>
+  <text x="292" y="410" fill="#94a3b8" font-size="8">• Celik siber rendah, mudah tertipu SMS</text>
+  <text x="390" y="445" text-anchor="middle" fill="#22c55e" font-size="11" font-weight="bold">Tahap Kesukaran: MUDAH</text>
+  <text x="390" y="462" text-anchor="middle" fill="#94a3b8" font-size="9">Sesuai untuk Pemain Baharu</text>
+
+  <!-- ================= ARCHETYPE 3: OFFICE WORKER ================= -->
+  <rect x="515" y="240" width="230" height="270" rx="8" fill="#111827" stroke="#eab308" stroke-width="2"/>
+  <rect x="515" y="240" width="230" height="32" rx="8" fill="#ca8a04"/>
+  <text x="630" y="262" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="bold">3. OFFICE WORKER (STAF)</text>
+  <text x="525" y="292" fill="#fde047" font-size="10" font-weight="bold">Nilai Aset: Kredential &amp; Intranet</text>
+  <text x="525" y="310" fill="#cbd5e1" font-size="10">• Profil: Kerani Pentadbiran / HR</text>
+  <text x="525" y="327" fill="#cbd5e1" font-size="10">• Kelemahan: Invois Pembekal PDF</text>
+  <text x="525" y="344" fill="#fde047" font-size="10">• Tugasan: Hantar Laporan Mingguan</text>
+  <text x="525" y="361" fill="#cbd5e1" font-size="10">• Objektif Hacker: Lateral Movement</text>
+  <rect x="525" y="380" width="210" height="40" rx="4" fill="#0f172a" stroke="#334155"/>
+  <text x="532" y="396" fill="#fde047" font-size="9" font-weight="bold">Ciri Unik Keselamatan:</text>
+  <text x="532" y="410" fill="#94a3b8" font-size="8">• Tekanan masa kerja mencetus kesilapan</text>
+  <text x="630" y="445" text-anchor="middle" fill="#eab308" font-size="11" font-weight="bold">Tahap Kesukaran: SEDERHANA</text>
+  <text x="630" y="462" text-anchor="middle" fill="#94a3b8" font-size="9">Simulasi Persekitaran Korporat</text>
+
+  <!-- ================= ARCHETYPE 4: RESEARCHER ================= -->
+  <rect x="765" y="240" width="230" height="270" rx="8" fill="#111827" stroke="#a855f7" stroke-width="2"/>
+  <rect x="765" y="240" width="230" height="32" rx="8" fill="#9333ea"/>
+  <text x="880" y="262" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="bold">4. RESEARCHER (MAKMAL)</text>
+  <text x="775" y="292" fill="#d8b4fe" font-size="10" font-weight="bold">Nilai Aset: Formula Paten &amp; Data</text>
+  <text x="775" y="310" fill="#cbd5e1" font-size="10">• Profil: Saintis Data / Penyelidik</text>
+  <text x="775" y="327" fill="#cbd5e1" font-size="10">• Kelemahan: Pautan Jurnal Akademik</text>
+  <text x="775" y="344" fill="#fde047" font-size="10">• Tugasan: Muat Naik Data Kajian</text>
+  <text x="775" y="361" fill="#cbd5e1" font-size="10">• Objektif Hacker: Ekstrak Harta Intelek</text>
+  <rect x="775" y="380" width="210" height="40" rx="4" fill="#0f172a" stroke="#334155"/>
+  <text x="782" y="396" fill="#d8b4fe" font-size="9" font-weight="bold">Ciri Unik Keselamatan:</text>
+  <text x="782" y="410" fill="#94a3b8" font-size="8">• Integriti data paten mesti terpelihara</text>
+  <text x="880" y="445" text-anchor="middle" fill="#a855f7" font-size="11" font-weight="bold">Tahap Kesukaran: SPESIFIK</text>
+  <text x="880" y="462" text-anchor="middle" fill="#94a3b8" font-size="9">Pencegahan Kebocoran Harta Intelek</text>
+</svg>

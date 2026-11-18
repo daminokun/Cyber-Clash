@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 520" width="980" height="520" style="background:#090d16; font-family:'Segoe UI', Arial, sans-serif;">
+  <text x="490" y="35" text-anchor="middle" fill="#38bdf8" font-size="20" font-weight="bold">CYBER CLASH 2.0 — CARTA ALIR INTERAKSI PERTEMBUNGAN MASA NYATA</text>
+  <text x="490" y="58" text-anchor="middle" fill="#94a3b8" font-size="12">Hubungan Tindak Balas Hacker (Red Team) vs Target (Blue Team) melalui Pelayan WebSocket</text>
+
+  <!-- LIFELINES -->
+  <rect x="80" y="85" width="180" height="32" rx="6" fill="#dc2626"/>
+  <text x="170" y="106" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="bold">HACKER (RED TEAM)</text>
+  <line x1="170" y1="120" x2="170" y2="460" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="5,5"/>
+
+  <rect x="400" y="85" width="180" height="32" rx="6" fill="#0284c7"/>
+  <text x="490" y="106" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="bold">SERVER (NODE.JS)</text>
+  <line x1="490" y1="120" x2="490" y2="460" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="5,5"/>
+
+  <rect x="720" y="85" width="180" height="32" rx="6" fill="#2563eb"/>
+  <text x="810" y="106" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="bold">TARGET (BLUE TEAM)</text>
+  <line x1="810" y1="120" x2="810" y2="460" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="5,5"/>
+
+  <!-- STEP 1: MATCHMAKING -->
+  <rect x="360" y="130" width="260" height="24" rx="4" fill="#1e293b" stroke="#0284c7"/>
+  <text x="490" y="146" text-anchor="middle" fill="#38bdf8" font-size="10">Matchmaking Selesai | Coin Flip Agih Peranan</text>
+
+  <!-- STEP 2: BAIT SENT -->
+  <line x1="170" y1="175" x2="490" y2="175" stroke="#ef4444" stroke-width="2"/>
+  <polygon points="490,175 480,170 480,180" fill="#ef4444"/>
+  <text x="330" y="168" text-anchor="middle" fill="#f87171" font-size="10">1. Hantar Umpan Modular (Phishing Link)</text>
+
+  <line x1="490" y1="195" x2="810" y2="195" stroke="#38bdf8" stroke-width="2"/>
+  <polygon points="810,195 800,190 800,200" fill="#38bdf8"/>
+  <text x="650" y="188" text-anchor="middle" fill="#38bdf8" font-size="10">Notifikasi Emel Masuk (Bercampur 3 Tugasan)</text>
+
+  <!-- STEP 3: BRANCHING DECISION -->
+  <rect x="690" y="220" width="240" height="35" rx="6" fill="#1e293b" stroke="#eab308"/>
+  <text x="810" y="235" text-anchor="middle" fill="#fde047" font-size="10" font-weight="bold">Keputusan Mangsa:</text>
+  <text x="810" y="248" text-anchor="middle" fill="#e2e8f0" font-size="9">Guna Tool (Kuota 2x) / Padam / Klik Terus</text>
+
+  <!-- BRANCH A: BLOCKED -->
+  <line x1="810" y1="275" x2="490" y2="275" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <text x="650" y="268" text-anchor="middle" fill="#94a3b8" font-size="9">Jika [Block]: Pelayan gugur senyap (Silent Drop)</text>
+  <rect x="70" y="265" width="200" height="22" rx="4" fill="#0f172a" stroke="#475569"/>
+  <text x="170" y="280" text-anchor="middle" fill="#94a3b8" font-size="9">Terminal Hacker: Tiada Beacon (Senyap)</text>
+
+  <!-- BRANCH B: CLICKED -->
+  <line x1="810" y1="310" x2="490" y2="310" stroke="#ef4444" stroke-width="2"/>
+  <polygon points="490,310 500,305 500,315" fill="#ef4444"/>
+  <text x="650" y="303" text-anchor="middle" fill="#f87171" font-size="9">Jika [Klik Cuai]: Reverse Shell Terbina</text>
+
+  <line x1="490" y1="325" x2="170" y2="325" stroke="#22c55e" stroke-width="2"/>
+  <polygon points="170,325 180,320 180,330" fill="#22c55e"/>
+  <text x="330" y="320" text-anchor="middle" fill="#4ade80" font-size="9">[+] Reverse Shell Established (Akses Diperoleh)</text>
+
+  <!-- STEP 4: EXFILTRATION -->
+  <rect x="70" y="345" width="200" height="32" rx="4" fill="#1e293b" stroke="#a855f7"/>
+  <text x="170" y="360" text-anchor="middle" fill="#d8b4fe" font-size="9" font-weight="bold">Pilih Kelajuan Exfiltration:</text>
+  <text x="170" y="372" text-anchor="middle" fill="#cbd5e1" font-size="8">Fast (5s - Bising) vs Slow (15s - Senyap)</text>
+
+  <!-- STEP 5: ALARM SIREN 10-20s RACE -->
+  <rect x="360" y="390" width="260" height="30" rx="6" fill="#7f1d1d" stroke="#ef4444"/>
+  <text x="490" y="405" text-anchor="middle" fill="#fca5a5" font-size="10" font-weight="bold">SIREN PENGGERA 10–20 SAAT BERBUNYI!</text>
+  <text x="490" y="416" text-anchor="middle" fill="#ffffff" font-size="8">Aset Berjaya Disedut 100% | Perlumbaan Masa Bermula</text>
+
+  <line x1="170" y1="435" x2="490" y2="435" stroke="#22c55e" stroke-width="2"/>
+  <text x="330" y="430" text-anchor="middle" fill="#4ade80" font-size="9">Hacker: [Clear Logs] ➔ [Disconnect]</text>
+
+  <line x1="810" y1="445" x2="490" y2="445" stroke="#ef4444" stroke-width="2"/>
+  <text x="650" y="440" text-anchor="middle" fill="#f87171" font-size="9">Target: [Isolate Network &amp; Report Police]</text>
+
+  <!-- FOOTER -->
+  <rect x="50" y="475" width="880" height="30" rx="5" fill="#111827" stroke="#334155"/>
+  <text x="490" y="495" text-anchor="middle" fill="#38bdf8" font-size="10" font-weight="bold">Keputusan: Sesiapa yang lebih pantas dalam 10-20 saat ini diisytiharkan Menang Mutlak (Gred S/A atau Ditangkap Polis).</text>
+</svg>
