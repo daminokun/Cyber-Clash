@@ -16,17 +16,11 @@ Update the canonical GDD first. Translations and summaries should follow the can
 ## Development
 
 - [Student logbook](development/logbook/Logbook-Ahmad-Irfan.md) — project discussion and development records.
-- `development/changelog/` — development change records.
-- `development/task-allocation/` — project task allocation documents.
 
 ## Academic Deliverables
 
 - [Project report](reports/Cyber-Clash-Report.docx)
 - [Presentation](presentations/Cyber-Clash-Presentation.pptx)
-
-## References
-
-Research and technical references used by the project are organized under `references/`.
 
 ## Changelog
 
