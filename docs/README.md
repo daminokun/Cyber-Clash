@@ -1,27 +1,33 @@
 # Documentation
 
+This directory contains the design, development records and academic deliverables for Cyber Clash.
+
+## Architecture
+
+- [Game Design Document (GDD)](architecture/GDD/Game-Design-Document.md) — canonical English document.
+- [Malay GDD](architecture/GDD/BM-Full/Game-Design-Document.md) — full Malay translation.
+- [English summary](architecture/GDD/EN-Simple/Game-Design-Document.md) — simplified English summary.
+- [Malay summary](architecture/GDD/BM-Simple/Game-Design-Document.md) — simplified Malay summary.
+- [Architecture and gameplay diagrams](architecture/diagrams/) — system, class, use-case, activity and gameplay diagrams.
+- [Version 2 diagram set](architecture/diagrams/v2/) — updated project and gameplay diagrams.
+
+Update the canonical GDD first. Translations and summaries should follow the canonical document; do not change gameplay rules in a derived document only.
+
+## Development
+
+- [Student logbook](development/logbook/Logbook-Ahmad-Irfan.md) — project discussion and development records.
+- `development/changelog/` — development change records.
+- `development/task-allocation/` — project task allocation documents.
+
+## Academic Deliverables
+
+- [Project report](reports/Cyber-Clash-Report.docx)
+- [Presentation](presentations/Cyber-Clash-Presentation.pptx)
+
+## References
+
+Research and technical references used by the project are organized under `references/`.
+
 ## Changelog
 
-- [CHANGELOG.md](../CHANGELOG.md) — committed changes and project version history.
-
-## Game Design Document
-
-- [Canonical GDD](GDD/Game-Design-Document.md) — English, authoritative.
-- [Malay translation](GDD/BM-Full/Game-Design-Document.md) — full translation of the
-  canonical document.
-- [English summary](GDD/EN-Simple/Game-Design-Document.md) and
-  [Malay summary](GDD/BM-Simple/Game-Design-Document.md) — derived summaries.
-
-Update the canonical document first. Translations and summaries follow it; do
-not change gameplay rules in a derived document only.
-
-## Deliverables
-
-- [Project report](deliverables/Cyber-Clash-Report.docx)
-- [Presentation](deliverables/Cyber-Clash-Presentation.pptx)
-
-## Diagrams
-
-`diagrams/` contains the system architecture, activity, class, use-case and
-flow diagrams in SVG and PNG form. [ui-game-screen.png](diagrams/ui-game-screen.png)
-is an in-match interface reference for the current client layout.
+- [Project changelog](../CHANGELOG.md) — committed changes and project version history.
