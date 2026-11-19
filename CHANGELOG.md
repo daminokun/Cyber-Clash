@@ -8,13 +8,21 @@ Cyber Clash follows semantic versioning:
 Versions are assigned chronologically to the product changes in Git history.
 Agent checkpoint commits are not assigned project versions.
 
-The project version is currently `0.3.1`.
+The project version is currently `0.3.2`.
+
+## 0.3.2 - 2026-11-20
+
+### Documentation structure
+
+- Reorganized project documentation into architecture, development, reports and presentation sections.
+- Updated the root README and documentation index to use the current file locations.
+- Corrected the diagram paths in the `0.3.1` entry to reflect their current location under `docs/architecture/diagrams/v2/`.
 
 ## 0.3.1 - 2026-11-19
 
 ### Thesis Diagrams: Semua Ahli Kumpulan
 
-Added 13 comprehensive SVG diagrams under `docs/diagrams/v2/` to support thesis
+Added 13 comprehensive SVG diagrams under `docs/architecture/diagrams/v2/` to support thesis
 documentation for all three group members.
 
 **Ahmad Irfan Bin Hedher (Red Team / Hacker Module):**
