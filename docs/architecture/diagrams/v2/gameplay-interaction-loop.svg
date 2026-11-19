@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1000" viewBox="0 0 1500 1000">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="750.0" y="48" text-anchor="middle" font-family="Arial,sans-serif" font-size="27" font-weight="700" fill="#172b4d">CARTA ALIR INTERAKSI PERMAINAN CYBER CLASH</text>
+<text x="750.0" y="79" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" fill="#526581">PvP dua pemain atau PvE; aliran perlawanan masa nyata melalui pelayan Node.js WebSocket</text>
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#526581"/></marker></defs>
+<rect x="540" y="115" width="420" height="80" rx="13" fill="#f3f5f8" stroke="#9aa8b8" stroke-width="2"/>
+<text x="750.0" y="144" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#172b4d">MULA / MENU UTAMA</text>
+<text x="750.0" y="171" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#172b4d">Pilih PvP atau PvE</text>
+<text x="750.0" y="194" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#172b4d">How to Play • Audio Settings</text>
+<rect x="90" y="270" width="380" height="105" rx="13" fill="#eaf2ff" stroke="#4b78c8" stroke-width="2"/>
+<text x="280.0" y="299" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#172b4d">PILIHAN PvP</text>
+<text x="280.0" y="326" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#172b4d">Auto-match dengan pemain lain</text>
+<text x="280.0" y="349" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#172b4d">atau sertai menggunakan Match ID</text>
+<rect x="560" y="270" width="380" height="105" rx="13" fill="#e8f7f4" stroke="#25877a" stroke-width="2"/>
+<text x="750.0" y="299" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#172b4d">PILIHAN PvE</text>
+<text x="750.0" y="326" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#172b4d">Seorang pemain menentang sistem</text>
+<text x="750.0" y="349" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#172b4d">Peranan lawan dikendalikan AI</text>
+<rect x="1030" y="270" width="380" height="105" rx="13" fill="#f3f5f8" stroke="#9aa8b8" stroke-width="2"/>
+<text x="1220.0" y="299" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#172b4d">SEDIAKAN SESI</text>
+<text x="1220.0" y="326" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#172b4d">Sambung ke Server IP</text>
+<text x="1220.0" y="349" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#172b4d">Lobi / sesi permainan</text>
+<path d="M650,195 L280,270" stroke="#526581" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+<path d="M750,195 L750,270" stroke="#526581" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+<path d="M850,195 L1220,270" stroke="#526581" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+<rect x="450" y="445" width="600" height="100" rx="13" fill="#fff5df" stroke="#c28a22" stroke-width="2"/>
+<text x="750.0" y="474" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#172b4d">MULA PERLAWANAN</text>
+<text x="750.0" y="501" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#172b4d">PvP: dua pemain • PvE: seorang pemain + AI</text>
+<text x="750.0" y="524" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#172b4d">Peranan ditetapkan: Hacker (Red Team) dan Target (Blue Team)</text>
+<path d="M280,375 L570,445" stroke="#526581" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+<path d="M750,375 L750,445" stroke="#526581" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+<path d="M1220,375 L930,445" stroke="#526581" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+<rect x="70" y="630" width="400" height="130" rx="13" fill="#fff0ef" stroke="#c65b55" stroke-width="2"/>
+<text x="270.0" y="659" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#172b4d">HACKER / RED TEAM</text>
+<text x="270.0" y="686" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#172b4d">1. Reconnaissance  2. Scanning</text>
+<text x="270.0" y="709" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#172b4d">3. Gaining Access</text>
+<text x="270.0" y="732" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#172b4d">4. Maintaining Access &amp; Exfiltration</text>
+<text x="270.0" y="755" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#172b4d">5. Covering Tracks</text>
+<rect x="550" y="630" width="400" height="130" rx="13" fill="#f3f5f8" stroke="#9aa8b8" stroke-width="2"/>
+<text x="750.0" y="659" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#172b4d">SERVER AUTORITATIF</text>
+<text x="750.0" y="686" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#172b4d">Sahkan tindakan dan kemas kini state</text>
+<text x="750.0" y="709" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#172b4d">Selaraskan masa, objektif dan keputusan</text>
+<text x="750.0" y="732" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#172b4d">Urus disconnect / default win</text>
+<rect x="1030" y="630" width="400" height="130" rx="13" fill="#e8f7f4" stroke="#25877a" stroke-width="2"/>
+<text x="1230.0" y="659" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#172b4d">TARGET / BLUE TEAM</text>
+<text x="1230.0" y="686" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#172b4d">Selesaikan 3 tugasan harian sah</text>
+<text x="1230.0" y="709" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#172b4d">Buka / Imbas / Padam atau Block</text>
+<text x="1230.0" y="732" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#172b4d">Isolate Network &amp; Report to Police</text>
+<path d="M570,545 L270,630" stroke="#526581" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+<path d="M750,545 L750,630" stroke="#526581" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+<path d="M930,545 L1230,630" stroke="#526581" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+<path d="M470,695 L550,695" stroke="#526581" stroke-width="2.5" fill="none" marker-end="url(#arr)"/><text x="510.0" y="686.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#526581">aksi / state</text>
+<path d="M950,720 L1030,720" stroke="#526581" stroke-width="2.5" fill="none" marker-end="url(#arr)"/><text x="990.0" y="711.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#526581">kemas kini</text>
+<rect x="450" y="835" width="600" height="90" rx="13" fill="#fff5df" stroke="#c28a22" stroke-width="2"/>
+<text x="750.0" y="864" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#172b4d">KEPUTUSAN &amp; SKRIN HASIL</text>
+<text x="750.0" y="891" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#172b4d">Shift Ended • objektif serangan/pertahanan • disconnect/forfeit</text>
+<text x="750.0" y="914" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#172b4d">Skor, gred dan Copy Post-Mortem</text>
+<path d="M750,760 L750,835" stroke="#526581" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+</svg>

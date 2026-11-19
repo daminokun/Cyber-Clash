@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 500" width="1020" height="500" style="background:#090d16; font-family:'Segoe UI', Arial, sans-serif;">
+  <text x="510" y="38" text-anchor="middle" fill="#a855f7" font-size="20" font-weight="bold" letter-spacing="1">SISTEM KEJADIAN LUAR JANGKA (UNEXPECTED EVENTS SYSTEM)</text>
+  <text x="510" y="60" text-anchor="middle" fill="#94a3b8" font-size="12">Penyelaras: TARRSINY VIDYASSHRI A/P SHINGARA VADIVEL (Tanggungjawab #2: Fungsi Kejadian Luar Jangka)</text>
+
+  <!-- EVENT TRIGGER ENGINE -->
+  <rect x="360" y="85" width="300" height="60" rx="8" fill="#1e293b" stroke="#a855f7" stroke-width="2"/>
+  <text x="510" y="110" text-anchor="middle" fill="#d8b4fe" font-size="12" font-weight="bold">MODUL PENCETUS RAWAK KEJADIAN LUAR JANGKA</text>
+  <text x="510" y="130" text-anchor="middle" fill="#cbd5e1" font-size="10">Kadar Kejadian: 1 hingga 2 Peristiwa Rawak bagi Setiap Perlawanan</text>
+
+  <!-- ARROWS DOWN -->
+  <line x1="510" y1="145" x2="510" y2="185" stroke="#a855f7" stroke-width="2"/>
+  <line x1="200" y1="185" x2="820" y2="185" stroke="#a855f7" stroke-width="2"/>
+
+  <line x1="200" y1="185" x2="200" y2="210" stroke="#a855f7" stroke-width="2"/>
+  <polygon points="200,210 195,202 205,202" fill="#a855f7"/>
+
+  <line x1="510" y1="185" x2="510" y2="210" stroke="#a855f7" stroke-width="2"/>
+  <polygon points="510,210 505,202 515,202" fill="#a855f7"/>
+
+  <line x1="820" y1="185" x2="820" y2="210" stroke="#a855f7" stroke-width="2"/>
+  <polygon points="820,210 815,202 825,202" fill="#a855f7"/>
+
+  <!-- EVENT 1: ISP NETWORK JITTER -->
+  <rect x="50" y="210" width="300" height="250" rx="8" fill="#111827" stroke="#38bdf8" stroke-width="2"/>
+  <rect x="50" y="210" width="300" height="32" rx="8" fill="#0284c7"/>
+  <text x="200" y="232" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="bold">EVENT A: GANGGUAN RANGKAIAN ISP</text>
+  <text x="65" y="265" fill="#38bdf8" font-size="11" font-weight="bold">Kesan Terhadap Permainan:</text>
+  <text x="65" y="285" fill="#cbd5e1" font-size="10">â€¢ Berlakunya "Latency Spike" selama 3-5 saat.</text>
+  <text x="65" y="303" fill="#cbd5e1" font-size="10">â€¢ Bar muat turun Hacker terhenti seketika.</text>
+  <text x="65" y="321" fill="#cbd5e1" font-size="10">â€¢ Ikon Wi-Fi mangsa memaparkan amaran "Lag".</text>
+  <rect x="65" y="340" width="270" height="50" rx="5" fill="#0f172a" stroke="#334155"/>
+  <text x="75" y="358" fill="#fde047" font-size="9" font-weight="bold">Impak Strategik:</text>
+  <text x="75" y="375" fill="#cbd5e1" font-size="8">Memberi masa tambahan kepada Target untuk bertindak,</text>
+  <text x="75" y="385" fill="#cbd5e1" font-size="8">namun menguji kesabaran Hacker semasa exfiltrasi.</text>
+  <text x="200" y="440" text-anchor="middle" fill="#38bdf8" font-size="10" font-weight="bold">Kekerapan: 30% Kebarangkalian</text>
+
+  <!-- EVENT 2: URGENT BOSS OVERRIDE -->
+  <rect x="360" y="210" width="300" height="250" rx="8" fill="#111827" stroke="#ef4444" stroke-width="2"/>
+  <rect x="360" y="210" width="300" height="32" rx="8" fill="#dc2626"/>
+  <text x="510" y="232" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="bold">EVENT B: ARAHAN SEGERA PIHAK PENGURUSAN</text>
+  <text x="375" y="265" fill="#f87171" font-size="11" font-weight="bold">Kesan Terhadap Permainan:</text>
+  <text x="375" y="285" fill="#cbd5e1" font-size="10">â€¢ Notifikasi amaran merah masuk ke skrin mangsa.</text>
+  <text x="375" y="303" fill="#cbd5e1" font-size="10">â€¢ Had masa tugasan harian dipendekkan 50%!</text>
+  <text x="375" y="321" fill="#cbd5e1" font-size="10">â€¢ Mangsa berada dalam keadaan sangat cemas.</text>
+  <rect x="375" y="340" width="270" height="50" rx="5" fill="#0f172a" stroke="#334155"/>
+  <text x="385" y="358" fill="#fde047" font-size="9" font-weight="bold">Impak Strategik:</text>
+  <text x="385" y="375" fill="#cbd5e1" font-size="8">Peluang keemasan Hacker menghantar umpan invois</text>
+  <text x="385" y="385" fill="#cbd5e1" font-size="8">palsu kerana mangsa cenderung tidak menyemak URL.</text>
+  <text x="510" y="440" text-anchor="middle" fill="#ef4444" font-size="10" font-weight="bold">Kekerapan: 25% Kebarangkalian</text>
+
+  <!-- EVENT 3: RANDOM SECURITY AUDIT -->
+  <rect x="670" y="210" width="300" height="250" rx="8" fill="#111827" stroke="#22c55e" stroke-width="2"/>
+  <rect x="670" y="210" width="300" height="32" rx="8" fill="#16a34a"/>
+  <text x="820" y="232" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="bold">EVENT C: AUDIT KESELAMATAN BERKALA</text>
+  <text x="685" y="265" fill="#86efac" font-size="11" font-weight="bold">Kesan Terhadap Permainan:</text>
+  <text x="685" y="285" fill="#cbd5e1" font-size="10">â€¢ Sistem keselamatan melancarkan pemeriksaan automatik.</text>
+  <text x="685" y="303" fill="#cbd5e1" font-size="10">â€¢ Kuota alatan Target ditambah +1 penggunaan!</text>
+  <text x="685" y="321" fill="#cbd5e1" font-size="10">â€¢ Port tidak sah ditutup sementara selama 10 saat.</text>
+  <rect x="685" y="340" width="270" height="50" rx="5" fill="#0f172a" stroke="#334155"/>
+  <text x="695" y="358" fill="#fde047" font-size="9" font-weight="bold">Impak Strategik:</text>
+  <text x="695" y="375" fill="#cbd5e1" font-size="8">Memberi kelebihan kepada Target jika bertahan,</text>
+  <text x="695" y="385" fill="#cbd5e1" font-size="8">memaksa Hacker berhati-hati melancarkan imbasan.</text>
+  <text x="820" y="440" text-anchor="middle" fill="#22c55e" font-size="10" font-weight="bold">Kekerapan: 20% Kebarangkalian</text>
+</svg>

@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1120" viewBox="0 0 1600 1120">
+  <defs>
+    <style>
+      .bg{fill:#f7f9fc}
+      .title{font:700 34px Arial,sans-serif;fill:#172033}
+      .subtitle{font:18px Arial,sans-serif;fill:#526078}
+      .section{font:700 22px Arial,sans-serif;fill:#172033}
+      .phase{fill:#fff;stroke:#cbd5e1;stroke-width:2}
+      .red{fill:#fff1f2;stroke:#e11d48;stroke-width:2.5}
+      .darkred{fill:#9f1239}
+      .decision{fill:#fff7ed;stroke:#ea580c;stroke-width:2.5}
+      .green{fill:#ecfdf5;stroke:#059669;stroke-width:2.5}
+      .blue{fill:#eff6ff;stroke:#2563eb;stroke-width:2.5}
+      .head{font:700 19px Arial,sans-serif;fill:#172033}
+      .body{font:16px Arial,sans-serif;fill:#334155}
+      .small{font:14px Arial,sans-serif;fill:#475569}
+      .white{fill:#fff}
+      .arrow{fill:none;stroke:#475569;stroke-width:3;marker-end:url(#arrow)}
+      .redarrow{fill:none;stroke:#e11d48;stroke-width:3;marker-end:url(#redarrow)}
+      .greenarrow{fill:none;stroke:#059669;stroke-width:3;marker-end:url(#greenarrow)}
+      .dashed{stroke-dasharray:9 7}
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#475569"/></marker>
+    <marker id="redarrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#e11d48"/></marker>
+    <marker id="greenarrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#059669"/></marker>
+  </defs>
+
+  <rect class="bg" width="1600" height="1120"/>
+  <text x="800" y="58" text-anchor="middle" class="title">LAKARAN ALIRAN TINDAKAN &amp; KITARAN GILIRAN RED TEAM</text>
+  <text x="800" y="91" text-anchor="middle" class="subtitle">Cyber Clash 2.0 — Aliran serangan Hacker (Red Team)</text>
+
+  <rect x="610" y="125" width="380" height="62" rx="14" class="blue"/>
+  <text x="800" y="163" text-anchor="middle" class="head">MULA: Red Team memasuki sesi</text>
+  <path d="M800 187 V225" class="arrow"/>
+
+  <rect x="600" y="225" width="400" height="74" rx="14" class="phase"/>
+  <text x="800" y="254" text-anchor="middle" class="head">Pilih fasa dan tindakan</text>
+  <text x="800" y="279" text-anchor="middle" class="body">Semak status permainan dan objektif semasa</text>
+  <path d="M800 299 V330" class="arrow"/>
+
+  <!-- Five attack phases -->
+  <rect x="70" y="350" width="270" height="180" rx="15" class="red"/>
+  <rect x="70" y="350" width="270" height="42" rx="14" class="darkred"/>
+  <text x="205" y="378" text-anchor="middle" class="white head">FASA 1</text>
+  <text x="205" y="425" text-anchor="middle" class="head">Reconnaissance</text>
+  <text x="92" y="459" class="body">• Teliti dossier OSINT</text>
+  <text x="92" y="486" class="body">• Kenal pasti profil sasaran</text>
+  <text x="92" y="513" class="small">Status: 100% senyap</text>
+
+  <rect x="375" y="350" width="270" height="180" rx="15" class="red"/>
+  <rect x="375" y="350" width="270" height="42" rx="14" class="darkred"/>
+  <text x="510" y="378" text-anchor="middle" class="white head">FASA 2</text>
+  <text x="510" y="425" text-anchor="middle" class="head">Scanning</text>
+  <text x="397" y="459" class="body">• Passive Social Inspection</text>
+  <text x="397" y="486" class="body">• Active Network / Port Scan</text>
+  <text x="397" y="513" class="body">• Vulnerability Scan</text>
+
+  <rect x="680" y="350" width="270" height="180" rx="15" class="red"/>
+  <rect x="680" y="350" width="270" height="42" rx="14" class="darkred"/>
+  <text x="815" y="378" text-anchor="middle" class="white head">FASA 3</text>
+  <text x="815" y="425" text-anchor="middle" class="head">Gaining Access</text>
+  <text x="702" y="459" class="body">• Bina umpan phishing</text>
+  <text x="702" y="486" class="body">• Pilih penghantar &amp; perangkap</text>
+  <text x="702" y="513" class="small">Had: 1 umpan pada satu masa</text>
+
+  <rect x="985" y="350" width="270" height="180" rx="15" class="red"/>
+  <rect x="985" y="350" width="270" height="42" rx="14" class="darkred"/>
+  <text x="1120" y="378" text-anchor="middle" class="white head">FASA 4</text>
+  <text x="1120" y="425" text-anchor="middle" class="head">Maintaining Access</text>
+  <text x="1007" y="459" class="body">• Fast Exfiltration (~5s)</text>
+  <text x="1007" y="486" class="body">• Slow Exfiltration (~15s)</text>
+  <text x="1007" y="513" class="small">Pilih kelajuan pemindahan aset</text>
+
+  <rect x="1290" y="350" width="250" height="180" rx="15" class="red"/>
+  <rect x="1290" y="350" width="250" height="42" rx="14" class="darkred"/>
+  <text x="1415" y="378" text-anchor="middle" class="white head">FASA 5</text>
+  <text x="1415" y="425" text-anchor="middle" class="head">Covering Tracks</text>
+  <text x="1312" y="459" class="body">• Clear Event Logs</text>
+  <text x="1312" y="486" class="body">• Delete Dropped Payloads</text>
+  <text x="1312" y="513" class="body">• Disconnect</text>
+
+  <!-- progression arrows -->
+  <path d="M340 440 H375" class="redarrow"/>
+  <path d="M645 440 H680" class="redarrow"/>
+  <path d="M950 440 H985" class="redarrow"/>
+  <path d="M1255 440 H1290" class="redarrow"/>
+
+  <!-- phase 3 outcome -->
+  <path d="M815 530 V568" class="arrow"/>
+  <polygon points="815,568 900,620 815,672 730,620" class="decision"/>
+  <text x="815" y="614" text-anchor="middle" class="head">Mangsa</text>
+  <text x="815" y="638" text-anchor="middle" class="head">terpedaya?</text>
+  <path d="M730 620 H570 V700" class="redarrow"/>
+  <text x="645" y="607" class="small">Tidak: tiada beacon</text>
+  <rect x="420" y="700" width="300" height="76" rx="13" class="phase"/>
+  <text x="570" y="730" text-anchor="middle" class="head">Silent Drop</text>
+  <text x="570" y="754" text-anchor="middle" class="body">Terminal kekal senyap</text>
+  <path d="M900 620 H1050 V700" class="greenarrow"/>
+  <text x="955" y="607" class="small">Ya: payload berjaya</text>
+  <rect x="900" y="700" width="300" height="76" rx="13" class="green"/>
+  <text x="1050" y="730" text-anchor="middle" class="head">Reverse Shell</text>
+  <text x="1050" y="754" text-anchor="middle" class="body">Connection established</text>
+
+  <!-- lockdown race -->
+  <path d="M1415 530 V568" class="arrow"/>
+  <rect x="1245" y="568" width="310" height="105" rx="14" class="decision"/>
+  <text x="1400" y="598" text-anchor="middle" class="head">Perlumbaan Lockdown</text>
+  <text x="1400" y="625" text-anchor="middle" class="body">10–20 saat selepas aset dicuri</text>
+  <text x="1400" y="650" text-anchor="middle" class="small">Red Team lawan tindakan Blue Team</text>
+  <path d="M1245 620 H1200 V700" class="redarrow"/>
+  <rect x="1080" y="700" width="240" height="76" rx="13" class="red"/>
+  <text x="1200" y="730" text-anchor="middle" class="head">Red Team</text>
+  <text x="1200" y="754" text-anchor="middle" class="body">Padam jejak &amp; disconnect</text>
+  <path d="M1555 620 H1570 V700" class="greenarrow"/>
+  <rect x="1340" y="700" width="220" height="76" rx="13" class="green"/>
+  <text x="1450" y="730" text-anchor="middle" class="head">Blue Team</text>
+  <text x="1450" y="754" text-anchor="middle" class="body">Isolate &amp; report</text>
+
+  <!-- cycle -->
+  <rect x="70" y="835" width="1460" height="225" rx="18" fill="#eef2f7" stroke="#94a3b8" stroke-width="2"/>
+  <text x="800" y="875" text-anchor="middle" class="section">KITARAN GILIRAN / TINDAKAN RED TEAM</text>
+
+  <rect x="115" y="915" width="245" height="92" rx="13" class="blue"/>
+  <text x="237" y="950" text-anchor="middle" class="head">1. Pilih tindakan</text>
+  <text x="237" y="978" text-anchor="middle" class="body">Pilih fasa / pilihan serangan</text>
+
+  <rect x="450" y="915" width="245" height="92" rx="13" class="phase"/>
+  <text x="572" y="950" text-anchor="middle" class="head">2. Laksanakan</text>
+  <text x="572" y="978" text-anchor="middle" class="body">Jalankan tindakan dipilih</text>
+
+  <rect x="785" y="915" width="245" height="92" rx="13" class="decision"/>
+  <text x="907" y="950" text-anchor="middle" class="head">3. Semak hasil</text>
+  <text x="907" y="978" text-anchor="middle" class="body">Berjaya, gagal atau dikesan</text>
+
+  <rect x="1120" y="915" width="330" height="92" rx="13" class="green"/>
+  <text x="1285" y="950" text-anchor="middle" class="head">4. Kemas kini status</text>
+  <text x="1285" y="978" text-anchor="middle" class="body">Objektif, aset, risiko &amp; fasa</text>
+
+  <path d="M360 961 H450" class="arrow"/>
+  <path d="M695 961 H785" class="arrow"/>
+  <path d="M1030 961 H1120" class="arrow"/>
+  <path d="M1285 1007 V1030 H237 V1007" class="redarrow"/>
+  <text x="760" y="1049" text-anchor="middle" class="small">Ulang kitaran selagi permainan belum tamat dan tindakan seterusnya masih tersedia</text>
+
+  <text x="800" y="1090" text-anchor="middle" class="small">Nota: GDD menerangkan permainan masa nyata (real-time), bukan sistem giliran bergilir secara turn-based.</text>
+</svg>

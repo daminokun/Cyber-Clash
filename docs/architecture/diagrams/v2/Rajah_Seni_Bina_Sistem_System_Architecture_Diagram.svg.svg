@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1120" viewBox="0 0 1600 1120">
+  <defs>
+    <style>
+      .bg{fill:#f7f9fc}.title{font:700 34px Arial,sans-serif;fill:#172033}.sub{font:18px Arial,sans-serif;fill:#596579}
+      .h{font:700 21px Arial,sans-serif;fill:#172033}.body{font:16px Arial,sans-serif;fill:#263247}.small{font:14px Arial,sans-serif;fill:#526075}.tiny{font:13px Arial,sans-serif;fill:#526075}
+      .red{fill:#fff1f0;stroke:#d94841;stroke-width:2.5}.blue{fill:#eef5ff;stroke:#3478d4;stroke-width:2.5}.server{fill:#f1efff;stroke:#6955c9;stroke-width:3}.neutral{fill:#fff;stroke:#9aa6b6;stroke-width:2}.green{fill:#effaf3;stroke:#31915b;stroke-width:2}
+      .line{stroke:#46556b;stroke-width:3;fill:none;marker-end:url(#arrow)}.dash{stroke:#7c8798;stroke-width:2;stroke-dasharray:8 7;fill:none;marker-end:url(#arrow)}
+      .pill{fill:#fff;stroke:#cbd3df;stroke-width:1.3}.redtxt{fill:#b42318}.bluetxt{fill:#1d5fae}.purpletxt{fill:#5744b5}
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#46556b"/></marker>
+  </defs>
+  <rect class="bg" width="1600" height="1120"/>
+  <text x="800" y="58" text-anchor="middle" class="title">RAJAH SENI BINA SISTEM CYBER CLASH</text>
+  <text x="800" y="91" text-anchor="middle" class="sub">Godot Engine (Klien) · Node.js WebSocket (Pelayan Autoritatif) · Permainan 1 lawan 1</text>
+
+  <!-- client panels -->
+  <rect x="55" y="145" width="455" height="590" rx="22" class="red"/>
+  <rect x="1090" y="145" width="455" height="590" rx="22" class="blue"/>
+  <text x="282" y="184" text-anchor="middle" class="h redtxt">PEMAIN 1 — HACKER</text>
+  <text x="1317" y="184" text-anchor="middle" class="h bluetxt">PEMAIN 2 — TARGET</text>
+  <rect x="90" y="205" width="385" height="52" rx="12" class="neutral"/>
+  <text x="282" y="237" text-anchor="middle" class="h">Godot Game Client</text>
+  <rect x="1125" y="205" width="385" height="52" rx="12" class="neutral"/>
+  <text x="1317" y="237" text-anchor="middle" class="h">Godot Game Client</text>
+
+  <!-- red modules -->
+  <text x="95" y="292" class="h redtxt">Enjin Serangan — 5 Fasa</text>
+  <g class="body">
+    <rect x="92" y="310" width="386" height="48" rx="9" class="pill"/><text x="110" y="340">1. Reconnaissance</text><text x="450" y="340" text-anchor="end" class="tiny">OSINT Dossier</text>
+    <rect x="92" y="367" width="386" height="48" rx="9" class="pill"/><text x="110" y="397">2. Scanning &amp; Enumeration</text>
+    <rect x="92" y="424" width="386" height="48" rx="9" class="pill"/><text x="110" y="454">3. Gaining Access</text><text x="450" y="454" text-anchor="end" class="tiny">Modular Bait Builder</text>
+    <rect x="92" y="481" width="386" height="48" rx="9" class="pill"/><text x="110" y="511">4. Maintaining Access</text><text x="450" y="511" text-anchor="end" class="tiny">Fast / Slow Exfiltration</text>
+    <rect x="92" y="538" width="386" height="48" rx="9" class="pill"/><text x="110" y="568">5. Covering Tracks</text><text x="450" y="568" text-anchor="end" class="tiny">Clear Logs · Delete Payloads</text>
+  </g>
+  <rect x="92" y="606" width="386" height="85" rx="10" fill="#fff" stroke="#e4aaa5" stroke-width="1.5"/>
+  <text x="110" y="634" class="body" font-weight="700">Antaramuka Hacker</text>
+  <text x="110" y="659" class="small">Terminal konsol · Status umpan · Proses</text>
+  <text x="110" y="679" class="small">exfiltration · Perlumbaan lockdown</text>
+
+  <!-- blue modules -->
+  <text x="1130" y="292" class="h bluetxt">Enjin Mangsa &amp; Pertahanan</text>
+  <rect x="1127" y="310" width="386" height="48" rx="9" class="pill"/><text x="1145" y="340" class="body">Desktop Windows 11 Style</text>
+  <rect x="1127" y="367" width="386" height="62" rx="9" class="pill"/><text x="1145" y="392" class="body">Notifikasi masuk</text><text x="1145" y="414" class="tiny">Buka · Imbas dengan Tool · Padam / Block</text>
+  <rect x="1127" y="438" width="386" height="62" rx="9" class="pill"/><text x="1145" y="463" class="body">Alatan keselamatan (kuota 2x)</text><text x="1145" y="485" class="tiny">Link Checker · Email Phishing Detector</text>
+  <rect x="1127" y="509" width="386" height="62" rx="9" class="pill"/><text x="1145" y="534" class="body">Sistem 3 peluang kesilapan</text><text x="1145" y="556" class="tiny">Kesilapan memadam emel kerja yang sah</text>
+  <rect x="1127" y="580" width="386" height="62" rx="9" class="pill"/><text x="1145" y="605" class="body">Tiga Tugasan Harian Sah</text><text x="1145" y="627" class="tiny">Selesaikan tanpa kesilapan keselamatan</text>
+  <rect x="1127" y="651" width="386" height="40" rx="9" fill="#fff" stroke="#9bbce7" stroke-width="1.5"/><text x="1320" y="677" text-anchor="middle" class="small">Isolate Network &amp; Report to Police</text>
+
+  <!-- server -->
+  <rect x="565" y="205" width="470" height="430" rx="22" class="server"/>
+  <text x="800" y="249" text-anchor="middle" class="h purpletxt">NODE.JS WEBSOCKET SERVER</text>
+  <rect x="650" y="267" width="300" height="42" rx="20" fill="#6955c9"/>
+  <text x="800" y="294" text-anchor="middle" font="700 17px Arial" fill="#fff">Pelayan Autoritatif</text>
+  <text x="800" y="350" text-anchor="middle" class="small">Penyelarasan komunikasi dua hala</text>
+  <rect x="610" y="374" width="380" height="65" rx="11" class="neutral"/>
+  <text x="800" y="401" text-anchor="middle" class="body" font-weight="700">Pengurusan sesi 1v1</text>
+  <text x="800" y="423" text-anchor="middle" class="small">Sambungan pemain dan sesi permainan</text>
+  <rect x="610" y="452" width="380" height="65" rx="11" class="neutral"/>
+  <text x="800" y="479" text-anchor="middle" class="body" font-weight="700">Penyelarasan keadaan permainan</text>
+  <text x="800" y="501" text-anchor="middle" class="small">Pertukaran tindakan dan kemas kini sesi</text>
+  <rect x="610" y="530" width="380" height="75" rx="11" class="neutral"/>
+  <text x="800" y="558" text-anchor="middle" class="body" font-weight="700">Status perlawanan &amp; keputusan</text>
+  <text x="800" y="581" text-anchor="middle" class="small">Keadaan menang / kalah · Tamat sesi</text>
+
+  <!-- connection arrows -->
+  <path d="M510 430 H560" class="line"/><path d="M1040 430 H1085" class="line"/>
+  <text x="535" y="402" text-anchor="middle" class="small">WebSocket</text>
+  <text x="1063" y="402" text-anchor="middle" class="small">WebSocket</text>
+  <text x="535" y="455" text-anchor="middle" class="tiny">Dua hala</text>
+  <text x="1063" y="455" text-anchor="middle" class="tiny">Dua hala</text>
+
+  <!-- lobby / connection -->
+  <rect x="565" y="665" width="470" height="70" rx="14" class="green"/>
+  <text x="800" y="694" text-anchor="middle" class="body" font-weight="700">Lobi Multiplayer — Server IP Address</text>
+  <text x="800" y="718" text-anchor="middle" class="small">Default: 127.0.0.1:8080 · Boleh ditukar kepada IP LAN</text>
+  <path d="M800 665 V638" class="dash"/>
+
+  <!-- outcome flow -->
+  <path d="M282 735 V790 H800 V770" class="dash"/>
+  <path d="M1317 735 V790 H800" class="dash"/>
+  <rect x="260" y="790" width="1080" height="105" rx="18" class="neutral"/>
+  <text x="800" y="824" text-anchor="middle" class="h">PENENTUAN KEPUTUSAN PERLAWANAN</text>
+  <text x="800" y="853" text-anchor="middle" class="body">Hacker: curi aset dan padam jejak  |  Target: lengkapkan 3 tugasan harian sah</text>
+  <text x="800" y="877" text-anchor="middle" class="small">Lockdown race 10–20 saat · Disconnect pemain = Default Win kepada pemain yang tinggal</text>
+  <path d="M800 895 V930" class="line"/>
+  <rect x="390" y="936" width="820" height="135" rx="18" class="green"/>
+  <text x="800" y="971" text-anchor="middle" class="h">SKRIN KEPUTUSAN &amp; LAPORAN PASCA-PERLAWANAN</text>
+  <g class="body">
+    <rect x="435" y="991" width="210" height="52" rx="9" class="neutral"/><text x="540" y="1022" text-anchor="middle">Skor (0–1,000)</text>
+    <rect x="695" y="991" width="210" height="52" rx="9" class="neutral"/><text x="800" y="1022" text-anchor="middle">Gred (S hingga F)</text>
+    <rect x="955" y="991" width="210" height="52" rx="9" class="neutral"/><text x="1060" y="1022" text-anchor="middle">Post-Mortem Report</text>
+  </g>
+  <text x="800" y="1100" text-anchor="middle" class="tiny">Rajah berdasarkan dokumen Overhaul GDD Cyber Clash; aliran dalaman server digambarkan pada tahap fungsi.</text>
+</svg>

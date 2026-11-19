@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+<title>Carta Gantt Projek Cyber Clash</title>
+<style>.title{font:700 34px Arial;fill:#102a43}.head{font:700 21px Arial;fill:#fff;text-anchor:middle}.body{font:400 20px Arial;fill:#243b53}.grid{stroke:#9fb3c8;stroke-width:1}.p1{fill:#2f6690}.p2{fill:#2d8a57}.p3{fill:#c58b17}</style>
+<rect width="1600" height="900" fill="#fff"/><text x="800" y="55" class="title" text-anchor="middle">CARTA GANTT PROJEK CYBER CLASH</text>
+<rect x="45" y="95" width="420" height="65" fill="#243b53"/><text x="255" y="137" class="head">Aktiviti</text><rect x="465" y="95" width="510" height="65" fill="#243b53"/><text x="720" y="137" class="head">PTA 1</text><rect x="975" y="95" width="580" height="65" fill="#243b53"/><text x="1265" y="137" class="head">PTA 2</text>
+<path d="M45 160H1555M45 245H1555M45 330H1555M45 415H1555M45 500H1555M45 585H1555M45 670H1555M45 755H1555M465 95V755M592 95V755M719 95V755M846 95V755M975 95V755M1090 95V755M1205 95V755M1320 95V755M1435 95V755M1555 95V755" class="grid"/>
+<text x="65" y="212" class="body">Analisis masalah</text><text x="65" y="297" class="body">Kajian literatur</text><text x="65" y="382" class="body">Reka bentuk sistem</text><text x="65" y="467" class="body">Pembangunan client dan server</text><text x="65" y="552" class="body">Integrasi dan pengujian</text><text x="65" y="637" class="body">Dokumentasi laporan</text><text x="65" y="722" class="body">Pembentangan</text>
+<rect x="485" y="180" width="255" height="42" rx="8" class="p1"/><rect x="485" y="265" width="380" height="42" rx="8" class="p1"/><rect x="610" y="350" width="365" height="42" rx="8" class="p1"/><rect x="990" y="435" width="380" height="42" rx="8" class="p2"/><rect x="1100" y="520" width="300" height="42" rx="8" class="p2"/><rect x="990" y="605" width="510" height="42" rx="8" class="p3"/><rect x="1330" y="690" width="170" height="42" rx="8" class="p3"/>
+</svg>

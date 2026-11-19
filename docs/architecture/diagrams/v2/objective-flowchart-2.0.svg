@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="700.0" y="48" text-anchor="middle" font-family="Arial,sans-serif" font-size="27" font-weight="700" fill="#172b4d">CARTA ALIR PENCAPAIAN OBJEKTIF PROJEK</text>
+<text x="700.0" y="79" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" fill="#526581">Pemetaan aktiviti pembangunan kepada tiga objektif rasmi projek FYP</text>
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#526581"/></marker></defs>
+<rect x="500" y="115" width="400" height="75" rx="13" fill="#f3f5f8" stroke="#9aa8b8" stroke-width="2"/>
+<text x="700.0" y="144" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#172b4d">MULA</text>
+<text x="700.0" y="171" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#172b4d">Kenal pasti masalah dan keperluan pelajar IT</text>
+<rect x="80" y="280" width="380" height="190" rx="13" fill="#eaf2ff" stroke="#4b78c8" stroke-width="2"/>
+<text x="270.0" y="309" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#172b4d">OBJEKTIF 1</text>
+<text x="270.0" y="336" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#172b4d">Membangunkan simulasi keselamatan siber</text>
+<text x="270.0" y="359" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#172b4d">yang menggabungkan tindakan Red Team</text>
+<text x="270.0" y="382" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#172b4d">dan Blue Team</text>
+<text x="270.0" y="405" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#172b4d"></text>
+<text x="270.0" y="428" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#172b4d">Hasil: reka bentuk mekanik dan</text>
+<text x="270.0" y="451" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#172b4d">modul serangan serta pertahanan</text>
+<rect x="510" y="280" width="380" height="190" rx="13" fill="#e8f7f4" stroke="#25877a" stroke-width="2"/>
+<text x="700.0" y="309" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#172b4d">OBJEKTIF 2</text>
+<text x="700.0" y="336" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#172b4d">Membangunkan fungsi PvP untuk</text>
+<text x="700.0" y="359" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#172b4d">menyokong dua pemain dalam</text>
+<text x="700.0" y="382" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#172b4d">satu sesi permainan</text>
+<text x="700.0" y="405" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#172b4d"></text>
+<text x="700.0" y="428" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#172b4d">Hasil: klien Godot dan komunikasi</text>
+<text x="700.0" y="451" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#172b4d">masa nyata melalui WebSocket</text>
+<rect x="940" y="280" width="380" height="190" rx="13" fill="#fff5df" stroke="#c28a22" stroke-width="2"/>
+<text x="1130.0" y="309" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#172b4d">OBJEKTIF 3</text>
+<text x="1130.0" y="336" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#172b4d">Membangunkan fungsi rekod tindakan,</text>
+<text x="1130.0" y="359" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#172b4d">objektif dan skor bagi setiap</text>
+<text x="1130.0" y="382" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#172b4d">sesi permainan</text>
+<text x="1130.0" y="405" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#172b4d"></text>
+<text x="1130.0" y="428" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#172b4d">Hasil: rekod perlawanan, pemarkahan</text>
+<text x="1130.0" y="451" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#172b4d">dan laporan pasca-perlawanan</text>
+<path d="M700,190 L270,280" stroke="#526581" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+<path d="M700,190 L700,280" stroke="#526581" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+<path d="M700,190 L1130,280" stroke="#526581" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+<rect x="390" y="570" width="620" height="100" rx="13" fill="#f3f5f8" stroke="#9aa8b8" stroke-width="2"/>
+<text x="700.0" y="599" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#172b4d">INTEGRASI SISTEM</text>
+<text x="700.0" y="626" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#172b4d">Gabungkan modul Red Team, Blue Team, server dan sistem keputusan</text>
+<path d="M270,470 L700,570" stroke="#526581" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+<path d="M700,470 L700,570" stroke="#526581" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+<path d="M1130,470 L700,570" stroke="#526581" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+<rect x="390" y="735" width="620" height="90" rx="13" fill="#eaf2ff" stroke="#4b78c8" stroke-width="2"/>
+<text x="700.0" y="764" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#172b4d">PENGUJIAN &amp; PENILAIAN</text>
+<text x="700.0" y="791" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#172b4d">Uji fungsi, komunikasi, objektif, skor dan kestabilan sesi</text>
+<path d="M700,670 L700,735" stroke="#526581" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+<rect x="1070" y="735" width="260" height="90" rx="13" fill="#e8f7f4" stroke="#25877a" stroke-width="2"/>
+<text x="1200.0" y="764" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#172b4d">DOKUMENTASI</text>
+<text x="1200.0" y="791" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#172b4d">Laporan dan pembentangan</text>
+<path d="M1010,780 L1070,780" stroke="#526581" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+</svg>

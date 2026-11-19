@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+  <title>Seni Bina Sistem Cyber Clash</title>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#334155"/></marker>
+    <style>
+      .title{font:700 32px Arial;fill:#0f172a}.head{font:700 23px Arial;fill:#0f172a;text-anchor:middle}.text{font:500 19px Arial;fill:#334155;text-anchor:middle}.client{fill:#dbeafe;stroke:#2563eb;stroke-width:3}.server{fill:#dcfce7;stroke:#16a34a;stroke-width:3}.data{fill:#fef3c7;stroke:#d97706;stroke-width:3}.line{stroke:#334155;stroke-width:4;fill:none;marker-end:url(#arrow)}.label{font:600 18px Arial;fill:#334155;text-anchor:middle}
+    </style>
+  </defs>
+  <rect width="1400" height="900" fill="#fff"/>
+  <text x="700" y="55" class="title" text-anchor="middle">SENI BINA SISTEM CYBER CLASH</text>
+  <rect x="70" y="190" width="300" height="300" rx="18" class="client"/>
+  <text x="220" y="235" class="head">Godot Client 1</text><text x="220" y="285" class="text">Red Team</text><text x="220" y="335" class="text">Paparan peribadi</text><text x="220" y="385" class="text">Tindakan serangan</text><text x="220" y="435" class="text">WebSocket</text>
+  <rect x="1030" y="190" width="300" height="300" rx="18" class="client"/>
+  <text x="1180" y="235" class="head">Godot Client 2</text><text x="1180" y="285" class="text">Blue Team</text><text x="1180" y="335" class="text">Paparan dibenarkan</text><text x="1180" y="385" class="text">Siasatan dan pertahanan</text><text x="1180" y="435" class="text">WebSocket</text>
+  <rect x="485" y="125" width="430" height="450" rx="18" class="server"/>
+  <text x="700" y="170" class="head">Node.js Game Server</text><text x="700" y="235" class="text">Lobby Manager</text><text x="700" y="285" class="text">Match Manager</text><text x="700" y="335" class="text">Scenario Registry</text><text x="700" y="385" class="text">Action Validation</text><text x="700" y="435" class="text">Score Manager</text><text x="700" y="485" class="text">Hidden Scenario State</text><text x="700" y="535" class="text">Authoritative Resolution</text>
+  <rect x="485" y="680" width="430" height="120" rx="18" class="data"/>
+  <text x="700" y="730" class="head">Scenario Catalogue</text><text x="700" y="770" class="text">JSON content dan JavaScript modules</text>
+  <path d="M370 340H485" class="line"/><path d="M1030 340H915" class="line"/><path d="M700 575V680" class="line"/>
+  <text x="430" y="320" class="label">WebSocket JSON</text><text x="970" y="320" class="label">WebSocket JSON</text><text x="730" y="635" class="label">Baca senario</text>
+</svg>

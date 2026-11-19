@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="1600"
+   height="900"
+   viewBox="0 0 1600 900"
+   version="1.1"
+   id="svg45"
+   sodipodi:docname="application-flow-horizontal.svg"
+   inkscape:version="1.4.4 (dcaf3e7, 2026-05-05)"
+   inkscape:export-filename="application-flow-horizontal"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview45"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.85888889"
+     inkscape:cx="800.45278"
+     inkscape:cy="450"
+     inkscape:window-width="1920"
+     inkscape:window-height="991"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg45" />
+  <title
+     id="title1">Carta Alir Cara Sistem Berfungsi</title>
+  <defs
+     id="defs1">
+    <marker
+       id="arrow"
+       markerWidth="12"
+       markerHeight="12"
+       refX="10"
+       refY="6"
+       orient="auto">
+      <path
+         d="M0 0L12 6L0 12Z"
+         fill="#334155"
+         id="path1" />
+    </marker>
+    <style
+       id="style1">
+      .title{font:700 32px Arial;fill:#172554}
+      .head{font:700 18px Arial;fill:#172554;text-anchor:middle}
+      .body{font:400 15px Arial;fill:#334155;text-anchor:middle}
+      .start{fill:#e0e7ff;stroke:#4f46e5;stroke-width:3}
+      .process{fill:#dbeafe;stroke:#2563eb;stroke-width:3}
+      .red{fill:#fee2e2;stroke:#dc2626;stroke-width:3}
+      .blue{fill:#dbeafe;stroke:#2563eb;stroke-width:3}
+      .server{fill:#dcfce7;stroke:#16a34a;stroke-width:3}
+      .decision{fill:#fef3c7;stroke:#d97706;stroke-width:3}
+      .end{fill:#e0e7ff;stroke:#4f46e5;stroke-width:3}
+      .line{fill:none;stroke:#334155;stroke-width:4;marker-end:url(#arrow)}
+      .label{font:600 16px Arial;fill:#92400e}
+    </style>
+  </defs>
+  <rect
+     width="1600"
+     height="900"
+     fill="#ffffff"
+     id="rect1" />
+  <text
+     x="800"
+     y="52"
+     class="title"
+     text-anchor="middle"
+     id="text1">CARTA ALIR CARA SISTEM BERFUNGSI</text>
+  <!-- Row 1: match setup -->
+  <rect
+     x="35"
+     y="130"
+     width="125"
+     height="80"
+     rx="40"
+     class="start"
+     id="rect2" />
+  <text
+     x="97"
+     y="178"
+     class="head"
+     id="text2">MULA</text>
+  <rect
+     x="190"
+     y="115"
+     width="185"
+     height="110"
+     rx="14"
+     class="process"
+     id="rect3" />
+  <text
+     x="282"
+     y="158"
+     class="head"
+     id="text3">Sertai lobby</text>
+  <text
+     x="282"
+     y="188"
+     class="body"
+     id="text4">Host, match</text>
+  <text
+     x="282"
+     y="208"
+     class="body"
+     id="text5">atau auto</text>
+  <rect
+     x="405"
+     y="115"
+     width="185"
+     height="110"
+     rx="14"
+     class="process"
+     id="rect5" />
+  <text
+     x="497"
+     y="158"
+     class="head"
+     id="text6">Dua pemain</text>
+  <text
+     x="497"
+     y="188"
+     class="body"
+     id="text7">disambungkan</text>
+  <rect
+     x="620"
+     y="115"
+     width="205"
+     height="110"
+     rx="14"
+     class="server"
+     id="rect7" />
+  <text
+     x="722"
+     y="153"
+     class="head"
+     id="text8">Server menetapkan</text>
+  <text
+     x="722"
+     y="181"
+     class="head"
+     id="text9">peranan</text>
+  <text
+     x="722"
+     y="210"
+     class="body"
+     id="text10">Red Team dan Blue Team</text>
+  <rect
+     x="855"
+     y="115"
+     width="205"
+     height="110"
+     rx="14"
+     class="server"
+     id="rect10" />
+  <text
+     x="957"
+     y="153"
+     class="head"
+     id="text11">Server menjana</text>
+  <text
+     x="957"
+     y="181"
+     class="head"
+     id="text12">tiga senario unik</text>
+  <text
+     x="957"
+     y="210"
+     class="body"
+     id="text13">bagi setiap match</text>
+  <!-- Row 2: player actions -->
+  <rect
+     x="1085"
+     y="315"
+     width="220"
+     height="110"
+     rx="14"
+     class="red"
+     id="rect13" />
+  <text
+     x="1195"
+     y="353"
+     class="head"
+     id="text14">Red Team menerima</text>
+  <text
+     x="1195"
+     y="381"
+     class="head"
+     id="text15">maklumat peribadi</text>
+  <text
+     x="1195"
+     y="410"
+     class="body"
+     id="text16">senario semasa</text>
+  <rect
+     x="840"
+     y="315"
+     width="220"
+     height="110"
+     rx="14"
+     class="red"
+     id="rect16" />
+  <text
+     x="950"
+     y="353"
+     class="head"
+     id="text17">Red Team memilih</text>
+  <text
+     x="950"
+     y="381"
+     class="head"
+     id="text18">tindakan</text>
+  <text
+     x="950"
+     y="410"
+     class="body"
+     id="text19">serangan atau Do Nothing</text>
+  <rect
+     x="595"
+     y="315"
+     width="220"
+     height="110"
+     rx="14"
+     class="server"
+     id="rect19" />
+  <text
+     x="705"
+     y="353"
+     class="head"
+     id="text20">Server mengesahkan</text>
+  <text
+     x="705"
+     y="381"
+     class="head"
+     id="text21">tindakan</text>
+  <text
+     x="705"
+     y="410"
+     class="body"
+     id="text22">kemas kini hidden state</text>
+  <rect
+     x="350"
+     y="315"
+     width="220"
+     height="110"
+     rx="14"
+     class="blue"
+     id="rect22" />
+  <text
+     x="460"
+     y="353"
+     class="head"
+     id="text23">Blue Team menerima</text>
+  <text
+     x="460"
+     y="381"
+     class="head"
+     id="text24">maklumat dibenarkan</text>
+  <text
+     x="460"
+     y="410"
+     class="body"
+     id="text25">tanpa hidden state</text>
+  <rect
+     x="105"
+     y="315"
+     width="220"
+     height="110"
+     rx="14"
+     class="blue"
+     id="rect25" />
+  <text
+     x="215"
+     y="353"
+     class="head"
+     id="text26">Blue Team menjalankan</text>
+  <text
+     x="215"
+     y="381"
+     class="head"
+     id="text27">siasatan</text>
+  <text
+     x="215"
+     y="410"
+     class="body"
+     id="text28">mendapatkan bukti</text>
+  <!-- Row 3: resolution -->
+  <rect
+     x="105"
+     y="555"
+     width="220"
+     height="110"
+     rx="14"
+     class="blue"
+     id="rect28" />
+  <text
+     x="215"
+     y="593"
+     class="head"
+     id="text29">Blue Team memilih</text>
+  <text
+     x="215"
+     y="621"
+     class="head"
+     id="text30">tindakan pertahanan</text>
+  <text
+     x="215"
+     y="650"
+     class="body"
+     id="text31">Report, block atau ignore</text>
+  <rect
+     x="365"
+     y="555"
+     width="220"
+     height="110"
+     rx="14"
+     class="server"
+     id="rect31" />
+  <text
+     x="475"
+     y="593"
+     class="head"
+     id="text32">Server menyelesaikan</text>
+  <text
+     x="475"
+     y="621"
+     class="head"
+     id="text33">senario</text>
+  <text
+     x="475"
+     y="650"
+     class="body"
+     id="text34">tentukan keputusan</text>
+  <rect
+     x="625"
+     y="555"
+     width="220"
+     height="110"
+     rx="14"
+     class="server"
+     id="rect34" />
+  <text
+     x="735"
+     y="593"
+     class="head"
+     id="text35">Skor dikemas kini</text>
+  <text
+     x="735"
+     y="621"
+     class="body"
+     id="text36">Red Team dan Blue Team</text>
+  <text
+     x="735"
+     y="650"
+     class="body"
+     id="text37">menerima ringkasan</text>
+  <polygon
+     points="1030,535 1160,610 1030,685 900,610"
+     class="decision"
+     id="polygon37" />
+  <text
+     x="1030"
+     y="603"
+     class="head"
+     id="text38">Adakah pusingan</text>
+  <text
+     x="1030"
+     y="630"
+     class="head"
+     id="text39">seterusnya?</text>
+  <rect
+     x="1240"
+     y="555"
+     width="250"
+     height="110"
+     rx="14"
+     class="end"
+     id="rect39" />
+  <text
+     x="1365"
+     y="593"
+     class="head"
+     id="text40">Paparkan keputusan</text>
+  <text
+     x="1365"
+     y="621"
+     class="head"
+     id="text41">perlawanan</text>
+  <text
+     x="1365"
+     y="650"
+     class="body"
+     id="text42">TAMAT</text>
+  <!-- Flow connectors -->
+  <path
+     d="m 160,170 h 30 m 185,0 h 30 m 185,0 h 30 m 205,0 h 30 m 204.458,-0.88616 135.0582,-0.4075 L 1195,270 v 45 m -110,55 h -25 m -220,0 h -25 m -220,0 h -25 m -220,0 h -25 m -110,55 v 130 m 110,55 h 40 m 220,0 h 40 m 220,0 h 55"
+     class="line"
+     id="path42"
+     sodipodi:nodetypes="cccccccccccccccccccccccccccc" />
+  <path
+     d="M1160 610H1240"
+     class="line"
+     id="path43" />
+  <path
+     d="m 1028.84,533.84 v -58.01 h 501.42 V 260.69 c -111.91,1.25 -212.1871,-0.54859 -324.0971,0.001"
+     class="line"
+     id="path44"
+     sodipodi:nodetypes="ccccc" />
+  <text
+     x="1151.7141"
+     y="585.34283"
+     class="label"
+     id="text44"
+     style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:16px;line-height:normal;font-family:Arial">Tidak</text>
+  <text
+     x="1060"
+     y="255"
+     class="label"
+     id="text45"
+     style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:16px;line-height:normal;font-family:Arial;white-space:pre;inline-size:113.254;display:inline"
+     transform="translate(-137.3868,244.50194)"
+     xml:space="preserve"><tspan
+       x="1060"
+       y="255"
+       id="tspan1">Ya: senario </tspan><tspan
+       x="1060"
+       y="275.00002"
+       id="tspan2">seterusnya</tspan></text>
+</svg>

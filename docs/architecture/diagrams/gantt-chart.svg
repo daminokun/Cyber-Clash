@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="850" viewBox="0 0 1500 850">
+  <title>Carta Gantt Cyber Clash</title>
+  <style>
+    .title{font:700 32px Arial;fill:#0f172a}.head{font:700 19px Arial;fill:#fff;text-anchor:middle}.text{font:500 18px Arial;fill:#0f172a}.grid{stroke:#94a3b8;stroke-width:1}.bar1{fill:#2563eb}.bar2{fill:#16a34a}.bar3{fill:#d97706}
+  </style>
+  <rect width="1500" height="850" fill="#fff"/><text x="750" y="48" class="title" text-anchor="middle">CARTA GANTT PROJEK CYBER CLASH</text>
+  <rect x="40" y="85" width="440" height="55" fill="#334155"/><text x="260" y="120" class="head">Aktiviti</text>
+  <rect x="480" y="85" width="480" height="55" fill="#334155"/><text x="720" y="120" class="head">PTA 1</text>
+  <rect x="960" y="85" width="480" height="55" fill="#334155"/><text x="1200" y="120" class="head">PTA 2</text>
+  <g class="grid"><path d="M40 140H1440M40 200H1440M40 260H1440M40 320H1440M40 380H1440M40 440H1440M40 500H1440M40 560H1440M40 620H1440M40 680H1440M40 740H1440M40 800H1440M480 85V800M600 85V800M720 85V800M840 85V800M960 85V800M1080 85V800M1200 85V800M1320 85V800M1440 85V800"/></g>
+  <text x="60" y="178" class="text">Analisis masalah</text><text x="60" y="238" class="text">Kajian literatur</text><text x="60" y="298" class="text">Reka bentuk sistem</text><text x="60" y="358" class="text">Pembangunan server</text><text x="60" y="418" class="text">Pembangunan client</text><text x="60" y="478" class="text">Integrasi sistem</text><text x="60" y="538" class="text">Pengujian</text><text x="60" y="598" class="text">Dokumentasi</text><text x="60" y="658" class="text">Pembentangan</text>
+  <rect x="500" y="153" width="220" height="32" rx="8" class="bar1"/><rect x="500" y="213" width="340" height="32" rx="8" class="bar1"/><rect x="620" y="273" width="340" height="32" rx="8" class="bar1"/>
+  <rect x="980" y="333" width="340" height="32" rx="8" class="bar2"/><rect x="980" y="393" width="340" height="32" rx="8" class="bar2"/><rect x="980" y="453" width="220" height="32" rx="8" class="bar2"/><rect x="1080" y="513" width="220" height="32" rx="8" class="bar2"/>
+  <rect x="840" y="573" width="460" height="32" rx="8" class="bar3"/><rect x="1200" y="633" width="180" height="32" rx="8" class="bar3"/>
+  <text x="480" y="785" class="text">Legenda: </text><rect x="585" y="762" width="22" height="22" class="bar1"/><text x="620" y="782" class="text">Analisis dan reka bentuk</text><rect x="850" y="762" width="22" height="22" class="bar2"/><text x="885" y="782" class="text">Pembangunan dan pengujian</text><rect x="1190" y="762" width="22" height="22" class="bar3"/><text x="1225" y="782" class="text">Dokumentasi</text>
+</svg>
