@@ -1,91 +1,64 @@
 # Cyber Clash
 
-Cyber Clash is a multiplayer cybersecurity simulation game for IT students,
-developed as a Final Year Project (FYP).
+Cyber Clash is a web-based cybersecurity simulation game developed as a Final Year Project (FYP) for IT students.
 
-The game is designed for IT students to learn basic cybersecurity concepts
-through simple scenarios and player-versus-player gameplay.
+The project uses Godot as the game engine and JavaScript with Node.js for the multiplayer server.
 
 ## Project Title
 
-**PEMBANGUNAN PERMAINAN SIMULASI KESELAMATAN SIBER PvP BERASASKAN WEB UNTUK PELAJAR IT MENGGUNAKAN GODOT DAN NODE.JS**
+**PEMBANGUNAN PERMAINAN SIMULASI KESELAMATAN SIBER BERASASKAN WEB UNTUK MENGGUNAKAN GODOT (GAME ENGINE) DAN PROGRAMMING JAVASCRIPT UNTUK PELAJAR IT**
 
 ## Features
 
-* Multiplayer PvP
-* 42 cybersecurity scenarios across 29 categories
-* Clear gameplay for IT students
-* Dynamic scenario generation with three random scenarios per match
-* Player scoring system
-* Real-time multiplayer
+- Multiplayer gameplay
+- Cybersecurity scenarios for IT students
+- Red Team and Blue Team roles
+- Dynamic scenario generation
+- Player scoring system
+- Real-time communication through WebSocket
 
 ## Technologies
 
-* Godot 4
-* Node.js
-* WebSocket
-* JSON
-* GitHub Actions
+- Godot 4
+- JavaScript
+- Node.js
+- WebSocket
+- JSON
+- GitHub Actions
 
 ## Project Structure
 
 ```text
 cyber-clash/
-├── client/              Godot project (scenes, scripts, branding)
-├── server/              Node.js authoritative server, scenario catalogue, tests
+├── client/                         Godot game client
+├── server/                         Node.js WebSocket server
 ├── docs/
-│   ├── GDD/             Canonical Game Design Document and translations
-│   ├── deliverables/    Presentation and project report
-│   └── diagrams/        Architecture, activity and flow diagrams
-└── .github/             Repository instructions and CI workflow
+│   ├── architecture/
+│   │   ├── GDD/                    Game Design Documents and translations
+│   │   └── diagrams/               System, gameplay and design diagrams
+│   ├── development/
+│   │   ├── changelog/              Development change records
+│   │   ├── logbook/                Student project logbooks
+│   │   └── task-allocation/        Project task allocation
+│   ├── presentations/              Presentation deliverables
+│   ├── references/                 Research references
+│   └── reports/                    FYP report deliverables
+└── .github/                        Repository instructions and CI workflow
 ```
 
-### client
+## Client
 
-The Godot client prototype. Open `client/project.godot` in Godot 4 after
-starting the server from the `server` directory.
+The Godot client prototype is located in `client/`. Open `client/project.godot` with Godot 4 to work on the game client.
 
-- `client/main.gd` is the scene controller and protocol router.
-- `client/scripts/net_client.gd` owns the WebSocket transport.
-- `client/scripts/menu_screen.gd`, `lobby_screen.gd` and `game_screen.gd` build
-  the three screens and expose signals to the controller.
-- `client/scripts/ui_factory.gd` holds the palette and shared widgets.
+## Server
 
-The client branding asset is stored at
-`client/assets/branding/cyber_clash_logo.png` and is used on the main menu and
-lobby. The in-match header uses the wordmark only so the detailed emblem stays
-legible at small sizes. The window runs at 1280 x 720 with a stretch/expand
-canvas. The branded palette can be rolled back by setting
-`USE_BRANDED_PALETTE` to `false` in `client/main.gd`.
+The multiplayer server is located in `server/`. Run `npm install` and `npm start` from the `server/` directory. Refer to [server/README.md](server/README.md) for server setup and technical details.
 
-### server
+## Documentation
 
-The multiplayer server and related backend files. Run `npm install` and
-`npm start` from `server/`; see [server/README.md](server/README.md) for the
-protocol, scenario rules and scoring.
+The [documentation index](docs/README.md) provides links to the Game Design Document, diagrams, report and presentation.
 
-### docs
-
-Contains project documentation, diagrams and other materials. The canonical
-Game Design Document is [docs/GDD/Game-Design-Document.md](docs/GDD/Game-Design-Document.md);
-the Malay translation and the simplified summaries are derived from it.
-Presentation and report deliverables are under `docs/deliverables/`.
-
-## Development
-
-This project is currently under development.
-
-See [CHANGELOG.md](CHANGELOG.md) for committed changes and the project version
-history.
-
-The development process will include:
-
-1. Game interface
-2. Cybersecurity scenarios
-3. Scoring system
-4. Multiplayer system
-5. Dynamic scenario generation
-6. Testing
+See [CHANGELOG.md](CHANGELOG.md) for the project change history and version information.
 
 ## FYP Project
 
