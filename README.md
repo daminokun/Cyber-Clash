@@ -37,11 +37,8 @@ cyber-clash/
 │   │   ├── GDD/                    Game Design Documents and translations
 │   │   └── diagrams/               System, gameplay and design diagrams
 │   ├── development/
-│   │   ├── changelog/              Development change records
 │   │   ├── logbook/                Student project logbooks
-│   │   └── task-allocation/        Project task allocation
 │   ├── presentations/              Presentation deliverables
-│   ├── references/                 Research references
 │   └── reports/                    FYP report deliverables
 └── .github/                        Repository instructions and CI workflow
 ```
