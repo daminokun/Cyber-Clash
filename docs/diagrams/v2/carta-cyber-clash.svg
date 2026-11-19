@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="1100"
+   height="1420"
+   viewBox="0 0 1100 1420"
+   version="1.1"
+   id="svg35"
+   sodipodi:docname="carta-cyber-clash.svg"
+   inkscape:version="1.4.4 (dcaf3e7, 2026-05-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview35"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.76985006"
+     inkscape:cx="512.43745"
+     inkscape:cy="842.37183"
+     inkscape:window-width="1920"
+     inkscape:window-height="991"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg35" />
+  <defs
+     id="defs1">
+    <marker
+       id="arrow"
+       markerWidth="10"
+       markerHeight="10"
+       refX="8"
+       refY="3"
+       orient="auto">
+      <path
+         d="M0,0 L0,6 L9,3 z"
+         fill="#475569"
+         id="path1" />
+    </marker>
+    <style
+       id="style1">
+      .title { font: bold 30px Arial, sans-serif; fill: #172554; }
+      .subtitle { font: 16px Arial, sans-serif; fill: #475569; }
+      .heading { font: bold 19px Arial, sans-serif; fill: #172554; }
+      .label { font: 16px Arial, sans-serif; fill: #1e293b; }
+      .small { font: 14px Arial, sans-serif; fill: #475569; }
+      .node { fill: #eff6ff; stroke: #3b82f6; stroke-width: 2; }
+      .server { fill: #f1f5f9; stroke: #64748b; stroke-width: 2; }
+      .hacker { fill: #fff1f2; stroke: #e11d48; stroke-width: 2; }
+      .target { fill: #ecfdf5; stroke: #059669; stroke-width: 2; }
+      .result { fill: #fefce8; stroke: #ca8a04; stroke-width: 2; }
+      .line { fill: none; stroke: #475569; stroke-width: 2.5; marker-end: url(#arrow); }
+      .dash { fill: none; stroke: #64748b; stroke-width: 2; stroke-dasharray: 7 6; }
+    </style>
+  </defs>
+  <rect
+     width="1100"
+     height="1420"
+     fill="#ffffff"
+     id="rect1" />
+  <text
+     x="550"
+     y="55"
+     text-anchor="middle"
+     class="title"
+     id="text1">Gambaran Keseluruhan Konsep Sistem Permainan</text>
+  <text
+     x="550"
+     y="83"
+     text-anchor="middle"
+     class="subtitle"
+     id="text2">Cyber Clash – The Heist &amp; Defense Simulation</text>
+  <!-- Start -->
+  <rect
+     x="400"
+     y="115"
+     width="300"
+     height="55"
+     rx="27"
+     class="node"
+     id="rect2" />
+  <text
+     x="550"
+     y="149"
+     text-anchor="middle"
+     class="heading"
+     id="text3">Mula</text>
+  <path
+     d="M550 170 V205"
+     class="line"
+     id="path3" />
+  <!-- Access -->
+  <rect
+     x="350"
+     y="205"
+     width="400"
+     height="75"
+     rx="12"
+     class="node"
+     id="rect3" />
+  <text
+     x="550"
+     y="235"
+     text-anchor="middle"
+     class="heading"
+     id="text4">Akses Permainan</text>
+  <text
+     x="550"
+     y="260"
+     text-anchor="middle"
+     class="small"
+     id="text5">Godot Engine Client</text>
+  <path
+     d="M550 280 V315"
+     class="line"
+     id="path5" />
+  <!-- Connection -->
+  <rect
+     x="300"
+     y="315"
+     width="500"
+     height="90"
+     rx="12"
+     class="server"
+     id="rect5" />
+  <text
+     x="550"
+     y="348"
+     text-anchor="middle"
+     class="heading"
+     id="text6">Sambungan ke Server</text>
+  <text
+     x="550"
+     y="375"
+     text-anchor="middle"
+     class="label"
+     id="text7">Node.js Server melalui WebSocket</text>
+  <text
+     x="550"
+     y="394"
+     text-anchor="middle"
+     class="small"
+     id="text8">Pertukaran data menggunakan format JSON</text>
+  <path
+     d="M550 405 V440"
+     class="line"
+     id="path8" />
+  <!-- Mode -->
+  <polygon
+     points="550,440 700,500 550,560 400,500"
+     fill="#f8fafc"
+     stroke="#64748b"
+     stroke-width="2"
+     id="polygon8" />
+  <text
+     x="550"
+     y="495"
+     text-anchor="middle"
+     class="heading"
+     id="text9">Pilih Mod</text>
+  <text
+     x="550"
+     y="518"
+     text-anchor="middle"
+     class="small"
+     id="text10">Permainan</text>
+  <!-- PvP and PvE -->
+  <path
+     d="M400 500 H250 V600"
+     class="line"
+     id="path10" />
+  <path
+     d="M700 500 H850 V600"
+     class="line"
+     id="path11" />
+  <rect
+     x="100"
+     y="562.93402"
+     width="300"
+     height="75"
+     rx="12"
+     class="node"
+     id="rect11" />
+  <text
+     x="250"
+     y="594.93402"
+     text-anchor="middle"
+     class="heading"
+     id="text11"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:19px;line-height:normal;font-family:Arial, sans-serif">Mod PvP</text>
+  <text
+     x="250"
+     y="617.93402"
+     text-anchor="middle"
+     class="small"
+     id="text12"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:normal;font-family:Arial, sans-serif">Dua pemain dalam satu sesi</text>
+  <rect
+     x="700"
+     y="562.93402"
+     width="300"
+     height="75"
+     rx="12"
+     class="node"
+     id="rect12" />
+  <text
+     x="850"
+     y="594.93402"
+     text-anchor="middle"
+     class="heading"
+     id="text13"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:19px;line-height:normal;font-family:Arial, sans-serif">Mod PvE</text>
+  <text
+     x="850"
+     y="617.93402"
+     text-anchor="middle"
+     class="small"
+     id="text14"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:normal;font-family:Arial, sans-serif">Seorang pemain menentang sistem</text>
+  <path
+     d="m 256,638.26003 v 35 h 300 v 35"
+     class="line"
+     id="path14" />
+  <path
+     d="m 856,638.26003 v 35 H 556 v 35"
+     class="line"
+     id="path15" />
+  <!-- Role assignment -->
+  <rect
+     x="361.022"
+     y="708.26001"
+     width="400"
+     height="75"
+     rx="12"
+     class="server"
+     id="rect15" />
+  <text
+     x="561.02197"
+     y="738.26001"
+     text-anchor="middle"
+     class="heading"
+     id="text15"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:19px;line-height:normal;font-family:Arial, sans-serif">Penentuan Peranan Secara Rawak</text>
+  <text
+     x="561.02197"
+     y="763.26001"
+     text-anchor="middle"
+     class="small"
+     id="text16"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:normal;font-family:Arial, sans-serif">Hacker atau Target</text>
+  <path
+     d="m 561.02199,783.26003 v 35"
+     class="line"
+     id="path16" />
+  <!-- Roles -->
+  <path
+     d="m 561.02199,818.26003 h -280 v 45"
+     class="line"
+     id="path17" />
+  <path
+     d="m 561.02199,818.26003 h 280 v 45"
+     class="line"
+     id="path18" />
+  <rect
+     x="81.021996"
+     y="863.26001"
+     width="400"
+     height="205"
+     rx="12"
+     class="hacker"
+     id="rect18" />
+  <text
+     x="281.022"
+     y="898.26001"
+     text-anchor="middle"
+     class="heading"
+     id="text18"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:19px;line-height:normal;font-family:Arial, sans-serif">Peranan Hacker</text>
+  <text
+     x="281.022"
+     y="933.26001"
+     text-anchor="middle"
+     class="label"
+     id="text19"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:normal;font-family:Arial, sans-serif">1. Reconnaissance</text>
+  <text
+     x="281.022"
+     y="963.26001"
+     text-anchor="middle"
+     class="label"
+     id="text20"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:normal;font-family:Arial, sans-serif">2. Scanning</text>
+  <text
+     x="281.022"
+     y="993.26001"
+     text-anchor="middle"
+     class="label"
+     id="text21"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:normal;font-family:Arial, sans-serif">3. Gaining Access</text>
+  <text
+     x="281.022"
+     y="1023.26"
+     text-anchor="middle"
+     class="label"
+     id="text22"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:normal;font-family:Arial, sans-serif">4. Maintaining Access</text>
+  <text
+     x="281.022"
+     y="1053.26"
+     text-anchor="middle"
+     class="label"
+     id="text23"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:normal;font-family:Arial, sans-serif">5. Covering Tracks</text>
+  <rect
+     x="641.02197"
+     y="863.26001"
+     width="400"
+     height="205"
+     rx="12"
+     class="target"
+     id="rect23" />
+  <text
+     x="841.02197"
+     y="898.26001"
+     text-anchor="middle"
+     class="heading"
+     id="text24"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:19px;line-height:normal;font-family:Arial, sans-serif">Peranan Target</text>
+  <text
+     x="841.02197"
+     y="933.26001"
+     text-anchor="middle"
+     class="label"
+     id="text25"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:normal;font-family:Arial, sans-serif">1. Menerima tugasan harian</text>
+  <text
+     x="841.02197"
+     y="963.26001"
+     text-anchor="middle"
+     class="label"
+     id="text26"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:normal;font-family:Arial, sans-serif">2. Mengurus notifikasi</text>
+  <text
+     x="841.02197"
+     y="993.26001"
+     text-anchor="middle"
+     class="label"
+     id="text27"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:normal;font-family:Arial, sans-serif">3. Memeriksa ancaman</text>
+  <text
+     x="841.02197"
+     y="1023.26"
+     text-anchor="middle"
+     class="label"
+     id="text28"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:normal;font-family:Arial, sans-serif">4. Menggunakan alatan keselamatan</text>
+  <text
+     x="841.02197"
+     y="1053.26"
+     text-anchor="middle"
+     class="label"
+     id="text29"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:normal;font-family:Arial, sans-serif">5. Menyekat tindakan serangan</text>
+  <!-- Both roles to server -->
+  <path
+     d="m 281.02199,1068.26 v 24 l 279.15203,0.3247 -0.12625,34.1854"
+     class="line"
+     id="path29"
+     sodipodi:nodetypes="cccc" />
+  <path
+     d="m 841.02199,1068.26 -0.32474,25.062 -280.28706,-0.3247 -0.0377,33.4481"
+     class="line"
+     id="path30"
+     sodipodi:nodetypes="cccc" />
+  <rect
+     x="311.022"
+     y="1126.26"
+     width="500"
+     height="95"
+     rx="12"
+     class="server"
+     id="rect30" />
+  <text
+     x="561.02197"
+     y="1159.26"
+     text-anchor="middle"
+     class="heading"
+     id="text30"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:19px;line-height:normal;font-family:Arial, sans-serif">Server Memproses Permainan</text>
+  <text
+     x="561.02197"
+     y="1186.26"
+     text-anchor="middle"
+     class="small"
+     id="text31"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:normal;font-family:Arial, sans-serif">Mengurus tindakan, objektif, status dan skor</text>
+  <text
+     x="561.02197"
+     y="1206.26"
+     text-anchor="middle"
+     class="small"
+     id="text32"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:normal;font-family:Arial, sans-serif">Menentukan keputusan perlawanan</text>
+  <path
+     d="m 561.02199,1221.26 v 30"
+     class="line"
+     id="path32" />
+  <!-- Result -->
+  <rect
+     x="361.022"
+     y="1251.26"
+     width="400"
+     height="75"
+     rx="12"
+     class="result"
+     id="rect32" />
+  <text
+     x="561.02197"
+     y="1281.26"
+     text-anchor="middle"
+     class="heading"
+     id="text33"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:19px;line-height:normal;font-family:Arial, sans-serif">Keputusan Perlawanan</text>
+  <text
+     x="561.02197"
+     y="1306.26"
+     text-anchor="middle"
+     class="small"
+     id="text34"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:normal;font-family:Arial, sans-serif">Skor, gred dan laporan pasca-perlawanan</text>
+  <path
+     d="m 561.02199,1326.26 v 25"
+     class="line"
+     id="path34" />
+  <rect
+     x="436.022"
+     y="1351.26"
+     width="250"
+     height="40"
+     rx="20"
+     class="node"
+     id="rect34" />
+  <text
+     x="561.02197"
+     y="1377.26"
+     text-anchor="middle"
+     class="heading"
+     id="text35"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:19px;line-height:normal;font-family:Arial, sans-serif">Tamat</text>
+</svg>
