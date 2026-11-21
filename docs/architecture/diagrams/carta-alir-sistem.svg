@@ -23,9 +23,9 @@
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
-     inkscape:zoom="0.89666667"
-     inkscape:cx="799.62825"
-     inkscape:cy="450"
+     inkscape:zoom="0.63403908"
+     inkscape:cx="622.20139"
+     inkscape:cy="313.07218"
      inkscape:window-width="1920"
      inkscape:window-height="1009"
      inkscape:window-x="-8"
@@ -61,11 +61,26 @@
        refY="5"
        markerWidth="7"
        markerHeight="7"
-       orient="auto-start-reverse">
+       orient="auto-start-reverse"
+       preserveAspectRatio="xMidYMid">
       <path
          d="M 0 1 L 10 5 L 0 9 z"
          fill="#334155"
          id="path1" />
+    </marker>
+    <marker
+       id="arrow-4"
+       viewBox="0 0 10 10"
+       refX="9"
+       refY="5"
+       markerWidth="7"
+       markerHeight="7"
+       orient="auto-start-reverse"
+       preserveAspectRatio="xMidYMid">
+      <path
+         d="M 0,1 10,5 0,9 Z"
+         fill="#334155"
+         id="path1-5" />
     </marker>
   </defs>
   <rect
@@ -220,9 +235,9 @@
      marker-end="url(#arrow)"
      id="line15" />
   <line
-     x1="875"
+     x1="883.92194"
      y1="805"
-     x2="775"
+     x2="775.18353"
      y2="805"
      class="line"
      marker-end="url(#arrow)"
@@ -239,11 +254,6 @@
      y2="865"
      class="line"
      id="line17" />
-  <polyline
-     points="650,865 360,865 360,835"
-     class="line"
-     marker-end="url(#arrow)"
-     id="polyline17" />
   <rect
      x="40"
      y="135"
@@ -522,19 +532,19 @@
      class="text-left"
      id="text47">5. Covering Tracks (Padam Log &amp; Jejak)</text>
   <rect
-     x="440"
-     y="440"
-     width="360"
-     height="165"
-     rx="8"
-     ry="8"
+     x="439.88794"
+     y="439.88794"
+     width="307.80774"
+     height="165.22409"
+     rx="6.8401723"
+     ry="8.0108652"
      class="target"
      id="rect47" />
   <text
-     x="620"
+     x="597.69519"
      y="465"
      class="text-bold"
-     style="fill:#1e40af;"
+     style="fill:#1e40af"
      id="text48">Peranan: Target (Pertahanan &amp; Tugas)</text>
   <text
      x="460"
@@ -695,8 +705,8 @@
      class="label"
      id="text67">Menu Utama</text>
   <rect
-     x="290"
-     y="775"
+     x="203.73209"
+     y="832.48621"
      width="140"
      height="60"
      rx="30"
@@ -704,8 +714,17 @@
      class="terminator"
      id="rect67" />
   <text
-     x="360"
-     y="805"
+     x="274.52069"
+     y="862.88049"
      class="text-bold"
      id="text68">TAMAT</text>
+  <line
+     x1="650.69873"
+     y1="863.30756"
+     x2="347.3316"
+     y2="863.30756"
+     class="line"
+     marker-end="url(#arrow-4)"
+     id="line16-1"
+     style="fill:none;stroke:#334155;stroke-width:3.125;stroke-dasharray:none;marker-end:url(#arrow-4)" />
 </svg>
