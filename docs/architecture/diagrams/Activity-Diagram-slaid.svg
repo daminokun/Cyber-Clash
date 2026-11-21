@@ -1,202 +1,612 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
-  <defs>
-    <style>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 1920 1080"
+   width="1920"
+   height="1080"
+   version="1.1"
+   id="svg50"
+   sodipodi:docname="Activity-Diagram-slaid.svg"
+   inkscape:export-filename="Activity-Diagram-slaid.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="1.4.4 (dcaf3e7, 2026-05-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview50"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.74722222"
+     inkscape:cx="959.5539"
+     inkscape:cy="540"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg50" />
+  <defs
+     id="defs1">
+    <style
+       id="style1">
       .bg { fill: #ffffff; }
-      .lane-header-hacker { fill: #fef2f2; stroke: #334155; stroke-width: 2.5; }
-      .lane-header-server { fill: #f1f5f9; stroke: #334155; stroke-width: 2.5; }
-      .lane-header-target { fill: #eff6ff; stroke: #334155; stroke-width: 2.5; }
-      .lane-body { fill: none; stroke: #334155; stroke-width: 2.5; }
-      .activity-hacker { fill: #fff1f2; stroke: #be123c; stroke-width: 2.5; }
-      .activity-server { fill: #f8fafc; stroke: #0f172a; stroke-width: 2.5; }
-      .activity-target { fill: #eff6ff; stroke: #1d4ed8; stroke-width: 2.5; }
-      .decision { fill: #fefce8; stroke: #a16207; stroke-width: 2.5; }
+      .lane-header-hacker { fill: #fef2f2; stroke: #1e293b; stroke-width: 3.5; }
+      .lane-header-server { fill: #f1f5f9; stroke: #1e293b; stroke-width: 3.5; }
+      .lane-header-target { fill: #eff6ff; stroke: #1e293b; stroke-width: 3.5; }
+      .lane-body { fill: none; stroke: #1e293b; stroke-width: 3.5; }
+      .activity-hacker { fill: #fff1f2; stroke: #be123c; stroke-width: 3.5; }
+      .activity-server { fill: #f8fafc; stroke: #0f172a; stroke-width: 3.5; }
+      .activity-target { fill: #eff6ff; stroke: #1d4ed8; stroke-width: 3.5; }
+      .decision { fill: #fefce8; stroke: #a16207; stroke-width: 3.5; }
       .bar { fill: #0f172a; }
       .start-node { fill: #0f172a; }
-      .end-outer { fill: #ffffff; stroke: #0f172a; stroke-width: 3; }
+      .end-outer { fill: #ffffff; stroke: #0f172a; stroke-width: 4; }
       .end-inner { fill: #0f172a; }
-      .line { fill: none; stroke: #1e293b; stroke-width: 2.5; }
-      .line-dash { fill: none; stroke: #475569; stroke-width: 2.2; stroke-dasharray: 7,5; }
-      .title { font-family: 'Segoe UI', Arial, sans-serif; font-size: 26px; font-weight: bold; fill: #0f172a; text-anchor: middle; }
-      .lane-title { font-family: 'Segoe UI', Arial, sans-serif; font-size: 17px; font-weight: bold; fill: #0f172a; text-anchor: middle; dominant-baseline: central; }
-      .text-bold { font-family: 'Segoe UI', Arial, sans-serif; font-size: 15.5px; font-weight: bold; fill: #0f172a; text-anchor: middle; dominant-baseline: central; }
-      .text-sub { font-family: 'Segoe UI', Arial, sans-serif; font-size: 13.5px; fill: #334155; text-anchor: middle; dominant-baseline: central; }
-      .label { font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; font-weight: bold; fill: #1e293b; text-anchor: middle; }
+      .line { fill: none; stroke: #0f172a; stroke-width: 3.5; }
+      .line-dash { fill: none; stroke: #334155; stroke-width: 3; stroke-dasharray: 9,6; }
+      .title { font-family: 'Segoe UI', Arial, sans-serif; font-size: 36px; font-weight: bold; fill: #0f172a; text-anchor: middle; }
+      .lane-title { font-family: 'Segoe UI', Arial, sans-serif; font-size: 24px; font-weight: bold; fill: #0f172a; text-anchor: middle; dominant-baseline: central; }
+      .text-bold { font-family: 'Segoe UI', Arial, sans-serif; font-size: 22px; font-weight: bold; fill: #0f172a; text-anchor: middle; dominant-baseline: central; }
+      .text-sub { font-family: 'Segoe UI', Arial, sans-serif; font-size: 18px; font-weight: 600; fill: #334155; text-anchor: middle; dominant-baseline: central; }
+      .label { font-family: 'Segoe UI', Arial, sans-serif; font-size: 20px; font-weight: bold; fill: #0f172a; text-anchor: middle; }
       .label-bg { fill: #ffffff; }
     </style>
-
-    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1e293b" />
+    <marker
+       id="arrow"
+       viewBox="0 0 10 10"
+       refX="9"
+       refY="5"
+       markerWidth="8"
+       markerHeight="8"
+       orient="auto-start-reverse">
+      <path
+         d="M 0 1 L 10 5 L 0 9 z"
+         fill="#0f172a"
+         id="path1" />
     </marker>
   </defs>
-
-  
-  <rect width="1600" height="900" class="bg" />
-
-  
-  <text x="800" y="42" class="title">ACTIVITY DIAGRAM: ALIRAN AKTIVITI SISTEM CYBER CLASH</text>
-
-  
-  
-  <rect x="25" y="65" width="145" height="265" class="lane-header-hacker" />
-  <text x="97.5" y="185" class="lane-title" style="fill:#991b1b;">PEMAIN</text>
-  <text x="97.5" y="208" class="lane-title" style="fill:#991b1b;">HACKER</text>
-  <rect x="170" y="65" width="1405" height="265" class="lane-body" />
-
-  
-  <rect x="25" y="330" width="145" height="265" class="lane-header-server" />
-  <text x="97.5" y="450" class="lane-title">SERVER</text>
-  <text x="97.5" y="473" class="lane-title">NODE.JS</text>
-  <rect x="170" y="330" width="1405" height="265" class="lane-body" />
-
-  
-  <rect x="25" y="595" width="145" height="265" class="lane-header-target" />
-  <text x="97.5" y="715" class="lane-title" style="fill:#1e40af;">PEMAIN</text>
-  <text x="97.5" y="738" class="lane-title" style="fill:#1e40af;">TARGET</text>
-  <rect x="170" y="595" width="1405" height="265" class="lane-body" />
-
-
-  
-  
-  <line x1="215" y1="462" x2="245" y2="462" class="line" marker-end="url(#arrow)" />
-
-  
-  <polyline points="249,405 249,195 275,195" class="line" marker-end="url(#arrow)" />
-  <polyline points="249,520 249,725 275,725" class="line" marker-end="url(#arrow)" />
-
-  
-  <polyline points="425,195 450,195 450,405" class="line" marker-end="url(#arrow)" />
-  <polyline points="425,725 450,725 450,520" class="line" marker-end="url(#arrow)" />
-
-  
-  <line x1="454" y1="462" x2="480" y2="462" class="line" marker-end="url(#arrow)" />
-
-  
-  <line x1="635" y1="462" x2="660" y2="462" class="line" marker-end="url(#arrow)" />
-
-  
-  <polyline points="664,395 664,145 690,145" class="line" marker-end="url(#arrow)" />
-  <polyline points="664,530 664,660 690,660" class="line" marker-end="url(#arrow)" />
-
-  
-  <polyline points="885,145 1005,145 1005,215" class="line" marker-end="url(#arrow)" />
-
-  
-  <line x1="787" y1="185" x2="787" y2="417" class="line" marker-end="url(#arrow)" />
-
-  
-  <polyline points="835,507 835,775 900,775" class="line" marker-end="url(#arrow)" />
-
-  
-  <polyline points="787,700 787,755 900,755" class="line" marker-end="url(#arrow)" />
-
-  
-  <polyline points="1105,255 1130,255 1130,417" class="line" marker-end="url(#arrow)" />
-  <polyline points="1105,765 1130,765 1130,507" class="line" marker-end="url(#arrow)" />
-
-  
-  <line x1="1195" y1="462" x2="1225" y2="462" class="line" marker-end="url(#arrow)" />
-
-  
-  <polyline points="1275,412 1275,355 664,355 664,375" class="line-dash" marker-end="url(#arrow)" />
-
-  
-  <line x1="1325" y1="462" x2="1355" y2="462" class="line" marker-end="url(#arrow)" />
-
-  
-  <line x1="1422" y1="422" x2="1422" y2="205" class="line" marker-end="url(#arrow)" />
-  <line x1="1422" y1="502" x2="1422" y2="720" class="line" marker-end="url(#arrow)" />
-
-  
-  <polyline points="1505,165 1545,165 1545,442" class="line" marker-end="url(#arrow)" />
-  <polyline points="1505,760 1545,760 1545,482" class="line" marker-end="url(#arrow)" />
-
-
-  
-
-  
-  <circle cx="200" cy="462" r="15" class="start-node" />
-
-  
-  <rect x="245" y="385" width="8" height="155" rx="4" class="bar" />
-
-  
-  <rect x="275" y="155" width="150" height="80" rx="18" ry="18" class="activity-hacker" />
-  <text x="350" y="185" class="text-bold">Sambung Server</text>
-  <text x="350" y="208" class="text-sub">WebSocket / IP</text>
-
-  
-  <rect x="275" y="685" width="150" height="80" rx="18" ry="18" class="activity-target" />
-  <text x="350" y="715" class="text-bold">Sambung Server</text>
-  <text x="350" y="738" class="text-sub">WebSocket / IP</text>
-
-  
-  <rect x="446" y="385" width="8" height="155" rx="4" class="bar" />
-
-  
-  <rect x="480" y="417" width="155" height="90" rx="18" ry="18" class="activity-server" />
-  <text x="557.5" y="450" class="text-bold">Tetap Peranan</text>
-  <text x="557.5" y="474" class="text-sub">Rawak &amp; Profil</text>
-
-  
-  <rect x="660" y="375" width="8" height="175" rx="4" class="bar" />
-
-  
-  <rect x="690" y="105" width="195" height="80" rx="18" ry="18" class="activity-hacker" />
-  <text x="787.5" y="135" class="text-bold">1. Recon, Scan &amp; Umpan</text>
-  <text x="787.5" y="158" class="text-sub">Bina &amp; Hantar Phishing</text>
-
-  
-  <rect x="900" y="215" width="205" height="80" rx="18" ry="18" class="activity-hacker" />
-  <text x="1002.5" y="245" class="text-bold">2. Exfil &amp; Cover Tracks</text>
-  <text x="1002.5" y="268" class="text-sub">Curi Aset &amp; Padam Log</text>
-
-  
-  <rect x="690" y="620" width="195" height="80" rx="18" ry="18" class="activity-target" />
-  <text x="787.5" y="650" class="text-bold">1. Urus 3 Tugas Harian</text>
-  <text x="787.5" y="673" class="text-sub">Desktop Windows 11</text>
-
-  
-  <rect x="900" y="725" width="205" height="80" rx="18" ry="18" class="activity-target" />
-  <text x="1002.5" y="755" class="text-bold">2. Nilai &amp; Sekat Ancaman</text>
-  <text x="1002.5" y="778" class="text-sub">Buka / Tool (2x) / Sekat</text>
-
-  
-  <rect x="740" y="417" width="175" height="90" rx="18" ry="18" class="activity-server" />
-  <text x="827.5" y="450" class="text-bold">Sahkan Payload</text>
-  <text x="827.5" y="474" class="text-sub">&amp; Hantar Notifikasi</text>
-
-  
-  <rect x="1025" y="417" width="170" height="90" rx="18" ry="18" class="activity-server" />
-  <text x="1110" y="450" class="text-bold">Kemas Kini Status</text>
-  <text x="1110" y="474" class="text-sub">Aset, Tugas &amp; Log</text>
-
-  
-  <polygon points="1275,412 1325,462 1275,512 1225,462" class="decision" />
-  <text x="1275" y="453" class="text-bold">Syarat</text>
-  <text x="1275" y="473" class="text-bold">Tamat?</text>
-
-  <rect x="945" y="343" width="65" height="22" class="label-bg" />
-  <text x="977.5" y="358" class="label">[Tidak]</text>
-  <rect x="1325" y="438" width="32" height="20" class="label-bg" />
-  <text x="1341" y="452" class="label">[Ya]</text>
-
-  
-  <rect x="1355" y="422" width="135" height="80" rx="18" ry="18" class="activity-server" />
-  <text x="1422.5" y="452" class="text-bold">Kira Skor</text>
-  <text x="1422.5" y="474" class="text-sub">&amp; Gred (S–F)</text>
-
-  
-  <rect x="1340" y="125" width="165" height="80" rx="18" ry="18" class="activity-hacker" />
-  <text x="1422.5" y="155" class="text-bold">Papar Keputusan</text>
-  <text x="1422.5" y="178" class="text-sub">&amp; Laporan Akhir</text>
-
-  
-  <rect x="1340" y="720" width="165" height="80" rx="18" ry="18" class="activity-target" />
-  <text x="1422.5" y="750" class="text-bold">Papar Keputusan</text>
-  <text x="1422.5" y="773" class="text-sub">&amp; Laporan Akhir</text>
-
-  
-  <circle cx="1545" cy="462" r="18" class="end-outer" />
-  <circle cx="1545" cy="462" r="11" class="end-inner" />
-
+  <rect
+     width="1920"
+     height="1080"
+     class="bg"
+     id="rect1" />
+  <text
+     x="960"
+     y="48"
+     class="title"
+     id="text1">ACTIVITY DIAGRAM: ALIRAN AKTIVITI SISTEM CYBER CLASH</text>
+  <rect
+     x="20"
+     y="75"
+     width="165"
+     height="326"
+     class="lane-header-hacker"
+     id="rect2" />
+  <text
+     x="102.5"
+     y="220"
+     class="lane-title"
+     style="fill:#991b1b;"
+     id="text2">PEMAIN</text>
+  <text
+     x="102.5"
+     y="254"
+     class="lane-title"
+     style="fill:#991b1b;"
+     id="text3">HACKER</text>
+  <rect
+     x="185"
+     y="75"
+     width="1715"
+     height="326"
+     class="lane-body"
+     id="rect3" />
+  <rect
+     x="20"
+     y="401"
+     width="165"
+     height="326"
+     class="lane-header-server"
+     id="rect4" />
+  <text
+     x="102.5"
+     y="546"
+     class="lane-title"
+     id="text4">SERVER</text>
+  <text
+     x="102.5"
+     y="580"
+     class="lane-title"
+     id="text5">NODE.JS</text>
+  <rect
+     x="185"
+     y="401"
+     width="1715"
+     height="326"
+     class="lane-body"
+     id="rect5" />
+  <rect
+     x="20"
+     y="727"
+     width="165"
+     height="326"
+     class="lane-header-target"
+     id="rect6" />
+  <text
+     x="102.5"
+     y="872"
+     class="lane-title"
+     style="fill:#1e40af;"
+     id="text6">PEMAIN</text>
+  <text
+     x="102.5"
+     y="906"
+     class="lane-title"
+     style="fill:#1e40af;"
+     id="text7">TARGET</text>
+  <rect
+     x="185"
+     y="727"
+     width="1715"
+     height="326"
+     class="lane-body"
+     id="rect7" />
+  <line
+     x1="243"
+     y1="564"
+     x2="265"
+     y2="564"
+     class="line"
+     marker-end="url(#arrow)"
+     id="line7" />
+  <polyline
+     points="270,500 270,238 305,238"
+     class="line"
+     marker-end="url(#arrow)"
+     id="polyline7" />
+  <polyline
+     points="270,630 270,890 305,890"
+     class="line"
+     marker-end="url(#arrow)"
+     id="polyline8" />
+  <polyline
+     points="525,238 560,238 560,500"
+     class="line"
+     marker-end="url(#arrow)"
+     id="polyline9" />
+  <polyline
+     points="525,890 560,890 560,630"
+     class="line"
+     marker-end="url(#arrow)"
+     id="polyline10" />
+  <line
+     x1="565"
+     y1="564"
+     x2="595"
+     y2="564"
+     class="line"
+     marker-end="url(#arrow)"
+     id="line10" />
+  <line
+     x1="820"
+     y1="564"
+     x2="850"
+     y2="564"
+     class="line"
+     marker-end="url(#arrow)"
+     id="line11" />
+  <polyline
+     points="855,485 855,153 890,153"
+     class="line"
+     marker-end="url(#arrow)"
+     id="polyline11" />
+  <polyline
+     points="855,645 855,803 890,803"
+     class="line"
+     marker-end="url(#arrow)"
+     id="polyline12" />
+  <polyline
+     points="1155,153 1272,153 1272,265"
+     class="line"
+     marker-end="url(#arrow)"
+     id="polyline13" />
+  <line
+     x1="1040"
+     y1="201"
+     x2="1040"
+     y2="512"
+     class="line"
+     marker-end="url(#arrow)"
+     id="line13" />
+  <line
+     x1="1168"
+     y1="616"
+     x2="1168"
+     y2="915"
+     class="line"
+     marker-end="url(#arrow)"
+     id="line14" />
+  <polyline
+     points="1022,851 1022,963 1130,963"
+     class="line"
+     marker-end="url(#arrow)"
+     id="polyline14" />
+  <line
+     x1="1365"
+     y1="361"
+     x2="1365"
+     y2="512"
+     class="line"
+     marker-end="url(#arrow)"
+     id="line15" />
+  <line
+     x1="1365"
+     y1="915"
+     x2="1365"
+     y2="616"
+     class="line"
+     marker-end="url(#arrow)"
+     id="line16" />
+  <line
+     x1="1495"
+     y1="564"
+     x2="1515"
+     y2="564"
+     class="line"
+     marker-end="url(#arrow)"
+     id="line17" />
+  <polyline
+     points="1580,499 1580,430 855,430 855,460"
+     class="line-dash"
+     marker-end="url(#arrow)"
+     id="polyline17" />
+  <line
+     x1="1645"
+     y1="564"
+     x2="1680"
+     y2="564"
+     class="line"
+     marker-end="url(#arrow)"
+     id="line18" />
+  <line
+     x1="1760"
+     y1="512"
+     x2="1760"
+     y2="286"
+     class="line"
+     marker-end="url(#arrow)"
+     id="line19" />
+  <line
+     x1="1760"
+     y1="616"
+     x2="1760"
+     y2="842"
+     class="line"
+     marker-end="url(#arrow)"
+     id="line20" />
+  <polyline
+     points="1865,238 1882,238 1882,544"
+     class="line"
+     marker-end="url(#arrow)"
+     id="polyline20" />
+  <polyline
+     points="1865,890 1882,890 1882,584"
+     class="line"
+     marker-end="url(#arrow)"
+     id="polyline21" />
+  <circle
+     cx="225"
+     cy="564"
+     r="18"
+     class="start-node"
+     id="circle21" />
+  <rect
+     x="265"
+     y="475"
+     width="10"
+     height="180"
+     rx="5"
+     class="bar"
+     id="rect21" />
+  <rect
+     x="305"
+     y="190"
+     width="220"
+     height="96"
+     rx="20"
+     ry="20"
+     class="activity-hacker"
+     id="rect22" />
+  <text
+     x="415"
+     y="222"
+     class="text-bold"
+     id="text22">Sambung Server</text>
+  <text
+     x="415"
+     y="256"
+     class="text-sub"
+     id="text23">WebSocket / IP</text>
+  <rect
+     x="305"
+     y="842"
+     width="220"
+     height="96"
+     rx="20"
+     ry="20"
+     class="activity-target"
+     id="rect23" />
+  <text
+     x="415"
+     y="874"
+     class="text-bold"
+     id="text24">Sambung Server</text>
+  <text
+     x="415"
+     y="908"
+     class="text-sub"
+     id="text25">WebSocket / IP</text>
+  <rect
+     x="555"
+     y="475"
+     width="10"
+     height="180"
+     rx="5"
+     class="bar"
+     id="rect25" />
+  <rect
+     x="595"
+     y="512"
+     width="225"
+     height="104"
+     rx="20"
+     ry="20"
+     class="activity-server"
+     id="rect26" />
+  <text
+     x="707.5"
+     y="546"
+     class="text-bold"
+     id="text26">Tetap Peranan</text>
+  <text
+     x="707.5"
+     y="582"
+     class="text-sub"
+     id="text27">Rawak &amp; Profil</text>
+  <rect
+     x="850"
+     y="460"
+     width="10"
+     height="210"
+     rx="5"
+     class="bar"
+     id="rect27" />
+  <rect
+     x="890"
+     y="105"
+     width="265"
+     height="96"
+     rx="20"
+     ry="20"
+     class="activity-hacker"
+     id="rect28" />
+  <text
+     x="1022.5"
+     y="137"
+     class="text-bold"
+     id="text28">1. Recon &amp; Umpan</text>
+  <text
+     x="1022.5"
+     y="171"
+     class="text-sub"
+     id="text29">Hantar Phishing</text>
+  <rect
+     x="1130"
+     y="265"
+     width="285"
+     height="96"
+     rx="20"
+     ry="20"
+     class="activity-hacker"
+     id="rect29" />
+  <text
+     x="1272.5"
+     y="297"
+     class="text-bold"
+     id="text30">2. Exfil &amp; Padam Log</text>
+  <text
+     x="1272.5"
+     y="331"
+     class="text-sub"
+     id="text31">Curi Aset &amp; Jejak</text>
+  <rect
+     x="890"
+     y="755"
+     width="265"
+     height="96"
+     rx="20"
+     ry="20"
+     class="activity-target"
+     id="rect31" />
+  <text
+     x="1022.5"
+     y="787"
+     class="text-bold"
+     id="text32">1. Urus 3 Tugasan</text>
+  <text
+     x="1022.5"
+     y="821"
+     class="text-sub"
+     id="text33">Desktop Win 11</text>
+  <rect
+     x="1130"
+     y="915"
+     width="285"
+     height="96"
+     rx="20"
+     ry="20"
+     class="activity-target"
+     id="rect33" />
+  <text
+     x="1272.5"
+     y="947"
+     class="text-bold"
+     id="text34">2. Nilai &amp; Sekat</text>
+  <text
+     x="1272.5"
+     y="981"
+     class="text-sub"
+     id="text35">Buka / Tool / Sekat</text>
+  <rect
+     x="930"
+     y="512"
+     width="245"
+     height="104"
+     rx="20"
+     ry="20"
+     class="activity-server"
+     id="rect35" />
+  <text
+     x="1052.5"
+     y="546"
+     class="text-bold"
+     id="text36">Sahkan Payload</text>
+  <text
+     x="1052.5"
+     y="582"
+     class="text-sub"
+     id="text37">Hantar Notifikasi</text>
+  <rect
+     x="1255"
+     y="512"
+     width="240"
+     height="104"
+     rx="20"
+     ry="20"
+     class="activity-server"
+     id="rect37" />
+  <text
+     x="1375"
+     y="546"
+     class="text-bold"
+     id="text38">Kemas Kini Status</text>
+  <text
+     x="1375"
+     y="582"
+     class="text-sub"
+     id="text39">Aset, Tugas &amp; Log</text>
+  <polygon
+     points="1580,499 1645,564 1580,629 1515,564"
+     class="decision"
+     id="polygon39" />
+  <text
+     x="1580"
+     y="551"
+     class="text-bold"
+     id="text40">Syarat</text>
+  <text
+     x="1580"
+     y="581"
+     class="text-bold"
+     id="text41">Tamat?</text>
+  <rect
+     x="1165"
+     y="414"
+     width="90"
+     height="28"
+     class="label-bg"
+     id="rect41" />
+  <text
+     x="1210"
+     y="435"
+     class="label"
+     id="text42">[Tidak]</text>
+  <rect
+     x="1644"
+     y="532"
+     width="38"
+     height="24"
+     class="label-bg"
+     id="rect42" />
+  <text
+     x="1663"
+     y="550"
+     class="label"
+     id="text43">[Ya]</text>
+  <rect
+     x="1680"
+     y="512"
+     width="160"
+     height="104"
+     rx="20"
+     ry="20"
+     class="activity-server"
+     id="rect43" />
+  <text
+     x="1760"
+     y="546"
+     class="text-bold"
+     id="text44">Kira Skor</text>
+  <text
+     x="1760"
+     y="582"
+     class="text-sub"
+     id="text45">&amp; Gred (S–F)</text>
+  <rect
+     x="1655"
+     y="190"
+     width="210"
+     height="96"
+     rx="20"
+     ry="20"
+     class="activity-hacker"
+     id="rect45" />
+  <text
+     x="1760"
+     y="222"
+     class="text-bold"
+     id="text46">Papar Keputusan</text>
+  <text
+     x="1760"
+     y="256"
+     class="text-sub"
+     id="text47">&amp; Laporan Akhir</text>
+  <rect
+     x="1655"
+     y="842"
+     width="210"
+     height="96"
+     rx="20"
+     ry="20"
+     class="activity-target"
+     id="rect47" />
+  <text
+     x="1760"
+     y="874"
+     class="text-bold"
+     id="text48">Papar Keputusan</text>
+  <text
+     x="1760"
+     y="908"
+     class="text-sub"
+     id="text49">&amp; Laporan Akhir</text>
+  <circle
+     cx="1882"
+     cy="564"
+     r="20"
+     class="end-outer"
+     id="circle49" />
+  <circle
+     cx="1882"
+     cy="564"
+     r="12"
+     class="end-inner"
+     id="circle50" />
 </svg>
