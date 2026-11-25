@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 1920 1080"
+   width="1920"
+   height="1080"
+   version="1.1"
+   id="svg58"
+   sodipodi:docname="pemetaan-objektif-projek.svg"
+   inkscape:export-filename="pemetaan-objektif-projek.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="1.4.4 (dcaf3e7, 2026-05-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview58"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.71574074"
+     inkscape:cx="960.54334"
+     inkscape:cy="875.31695"
+     inkscape:window-width="1920"
+     inkscape:window-height="991"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg58" />
+  <defs
+     id="defs3">
+    <style
+       id="style1">
+      .title { font-family: 'Segoe UI', Arial, Helvetica, sans-serif; font-size: 50px; font-weight: 800; fill: #0077B6; }
+      .subtitle { font-family: 'Segoe UI', Arial, Helvetica, sans-serif; font-size: 30px; font-weight: 600; fill: #222222; }
+      .card-header-title { font-family: 'Segoe UI', Arial, Helvetica, sans-serif; font-size: 29px; font-weight: 800; fill: #FFFFFF; }
+      .card-header-sub { font-family: 'Segoe UI', Arial, Helvetica, sans-serif; font-size: 20.5px; font-weight: 500; fill: #F8FAFC; }
+      .sec-heading { font-family: 'Segoe UI', Arial, Helvetica, sans-serif; font-size: 27px; font-weight: 800; fill: #111827; }
+      .bullet-text { font-family: 'Segoe UI', Arial, Helvetica, sans-serif; font-size: 24.5px; font-weight: 600; fill: #1F2937; }
+      .outcome-title { font-family: 'Segoe UI', Arial, Helvetica, sans-serif; font-size: 25px; font-weight: 800; fill: #111827; }
+      .outcome-text { font-family: 'Segoe UI', Arial, Helvetica, sans-serif; font-size: 21.5px; font-weight: 600; fill: #1F2937; }
+    </style>
+    <clipPath
+       id="headerClip1">
+      <rect
+         x="30"
+         y="152"
+         width="586"
+         height="112"
+         rx="20"
+         ry="20"
+         id="rect1" />
+    </clipPath>
+    <clipPath
+       id="headerClip2">
+      <rect
+         x="667"
+         y="152"
+         width="586"
+         height="112"
+         rx="20"
+         ry="20"
+         id="rect2" />
+    </clipPath>
+    <clipPath
+       id="headerClip3">
+      <rect
+         x="1304"
+         y="152"
+         width="586"
+         height="112"
+         rx="20"
+         ry="20"
+         id="rect3" />
+    </clipPath>
+  </defs>
+  <rect
+     width="1920"
+     height="1080"
+     fill="#FFFFFF"
+     id="rect4" />
+  <text
+     x="960"
+     y="72"
+     text-anchor="middle"
+     class="title"
+     id="text4">PEMETAAN OBJEKTIF PROJEK (CYBER CLASH)</text>
+  <text
+     x="960"
+     y="118"
+     text-anchor="middle"
+     class="subtitle"
+     id="text5">Pemetaan Aktiviti Khusus Terhadap Tiga Objektif Kajian Laporan FYP</text>
+  <rect
+     x="30"
+     y="152"
+     width="586"
+     height="898"
+     rx="20"
+     ry="20"
+     fill="#F0F9FF"
+     stroke="#0284C7"
+     stroke-width="4"
+     id="rect5" />
+  <g
+     clip-path="url(#headerClip1)"
+     id="g6">
+    <rect
+       x="30"
+       y="152"
+       width="586"
+       height="112"
+       fill="#0284C7"
+       id="rect6" />
+  </g>
+  <text
+     x="323"
+     y="202"
+     text-anchor="middle"
+     class="card-header-title"
+     id="text6">OBJEKTIF I: MEMBANGUNKAN</text>
+  <text
+     x="323"
+     y="240"
+     text-anchor="middle"
+     class="card-header-sub"
+     id="text7">Permainan Simulasi Keselamatan Siber Web (PvP)</text>
+  <text
+     x="56"
+     y="310"
+     class="sec-heading"
+     id="text8">Pembangunan Mekanik &amp;</text>
+  <text
+     x="56"
+     y="344"
+     class="sec-heading"
+     id="text9">Klien Web:</text>
+  <text
+     x="56"
+     y="392"
+     class="bullet-text"
+     id="text10">• Membangunkan 5 fasa serangan</text>
+  <text
+     x="76"
+     y="422"
+     class="bullet-text"
+     id="text11">(Hacker)</text>
+  <text
+     x="56"
+     y="468"
+     class="bullet-text"
+     id="text12">• Membangunkan 3 tugasan harian</text>
+  <text
+     x="76"
+     y="498"
+     class="bullet-text"
+     id="text13">(Target)</text>
+  <text
+     x="56"
+     y="544"
+     class="bullet-text"
+     id="text14">• Membangunkan 4 profil arketip</text>
+  <text
+     x="76"
+     y="574"
+     class="bullet-text"
+     id="text15">sasaran</text>
+  <text
+     x="56"
+     y="620"
+     class="bullet-text"
+     id="text16">• Tetapan kuota tool 2x &amp; had</text>
+  <text
+     x="76"
+     y="650"
+     class="bullet-text"
+     id="text17">3 kesilapan</text>
+  <text
+     x="56"
+     y="696"
+     class="bullet-text"
+     id="text18">• Eksport klien Godot HTML5</text>
+  <text
+     x="76"
+     y="726"
+     class="bullet-text"
+     id="text19">(cyberclash.qd.je)</text>
+  <text
+     x="56"
+     y="772"
+     class="bullet-text"
+     id="text20">• Menyediakan mod utama PvP</text>
+  <text
+     x="76"
+     y="802"
+     class="bullet-text"
+     id="text21">&amp; ekstra PvE</text>
+  <rect
+     x="50"
+     y="845"
+     width="546"
+     height="185"
+     rx="14"
+     ry="14"
+     fill="#E0F2FE"
+     stroke="#0284C7"
+     stroke-width="2.5"
+     id="rect21" />
+  <text
+     x="323"
+     y="886"
+     text-anchor="middle"
+     class="outcome-title"
+     id="text22">Hasil Pencapaian:</text>
+  <text
+     x="68"
+     y="934"
+     class="outcome-text"
+     id="text23">• Dokumen Reka Bentuk Permainan (GDD)</text>
+  <text
+     x="68"
+     y="980"
+     class="outcome-text"
+     id="text24">• Klien Web Godot HTML5 Boleh Diakses</text>
+  <polygon
+     points="623,590 644,590 644,576 661,600 644,624 644,610 623,610"
+     fill="#E11D48"
+     id="polygon24" />
+  <rect
+     x="667"
+     y="152"
+     width="586"
+     height="898"
+     rx="20"
+     ry="20"
+     fill="#FFFBEB"
+     stroke="#D97706"
+     stroke-width="4"
+     id="rect24" />
+  <g
+     clip-path="url(#headerClip2)"
+     id="g25">
+    <rect
+       x="667"
+       y="152"
+       width="586"
+       height="112"
+       fill="#D97706"
+       id="rect25" />
+  </g>
+  <text
+     x="960"
+     y="202"
+     text-anchor="middle"
+     class="card-header-title"
+     id="text25">OBJEKTIF II: MEMBANGUNKAN</text>
+  <text
+     x="960"
+     y="240"
+     text-anchor="middle"
+     class="card-header-sub"
+     id="text26">Komunikasi Masa Nyata (WebSocket) 2 Pemain</text>
+  <text
+     x="693"
+     y="310"
+     class="sec-heading"
+     id="text27">Pembangunan Pelayan &amp;</text>
+  <text
+     x="693"
+     y="344"
+     class="sec-heading"
+     id="text28">Sesi Segerak:</text>
+  <text
+     x="693"
+     y="396"
+     class="bullet-text"
+     id="text29">• Bangunkan pelayan autoritatif</text>
+  <text
+     x="713"
+     y="428"
+     class="bullet-text"
+     id="text30">Node.js (hos kendiri)</text>
+  <text
+     x="693"
+     y="484"
+     class="bullet-text"
+     id="text31">• Integrasi sambungan WebSocket</text>
+  <text
+     x="713"
+     y="516"
+     class="bullet-text"
+     id="text32">dua hala</text>
+  <text
+     x="693"
+     y="572"
+     class="bullet-text"
+     id="text33">• Sistem lobi matchmaking</text>
+  <text
+     x="713"
+     y="604"
+     class="bullet-text"
+     id="text34">(2 pemain serentak)</text>
+  <text
+     x="693"
+     y="660"
+     class="bullet-text"
+     id="text35">• Penetapan peranan rawak</text>
+  <text
+     x="713"
+     y="692"
+     class="bullet-text"
+     id="text36">(Hacker vs Target)</text>
+  <text
+     x="693"
+     y="748"
+     class="bullet-text"
+     id="text37">• Penyegerakan status aset &amp;</text>
+  <text
+     x="713"
+     y="780"
+     class="bullet-text"
+     id="text38">tugas (JSON)</text>
+  <rect
+     x="687"
+     y="845"
+     width="546"
+     height="185"
+     rx="14"
+     ry="14"
+     fill="#FEF3C7"
+     stroke="#D97706"
+     stroke-width="2.5"
+     id="rect38" />
+  <text
+     x="960"
+     y="886"
+     text-anchor="middle"
+     class="outcome-title"
+     id="text39">Hasil Pencapaian:</text>
+  <text
+     x="705"
+     y="934"
+     class="outcome-text"
+     id="text40">• Pelayan Node.js Hos Kendiri Berfungsi</text>
+  <text
+     x="705"
+     y="980"
+     class="outcome-text"
+     id="text41">• Sesi WebSocket 2 Pemain Segerak</text>
+  <polygon
+     points="1260,590 1281,590 1281,576 1298,600 1281,624 1281,610 1260,610"
+     fill="#E11D48"
+     id="polygon41" />
+  <rect
+     x="1304"
+     y="152"
+     width="586"
+     height="898"
+     rx="20"
+     ry="20"
+     fill="#ECFDF5"
+     stroke="#15803D"
+     stroke-width="4"
+     id="rect41" />
+  <g
+     clip-path="url(#headerClip3)"
+     id="g42">
+    <rect
+       x="1304"
+       y="152"
+       width="586"
+       height="112"
+       fill="#15803D"
+       id="rect42" />
+  </g>
+  <text
+     x="1597"
+     y="202"
+     text-anchor="middle"
+     class="card-header-title"
+     id="text42">OBJEKTIF III: MENGUJI</text>
+  <text
+     x="1597"
+     y="240"
+     text-anchor="middle"
+     class="card-header-sub"
+     id="text43">Rekod Tindakan, Objektif &amp; Pengiraan Skor</text>
+  <text
+     x="1330"
+     y="310"
+     class="sec-heading"
+     id="text44">Pengujian Kefungsian</text>
+  <text
+     x="1330"
+     y="344"
+     class="sec-heading"
+     id="text45">Sistem:</text>
+  <text
+     x="1330"
+     y="396"
+     class="bullet-text"
+     id="text46">• Ujian unit kestabilan pelayan</text>
+  <text
+     x="1350"
+     y="428"
+     class="bullet-text"
+     id="text47">(node --test)</text>
+  <text
+     x="1330"
+     y="484"
+     class="bullet-text"
+     id="text48">• Pengujian rekod tindakan &amp;</text>
+  <text
+     x="1350"
+     y="516"
+     class="bullet-text"
+     id="text49">log sesi (JSON)</text>
+  <text
+     x="1330"
+     y="572"
+     class="bullet-text"
+     id="text50">• Pengesahan syarat objektif</text>
+  <text
+     x="1350"
+     y="604"
+     class="bullet-text"
+     id="text51">(3 Tugas / Exfil)</text>
+  <text
+     x="1330"
+     y="660"
+     class="bullet-text"
+     id="text52">• Pengujian kiraan skor</text>
+  <text
+     x="1350"
+     y="692"
+     class="bullet-text"
+     id="text53">(0–1000) &amp; gred</text>
+  <text
+     x="1330"
+     y="748"
+     class="bullet-text"
+     id="text54">• Pengesahan laporan pasca-</text>
+  <text
+     x="1350"
+     y="780"
+     class="bullet-text"
+     id="text55">perlawanan</text>
+  <rect
+     x="1324"
+     y="845"
+     width="546"
+     height="185"
+     rx="14"
+     ry="14"
+     fill="#DCFCE7"
+     stroke="#15803D"
+     stroke-width="2.5"
+     id="rect55" />
+  <text
+     x="1597"
+     y="886"
+     text-anchor="middle"
+     class="outcome-title"
+     id="text56">Hasil Pencapaian:</text>
+  <text
+     x="1342"
+     y="934"
+     class="outcome-text"
+     id="text57">• 100% Ujian Unit Lulus (node --test)</text>
+  <text
+     x="1342"
+     y="980"
+     class="outcome-text"
+     id="text58">• Rekod Tindakan, Objektif &amp; Skor Tepat</text>
+</svg>
